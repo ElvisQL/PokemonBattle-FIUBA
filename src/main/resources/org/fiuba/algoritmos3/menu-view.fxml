@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="687.0" prefWidth="744.0" style="-fx-background-color: #fefefe;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.MenuController">
-    <!-- Parte superior (Título con imagen) -->
+
     <top>
         <HBox alignment="CENTER" prefHeight="173.0" prefWidth="744.0" spacing="10.0">
             <children>
@@ -21,7 +21,7 @@
         </HBox>
     </top>
 
-    <!-- Centro (Botones) -->
+
     <center>
         <VBox alignment="CENTER" prefHeight="371.0" prefWidth="800.0" spacing="10.0">
             <Button prefHeight="25.0" prefWidth="134.0" text="Comenzar Juego" />
@@ -30,12 +30,12 @@
         </VBox>
     </center>
 
-    <!-- Parte inferior (Imagen, botón de mute) -->
+
     <bottom>
         <VBox alignment="CENTER" spacing="10.0">
             <Pane prefHeight="336.0" prefWidth="744.0">
                 <children>
-                    <!-- Botón de mute -->
+
                     <Button layoutX="673.0" layoutY="290.0" onAction="#onMuteButtonClick" text="Mute" />
                     <ImageView fitHeight="195.0" fitWidth="381.0" layoutX="231.0" pickOnBounds="true" preserveRatio="true">
                         <image>
