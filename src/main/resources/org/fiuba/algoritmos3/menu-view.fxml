@@ -23,10 +23,10 @@
 
 
     <center>
-        <VBox alignment="CENTER" prefHeight="371.0" prefWidth="800.0" spacing="10.0">
-            <Button prefHeight="25.0" prefWidth="134.0" text="Comenzar Juego" />
-            <Button prefHeight="25.0" prefWidth="135.0" text="Ver top 10?" />
-            <Button prefHeight="25.0" prefWidth="136.0" text="Salir" />
+        <VBox alignment="CENTER" prefHeight="371.0" prefWidth="800.0" spacing="10.0" style="-fx-spacing: 15.0;">
+            <Button prefHeight="25.0" prefWidth="134.0" style="-fx-border-color: #3b5ca7;" text="Comenzar Juego" onAction="#onClickOnStartGame"/>
+            <Button prefHeight="25.0" prefWidth="135.0" style="-fx-border-color: #3b5ca7;" styleClass="menuButton" text="Ver top 10?" />
+            <Button prefHeight="25.0" prefWidth="136.0" style="-fx-border-color: #3b5ca7;" text="Salir" />
         </VBox>
     </center>
 

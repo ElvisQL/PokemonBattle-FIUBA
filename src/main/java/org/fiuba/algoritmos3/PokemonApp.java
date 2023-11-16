@@ -12,7 +12,7 @@ import javafx.fxml.FXMLLoader;
 
 public class PokemonApp extends Application {
 
-
+    MenuController menuController;
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -20,7 +20,7 @@ public class PokemonApp extends Application {
         System.out.println(getClass().getResource("menu-view.fxml"));
         Parent root = fxmlLoader.load();
 
-        MenuController menuController = fxmlLoader.getController();
+        menuController = fxmlLoader.getController();
 
         Scene scene = new Scene(root, 750, 700);
         stage.setTitle("Hello!");
@@ -37,6 +37,8 @@ public class PokemonApp extends Application {
 
     @Override
     public void stop() {
-
+        if (menuController != null) {
+            menuController.getMediaPlayer().stop();
+        }
     }
 }

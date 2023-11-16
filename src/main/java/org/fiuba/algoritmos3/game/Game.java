@@ -41,6 +41,7 @@ public class Game {
         this.battlefield = new Battlefield(this.ui);
     }
 
+
     public void start() throws IOException, InvalidSelectionException {
         ui.showMessage(">>>>>> Welcome to Battle Pokemon <<<<<<<");
         setup();
