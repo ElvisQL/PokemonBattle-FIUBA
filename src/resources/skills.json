@@ -1,0 +1,551 @@
+[
+  {
+    "name": "Flamethrower",
+    "id": 0,
+    "description": "Charizard releases a stream of fire from its mouth, scorching its target.",
+    "power": 90,
+    "category": "Attack"
+  },
+  {
+    "name": "Dragon Claw",
+    "id": 1,
+    "description": "Charizard strikes its opponent with sharp claws, dealing physical damage.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Fly",
+    "id": 2,
+    "description": "Charizard soars into the sky and then swoops down to strike its opponent.",
+    "power": 70,
+    "category": "Attack"
+  },
+  {
+    "name": "Fire Wave",
+    "id": 3,
+    "description": "Charizard unleashes a scorching heat wave to damage all nearby enemies.",
+    "power": 95,
+    "category": "Attack"
+  },
+  {
+    "name": "Water Gun",
+    "id": 4,
+    "description": "Squirtle shoots a high-pressure stream of water at its target.",
+    "power": 40,
+    "category": "Attack"
+  },
+  {
+    "name": "Withdraw",
+    "id": 5,
+    "description": "Squirtle withdraws into its shell, increasing its defense.",
+    "attribute": "Defense",
+    "percentage": 20,
+    "category": "Buff"
+  },
+  {
+    "name": "Aqua Tail",
+    "id": 6,
+    "description": "Squirtle strikes its opponent with a powerful aquatic tail.",
+    "power": 90,
+    "category": "Attack"
+  },
+  {
+    "name": "Hydro Pump",
+    "id": 7,
+    "description": "Squirtle fires a high-pressure jet of water with great force.",
+    "power": 110,
+    "category": "Attack"
+  },
+  {
+    "name": "Sing",
+    "id": 8,
+    "description": "Jigglypuff sings a lullaby that puts its target to sleep.",
+    "attribute": "Asleep",
+    "category": "Status"
+  },
+  {
+    "name": "Double Slap",
+    "id": 9,
+    "description": "Jigglypuff rapidly slaps its opponent with its soft and elastic hands.",
+    "power": 15,
+    "category": "Attack"
+  },
+  {
+    "name": "Play Rough",
+    "id": 10,
+    "description": "Jigglypuff engages in a playful yet rough battle with its opponent.",
+    "power": 90,
+    "category": "Attack"
+  },
+  {
+    "name": "Dazzling Gleam",
+    "id": 11,
+    "description": "Jigglypuff releases a powerful burst of fairy energy to damage its enemies.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Shadow Ball",
+    "id": 12,
+    "description": "Gengar hurls a shadowy ball at its opponent, dealing ghostly damage.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Hypnosis",
+    "id": 13,
+    "description": "Gengar hypnotizes its target, sending it into a deep sleep.",
+    "attribute": "Asleep",
+    "category": "Status"
+  },
+  {
+    "name": "Sludge Bomb",
+    "id": 14,
+    "description": "Gengar releases a toxic sludge that explodes upon impact.",
+    "power": 90,
+    "category": "Attack"
+  },
+  {
+    "name": "Shadow Pulse",
+    "id": 15,
+    "description": "Gengar emits dark energy pulses to frighten and damage its enemies.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Thunderbolt",
+    "id": 16,
+    "description": "Pikachu releases a powerful bolt of electricity from its cheeks, electrocuting its opponent.",
+    "power": 90,
+    "category": "Attack"
+  },
+  {
+    "name": "Quick Attack",
+    "id": 17,
+    "description": "Pikachu moves at incredible speed to surprise and strike its opponent.",
+    "power": 40,
+    "category": "Attack"
+  },
+  {
+    "name": "Thunder Wave",
+    "id": 18,
+    "description": "Pikachu emits electromagnetic waves to temporarily paralyze its target.",
+    "attribute": "Paralyzed",
+    "category": "Status"
+  },
+  {
+    "name": "Iron Tail",
+    "id": 19,
+    "description": "Pikachu hardens its tail with iron and uses it to deliver a powerful blow to its opponent.",
+    "power": 100,
+    "category": "Attack"
+  },
+  {
+    "name": "Vine Whip",
+    "id": 20,
+    "description": "Bulbasaur strikes its opponent with its vines.",
+    "power": 45,
+    "category": "Attack"
+  },
+  {
+    "name": "Solar Beam",
+    "id": 21,
+    "description": "After absorbing sunlight through its bulb, Bulbasaur fires a powerful beam of energy.",
+    "power": 120,
+    "category": "Attack"
+  },
+  {
+    "name": "Poison Powder",
+    "id": 22,
+    "description": "Bulbasaur releases toxic powder to poison its opponent.",
+    "attribute": "Poisoned",
+    "category": "Status"
+  },
+  {
+    "name": "Seed Bomb",
+    "id": 23,
+    "description": "Bulbasaur launches a group of explosive seeds at its target.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Dynamic Punch",
+    "id": 24,
+    "description": "Machamp delivers a powerful and unpredictable punch to its opponent.",
+    "power": 100,
+    "category": "Attack"
+  },
+  {
+    "name": "Karate Chop",
+    "id": 25,
+    "description": "Machamp strikes its target with a concentrated and precise chop.",
+    "power": 50,
+    "category": "Attack"
+  },
+  {
+    "name": "Strength",
+    "id": 26,
+    "description": "Machamp strengthens its muscles, increasing its physical strength.",
+    "attribute": "Attack",
+    "percentage": 25,
+    "category": "Buff"
+  },
+  {
+    "name": "Cross Chop",
+    "id": 27,
+    "description": "Machamp executes a powerful cross-shaped attack.",
+    "power": 100,
+    "category": "Attack"
+  },
+  {
+    "name": "Hydro Pump",
+    "id": 28,
+    "description": "Gyarados fires a high-pressure jet of water at its target.",
+    "power": 110,
+    "category": "Attack"
+  },
+  {
+    "name": "Dragon Rage",
+    "id": 29,
+    "description": "Gyarados unleashes a terrifying dragon-like attack that deals constant damage.",
+    "power": 40,
+    "category": "Attack"
+  },
+  {
+    "name": "Intimidate",
+    "id": 30,
+    "description": "Gyarados intimidates its opponent, reducing their attack power.",
+    "attribute": "Defense",
+    "percentage": 20,
+    "category": "Buff"
+  },
+  {
+    "name": "Hyper Beam",
+    "id": 31,
+    "description": "Gyarados fires an incredibly powerful beam of energy at its enemy but requires a turn to recharge.",
+    "power": 150,
+    "category": "Attack"
+  },
+  {
+    "name": "Psychic",
+    "id": 32,
+    "description": "Alakazam uses its psychic abilities to control and damage the mind of its target.",
+    "power": 90,
+    "category": "Attack"
+  },
+  {
+    "name": "Shadow Ball",
+    "id": 33,
+    "description": "Alakazam hurls a shadowy ball at its opponent, dealing ghostly damage.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Calm Mind",
+    "id": 34,
+    "description": "Alakazam calms its mind, increasing its special attack and special defense.",
+    "attribute": "Attack",
+    "percentage": 15,
+    "category": "Buff"
+  },
+  {
+    "name": "Psycho Cut",
+    "id": 35,
+    "description": "Alakazam uses its psychic powers to create a sharp and powerful psychic blade to attack its opponent.",
+    "power": 70,
+    "category": "Attack"
+  },
+  {
+    "id": 36,
+    "name": "Surf",
+    "description": "Lapras creates a large wave to crash into its target, dealing water-type damage.",
+    "power": 90,
+    "category": "Attack"
+  },
+  {
+    "id": 37,
+    "name": "Ice Beam",
+    "description": "Lapras fires an ice beam at its target, with the possibility of freezing it.",
+    "power": 90,
+    "category": "Attack"
+  },
+  {
+    "id": 38,
+    "name": "Sing",
+    "description": "Lapras sings a soothing song that puts its target to sleep.",
+    "attribute": "Asleep",
+    "category": "Status"
+  },
+  {
+    "id": 39,
+    "name": "Aurora Beam",
+    "description": "Lapras shoots a rainbow beam that damages its opponent.",
+    "power": 65,
+    "category": "Attack"
+  },
+  {
+    "id": 40,
+    "name": "Psychic Strike",
+    "description": "Mewtwo creates a psychic shockwave to attack its opponent, ignoring their special defense.",
+    "power": 100,
+    "category": "Attack"
+  },
+  {
+    "id": 41,
+    "name": "Barrier",
+    "description": "Mewtwo creates a psychic barrier to significantly increase its defense.",
+    "percentage": 50,
+    "attribute": "Defense",
+    "category": "Buff"
+  },
+  {
+    "id": 42,
+    "name": "Recovery",
+    "description": "Mewtwo heals itself using its psychic powers, restoring its health.",
+    "attribute": "Health",
+    "percentage": 100,
+    "category": "Buff"
+  },
+  {
+    "id": 43,
+    "name": "Aura Sphere",
+    "description": "Mewtwo fires an energy sphere that cannot miss its target.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Low Kick",
+    "id": 44,
+    "description": "Machop performs a low kick to knock down its opponent.",
+    "power": 60,
+    "category": "Attack"
+  },
+  {
+    "name": "Karate Chop",
+    "id": 45,
+    "description": "Machop strikes its target with a concentrated and precise blow.",
+    "power": 50,
+    "category": "Attack"
+  },
+  {
+    "name": "Focus Energy",
+    "id": 46,
+    "description": "Machop focuses its energy, increasing its critical hit ratio.",
+    "percentage": 25,
+    "attribute": "Speed",
+    "category": "Buff"
+  },
+  {
+    "name": "Submission",
+    "id": 47,
+    "description": "Machop throws its opponent to the ground with a powerful submission move.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "id": 48,
+    "name": "Body Slam",
+    "description": "Snorlax slams its massive body into its opponent, potentially paralyzing them.",
+    "power": 85,
+    "category": "Attack"
+  },
+  {
+    "id": 49,
+    "name": "Rest",
+    "description": "Snorlax falls asleep and fully restores its health, curing any status conditions.",
+    "attribute": "Health",
+    "percentage": 100,
+    "category": "Buff"
+  },
+  {
+    "id": 50,
+    "name": "Amnesia",
+    "description": "Snorlax temporarily forgets its worries, significantly increasing its special defense.",
+    "percentage": 60,
+    "attribute": "Defense",
+    "category": "Buff"
+  },
+  {
+    "id": 51,
+    "name": "Hyper Beam",
+    "description": "Snorlax unleashes a powerful energy beam at its opponent, but needs a turn to recharge.",
+    "power": 150,
+    "category": "Attack"
+  },
+  {
+    "name": "Tackle",
+    "id": 52,
+    "description": "Eevee tackles its opponent with a simple physical move.",
+    "power": 40,
+    "category": "Attack"
+  },
+  {
+    "name": "Quick Attack",
+    "id": 53,
+    "description": "Eevee moves at an incredible speed to surprise and hit its opponent.",
+    "power": 40,
+    "category": "Attack"
+  },
+  {
+    "name": "Sand Attack",
+    "id": 54,
+    "description": "Eevee throws sand into its opponent's eyes, reducing their accuracy.",
+    "attribute": "Paralyzed",
+    "category": "Status"
+  },
+  {
+    "name": "Bite",
+    "id": 55,
+    "description": "Eevee bites its opponent with sharp teeth, potentially making them flinch.",
+    "power": 60,
+    "category": "Attack"
+  },
+  {
+    "name": "Aerial Ace",
+    "id": 56,
+    "description": "Pidgeot executes a fast and precise aerial attack that cannot miss.",
+    "power": 60,
+    "category": "Attack"
+  },
+  {
+    "name": "Hurricane",
+    "id": 57,
+    "description": "Pidgeot creates a powerful hurricane to damage its opponent with a strong gust of wind.",
+    "power": 110,
+    "category": "Attack"
+  },
+  {
+    "name": "Rest",
+    "id": 58,
+    "description": "Pidgeot lands and rests its wings, recovering its health.",
+    "attribute": "Health",
+    "percentage": 60,
+    "category": "Buff"
+  },
+  {
+    "name": "Feather Dance",
+    "id": 59,
+    "description": "Pidgeot uses its feathers to distract and decrease its opponent's attack power.",
+    "percentage": 30,
+    "attribute": "Defense",
+    "category": "Buff"
+  },
+  {
+    "name": "Earthquake",
+    "id": 60,
+    "description": "Golem triggers a powerful earthquake that shakes the ground and damages all of its opponents.",
+    "power": 100,
+    "category": "Attack"
+  },
+  {
+    "name": "Rock Throw",
+    "id": 61,
+    "description": "Golem hurls sharp rocks at its opponent, aiming for a critical hit.",
+    "power": 100,
+    "category": "Attack"
+  },
+  {
+    "name": "Defense",
+    "id": 62,
+    "description": "Golem curls into a defensive position, significantly increasing its defense.",
+    "percentage": 70,
+    "attribute": "Defense",
+    "category": "Buff"
+  },
+  {
+    "name": "Polish",
+    "id": 63,
+    "description": "Golem polishes its body to greatly increase its speed.",
+    "attribute": "Speed",
+    "percentage": 40,
+    "category": "Buff"
+  },
+  {
+    "name": "Dragon Claw",
+    "id": 64,
+    "description": "Dragonite slashes at its opponent with sharp claws, dealing physical damage.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Hyper Beam",
+    "id": 65,
+    "description": "Dragonite fires an incredibly powerful energy beam at its enemy, but needs a turn to recharge.",
+    "power": 150,
+    "category": "Attack"
+  },
+  {
+    "name": "Outrage",
+    "id": 66,
+    "description": "Dragonite becomes furious, repeatedly attacking its opponent for two or three turns.",
+    "power": 120,
+    "category": "Attack"
+  },
+  {
+    "name": "Rest",
+    "id": 67,
+    "description": "Dragonite lands and rests its wings, recovering its health.",
+    "percentage": 70,
+    "attribute": "Health",
+    "category": "Buff"
+  },
+  {
+    "name": "Flamethrower",
+    "id": 68,
+    "description": "Arcanine releases a fiery burst from its mouth, scorching its target.",
+    "power": 90,
+    "category": "Attack"
+  },
+  {
+    "name": "Extreme Speed",
+    "id": 69,
+    "description": "Arcanine moves at extreme speed to strike its opponent with a fast and powerful attack.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Will-O-Wisp",
+    "id": 70,
+    "description": "Arcanine creates mysterious flames to inflict burns on its opponent and reduce their attack power.",
+    "percentage": 25,
+    "attribute": "Defense",
+    "category": "Buff"
+  },
+  {
+    "name": "Morning Sun",
+    "id": 71,
+    "description": "Arcanine absorbs sunlight to restore its health during the day.",
+    "percentage": 60,
+    "attribute": "Health",
+    "category": "Buff"
+  },
+  {
+    "name": "Aura Sphere",
+    "id": 72,
+    "description": "Lucario forms an aura energy sphere and launches it at its opponent.",
+    "power": 80,
+    "category": "Attack"
+  },
+  {
+    "name": "Close Combat",
+    "id": 73,
+    "description": "Lucario engages in close combat, lowering its defense and special defense but dealing massive damage.",
+    "power": 120,
+    "category": "Attack"
+  },
+  {
+    "name": "Metal Claw",
+    "id": 74,
+    "description": "Lucario's claws are infused with steel, allowing it to scratch its opponent with more power.",
+    "power": 50,
+    "category": "Attack"
+  },
+  {
+    "name": "Calm Mind",
+    "id": 75,
+    "description": "Lucario focuses on its aura, increasing its special attack and special defense.",
+    "percentage": 25,
+    "attribute": "Attack",
+    "category": "Buff"
+  }
+]

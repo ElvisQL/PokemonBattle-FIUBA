@@ -28,7 +28,7 @@ public class StartGameController {
     public void initialize() throws InvalidDataException {
         /*ItemDeserializer itemDeserializer = new ItemDeserializer();
         HashMap<Integer, Item> hashItems = itemDeserializer.getItems();
-                                                                                            TODO hay que crear los respecticos json
+                                                                                            TODO hay que crear los respectivos json
         PokemonDeserializer pokemonDeserializer = new PokemonDeserializer();
         HashMap<Integer, Pokemon> pokemonHashMap = pokemonDeserializer.getPokemon();*/
 
