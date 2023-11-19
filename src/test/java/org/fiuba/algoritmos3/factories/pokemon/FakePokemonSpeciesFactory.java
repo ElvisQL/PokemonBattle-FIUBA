@@ -3,8 +3,8 @@ package org.fiuba.algoritmos3.factories.pokemon;
 import com.github.underscore.U;
 import net.datafaker.Faker;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.models.pokemon.PokemonSpecies;
-import org.fiuba.algoritmos3.models.pokemon.PokemonType;
+import org.fiuba.algoritmos3.game.model.pokemon.PokemonSpecies;
+import org.fiuba.algoritmos3.game.model.pokemon.PokemonType;
 
 import java.util.List;
 

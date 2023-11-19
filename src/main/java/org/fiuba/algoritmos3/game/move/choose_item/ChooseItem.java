@@ -9,11 +9,11 @@ import org.fiuba.algoritmos3.game.menu.MenuItem;
 import org.fiuba.algoritmos3.game.menu.operation.OperationResult;
 import org.fiuba.algoritmos3.game.menu.operation.errors.BaseError;
 import org.fiuba.algoritmos3.game.move.GameMove;
-import org.fiuba.algoritmos3.models.Player;
-import org.fiuba.algoritmos3.models.item.Item;
-import org.fiuba.algoritmos3.models.item.RestoreStatusItem;
-import org.fiuba.algoritmos3.models.item.ReviveItem;
-import org.fiuba.algoritmos3.models.pokemon.Pokemon;
+import org.fiuba.algoritmos3.game.model.Player;
+import org.fiuba.algoritmos3.game.model.item.Item;
+import org.fiuba.algoritmos3.game.model.item.RestoreStatusItem;
+import org.fiuba.algoritmos3.game.model.item.ReviveItem;
+import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 import org.javatuples.Pair;
 import org.jetbrains.annotations.NotNull;
 

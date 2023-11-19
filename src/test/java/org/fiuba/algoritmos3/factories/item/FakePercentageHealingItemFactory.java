@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3.factories.item;
 
 import net.datafaker.Faker;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.models.item.PercentageHealingItem;
+import org.fiuba.algoritmos3.game.model.item.PercentageHealingItem;
 
 public class FakePercentageHealingItemFactory implements FakeModelFactory<PercentageHealingItem> {
     Faker faker = new Faker();

@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3.game;
 
 import org.fiuba.algoritmos3.jsonManager.serializer.GameResultSerializer;
 import org.fiuba.algoritmos3.jsonManager.serializer.PlayerSerializer;
-import org.fiuba.algoritmos3.models.Player;
+import org.fiuba.algoritmos3.game.model.Player;
 
 import java.util.HashMap;
 

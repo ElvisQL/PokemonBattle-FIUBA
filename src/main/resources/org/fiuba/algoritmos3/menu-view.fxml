@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="768.0" prefWidth="1024.0" styleClass="root" stylesheets="@styles/menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.MenuController">
+<BorderPane prefHeight="768.0" prefWidth="1024.0" styleClass="root" stylesheets="@styles/menu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.ui.controller.MenuController">
 
     <top>
         <HBox alignment="CENTER" prefHeight="173.0" prefWidth="744.0" spacing="10.0">

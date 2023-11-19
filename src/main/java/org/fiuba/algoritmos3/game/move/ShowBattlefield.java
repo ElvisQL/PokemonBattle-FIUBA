@@ -7,8 +7,8 @@ import org.fiuba.algoritmos3.game.GameState;
 import org.fiuba.algoritmos3.game.menu.Menu;
 import org.fiuba.algoritmos3.game.menu.operation.OperationResult;
 import org.fiuba.algoritmos3.game.menu.operation.errors.BaseError;
-import org.fiuba.algoritmos3.models.Player;
-import org.fiuba.algoritmos3.models.weather.Weather;
+import org.fiuba.algoritmos3.game.model.Player;
+import org.fiuba.algoritmos3.game.model.weather.Weather;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;

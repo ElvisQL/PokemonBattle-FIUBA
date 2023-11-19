@@ -1,30 +1,29 @@
 package org.fiuba.algoritmos3.game;
 
 import com.github.underscore.U;
+import org.fiuba.algoritmos3.GameAPI;
 import org.fiuba.algoritmos3.UserInterface;
-import org.fiuba.algoritmos3.errors.InvalidSelectionException;
+import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.game.menu.Menu;
 import org.fiuba.algoritmos3.game.menu.MenuItem;
 import org.fiuba.algoritmos3.game.menu.operation.OperationResult;
+import org.fiuba.algoritmos3.game.model.weather.*;
 import org.fiuba.algoritmos3.game.move.*;
-import org.fiuba.algoritmos3.models.Player;
-import org.fiuba.algoritmos3.models.item.PercentageHealingItem;
-import org.fiuba.algoritmos3.models.item.Item;
-import org.fiuba.algoritmos3.models.pokemon.Pokemon;
-import org.fiuba.algoritmos3.models.pokemon.PokemonSpecies;
-import org.fiuba.algoritmos3.models.pokemon.status.ApplyableStatus;
-import org.fiuba.algoritmos3.models.weather.*;
+import org.fiuba.algoritmos3.game.model.Player;
+import org.fiuba.algoritmos3.game.model.item.Item;
+import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.game.model.pokemon.PokemonSpecies;
+import org.fiuba.algoritmos3.game.model.pokemon.status.ApplyableStatus;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.fiuba.algoritmos3.Constants.*;
 
 
-public class Game {
+public class Game implements GameAPI {
 
     private final HashMap<Integer, Item> sourceItemsHash;
     private final HashMap<Integer, Pokemon> sourcePokemonHash;

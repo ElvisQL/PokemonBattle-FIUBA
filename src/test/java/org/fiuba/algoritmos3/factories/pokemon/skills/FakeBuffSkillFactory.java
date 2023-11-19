@@ -3,8 +3,8 @@ package org.fiuba.algoritmos3.factories.pokemon.skills;
 import com.github.underscore.U;
 import net.datafaker.Faker;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.models.pokemon.skills.BuffSkill;
-import org.fiuba.algoritmos3.models.pokemon.skills.StatType;
+import org.fiuba.algoritmos3.game.model.pokemon.skills.BuffSkill;
+import org.fiuba.algoritmos3.game.model.pokemon.skills.StatType;
 
 import java.util.List;
 

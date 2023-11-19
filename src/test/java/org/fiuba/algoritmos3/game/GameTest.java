@@ -2,13 +2,13 @@ package org.fiuba.algoritmos3.game;
 
 import com.github.underscore.U;
 import org.fiuba.algoritmos3.MockUI;
-import org.fiuba.algoritmos3.errors.InvalidSelectionException;
+import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.factories.item.FakeItemFactory;
 import org.fiuba.algoritmos3.factories.pokemon.FakePokemonFactory;
 import org.fiuba.algoritmos3.factories.pokemon.skills.FakeAttackSkillFactory;
 import org.fiuba.algoritmos3.game.menu.MenuItem;
-import org.fiuba.algoritmos3.models.item.Item;
-import org.fiuba.algoritmos3.models.pokemon.Pokemon;
+import org.fiuba.algoritmos3.game.model.item.Item;
+import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;

@@ -1,10 +1,10 @@
 package org.fiuba.algoritmos3.game;
 
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.models.Player;
-import org.fiuba.algoritmos3.models.pokemon.Pokemon;
-import org.fiuba.algoritmos3.models.weather.NoneWeather;
-import org.fiuba.algoritmos3.models.weather.Weather;
+import org.fiuba.algoritmos3.game.model.Player;
+import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.game.model.weather.NoneWeather;
+import org.fiuba.algoritmos3.game.model.weather.Weather;
 
 public class GameState {
     private final Player player1;
