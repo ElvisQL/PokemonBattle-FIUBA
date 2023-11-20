@@ -1,17 +1,12 @@
 package org.fiuba.algoritmos3;
 
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.factories.pokemon.FakePokemonFactory;
 import org.fiuba.algoritmos3.game.GameState;
+import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.game.menu.operation.OperationResult;
 import org.fiuba.algoritmos3.game.menu.operation.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.game.menu.operation.errors.OwnershipError;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.*;
-import org.fiuba.algoritmos3.game.move.ChangePokemon;
-import org.fiuba.algoritmos3.game.move.Surrender;
-import org.fiuba.algoritmos3.game.move.UseItem;
-import org.fiuba.algoritmos3.game.move.UseSkill;
 import org.fiuba.algoritmos3.game.model.Player;
 import org.fiuba.algoritmos3.game.model.item.Item;
 import org.fiuba.algoritmos3.game.model.item.RestoreStatusItem;
@@ -20,7 +15,12 @@ import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.game.model.pokemon.PokemonBuilder;
 import org.fiuba.algoritmos3.game.model.pokemon.PokemonSpecies;
 import org.fiuba.algoritmos3.game.model.pokemon.PokemonType;
+import org.fiuba.algoritmos3.game.model.pokemon.skills.*;
 import org.fiuba.algoritmos3.game.model.pokemon.status.ParalyzedStatus;
+import org.fiuba.algoritmos3.game.move.ChangePokemon;
+import org.fiuba.algoritmos3.game.move.Surrender;
+import org.fiuba.algoritmos3.game.move.UseItem;
+import org.fiuba.algoritmos3.game.move.UseSkill;
 import org.javatuples.Pair;
 import org.junit.jupiter.api.*;
 

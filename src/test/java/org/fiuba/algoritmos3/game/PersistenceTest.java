@@ -24,7 +24,7 @@ import java.util.List;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
-class DataPersistenceTest {
+class PersistenceTest {
 
     Pokemon charizard = new PokemonBuilder()
             .setID(1)
@@ -74,7 +74,7 @@ class DataPersistenceTest {
     @DisplayName("File from savePlayersInfo exists")
     void savePlayersInfo() {
         GameState gameState = new GameState(activePlayer, jane);
-        DataPersistence.savePlayersInfo(gameState);
+        Persistence.savePlayersInfo(gameState);
 
         Assertions.assertTrue(Files.exists(new File("src/resources/players.json").toPath()));
         // TODO: Add assertions to check if the serialization was successful and saved as expected
@@ -86,7 +86,7 @@ class DataPersistenceTest {
         jane.setOpponent(activePlayer);
         GameState gameState = mock();
         doReturn(jane).when(gameState).getWinner();
-        DataPersistence.saveGameResult(gameState);
+        Persistence.saveGameResult(gameState);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String fileName = sdf.format(new Date()) + "-summary.json";

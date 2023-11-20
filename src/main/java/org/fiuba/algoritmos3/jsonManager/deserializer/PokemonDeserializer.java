@@ -2,13 +2,13 @@ package org.fiuba.algoritmos3.jsonManager.deserializer;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.fiuba.algoritmos3.game.error.InvalidDataException;
-import org.fiuba.algoritmos3.jsonManager.JsonManager;
-import org.fiuba.algoritmos3.jsonManager.JsonPath;
 import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.game.model.pokemon.PokemonBuilder;
 import org.fiuba.algoritmos3.game.model.pokemon.PokemonSpecies;
 import org.fiuba.algoritmos3.game.model.pokemon.PokemonType;
 import org.fiuba.algoritmos3.game.model.pokemon.skills.ConcreteSkill;
+import org.fiuba.algoritmos3.jsonManager.JsonManager;
+import org.fiuba.algoritmos3.jsonManager.JsonPath;
 
 import java.util.ArrayList;
 import java.util.HashMap;

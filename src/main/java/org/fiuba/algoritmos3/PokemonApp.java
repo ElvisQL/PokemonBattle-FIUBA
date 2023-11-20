@@ -1,25 +1,24 @@
 package org.fiuba.algoritmos3;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
 import org.fiuba.algoritmos3.game.Game;
 import org.fiuba.algoritmos3.game.error.InvalidDataException;
 import org.fiuba.algoritmos3.game.model.item.Item;
 import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.jsonManager.deserializer.ItemDeserializer;
 import org.fiuba.algoritmos3.jsonManager.deserializer.PokemonDeserializer;
-import org.fiuba.algoritmos3.ui.controller.MenuController;
+import org.fiuba.algoritmos3.ui.controller.StartMenuController;
 
 import java.util.HashMap;
 
 
 public class PokemonApp extends Application {
 
-    MenuController menuController;
+    StartMenuController startMenuController;
 
     GameAPI gameAPI;
 
@@ -41,7 +40,7 @@ public class PokemonApp extends Application {
 
         PokemonApp.launch();
 
-        gameAPI = new Game(ui, items, pokemons);
+        gameAPI = new Game(items, pokemons);
         super.init();
     }
 
@@ -50,20 +49,21 @@ public class PokemonApp extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(PokemonApp.class.getResource("menu-view.fxml"));
 
         Parent root = fxmlLoader.load();
-        menuController = fxmlLoader.getController();
+        startMenuController = fxmlLoader.getController();
 
-        Scene scene = new Scene(root, 1024, 768);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(root, 1024, 1024);
+        stage.setTitle("Pokemon Game");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-        menuController.getMediaPlayer().play();
+
+        startMenuController.getMediaPlayer().play();
     }
 
     @Override
     public void stop() {
-        if (menuController != null) {
-            menuController.getMediaPlayer().stop();
+        if (startMenuController != null) {
+            startMenuController.getMediaPlayer().stop();
         }
     }
 }

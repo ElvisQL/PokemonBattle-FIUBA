@@ -2,18 +2,17 @@ package org.fiuba.algoritmos3.game;
 
 import com.github.underscore.U;
 import org.fiuba.algoritmos3.GameAPI;
-import org.fiuba.algoritmos3.UserInterface;
 import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.game.menu.Menu;
 import org.fiuba.algoritmos3.game.menu.MenuItem;
 import org.fiuba.algoritmos3.game.menu.operation.OperationResult;
-import org.fiuba.algoritmos3.game.model.weather.*;
-import org.fiuba.algoritmos3.game.move.*;
 import org.fiuba.algoritmos3.game.model.Player;
 import org.fiuba.algoritmos3.game.model.item.Item;
 import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.game.model.pokemon.PokemonSpecies;
 import org.fiuba.algoritmos3.game.model.pokemon.status.ApplyableStatus;
+import org.fiuba.algoritmos3.game.model.weather.*;
+import org.fiuba.algoritmos3.game.move.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,15 +28,10 @@ public class Game implements GameAPI {
     private final HashMap<Integer, Pokemon> sourcePokemonHash;
     private Menu<String> menu;
     private GameState gameState;
-    private final UserInterface ui;
-    private final Battlefield battlefield;
 
-    public Game(UserInterface ui, HashMap<Integer, Item> itemsHash, HashMap<Integer, Pokemon> pokemonsHash) {
-        this.ui = ui;
+    public Game(HashMap<Integer, Item> itemsHash, HashMap<Integer, Pokemon> pokemonsHash) {
         this.sourceItemsHash = itemsHash;
         this.sourcePokemonHash = pokemonsHash;
-
-        this.battlefield = new Battlefield(this.ui);
     }
 
 
@@ -46,12 +40,12 @@ public class Game implements GameAPI {
         setup();
 
         //Save Initial State of players and info in JSON
-        DataPersistence.savePlayersInfo(gameState);
+        Persistence.savePlayersInfo(gameState);
 
         Player winner = play();
 
         //Save Game Result and Players' State in JSON
-        DataPersistence.saveGameResult(gameState);
+        Persistence.saveGameResult(gameState);
         //Show Game result in UI
         ui.showMessage(winner.getName() + " won");
     }
@@ -59,14 +53,12 @@ public class Game implements GameAPI {
     private Player play() throws IOException, InvalidSelectionException {
         Player winner;
         do {
-            battlefield.display(gameState);
             OperationResult<String> result;
             do {
                 result = menu.show(ui);
                 if (result.isErr()) ui.showMessage(result.getError().getMessage());
             } while (result.isErr());
 
-            ui.clearScreen();
             ui.showMessage(result.getResult());
 
             applyStatusesAndWeather();
@@ -93,7 +85,7 @@ public class Game implements GameAPI {
 
         gameState = new GameState(player1, player2);
 
-        gameState.setWeather(Math.random() < 2.0/3.0 ? new NoneWeather() : U.sample(List.of(new FogWeather(),
+        gameState.setWeather(Math.random() < 2.0 / 3.0 ? new NoneWeather() : U.sample(List.of(new FogWeather(),
                 new HurricaneWeather(), new RainWeather(),
                 new SandstormWeather(), new SunnyWeather(), new ThunderstormWeather())));
 
@@ -103,7 +95,6 @@ public class Game implements GameAPI {
 
     private Menu<String> generateMenu(GameState gameState) {
         return new Menu<>(List.of(
-                new MenuItem<>(ShowBattlefield.label, new ShowBattlefield(gameState)),
                 new MenuItem<>(UseSkill.label, new UseSkill(gameState)),
                 new MenuItem<>(UseItem.label, new UseItem(gameState)),
                 new MenuItem<>(ChangePokemon.label, new ChangePokemon(gameState)),
@@ -111,7 +102,7 @@ public class Game implements GameAPI {
         ));
     }
 
-    private Player generatePlayer() throws IOException {
+    private Player generatePlayer() {
         String playerName;
 
         do {

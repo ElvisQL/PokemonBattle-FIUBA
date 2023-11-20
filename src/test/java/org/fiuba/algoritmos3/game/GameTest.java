@@ -2,10 +2,10 @@ package org.fiuba.algoritmos3.game;
 
 import com.github.underscore.U;
 import org.fiuba.algoritmos3.MockUI;
-import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.factories.item.FakeItemFactory;
 import org.fiuba.algoritmos3.factories.pokemon.FakePokemonFactory;
 import org.fiuba.algoritmos3.factories.pokemon.skills.FakeAttackSkillFactory;
+import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.game.menu.MenuItem;
 import org.fiuba.algoritmos3.game.model.item.Item;
 import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
@@ -70,7 +70,7 @@ class GameTest {
             pokemonHash.put(pokemon.getID(), pokemon);
         });
 
-        Game game = new Game(ui, itemHash, pokemonHash);
+        Game game = new Game(itemHash, pokemonHash);
 
         doReturn("player 1 name", "player 2 name").when(ui).askForText(contains("name"));
 

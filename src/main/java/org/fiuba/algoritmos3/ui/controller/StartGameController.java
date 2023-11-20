@@ -4,44 +4,44 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import org.fiuba.algoritmos3.game.error.InvalidDataException;
-import org.fiuba.algoritmos3.game.Game;
 
-public class StartGameController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class StartGameController extends BaseController {
     @FXML
-    private Label title;
+    private Label playerNameTitle;
     @FXML
-    private TextField text;
-    private int player = 1;
-    private Game game ;
+    private TextField playerNameText;
+    private int playerCount = 1;
 
 
-    public void initialize() throws InvalidDataException {
-        /*ItemDeserializer itemDeserializer = new ItemDeserializer();
-        HashMap<Integer, Item> hashItems = itemDeserializer.getItems();
-                                                                                            TODO hay que crear los respectivos json
-        PokemonDeserializer pokemonDeserializer = new PokemonDeserializer();
-        HashMap<Integer, Pokemon> pokemonHashMap = pokemonDeserializer.getPokemon();*/
-
-        /*this.game = new Game(null,hashItems,pokemonHashMap);*/ //FIXME habria que quitar el UI ?
-        this.title.setText("Por favor ingrese el nombre del jugador " + player + ":");
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        updatePlayerNameText();
     }
+
     @FXML
-    private void onEnterPressed(KeyEvent event){
-        if (event.getCode().getName().equals("Enter")){
-            String name = text.getText();
-            //hay que crear los players aqui
-
-            player++;
-
-            if (player > 2){
-                //hay que mostrar la siguiente view
-            }
-            else {
-                title.setText("Por favor ingrese el nombre del jugador " + player + ":");
-                text.clear();
-            }
+    private void onEnterPressed(KeyEvent event) {
+        if (!event.getCode().getName().equals("Enter")) {
+            return;
         }
 
+        String name = playerNameText.getText();
+
+        gameAPI.createPlayer(name);
+
+        playerCount++;
+        if (playerCount > 2) {
+            //hay que mostrar la siguiente view
+            return;
+        }
+
+        updatePlayerNameText();
+    }
+
+    private void updatePlayerNameText() {
+        playerNameTitle.setText("Por favor ingrese el nombre del jugador " + playerCount + ":");
+        playerNameText.clear();
     }
 }

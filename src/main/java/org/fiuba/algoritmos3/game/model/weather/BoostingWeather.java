@@ -1,9 +1,9 @@
 package org.fiuba.algoritmos3.game.model.weather;
 
 import org.fiuba.algoritmos3.game.menu.operation.errors.NoRemainingUsesError;
+import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.game.model.pokemon.PokemonType;
 import org.fiuba.algoritmos3.game.model.pokemon.skills.AttackSkill;
-import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.game.model.pokemon.skills.SkillModifier;
 
 import java.io.IOException;
