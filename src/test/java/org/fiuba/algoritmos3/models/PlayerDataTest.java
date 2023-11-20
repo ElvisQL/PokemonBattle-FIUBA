@@ -1,14 +1,16 @@
 package org.fiuba.algoritmos3.models;
 
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.models.item.IncreaseDefenseItem;
-import org.fiuba.algoritmos3.models.pokemon.Pokemon;
-import org.fiuba.algoritmos3.models.pokemon.PokemonBuilder;
-import org.fiuba.algoritmos3.models.pokemon.PokemonSpecies;
-import org.fiuba.algoritmos3.models.pokemon.PokemonType;
-import org.fiuba.algoritmos3.models.pokemon.skills.AttackSkill;
-import org.fiuba.algoritmos3.models.pokemon.skills.BuffSkill;
-import org.fiuba.algoritmos3.models.pokemon.skills.StatType;
+import org.fiuba.algoritmos3.game.model.Player;
+import org.fiuba.algoritmos3.game.model.PlayerData;
+import org.fiuba.algoritmos3.game.model.item.IncreaseDefenseItem;
+import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.game.model.pokemon.PokemonBuilder;
+import org.fiuba.algoritmos3.game.model.pokemon.PokemonSpecies;
+import org.fiuba.algoritmos3.game.model.pokemon.PokemonType;
+import org.fiuba.algoritmos3.game.model.pokemon.skills.AttackSkill;
+import org.fiuba.algoritmos3.game.model.pokemon.skills.BuffSkill;
+import org.fiuba.algoritmos3.game.model.pokemon.skills.StatType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

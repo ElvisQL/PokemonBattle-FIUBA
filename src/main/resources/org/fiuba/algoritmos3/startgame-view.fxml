@@ -3,10 +3,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.StartGameController">
-   <children>
-      <Label layoutX="168.0" layoutY="115.0" prefHeight="42.0" prefWidth="289.0" style="-fx-alignment: center; -fx-font-family: 'Roboto Black'" fx:id="title"  />
-      <TextField layoutX="199.0" layoutY="175.0" onKeyPressed="#onEnterPressed" prefHeight="25.0" prefWidth="227.0" fx:id="text"/>
-   </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.fiuba.algoritmos3.ui.controller.StartGameController">
+    <children>
+        <Label layoutX="168.0" layoutY="115.0" prefHeight="42.0" prefWidth="289.0"
+               style="-fx-alignment: center; -fx-font-family: 'Roboto Black'" fx:id="playerNameTitle"/>
+        <TextField layoutX="199.0" layoutY="175.0" onKeyPressed="#onEnterPressed" prefHeight="25.0" prefWidth="227.0"
+                   fx:id="playerNameText"/>
+    </children>
 </Pane>

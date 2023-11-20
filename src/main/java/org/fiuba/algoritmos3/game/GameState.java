@@ -1,28 +1,35 @@
 package org.fiuba.algoritmos3.game;
 
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.models.Player;
-import org.fiuba.algoritmos3.models.pokemon.Pokemon;
-import org.fiuba.algoritmos3.models.weather.NoneWeather;
-import org.fiuba.algoritmos3.models.weather.Weather;
+import org.fiuba.algoritmos3.game.model.Player;
+import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.game.model.weather.NoneWeather;
+import org.fiuba.algoritmos3.game.model.weather.Weather;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameState {
-    private final Player player1;
-    private final Player player2;
+    private final int MAX_PLAYERS = 2;
+    private final List<Player> players = new ArrayList<>();
 
     private Player currentPlayer;
 
     private Weather weather = new NoneWeather();
 
+    public void addPlayer(Player player) {
+        if (players.size() >= MAX_PLAYERS) {
+            throw new IllegalArgumentException("The max amount of players is " + MAX_PLAYERS);
+        }
 
-    public GameState(Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
+        this.players.add(player);
 
-        this.player1.setOpponent(this.player2);
-        this.player2.setOpponent(this.player1);
+        if (players.size() >= MAX_PLAYERS) {
+            this.players.get(0).setOpponent(this.players.get(1));
+            this.players.get(1).setOpponent(this.players.get(0));
 
-        this.currentPlayer = getFirstPlayer(player1, player2);
+            this.currentPlayer = getFirstPlayer();
+        }
     }
 
     public Player getCurrentPlayer() {
@@ -38,9 +45,7 @@ public class GameState {
     }
 
     public Player getWinner() {
-        if (playerIsWinner(player1)) return player1;
-        if (playerIsWinner(player2)) return player2;
-        return null;
+        return U.find(players, this::playerIsWinner).get();
     }
 
     public void setWeather(Weather weather) {
@@ -56,11 +61,7 @@ public class GameState {
         return player.getOpponent().getSurrendered();
     }
 
-    private Player getFirstPlayer(Player player1, Player player2) {
-        if (player1.getCurrentPokemon().getAttackSpeed() > player2.getCurrentPokemon().getAttackSpeed()) {
-            return player1;
-        } else {
-            return player2;
-        }
+    private Player getFirstPlayer() {
+        return U.max(players, player -> player.getCurrentPokemon().getAttackSpeed());
     }
 }

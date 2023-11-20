@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3.factories.item;
 
 import com.github.underscore.U;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.models.item.Item;
+import org.fiuba.algoritmos3.game.model.item.Item;
 
 import java.util.List;
 

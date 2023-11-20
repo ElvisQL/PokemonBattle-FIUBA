@@ -1,11 +1,13 @@
-.root{
+.root {
     -fx-background-image: url('../images/main-background.jpg');
     -fx-background-size: cover;
     -fx-background-insets: 10 20 20 10;
 
-}/* row-1-column-1 */
+}
 
-.menu-button{
+/* row-1-column-1 */
+
+.menu-button {
     -fx-cursor: pointer;
 }
 

@@ -2,8 +2,8 @@ package org.fiuba.algoritmos3.game.move;
 
 import org.fiuba.algoritmos3.UiDisplayableVisitor;
 import org.fiuba.algoritmos3.UserInterface;
-import org.fiuba.algoritmos3.models.Player;
-import org.fiuba.algoritmos3.models.pokemon.Pokemon;
+import org.fiuba.algoritmos3.game.model.Player;
+import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 
 import java.io.IOException;
 import java.util.ArrayList;

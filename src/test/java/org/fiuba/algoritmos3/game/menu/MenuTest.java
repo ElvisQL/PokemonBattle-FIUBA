@@ -1,7 +1,7 @@
 package org.fiuba.algoritmos3.game.menu;
 
 import org.fiuba.algoritmos3.MockUI;
-import org.fiuba.algoritmos3.errors.InvalidSelectionException;
+import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,9 +1,9 @@
 package org.fiuba.algoritmos3.game;
 
-import org.fiuba.algoritmos3.models.Player;
-import org.fiuba.algoritmos3.models.item.Item;
-import org.fiuba.algoritmos3.models.pokemon.Pokemon;
-import org.fiuba.algoritmos3.models.pokemon.PokemonStateData;
+import org.fiuba.algoritmos3.game.model.Player;
+import org.fiuba.algoritmos3.game.model.item.Item;
+import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.game.model.pokemon.PokemonStateData;
 
 import java.util.ArrayList;
 import java.util.HashMap;

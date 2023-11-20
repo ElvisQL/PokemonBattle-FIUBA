@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3.factories.pokemon.skills;
 
 import com.github.underscore.U;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.models.pokemon.skills.ConcreteSkill;
+import org.fiuba.algoritmos3.game.model.pokemon.skills.ConcreteSkill;
 
 import java.util.List;
 

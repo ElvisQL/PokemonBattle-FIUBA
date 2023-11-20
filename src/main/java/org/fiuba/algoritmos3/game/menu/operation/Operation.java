@@ -1,7 +1,7 @@
 package org.fiuba.algoritmos3.game.menu.operation;
 
 import org.fiuba.algoritmos3.UserInterface;
-import org.fiuba.algoritmos3.errors.InvalidSelectionException;
+import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.game.menu.Menu;
 import org.fiuba.algoritmos3.game.menu.operation.errors.BaseError;
 import org.fiuba.algoritmos3.game.menu.operation.errors.NoRemainingUsesError;
