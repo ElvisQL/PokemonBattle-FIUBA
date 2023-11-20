@@ -11,7 +11,6 @@ import org.fiuba.algoritmos3.PokemonApp;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 
 public abstract class BaseController implements Initializable {
     protected GameAPI gameAPI;
@@ -22,6 +21,7 @@ public abstract class BaseController implements Initializable {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }
+
     protected URL getResource(String name) {
         return PokemonApp.class.getResource(name);
     }

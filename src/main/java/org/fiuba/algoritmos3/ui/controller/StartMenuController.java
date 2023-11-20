@@ -72,24 +72,4 @@ public class StartMenuController extends BaseController {
         }
 
     }
-
-    @FXML
-    public void onMouseEntered(Event e) {
-        Button button = (Button) e.getSource();
-        if (button.getGraphic() instanceof ImageView buttonImage) {
-            URL imageUrl = getResource("images/boton-menu-selected.png");
-            assert imageUrl != null;
-            buttonImage.setImage(new Image(imageUrl.toExternalForm()));
-        }
-    }
-
-    @FXML
-    public void onMouseExited(Event e) {
-        Button button = (Button) e.getSource();
-        if (button.getGraphic() instanceof ImageView buttonImage) {
-            URL imageUrl = getResource("images/boton-menu.png");
-            assert imageUrl != null;
-            buttonImage.setImage(new Image(imageUrl.toExternalForm()));
-        }
-    }
 }
