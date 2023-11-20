@@ -38,9 +38,8 @@ public class PokemonApp extends Application {
             System.exit(1);
         }
 
-        PokemonApp.launch();
-
         gameAPI = new Game(items, pokemons);
+
         super.init();
     }
 
@@ -61,9 +60,12 @@ public class PokemonApp extends Application {
     }
 
     @Override
-    public void stop() {
+    public void stop() throws Exception {
         if (startMenuController != null) {
             startMenuController.getMediaPlayer().stop();
         }
+
+        gameAPI.stop();
+        super.stop();
     }
 }
