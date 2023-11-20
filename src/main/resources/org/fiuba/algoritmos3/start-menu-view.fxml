@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="768.0" prefWidth="1024.0" styleClass="root" stylesheets="@styles/menu.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.ui.controller.StartMenuController">
+
+    <top>
+        <HBox alignment="CENTER" prefHeight="173.0" prefWidth="744.0" spacing="10.0">
+            <ImageView fitHeight="97.0" fitWidth="347.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@images/pokelogo.png" />
+            </ImageView>
+        </HBox>
+    </top>
+
+
+    <center>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+            <Button fx:id="startButton" contentDisplay="CENTER" layoutX="406.0" layoutY="34.0" mnemonicParsing="false" onAction="#startGame" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="56.0" prefWidth="165.0" style="-fx-background-color: transparent, transparent, transparent, transparent, transparent;" text="Start Game" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="61.0" fitWidth="202.0">
+                     <image>
+                        <Image url="@images/boton-menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitButton" contentDisplay="CENTER" layoutX="406.0" layoutY="137.0" mnemonicParsing="false" onAction="#onClickExit" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="56.0" prefWidth="165.0" style="-fx-background-color: transparent, transparent, transparent, transparent, transparent;" text="Exit" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="61.0" fitWidth="202.0">
+                     <image>
+                        <Image url="@images/boton-menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            </children>
+        </Pane>
+    </center>
+
+    <bottom>
+        <VBox alignment="CENTER" spacing="10.0">
+            <Pane prefHeight="336.0" prefWidth="744.0">
+                <children>
+                    <ImageView fitHeight="195.0" fitWidth="381.0" layoutX="359.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@images/giphy.gif" />
+                        </image>
+                    </ImageView>
+                    <Pane layoutX="860.0" layoutY="178.0" onMouseClicked="#onMuteButtonClick" prefHeight="56.0" prefWidth="58.0" style="-fx-cursor: hand;">
+                        <children>
+                            <Circle fill="DODGERBLUE" layoutX="29.0" layoutY="28.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" />
+                            <ImageView fx:id="muteButtonImage" fitHeight="36.0" fitWidth="38.0" layoutX="10.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@images/mute.png" />
+                                </image>
+                            </ImageView>
+                        </children>
+                    </Pane>
+                </children>
+            </Pane>
+        </VBox>
+    </bottom>
+
+</BorderPane>
