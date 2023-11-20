@@ -2,7 +2,6 @@ package org.fiuba.algoritmos3;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.game.Game;
@@ -45,26 +44,21 @@ public class PokemonApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(PokemonApp.class.getResource("menu-view.fxml"));
-
-        Parent root = fxmlLoader.load();
-        startMenuController = fxmlLoader.getController();
-
-        Scene scene = new Scene(root, 1024, 1024);
         stage.setTitle("Pokemon Game");
         stage.setResizable(false);
-        stage.setScene(scene);
+
+        FXMLLoader startMenuFXML = new FXMLLoader(getClass().getResource("start-menu-view.fxml"));
+        Scene startMenuScene = new Scene(startMenuFXML.load(), 1024, 1024);
+        stage.setScene(startMenuScene);
+
         stage.show();
 
+        startMenuController = startMenuFXML.getController();
         startMenuController.getMediaPlayer().play();
     }
 
     @Override
     public void stop() throws Exception {
-        if (startMenuController != null) {
-            startMenuController.getMediaPlayer().stop();
-        }
-
         gameAPI.stop();
         super.stop();
     }
