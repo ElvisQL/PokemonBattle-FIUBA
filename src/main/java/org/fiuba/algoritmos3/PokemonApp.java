@@ -16,10 +16,8 @@ import java.util.HashMap;
 
 
 public class PokemonApp extends Application {
-
     StartMenuController startMenuController;
-
-    GameAPI gameAPI;
+    private static GameAPI gameAPI;
 
     public static void main(String[] args) {
         launch();
@@ -61,5 +59,9 @@ public class PokemonApp extends Application {
     public void stop() throws Exception {
         gameAPI.stop();
         super.stop();
+    }
+
+    public static GameAPI getGameAPI() {
+        return gameAPI;
     }
 }

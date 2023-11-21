@@ -13,7 +13,11 @@ import java.io.IOException;
 import java.net.URL;
 
 public abstract class BaseController implements Initializable {
-    protected GameAPI gameAPI;
+    protected final GameAPI gameAPI;
+
+    BaseController() {
+        gameAPI = PokemonApp.getGameAPI();
+    }
 
     protected void changeScene(Event e, URL url) throws IOException {
         FXMLLoader startMenuFXML = new FXMLLoader(url);
