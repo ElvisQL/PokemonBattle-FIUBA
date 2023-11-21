@@ -16,10 +16,8 @@ import java.util.HashMap;
 
 
 public class PokemonApp extends Application {
-
     StartMenuController startMenuController;
-
-    GameAPI gameAPI;
+    private static GameAPI gameAPI;
 
     public static void main(String[] args) {
         launch();
@@ -48,7 +46,7 @@ public class PokemonApp extends Application {
         stage.setResizable(false);
 
         FXMLLoader startMenuFXML = new FXMLLoader(getClass().getResource("start-menu-view.fxml"));
-        Scene startMenuScene = new Scene(startMenuFXML.load(), 1024, 1024);
+        Scene startMenuScene = new Scene(startMenuFXML.load(), 768, 768);
         stage.setScene(startMenuScene);
 
         stage.show();
@@ -61,5 +59,9 @@ public class PokemonApp extends Application {
     public void stop() throws Exception {
         gameAPI.stop();
         super.stop();
+    }
+
+    public static GameAPI getGameAPI() {
+        return gameAPI;
     }
 }

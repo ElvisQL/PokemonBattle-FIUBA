@@ -2,18 +2,12 @@ package org.fiuba.algoritmos3.game;
 
 import com.github.underscore.U;
 import org.fiuba.algoritmos3.GameAPI;
-import org.fiuba.algoritmos3.game.menu.Menu;
-import org.fiuba.algoritmos3.game.menu.MenuItem;
 import org.fiuba.algoritmos3.game.model.Player;
 import org.fiuba.algoritmos3.game.model.item.Item;
 import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.game.model.pokemon.PokemonSpecies;
 import org.fiuba.algoritmos3.game.model.pokemon.status.ApplyableStatus;
 import org.fiuba.algoritmos3.game.model.weather.*;
-import org.fiuba.algoritmos3.game.move.ChangePokemon;
-import org.fiuba.algoritmos3.game.move.Surrender;
-import org.fiuba.algoritmos3.game.move.UseItem;
-import org.fiuba.algoritmos3.game.move.UseSkill;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,12 +32,12 @@ public class Game implements GameAPI {
                 new HurricaneWeather(), new RainWeather(),
                 new SandstormWeather(), new SunnyWeather(), new ThunderstormWeather())));
 
-        //Save Initial State of players and info in JSON
+        // Save Initial State of players and info in JSON
         Persistence.savePlayersInfo(gameState);
     }
 
     public void stop() {
-        //Save Game Result and Players' State in JSON
+        // Save Game Result and Players' State in JSON
         Persistence.saveGameResult(gameState);
     }
 
@@ -72,15 +66,6 @@ public class Game implements GameAPI {
     private void applyStatusesAndWeather() {
         applyPokemonStatuses();
         applyWeather();
-    }
-
-    private Menu<String> generateMenu(GameState gameState) {
-        return new Menu<>(List.of(
-                new MenuItem<>(UseSkill.label, new UseSkill(gameState)),
-                new MenuItem<>(UseItem.label, new UseItem(gameState)),
-                new MenuItem<>(ChangePokemon.label, new ChangePokemon(gameState)),
-                new MenuItem<>(Surrender.label, new Surrender(gameState))
-        ));
     }
 
     private ArrayList<Pokemon> generatePokemonRoster() {
@@ -135,7 +120,7 @@ public class Game implements GameAPI {
     }
 
     @Override
-    public void createPlayer(String playerName) {
+    public Player createPlayer(String playerName) {
         if (playerName.length() > MAX_NAME_LEN) {
             throw new IllegalArgumentException("Names can have up to " + MAX_NAME_LEN + " characters");
         }
@@ -155,5 +140,7 @@ public class Game implements GameAPI {
 
         Player player = new Player(playerName, generatePokemonRoster(), itemsList);
         gameState.addPlayer(player);
+
+        return player;
     }
 }

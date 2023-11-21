@@ -12,6 +12,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.PokemonApp;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,25 +72,5 @@ public class StartMenuController extends BaseController {
             muteButtonImage.setImage(new Image(imageUrl.toExternalForm()));
         }
 
-    }
-
-    @FXML
-    public void onMouseEntered(Event e) {
-        Button button = (Button) e.getSource();
-        if (button.getGraphic() instanceof ImageView buttonImage) {
-            URL imageUrl = getResource("images/boton-menu-selected.png");
-            assert imageUrl != null;
-            buttonImage.setImage(new Image(imageUrl.toExternalForm()));
-        }
-    }
-
-    @FXML
-    public void onMouseExited(Event e) {
-        Button button = (Button) e.getSource();
-        if (button.getGraphic() instanceof ImageView buttonImage) {
-            URL imageUrl = getResource("images/boton-menu.png");
-            assert imageUrl != null;
-            buttonImage.setImage(new Image(imageUrl.toExternalForm()));
-        }
     }
 }
