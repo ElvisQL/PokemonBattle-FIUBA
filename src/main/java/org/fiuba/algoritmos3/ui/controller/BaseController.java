@@ -17,7 +17,7 @@ public abstract class BaseController implements Initializable {
 
     protected void changeScene(Event e, URL url) throws IOException {
         FXMLLoader startMenuFXML = new FXMLLoader(url);
-        Scene scene = new Scene(startMenuFXML.load(), 1024, 1024);
+        Scene scene = new Scene(startMenuFXML.load(), 768, 768);
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }

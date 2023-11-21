@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class BaseButton extends Button {
+    @FXML
     private ImageView imageView;
     private StringProperty defaultImageUrl = new SimpleStringProperty("images/default-button.png");
     private StringProperty selectedImageUrl = new SimpleStringProperty("images/default-button-selected.png");
@@ -34,8 +35,6 @@ public class BaseButton extends Button {
         refreshDefaultImage();
         refreshSelectedImage();
 
-        imageView = new ImageView(defaultImage);
-
         // TODO auto resize image with button
 //        imageView.fitWidthProperty().bind(this.widthProperty());
 //        imageView.fitHeightProperty().bind(this.heightProperty());
@@ -44,9 +43,15 @@ public class BaseButton extends Button {
         this.setOnMouseExited(e -> imageView.setImage(defaultImage));
 
         imageView.fitWidthProperty().set(this.getPrefWidth());
-        imageView.fitHeightProperty().set(this.getPrefWidth());
+        imageView.fitHeightProperty().set(this.getPrefHeight());
+    }
 
-        this.setGraphic(imageView);
+    @Override
+    public void setPrefSize(double v, double v1) {
+        super.setPrefSize(v, v1);
+
+        imageView.fitWidthProperty().set(this.getPrefWidth());
+        imageView.fitHeightProperty().set(this.getPrefHeight());
     }
 
     public String getDefaultImageUrl() {
@@ -78,10 +83,20 @@ public class BaseButton extends Button {
     private void refreshDefaultImage() {
         URL resource = PokemonApp.class.getResource(defaultImageUrl.getValue());
         defaultImage = new Image(resource.toExternalForm());
+        if (!isSelected()) {
+            imageView.setImage(defaultImage);
+        }
     }
 
     private void refreshSelectedImage() {
         URL resource = PokemonApp.class.getResource(selectedImageUrl.getValue());
         selectedImage = new Image(resource.toExternalForm());
+        if (isSelected()) {
+            imageView.setImage(selectedImage);
+        }
+    }
+
+    private boolean isSelected() {
+        return imageView.getImage() != null && imageView.getImage().equals(selectedImage);
     }
 }

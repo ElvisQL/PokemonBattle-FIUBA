@@ -12,6 +12,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.PokemonApp;
 
 import java.io.IOException;
 import java.net.URL;

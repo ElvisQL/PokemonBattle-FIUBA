@@ -20,7 +20,7 @@
             <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                 <children>
                     <BaseButton fx:id="startButton" onAction="#startGame" prefHeight="56.0" prefWidth="165.0" text="Start Game" />
-                    <BaseButton fx:id="exitButton" onAction="#onClickExit" prefHeight="56" prefWidth="165" text="Exit" />
+                    <BaseButton fx:id="exitButton" maxHeight="56.0" maxWidth="165.0" onAction="#onClickExit" prefHeight="56" prefWidth="165" text="Exit" />
                 </children>
             </VBox>
         </HBox>
@@ -35,26 +35,7 @@
                             <Image url="@images/dancing-squirtle.gif" />
                         </image>
                     </ImageView>
-                    <BaseButton defaultImageUrl="images/mute.png" layoutX="759.0" layoutY="213.0" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onMuteButtonClick" prefHeight="75.0" prefWidth="75.0" />
-<!--                      <ImageView fx:id="muteButtonImage" fitHeight="36.0" fitWidth="38.0" layoutX="829.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">-->
-<!--                          <image>-->
-<!--                              <Image url="@images/mute.png" />-->
-<!--                          </image>-->
-<!--                      </ImageView>-->
-<!--                      <Circle fill="DODGERBLUE" layoutX="766.0" layoutY="257.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" />-->
-<!--                    <Pane layoutX="860.0" layoutY="178.0" onMouseClicked="#onMuteButtonClick" prefHeight="56.0"-->
-<!--                          prefWidth="58.0" style="-fx-cursor: hand;">-->
-<!--                        <children>-->
-<!--                            <Circle fill="DODGERBLUE" layoutX="29.0" layoutY="28.0" radius="29.0" stroke="BLACK"-->
-<!--                                    strokeType="INSIDE"/>-->
-<!--                            <ImageView fx:id="muteButtonImage" fitHeight="36.0" fitWidth="38.0" layoutX="10.0"-->
-<!--                                       layoutY="11.0" pickOnBounds="true" preserveRatio="true">-->
-<!--                                <image>-->
-<!--                                    <Image url="@images/mute.png"/>-->
-<!--                                </image>-->
-<!--                            </ImageView>-->
-<!--                        </children>-->
-<!--                    </Pane>-->
+                    <BaseButton defaultImageUrl="images/mute.png" layoutX="759.0" layoutY="213.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onMuteButtonClick" prefHeight="75.0" prefWidth="75.0" />
                 </children>
             </Pane>
         </VBox>
