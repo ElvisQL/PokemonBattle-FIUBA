@@ -6,14 +6,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import org.fiuba.algoritmos3.model.Player;
-import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PlayerSetupController extends BaseController {
+    public AnchorPane rootPane;
     @FXML
     private Button nextButton;
     @FXML
@@ -26,7 +27,6 @@ public class PlayerSetupController extends BaseController {
         updatePlayerNameText();
     }
 
-
     @FXML
     public void onKeyTyped(KeyEvent keyEvent) {
         int nameLength = playerNameText.getText().length();
@@ -35,22 +35,19 @@ public class PlayerSetupController extends BaseController {
     }
 
     @FXML
-    private void onNextClick(MouseEvent event) throws InvalidSelectionException, IOException {
+    private void onNextClick(MouseEvent event) throws IOException {
         String name = playerNameText.getText();
 
         Player currentPlayer = gameAPI.createPlayer(name);
-        currentPlayer.setCurrentPokemon(currentPlayer.getPokemons().get(0)); // TODO hardcodeado
 
-        if (gameAPI.getPlayers().size() >= 2) {
-            // TODO esto tiene que pasar al choose pokemon
-            gameAPI.start();
-            changeScene(event, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
-        } else {
-            PokemonChoiceController controller = (PokemonChoiceController) changeScene(event, getResource("views/pokemon-choice.fxml"));
-            controller.setCurrentPlayer(currentPlayer);
-            controller.setPreviousViewUrl(null);
+        ChoosePokemonController controller = (ChoosePokemonController) changeScene(event, getResource("views/pokemon-choice.fxml"));
+        controller.setCurrentPlayer(currentPlayer);
+        controller.setPreviousViewUrl(null);
+
+        if (gameAPI.getPlayers().size() >= 2)
+            controller.setNextViewUrl(getResource("views/chooseGameMove/choose-game-move-view.fxml"));
+        else
             controller.setNextViewUrl(getResource("views/player-setup-view.fxml"));
-        }
     }
 
     private void updatePlayerNameText() {

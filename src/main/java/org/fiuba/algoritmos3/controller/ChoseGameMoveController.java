@@ -2,12 +2,8 @@ package org.fiuba.algoritmos3.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import org.fiuba.algoritmos3.view.chooseGameMove.PokemonView;
 
 import java.io.IOException;
@@ -30,7 +26,7 @@ public class ChoseGameMoveController extends BaseController {
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void handleChoosePokemonButtonAction(ActionEvent event) {
         try {
             changeScene(event, getResource("views/pokemon-choice.fxml"));
         } catch (IOException e) {
@@ -39,7 +35,7 @@ public class ChoseGameMoveController extends BaseController {
     }
 
     @FXML
-    private void handleButtonItems(ActionEvent event) throws IOException{
+    private void handleUseItemButtonAction(ActionEvent event) throws IOException{
         try {
             changeScene(event,getResource("views/items-view.fxml"));
         }catch (IOException e){

@@ -52,7 +52,7 @@ public class PokemonView extends HBox {
         pokemonTypeImageView.setImage(new Image(pokemonTypeUrl.toExternalForm()));
 
         URL pokemonUrl = PokemonApp.class.getResource("images/pokemon/" + pokemon.getName().toLowerCase() + ".png");
-        pokemonImageView.setImage(new Image(pokemonUrl.toExternalForm()));
+        pokemonImageView.setImage(new Image(pokemonUrl.toExternalForm(), pokemonImageView.getFitWidth(), pokemonImageView.getFitHeight(), true, false));
     }
 
 

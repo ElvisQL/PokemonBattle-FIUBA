@@ -15,7 +15,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import org.fiuba.algoritmos3.model.Player;
+import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.view.BaseButton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,20 +25,21 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class PokemonChoiceController extends BaseController {
+public class ChoosePokemonController extends BaseController {
     private Player currentPlayer = gameAPI.currentPlayer();
+    private Pokemon selectedPokemon;
 
     private URL previousViewUrl = getResource("views/chooseGameMove/choose-game-move-view.fxml");
     private URL nextViewUrl = getResource("views/chooseGameMove/choose-game-move-view.fxml");
 
     @FXML
     private VBox pokemonChooserMenu;
-    private int option;
+    private int selectedIndex;
 
     @FXML
     private Pane viewPokemon;
 
-    private List<Pokemon> pokemonList;
+    private List<Pokemon> pokemons;
     @FXML
     private Text pokemonNameText;
 
@@ -60,19 +63,26 @@ public class PokemonChoiceController extends BaseController {
     private ProgressBar viewProgressBar;
 
 
+    public BaseButton okButton;
     @FXML
-    private Button backButton;
-
-    private Pokemon pokemons;
+    private BaseButton backButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        init();
+        loadPokemons();
+
+        for (Node node : pokemonChooserMenu.getChildren()) {
+            if (node instanceof Pane pane) {
+                pane.setOnMouseClicked(this::handleChoosePokemonMouseClick);
+                pane.setOnMouseEntered(this::handleMouseEntered);
+                pane.setOnMouseExited(this::handleMouseExited);
+            }
+        }
     }
 
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
-        init();
+        loadPokemons();
     }
 
     public void setPreviousViewUrl(URL previousViewUrl) {
@@ -84,25 +94,13 @@ public class PokemonChoiceController extends BaseController {
         this.nextViewUrl = nextViewUrl;
     }
 
-    private void init() {
-        loadPokemons();
-
-        for (Node node : pokemonChooserMenu.getChildren()) {
-            if (node instanceof Pane pane) {
-                pane.setOnMouseClicked(this::handleMouseClick);
-                pane.setOnMouseEntered(this::handleMouseEntered);
-                pane.setOnMouseExited(this::handleMouseExited);
-            }
-        }
-    }
-
     private void loadPokemons() {
         if (currentPlayer == null)
             return;
 
-        pokemonList = currentPlayer.getPokemons();
-        for (int i = 0; i < pokemonList.size(); i++) {
-            Pokemon pokemon = pokemonList.get(i);
+        pokemons = currentPlayer.getPokemons();
+        for (int i = 0; i < pokemons.size(); i++) {
+            Pokemon pokemon = pokemons.get(i);
             Pane pane = (Pane) pokemonChooserMenu.getChildren().get(i);
 
             Text nameText = (Text) pane.lookup(".nameText");
@@ -129,6 +127,30 @@ public class PokemonChoiceController extends BaseController {
             }
         }
 
+        selectedPokemon = currentPlayer.getCurrentPokemon();
+    }
+
+    @FXML
+    private void handleChoosePokemonMouseClick(MouseEvent event) {
+        Pane clickedPane = (Pane) event.getSource();
+        if (!pokemonChooserMenu.getChildren().contains(clickedPane))
+            return;
+
+        selectedIndex = pokemonChooserMenu.getChildren().indexOf(clickedPane);
+        updateSelection();
+        selectedPokemon = currentPlayer.getPokemons().get(selectedIndex);
+
+        okButton.setDisable(false);
+    }
+
+    @FXML
+    private void handleOkButtonAction(ActionEvent event) throws InvalidSelectionException {
+        currentPlayer.setCurrentPokemon(selectedPokemon);
+        try {
+            changeScene(event, nextViewUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -138,14 +160,6 @@ public class PokemonChoiceController extends BaseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    private void handleMouseClick(MouseEvent event) {
-        Pane clickedPane = (Pane) event.getSource();
-        option = pokemonChooserMenu.getChildren().indexOf(clickedPane);
-
-        updateSelection();
     }
 
     public void handleMouseEntered(MouseEvent event) {
@@ -194,12 +208,12 @@ public class PokemonChoiceController extends BaseController {
         }
 
         Pane selectedPane = null;
-        if (option >= 0 && option < pokemonChooserMenu.getChildren().size()) {
-            selectedPane = (Pane) pokemonChooserMenu.getChildren().get(option);
+        if (selectedIndex >= 0 && selectedIndex < pokemonChooserMenu.getChildren().size()) {
+            selectedPane = (Pane) pokemonChooserMenu.getChildren().get(selectedIndex);
         }
 
         if (selectedPane != null) {
-            Polygon selectedTriangle = (Polygon) selectedPane.lookup("#triangle" + (option + 1));
+            Polygon selectedTriangle = (Polygon) selectedPane.lookup("#triangle" + (selectedIndex + 1));
             selectedTriangle.setFill(Color.web("#2e6099"));
 
             Double posY = calculatePosition();
@@ -213,9 +227,9 @@ public class PokemonChoiceController extends BaseController {
     }
 
     private Double calculatePosition() {
-        option = Math.max(0, Math.min(option, pokemonChooserMenu.getChildren().size() - 1));
+        selectedIndex = Math.max(0, Math.min(selectedIndex, pokemonChooserMenu.getChildren().size() - 1));
 
-        Pane selectedPane = (Pane) pokemonChooserMenu.getChildren().get(option);
+        Pane selectedPane = (Pane) pokemonChooserMenu.getChildren().get(selectedIndex);
 
         return selectedPane.getLayoutY();
     }
@@ -263,7 +277,7 @@ public class PokemonChoiceController extends BaseController {
     }
 
     @FXML
-    public void onMouseEntered(Event e) {
+    private void onMouseEntered(Event e) {
         Button button = (Button) e.getSource();
         if (button.getGraphic() instanceof ImageView buttonImage) {
             URL imageUrl = getResource("images/default-button-selected.png");
@@ -273,7 +287,7 @@ public class PokemonChoiceController extends BaseController {
     }
 
     @FXML
-    public void onMouseExited(Event e) {
+    private void onMouseExited(Event e) {
         Button button = (Button) e.getSource();
         if (button.getGraphic() instanceof ImageView buttonImage) {
             URL imageUrl = getResource("images/default-button.png");
@@ -282,5 +296,11 @@ public class PokemonChoiceController extends BaseController {
         }
     }
 
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
 
+    public Pokemon getSelectedPokemon() {
+        return selectedPokemon;
+    }
 }

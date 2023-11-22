@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<?import org.fiuba.algoritmos3.view.*?>
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClick" prefHeight="768.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.PokemonChoiceController">
+<?import org.fiuba.algoritmos3.view.BaseButton?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      onMouseClicked="#handleChoosePokemonMouseClick" prefHeight="768.0" prefWidth="768.0"
+      xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.fiuba.algoritmos3.controller.ChoosePokemonController">
 
     <fx:define>
-        <Font fx:id="vt323" name="VT323" />
+        <Font fx:id="vt323" name="VT323"/>
     </fx:define>
 
     <style>
@@ -24,180 +26,243 @@
 
 
             <children>
-                <Rectangle fx:id="viewPokemonRectangle" arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="516.0" layoutX="25.0" layoutY="14.0" stroke="#53a9ff" strokeType="INSIDE" width="269.0">
+                <Rectangle fx:id="viewPokemonRectangle" arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="516.0"
+                           layoutX="25.0" layoutY="14.0" stroke="#53a9ff" strokeType="INSIDE" width="269.0">
                     <effect>
-                        <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2" />
+                        <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2"/>
                     </effect>
                 </Rectangle>
-                <Polygon fx:id="selector" fill="#53a9ff" layoutX="359.0" layoutY="99.0" points="-65.0, -82.0, -65.0, -22.0, -10.0, -51.0" stroke="#53a9ff" strokeType="INSIDE">
+                <Polygon fx:id="selector" fill="#53a9ff" layoutX="359.0" layoutY="99.0"
+                         points="-65.0, -82.0, -65.0, -22.0, -10.0, -51.0" stroke="#53a9ff" strokeType="INSIDE">
                     <effect>
-                        <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2" />
+                        <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2"/>
                     </effect>
                 </Polygon>
-                <Text fx:id="pokemonNameText" fill="WHITE" layoutX="35.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokemon" wrappingWidth="124.13671875">
+                <Text fx:id="pokemonNameText" fill="WHITE" layoutX="35.0" layoutY="65.0" strokeType="OUTSIDE"
+                      strokeWidth="0.0" text="Pokemon" wrappingWidth="124.13671875">
                     <font>
-                        <Font name="VT323" size="24.0" />
+                        <Font name="VT323" size="24.0"/>
                     </font>
                 </Text>
-                <Text fx:id="levelText" fill="WHITE" layoutX="35.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level" wrappingWidth="124.13671875">
+                <Text fx:id="levelText" fill="WHITE" layoutX="35.0" layoutY="127.0" strokeType="OUTSIDE"
+                      strokeWidth="0.0" text="Level" wrappingWidth="124.13671875">
                     <font>
-                        <Font name="VT323" size="24.0" />
+                        <Font name="VT323" size="24.0"/>
                     </font>
                 </Text>
-                <Text fx:id="lifeText" fill="WHITE" layoutX="136.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida / Vida" wrappingWidth="131.0">
+                <Text fx:id="lifeText" fill="WHITE" layoutX="136.0" layoutY="211.0" strokeType="OUTSIDE"
+                      strokeWidth="0.0" text="Vida / Vida" wrappingWidth="131.0">
                     <font>
-                        <Font name="VT323" size="24.0" />
+                        <Font name="VT323" size="24.0"/>
                     </font>
                 </Text>
-                <Text fill="WHITE" layoutX="50.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack :" wrappingWidth="94.0">
+                <Text fill="WHITE" layoutX="50.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack :"
+                      wrappingWidth="94.0">
                     <font>
-                        <Font name="VT323" size="24.0" />
+                        <Font name="VT323" size="24.0"/>
                     </font>
                 </Text>
-                <Text fill="WHITE" layoutX="50.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense:" wrappingWidth="94.0">
+                <Text fill="WHITE" layoutX="50.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense:"
+                      wrappingWidth="94.0">
                     <font>
-                        <Font name="VT323" size="24.0" />
+                        <Font name="VT323" size="24.0"/>
                     </font>
                 </Text>
-                <Text fill="WHITE" layoutX="50.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed:" wrappingWidth="94.0">
+                <Text fill="WHITE" layoutX="50.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed:"
+                      wrappingWidth="94.0">
                     <font>
-                        <Font name="VT323" size="24.0" />
+                        <Font name="VT323" size="24.0"/>
                     </font>
                 </Text>
-                <ProgressBar fx:id="viewProgressBar" layoutX="36.0" layoutY="159.0" prefHeight="26.0" prefWidth="231.0" progress="0.0">
+                <ProgressBar fx:id="viewProgressBar" layoutX="36.0" layoutY="159.0" prefHeight="26.0" prefWidth="231.0"
+                             progress="0.0">
                     <style>
                         -fx-control-inner-background: #ABF5AE;
                     </style>
                 </ProgressBar>
-                <ImageView fx:id="pokemonImage" fitHeight="137.0" fitWidth="152.0" layoutX="136.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="pokemonImage" fitHeight="137.0" fitWidth="152.0" layoutX="136.0" layoutY="17.0"
+                           pickOnBounds="true" preserveRatio="true"/>
             </children>
         </Pane>
+        <VBox layoutX="582.0" layoutY="650.0">
+            <children>
+                <BaseButton fx:id="okButton" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0"
+                            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                            mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="52.0" disable="true"
+                            prefWidth="171.0" text="Aceptar"/>
+                <BaseButton fx:id="backButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+                            minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                            onAction="#handleBackButtonAction" prefHeight="52.0" prefWidth="171.0" text="Volver"/>
+            </children>
+        </VBox>
 
 
-        <HBox alignment="CENTER" layoutX="608.0" layoutY="704.0"  prefHeight="50.0" prefWidth="100.0">
-         <children>
-                <BaseButton fx:id="backButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="52.0" prefWidth="171.0" text="Volver" />
-         </children>
-        </HBox>
-
-
-        <VBox fx:id="pokemonChooserMenu" layoutX="373.0" layoutY="10.0" prefHeight="489.0" prefWidth="388.0" spacing="60.0">
+        <VBox fx:id="pokemonChooserMenu" layoutX="373.0" layoutY="10.0" prefHeight="489.0" prefWidth="388.0"
+              spacing="60.0">
             <padding>
-                <Insets top="2.0" />
+                <Insets top="2.0"/>
             </padding>
             <children>
                 <Pane pickOnBounds="true" prefHeight="65.0" prefWidth="512.0">
                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff" strokeType="INSIDE" width="380.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff"
+                                   strokeType="INSIDE" width="380.0">
                             <effect>
-                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2" />
+                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2"/>
                             </effect>
                         </Rectangle>
-                        <ProgressBar layoutX="70.0" layoutY="26.0" prefHeight="17.0" prefWidth="173.0" progress="0.0" styleClass="progressBar">
+                        <ProgressBar layoutX="70.0" layoutY="26.0" prefHeight="17.0" prefWidth="173.0" progress="0.0"
+                                     styleClass="progressBar">
                             <style>
                                 -fx-control-inner-background: #ABF5AE;
                             </style>
                         </ProgressBar>
-                        <Polygon fx:id="triangle1" fill="#4a8ac6" layoutX="49.0" layoutY="35.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />
-                        <Text fx:id="nameText" layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText" text="Pikachu" wrappingWidth="81.0" />
-                        <Text fx:id="levelTextR" layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="levelTextR" text="100" wrappingWidth="28.40625" />
-                        <Text fx:id="lifeTextT" layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125" />
-                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" />
+                        <Polygon fx:id="triangle1" fill="#4a8ac6" layoutX="49.0" layoutY="35.0"
+                                 onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited"
+                                 points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE"/>
+                        <Text fx:id="nameText" layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="nameText" text="Pikachu" wrappingWidth="81.0"/>
+                        <Text fx:id="levelTextR" layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="levelTextR" text="100" wrappingWidth="28.40625"/>
+                        <Text fx:id="lifeTextT" layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125"/>
+                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true"/>
                     </children>
                 </Pane>
                 <Pane pickOnBounds="true" prefHeight="65.0" prefWidth="512.0">
                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff" strokeType="INSIDE" width="380.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff"
+                                   strokeType="INSIDE" width="380.0">
                             <effect>
-                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2" />
+                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2"/>
                             </effect>
                         </Rectangle>
-                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText" text="Bulbasaur" wrappingWidth="81.0" />
-                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="levelTextR" text="100" wrappingWidth="28.40625" />
-                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125" />
-                        <ProgressBar layoutX="70.0" layoutY="25.0" prefHeight="17.0" prefWidth="173.0" progress="0.0" styleClass="progressBar">
+                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText"
+                              text="Bulbasaur" wrappingWidth="81.0"/>
+                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="levelTextR" text="100" wrappingWidth="28.40625"/>
+                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125"/>
+                        <ProgressBar layoutX="70.0" layoutY="25.0" prefHeight="17.0" prefWidth="173.0" progress="0.0"
+                                     styleClass="progressBar">
                             <style>
                                 -fx-control-inner-background: #ABF5AE;
                             </style>
                         </ProgressBar>
-                        <Polygon fx:id="triangle2" fill="#4a8ac6" layoutX="50.0" layoutY="33.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />
-                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
+                        <Polygon fx:id="triangle2" fill="#4a8ac6" layoutX="50.0" layoutY="33.0"
+                                 onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited"
+                                 points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE"/>
+                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true" styleClass="imageType"/>
                     </children>
                 </Pane>
                 <Pane prefHeight="65.0" prefWidth="512.0">
                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff" strokeType="INSIDE" width="380.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff"
+                                   strokeType="INSIDE" width="380.0">
                             <effect>
-                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2" />
+                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2"/>
                             </effect>
                         </Rectangle>
-                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText" text="RAichu" wrappingWidth="81.0" />
-                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="levelTextR" text="100" wrappingWidth="28.40625" />
-                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125" />
-                        <ProgressBar layoutX="70.0" layoutY="26.0" prefHeight="17.0" prefWidth="173.0" progress="0.0" styleClass="progressBar">
+                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText"
+                              text="RAichu" wrappingWidth="81.0"/>
+                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="levelTextR" text="100" wrappingWidth="28.40625"/>
+                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125"/>
+                        <ProgressBar layoutX="70.0" layoutY="26.0" prefHeight="17.0" prefWidth="173.0" progress="0.0"
+                                     styleClass="progressBar">
                             <style>
                                 -fx-control-inner-background: #ABF5AE;
                             </style>
                         </ProgressBar>
-                        <Polygon fx:id="triangle3" fill="#4a8ac6" layoutX="50.0" layoutY="36.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />
-                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
+                        <Polygon fx:id="triangle3" fill="#4a8ac6" layoutX="50.0" layoutY="36.0"
+                                 onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited"
+                                 points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE"/>
+                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true" styleClass="imageType"/>
                     </children>
                 </Pane>
                 <Pane pickOnBounds="true" prefHeight="65.0" prefWidth="512.0">
                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff" strokeType="INSIDE" width="380.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff"
+                                   strokeType="INSIDE" width="380.0">
                             <effect>
-                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2" />
+                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2"/>
                             </effect>
                         </Rectangle>
-                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText" text="Carlos" wrappingWidth="81.0" />
-                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="levelTextR" text="5" wrappingWidth="28.40625" />
-                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125" />
-                        <ProgressBar layoutX="76.0" layoutY="28.0" prefHeight="17.0" prefWidth="173.0" progress="0.0" styleClass="progressBar">
+                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText"
+                              text="Carlos" wrappingWidth="81.0"/>
+                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="levelTextR" text="5" wrappingWidth="28.40625"/>
+                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125"/>
+                        <ProgressBar layoutX="76.0" layoutY="28.0" prefHeight="17.0" prefWidth="173.0" progress="0.0"
+                                     styleClass="progressBar">
                             <style>
                                 -fx-control-inner-background: #ABF5AE;
                             </style>
                         </ProgressBar>
-                        <Polygon fx:id="triangle4" fill="#4a8ac6" layoutX="48.0" layoutY="35.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />
-                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
+                        <Polygon fx:id="triangle4" fill="#4a8ac6" layoutX="48.0" layoutY="35.0"
+                                 onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited"
+                                 points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE"/>
+                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true" styleClass="imageType"/>
                     </children>
                 </Pane>
                 <Pane pickOnBounds="true" prefHeight="65.0" prefWidth="512.0">
                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff" strokeType="INSIDE" width="380.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" stroke="#53a9ff"
+                                   strokeType="INSIDE" width="380.0">
                             <effect>
-                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2" />
+                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2"/>
                             </effect>
                         </Rectangle>
-                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText" text="Pablo" wrappingWidth="81.0" />
-                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="levelTextR" text="100" wrappingWidth="28.40625" />
-                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125" />
-                        <ProgressBar layoutX="77.0" layoutY="23.0" prefHeight="17.0" prefWidth="173.0" progress="0.0" styleClass="progressBar">
+                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText"
+                              text="Pablo" wrappingWidth="81.0"/>
+                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="levelTextR" text="100" wrappingWidth="28.40625"/>
+                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125"/>
+                        <ProgressBar layoutX="77.0" layoutY="23.0" prefHeight="17.0" prefWidth="173.0" progress="0.0"
+                                     styleClass="progressBar">
                             <style>
                                 -fx-control-inner-background: #ABF5AE;
                             </style>
                         </ProgressBar>
-                        <Polygon fx:id="triangle5" fill="#4a8ac6" layoutX="49.0" layoutY="35.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />
-                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
+                        <Polygon fx:id="triangle5" fill="#4a8ac6" layoutX="49.0" layoutY="35.0"
+                                 onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited"
+                                 points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE"/>
+                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true" styleClass="imageType"/>
                     </children>
                 </Pane>
                 <Pane prefHeight="65.0" prefWidth="512.0">
                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" layoutX="3.0" stroke="#53a9ff" strokeType="INSIDE" width="380.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#53a9ff" height="65.0" layoutX="3.0"
+                                   stroke="#53a9ff" strokeType="INSIDE" width="380.0">
                             <effect>
-                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2" />
+                                <DropShadow color="#666666" offsetX="5.0f" offsetY="5.0f" radius="15.0" spread="0.2"/>
                             </effect>
                         </Rectangle>
-                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText" text="Pikachu" wrappingWidth="81.0" />
-                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="levelTextR" text="100" wrappingWidth="28.40625" />
-                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125" />
-                        <ProgressBar layoutX="77.0" layoutY="25.0" prefHeight="17.0" prefWidth="173.0" progress="0.0" styleClass="progressBar">
+                        <Text layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameText"
+                              text="Pikachu" wrappingWidth="81.0"/>
+                        <Text layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="levelTextR" text="100" wrappingWidth="28.40625"/>
+                        <Text layoutX="168.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                              styleClass="lifeTextT" text="35/100" wrappingWidth="72.01953125"/>
+                        <ProgressBar layoutX="77.0" layoutY="25.0" prefHeight="17.0" prefWidth="173.0" progress="0.0"
+                                     styleClass="progressBar">
                             <style>
                                 -fx-control-inner-background: #ABF5AE;
                             </style>
                         </ProgressBar>
-                        <Polygon fx:id="triangle6" fill="#4a8ac6" layoutX="49.0" layoutY="35.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />
-                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
+                        <Polygon fx:id="triangle6" fill="#4a8ac6" layoutX="49.0" layoutY="35.0"
+                                 onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited"
+                                 points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE"/>
+                        <ImageView fitHeight="26.0" fitWidth="103.0" layoutX="265.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true" styleClass="imageType"/>
                     </children>
                 </Pane>
             </children>
@@ -206,15 +271,16 @@
 
         <StackPane alignment="CENTER" layoutY="590.0" prefHeight="178.0" prefWidth="484.0">
             <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ced2d7" height="174.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="544.0" />
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ced2d7" height="174.0" opacity="0.4" stroke="BLACK"
+                           strokeType="INSIDE" width="544.0"/>
                 <Label prefHeight="70.0" prefWidth="522.0" text=" Choose your pokemon...">
                     <font>
-                        <Font size="36.0" />
+                        <Font size="36.0"/>
                     </font>
                 </Label>
                 <ImageView fitHeight="177.0" fitWidth="553.0" pickOnBounds="true" preserveRatio="false">
                     <image>
-                        <Image url="@../images/dialogboxsquare.png" />
+                        <Image url="@../images/dialogboxsquare.png"/>
                     </image>
                 </ImageView>
             </children>

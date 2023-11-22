@@ -19,6 +19,8 @@ public class PokemonApp extends Application {
     StartMenuController startMenuController;
     private static GameAPI gameAPI;
 
+    private static Stage mainStage;
+
     public static void main(String[] args) {
         launch();
     }
@@ -42,14 +44,15 @@ public class PokemonApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("Pokemon Game");
-        stage.setResizable(false);
+        mainStage = stage;
+        mainStage.setTitle("Pokemon Game");
+        mainStage.setResizable(false);
 
         FXMLLoader startMenuFXML = new FXMLLoader(getClass().getResource("views/start-menu-view.fxml"));
         Scene startMenuScene = new Scene(startMenuFXML.load(), 768, 768);
-        stage.setScene(startMenuScene);
+        mainStage.setScene(startMenuScene);
 
-        stage.show();
+        mainStage.show();
 
         startMenuController = startMenuFXML.getController();
         startMenuController.getMediaPlayer().play();
@@ -63,5 +66,9 @@ public class PokemonApp extends Application {
 
     public static GameAPI getGameAPI() {
         return gameAPI;
+    }
+
+    public static Stage getMainStage() {
+        return mainStage;
     }
 }
