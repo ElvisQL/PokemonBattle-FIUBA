@@ -5,7 +5,7 @@ public class Constants {
     public static final Integer INITIAL_HEALTH = 100;
     public static final Integer SKILLS_LIMIT = 4;
     public static final Integer STATUS_LIMIT = 2;
-    public static final Integer INITIAL_ITEMS = 4;
+    public static final Integer INITIAL_ITEMS = 6;
     public static final Integer MAX_NAME_LEN = 50;
     public static final Integer MAX_SKILL_USAGE = 10;
     public static final Double CRITICAL_CHANCE = 0.1;

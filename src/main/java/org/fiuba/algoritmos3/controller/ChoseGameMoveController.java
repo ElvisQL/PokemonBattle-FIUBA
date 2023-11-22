@@ -37,4 +37,14 @@ public class ChoseGameMoveController extends BaseController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void handleButtonItems(ActionEvent event) throws IOException{
+        try {
+            changeScene(event,getResource("views/items-view.fxml"));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 }

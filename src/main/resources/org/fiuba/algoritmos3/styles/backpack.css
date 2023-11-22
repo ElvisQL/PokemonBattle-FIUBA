@@ -2,3 +2,17 @@
     -fx-background-image: url('../images/main-background.jpg');
     -fx-background-size: cover;
 }
+.item-container{
+    -fx-min-height: 20px;
+
+
+    -fx-background-color: #f9f6cf;
+    -fx-border-width: 3px;
+    -fx-border-color: #d5ba67;
+
+
+}
+
+.item-container Label{
+    -fx-font-size: 18px;
+}

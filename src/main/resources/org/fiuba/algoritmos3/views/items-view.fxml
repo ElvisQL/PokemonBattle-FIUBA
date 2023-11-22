@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Font?>
+
+<?import org.fiuba.algoritmos3.view.BaseButton?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="768.0" stylesheets="@../styles/backpack.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.ItemMenuController">
+   <children>
+      <Pane prefHeight="583.0" prefWidth="768.0" styleClass="item-pane-top">
+         <children>
+            <Pane prefHeight="583.0" prefWidth="231.0">
+               <children>
+                  <Ellipse fill="#9b9b9d" layoutX="118.0" layoutY="277.0" radiusX="56.0" radiusY="26.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <ImageView fitHeight="125.0" fitWidth="138.0" layoutX="62.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/backpack.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="90.0" fitWidth="215.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/box-tittle.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="76.0" layoutY="22.0" prefHeight="36.0" prefWidth="92.0" text="OBJETOS">
+                     <font>
+                        <Font name="VT323 Regular" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="229.0" layoutY="14.0" prefHeight="549.0" prefWidth="533.0" style="-fx-background-color: #f0c060; -fx-border-width: 10px; -fx-border-color: black;">
+               <children>
+                  <VBox fx:id="itemsBox" layoutX="6.0" layoutY="11.0" prefHeight="528.0" prefWidth="517.0" style="-fx-border-color: #d89840; -fx-border-width: 10px; -fx-border-radius: 5px;" />
+               </children>
+            </Pane>
+         </children></Pane>
+      <Pane layoutX="-1.0" layoutY="568.0" prefHeight="200.0" prefWidth="768.0" style="-fx-background-color: #2c65a3; -fx-border-width: 10px; -fx-border-color: #204e6f; -fx-border-radius: 15px;">
+         <children>
+            <Pane fx:id="descriptionBox" prefHeight="200.0" prefWidth="533.0" />
+            <VBox alignment="CENTER" layoutX="546.0" layoutY="7.0" prefHeight="183.0" prefWidth="215.0">
+               <children>
+                  <BaseButton text="Volver" fx:id="backButton" onAction="#handleButtonAction" prefHeight="52.0" prefWidth="171.0"/>
+               </children></VBox>
+         </children></Pane>
+
+   </children>
+</Pane>

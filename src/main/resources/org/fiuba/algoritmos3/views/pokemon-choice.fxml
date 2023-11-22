@@ -74,7 +74,7 @@
         </Pane>
 
 
-        <HBox alignment="CENTER" layoutX="608.0" layoutY="704.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="100.0">
+        <HBox alignment="CENTER" layoutX="608.0" layoutY="704.0"  prefHeight="50.0" prefWidth="100.0">
          <children>
                 <BaseButton fx:id="backButton" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="52.0" prefWidth="171.0" text="Volver" />
          </children>
