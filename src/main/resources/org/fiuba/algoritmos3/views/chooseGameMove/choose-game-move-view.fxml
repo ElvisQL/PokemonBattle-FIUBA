@@ -34,7 +34,7 @@
                                         <Cursor fx:constant="DEFAULT" />
                                     </cursor>
                                 </Button>
-                                <Button mnemonicParsing="false" text="Button" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                                <Button fx:id="changePokemon" onAction="#handleButtonAction" mnemonicParsing="false" text="Pokemon" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
                                 <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
                             </children>
                         </GridPane>
