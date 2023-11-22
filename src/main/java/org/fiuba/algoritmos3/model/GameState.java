@@ -10,6 +10,11 @@ import java.util.List;
 
 public class GameState {
     private final int MAX_PLAYERS = 2;
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     private final List<Player> players = new ArrayList<>();
 
     private Player currentPlayer;

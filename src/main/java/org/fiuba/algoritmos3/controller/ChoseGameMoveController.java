@@ -30,9 +30,8 @@ public class ChoseGameMoveController extends BaseController {
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
+    private void handleButtonAction(ActionEvent event) {
         try {
-            gameAPI.start();
             changeScene(event, getResource("views/pokemon-choice.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
