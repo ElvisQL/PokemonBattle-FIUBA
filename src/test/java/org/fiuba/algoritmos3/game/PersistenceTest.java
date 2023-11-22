@@ -75,7 +75,9 @@ class PersistenceTest {
     @Test
     @DisplayName("File from savePlayersInfo exists")
     void savePlayersInfo() {
-        GameState gameState = new GameState(activePlayer, jane);
+        GameState gameState = new GameState();
+        gameState.addPlayer(activePlayer);
+        gameState.addPlayer(jane);
         Persistence.savePlayersInfo(gameState);
 
         Assertions.assertTrue(Files.exists(new File("src/resources/players.json").toPath()));

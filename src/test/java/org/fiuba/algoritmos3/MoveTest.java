@@ -94,7 +94,7 @@ public class MoveTest {
     );
 
     UserInterface ui = new MockUI();
-    GameState gameState = new GameState(john, jane);
+    GameState gameState = new GameState();
     ChangePokemon change = new ChangePokemon(gameState);
     Surrender surrender = new Surrender(gameState);
     UseItem useItem = new UseItem(gameState);
@@ -110,7 +110,9 @@ public class MoveTest {
     @DisplayName("with John as the current player")
     class JohnAsThePlayer {
         @BeforeEach
-        public void setJohnAsThePlayer() {
+        public void beforeEach() {
+            gameState.addPlayer(john);
+            gameState.addPlayer(jane);
             gameState.setCurrentPlayer(john);
         }
 
