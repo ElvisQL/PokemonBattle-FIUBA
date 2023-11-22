@@ -295,12 +295,4 @@ public class ChoosePokemonController extends BaseController {
             buttonImage.setImage(new Image(imageUrl.toExternalForm()));
         }
     }
-
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    public Pokemon getSelectedPokemon() {
-        return selectedPokemon;
-    }
 }

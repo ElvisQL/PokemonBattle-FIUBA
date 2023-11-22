@@ -306,40 +306,6 @@
     "baseDefense": 45
   },
   {
-    "name": "Lucario",
-    "history": "Lucario es un Pok\u00e9mon de tipo Lucha/Acero conocido por sus excepcionales habilidades para detectar el aura. Puede entender el habla humana.",
-    "type": "Fighting",
-    "skills": [
-      72,
-      73,
-      74,
-      75
-    ],
-    "ID": 18,
-    "level": 14,
-    "baseMaxHealth": 85,
-    "baseAttack": 20,
-    "baseSpeed": 50,
-    "baseDefense": 48
-  },
-  {
-    "name": "Gardevoir",
-    "history": "Gardevoir es un Pok\u00e9mon de tipo Ps\u00edquico/Hada conocido por su elegancia y protecci\u00f3n hacia sus entrenadores. Tiene una conexi\u00f3n especial con las emociones humanas.",
-    "type": "Psychic",
-    "skills": [
-      76,
-      77,
-      78,
-      79
-    ],
-    "ID": 19,
-    "level": 29,
-    "baseMaxHealth": 90,
-    "baseAttack": 46,
-    "baseSpeed": 32,
-    "baseDefense": 41
-  },
-  {
     "name": "Dragonite",
     "history": "Dragonite is a Dragon/Flying-type Pok\u00e9mon known for its kind and gentle nature. Despite its size, it is known to rescue people lost at sea.",
     "type": "Dragon",
@@ -374,37 +340,54 @@
     "baseDefense": 38
   },
   {
-    "name": "Lucario",
-    "history": "Lucario is a Fighting/Steel-type Pok\u00e9mon known for its exceptional aura-sensing abilities. It can understand human speech.",
-    "type": "Fighting",
-    "skills": [
-      72,
-      73,
-      74,
-      75
-    ],
-    "ID": 22,
-    "level": 25,
-    "baseMaxHealth": 87,
-    "baseAttack": 12,
-    "baseSpeed": 39,
-    "baseDefense": 32
-  },
-  {
-    "name": "Gardevoir",
-    "history": "Gardevoir is a Psychic/Fairy-type Pok\u00e9mon known for its elegance and protective nature towards its trainers. It has a special connection to human emotions.",
+    "name": "Mew",
+    "history": "Mew is a Psychic-type Pokémon known for its mysterious and mythical nature. It is said to possess the genetic code of all Pokémon.",
     "type": "Psychic",
     "skills": [
-      76,
-      77,
-      78,
-      79
+      1,
+      2,
+      3,
+      4
     ],
-    "ID": 23,
-    "level": 1,
-    "baseMaxHealth": 78,
-    "baseAttack": 44,
-    "baseSpeed": 20,
-    "baseDefense": 48
+    "ID": 151,
+    "level": 30,
+    "baseMaxHealth": 100,
+    "baseAttack": 50,
+    "baseSpeed": 50,
+    "baseDefense": 50
+  },
+  {
+    "name": "Weedle",
+    "history": "Weedle is a Bug/Poison-type Pokémon with a distinctive needle on its head. It evolves into Kakuna and later into Beedrill.",
+    "type": "Bug",
+    "skills": [
+      10,
+      11,
+      12,
+      13
+    ],
+    "ID": 13,
+    "level": 7,
+    "baseMaxHealth": 40,
+    "baseAttack": 35,
+    "baseSpeed": 50,
+    "baseDefense": 30
+  },
+  {
+    "name": "Vulpix",
+    "history": "Vulpix is a Fire-type Pokémon known for its fox-like appearance. It evolves into Ninetales, gaining mystical powers with age.",
+    "type": "Fire",
+    "skills": [
+      20,
+      21,
+      22,
+      23
+    ],
+    "ID": 37,
+    "level": 16,
+    "baseMaxHealth": 38,
+    "baseAttack": 41,
+    "baseSpeed": 65,
+    "baseDefense": 40
   }
 ]

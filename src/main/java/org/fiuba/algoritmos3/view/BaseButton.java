@@ -21,6 +21,8 @@ public class BaseButton extends Button {
     private Image defaultImage;
     private Image selectedImage;
 
+    private boolean isSelected;
+
     public BaseButton() {
         FXMLLoader fxmlLoader = new FXMLLoader(PokemonApp.class.getResource("views/components/base-button.fxml"));
         fxmlLoader.setRoot(this);
@@ -40,8 +42,14 @@ public class BaseButton extends Button {
         imageView.fitWidthProperty().bind(this.prefWidthProperty());
         imageView.fitHeightProperty().bind(this.prefHeightProperty());
 
-        this.setOnMouseEntered(e -> imageView.setImage(selectedImage));
-        this.setOnMouseExited(e -> imageView.setImage(defaultImage));
+        this.setOnMouseEntered(e -> {
+            imageView.setImage(selectedImage);
+            isSelected = true;
+        });
+        this.setOnMouseExited(e -> {
+            imageView.setImage(defaultImage);
+            isSelected = false;
+        });
     }
 
     public String getDefaultImageUrl() {
@@ -72,21 +80,17 @@ public class BaseButton extends Button {
 
     private void refreshDefaultImage() {
         URL resource = PokemonApp.class.getResource(defaultImageUrl.getValue());
-        defaultImage = new Image(resource.toExternalForm());
-        if (!isSelected()) {
+        defaultImage = new Image(resource.toExternalForm(), imageView.getFitWidth(), imageView.getFitHeight(), true, false);
+
+        if (!isSelected)
             imageView.setImage(defaultImage);
-        }
     }
 
     private void refreshSelectedImage() {
         URL resource = PokemonApp.class.getResource(selectedImageUrl.getValue());
-        selectedImage = new Image(resource.toExternalForm());
-        if (isSelected()) {
-            imageView.setImage(selectedImage);
-        }
-    }
+        selectedImage = new Image(resource.toExternalForm(), imageView.getFitWidth(), imageView.getFitHeight(), true, false);
 
-    private boolean isSelected() {
-        return imageView.getImage() != null && imageView.getImage().equals(selectedImage);
+        if (isSelected)
+            imageView.setImage(selectedImage);
     }
 }

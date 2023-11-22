@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import org.fiuba.algoritmos3.view.*?>
+<?import org.fiuba.algoritmos3.view.BaseButton?>
 
-<BorderPane prefHeight="768.0" prefWidth="1024.0" styleClass="root" stylesheets="@../styles/menu.css"
+<?import java.net.URL?>
+<BorderPane prefHeight="768.0" prefWidth="1024.0" styleClass="main-background"
             xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.fiuba.algoritmos3.controller.StartMenuController">
-
-
+    <stylesheets>
+        <URL value="@../styles/base.css" />
+        <URL value="@../styles/menu.css" />
+    </stylesheets>
     <center>
         <HBox alignment="CENTER" BorderPane.alignment="CENTER">
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -26,23 +30,15 @@
     </center>
 
     <bottom>
-        <VBox alignment="CENTER" spacing="10.0">
+        <VBox alignment="BOTTOM_CENTER" spacing="10.0">
             <ImageView fitHeight="195.0" fitWidth="381.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../images/dancing-squirtle.gif"/>
                 </image>
             </ImageView>
-            <HBox>
-                <children>
-                    <Pane prefHeight="336.0" prefWidth="744.0">
-                        <children>
-                            <BaseButton defaultImageUrl="images/mute.png" layoutX="759.0" layoutY="213.0"
-                                        minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onMuteButtonClick"
-                                        prefHeight="75.0" prefWidth="75.0"/>
-                        </children>
-                    </Pane>
-                </children>
-            </HBox>
+            <BaseButton fx:id="muteButton" defaultImageUrl="images/mute.png" minHeight="-Infinity" minWidth="-Infinity"
+                        onMouseClicked="#onMuteButtonClick" prefHeight="75.0" prefWidth="75.0"
+                        selectedImageUrl="images/mute-selected.png"/>
         </VBox>
     </bottom>
 

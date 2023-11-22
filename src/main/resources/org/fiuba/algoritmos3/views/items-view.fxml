@@ -33,7 +33,7 @@
                 </Pane>
                 <Pane layoutX="229.0" layoutY="14.0" prefHeight="549.0" prefWidth="533.0" style="-fx-background-color: #f0c060; -fx-border-width: 10px; -fx-border-color: black;">
                     <children>
-                        <VBox fx:id="itemsBox" layoutX="6.0" layoutY="11.0" prefHeight="528.0" prefWidth="517.0" style="-fx-border-color: #d89840; -fx-border-width: 10px; -fx-border-radius: 5px;" />
+                        <VBox fx:id="itemsBox" layoutX="26.0" layoutY="-13.0" prefHeight="528.0" prefWidth="517.0" style="-fx-border-color: #d89840; -fx-border-width: 10px; -fx-border-radius: 5px;" />
                     </children>
                 </Pane>
             </children>

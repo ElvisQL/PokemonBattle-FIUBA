@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import org.fiuba.algoritmos3.view.*?>
+<?import javafx.scene.text.Font?>
+<?import org.fiuba.algoritmos3.view.BaseButton?>
+<?import java.net.URL?>
+<AnchorPane fx:id="rootPane" styleClass="main-background" prefHeight="500.0" prefWidth="500.0"
+            xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.PlayerSetupController">
 
-<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.PlayerSetupController">
+    <stylesheets>
+        <URL value="@../styles/base.css"/>
+    </stylesheets>
     <children>
-        <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
             <children>
                 <VBox alignment="CENTER">
                     <children>
-                        <Label fx:id="playerNameTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="289.0" style="-fx-alignment: center; -fx-font-family: 'Roboto Black';" text="Jugador #" textAlignment="CENTER">
+                        <Label fx:id="playerNameTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0"
+                               prefWidth="289.0" style="-fx-alignment: center; -fx-font-family: 'Roboto Black';"
+                               text="Jugador #" textAlignment="CENTER">
                             <font>
-                                <Font size="18.0" />
+                                <Font size="18.0"/>
                             </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="289.0" style="-fx-alignment: center; -fx-font-family: 'Roboto Black'" text="1. Escribe tu nombre:" textAlignment="CENTER" />
-                        <TextField fx:id="playerNameText" alignment="CENTER" onKeyTyped="#onKeyTyped" prefHeight="25.0" prefWidth="227.0" promptText="Hasta 50 caracteres" />
-                        <BaseButton fx:id="nextButton" alignment="CENTER" defaultButton="true" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="60.0" prefWidth="138.0" text="Siguiente" textAlignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="289.0"
+                               style="-fx-alignment: center; -fx-font-family: 'Roboto Black'"
+                               text="1. Escribe tu nombre:" textAlignment="CENTER"/>
+                        <TextField fx:id="playerNameText" alignment="CENTER" onKeyTyped="#onKeyTyped" prefHeight="25.0"
+                                   prefWidth="227.0" promptText="Hasta 50 caracteres"/>
+                        <BaseButton fx:id="nextButton" alignment="CENTER" defaultButton="true" disable="true"
+                                    maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                    minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onNextClick"
+                                    prefHeight="60.0" prefWidth="138.0" text="Siguiente" textAlignment="CENTER">
                             <VBox.margin>
-                                <Insets />
+                                <Insets/>
                             </VBox.margin>
                         </BaseButton>
                     </children>

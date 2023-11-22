@@ -5,13 +5,12 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.view.BaseButton;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,11 +20,10 @@ import java.util.ResourceBundle;
 public class StartMenuController extends BaseController {
     public Button startButton;
     public Button exitButton;
+    public BaseButton muteButton;
     @FXML
     private MediaView mediaView;
     public MediaPlayer mediaPlayer;
-    @FXML
-    public ImageView muteButtonImage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -38,6 +36,8 @@ public class StartMenuController extends BaseController {
 
         this.mediaView = new MediaView();
         this.mediaView.setMediaPlayer(mediaPlayer);
+
+        updateMuteButtonImages();
     }
 
     public MediaPlayer getMediaPlayer() {
@@ -60,16 +60,16 @@ public class StartMenuController extends BaseController {
     @FXML
     public void onMuteButtonClick(MouseEvent _actionEvent) {
         mediaPlayer.setMute(!mediaPlayer.isMute());
+        updateMuteButtonImages();
+    }
 
+    private void updateMuteButtonImages() {
         if (mediaPlayer.isMute()) {
-            URL imageUrl = getResource("images/unmute.png");
-            assert imageUrl != null;
-            muteButtonImage.setImage(new Image(imageUrl.toExternalForm()));
+            muteButton.setDefaultImageUrl("images/unmute.png");
+            muteButton.setSelectedImageUrl("images/unmute-selected.png");
         } else {
-            URL imageUrl = getResource("images/mute.png");
-            assert imageUrl != null;
-            muteButtonImage.setImage(new Image(imageUrl.toExternalForm()));
+            muteButton.setDefaultImageUrl("images/mute.png");
+            muteButton.setSelectedImageUrl("images/mute-selected.png");
         }
-
     }
 }
