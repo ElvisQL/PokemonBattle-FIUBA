@@ -19,11 +19,13 @@ public abstract class BaseController implements Initializable {
         gameAPI = PokemonApp.getGameAPI();
     }
 
-    protected void changeScene(Event e, URL url) throws IOException {
-        FXMLLoader startMenuFXML = new FXMLLoader(url);
-        Scene scene = new Scene(startMenuFXML.load(), 768, 768);
+    protected BaseController changeScene(Event e, URL url) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(url);
+        Scene scene = new Scene(fxmlLoader.load(), 768, 768);
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(scene);
+
+        return fxmlLoader.getController();
     }
 
     protected URL getResource(String name) {

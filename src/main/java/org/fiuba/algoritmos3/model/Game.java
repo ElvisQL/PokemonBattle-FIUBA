@@ -158,4 +158,9 @@ public class Game implements GameAPI {
     public Player currentPlayer() {
         return gameState.getCurrentPlayer();
     }
+
+    @Override
+    public List<Player> getPlayers() {
+        return gameState.getPlayers();
+    }
 }

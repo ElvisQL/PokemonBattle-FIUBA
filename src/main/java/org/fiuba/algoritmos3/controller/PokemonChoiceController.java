@@ -24,6 +24,10 @@ import java.util.ResourceBundle;
 
 
 public class PokemonChoiceController extends BaseController {
+    private Player currentPlayer = gameAPI.currentPlayer();
+
+    private URL previousViewUrl = getResource("views/chooseGameMove/choose-game-move-view.fxml");
+    private URL nextViewUrl = getResource("views/chooseGameMove/choose-game-move-view.fxml");
 
     @FXML
     private VBox pokemonChooserMenu;
@@ -54,34 +58,49 @@ public class PokemonChoiceController extends BaseController {
     private ImageView pokemonImage;
     @FXML
     private ProgressBar viewProgressBar;
+
+
     @FXML
-    private Button returnMenu;
+    private Button backButton;
 
     private Pokemon pokemons;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        init();
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+        init();
+    }
+
+    public void setPreviousViewUrl(URL previousViewUrl) {
+        this.previousViewUrl = previousViewUrl;
+        backButton.setDisable(previousViewUrl == null);
+    }
+
+    public void setNextViewUrl(URL nextViewUrl) {
+        this.nextViewUrl = nextViewUrl;
+    }
+
+    private void init() {
         loadPokemons();
 
-
-        for (Node nodo : pokemonChooserMenu.getChildren()) {
-            if (nodo instanceof Pane) {
-                Pane pane = (Pane) nodo;
+        for (Node node : pokemonChooserMenu.getChildren()) {
+            if (node instanceof Pane pane) {
                 pane.setOnMouseClicked(this::handleMouseClick);
                 pane.setOnMouseEntered(this::handleMouseEntered);
                 pane.setOnMouseExited(this::handleMouseExited);
             }
         }
-
     }
 
     private void loadPokemons() {
+        if (currentPlayer == null)
+            return;
 
-        Player currentPlayer = gameAPI.currentPlayer();
-        if (currentPlayer != null) {
-            pokemonList = currentPlayer.getPokemons();
-        }
+        pokemonList = currentPlayer.getPokemons();
         for (int i = 0; i < pokemonList.size(); i++) {
             Pokemon pokemon = pokemonList.get(i);
             Pane pane = (Pane) pokemonChooserMenu.getChildren().get(i);
@@ -113,9 +132,9 @@ public class PokemonChoiceController extends BaseController {
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void handleBackButtonAction(ActionEvent event) {
         try {
-            changeScene(event, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
+            changeScene(event, previousViewUrl);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -132,8 +151,7 @@ public class PokemonChoiceController extends BaseController {
     public void handleMouseEntered(MouseEvent event) {
         Node source = (Node) event.getSource();
 
-        if (source instanceof Pane) {
-            Pane pane = (Pane) source;
+        if (source instanceof Pane pane) {
             int index = pokemonChooserMenu.getChildren().indexOf(pane);
             Polygon triangle = (Polygon) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane) + 1));
             triangle.setFill(Color.web("#2e6099"));
@@ -154,8 +172,7 @@ public class PokemonChoiceController extends BaseController {
     public void handleMouseExited(MouseEvent event) {
         Node source = (Node) event.getSource();
 
-        if (source instanceof Pane) {
-            Pane pane = (Pane) source;
+        if (source instanceof Pane pane) {
             int index = pokemonChooserMenu.getChildren().indexOf(pane);
             Polygon triangle = (Polygon) pane.lookup("#triangle" + (index + 1));
             if (triangle != null) {
@@ -226,7 +243,6 @@ public class PokemonChoiceController extends BaseController {
                 levelText.setText(level);
                 lifeText.setText(life);
 
-
                 updateImageView(pokemonName);
             }
             //attackText.setText("60");
@@ -235,8 +251,8 @@ public class PokemonChoiceController extends BaseController {
         }
     }
 
-    private void updateImageView(String pokemoName) {
-        String imagePath = "images/" + pokemoName.toLowerCase() + ".png";
+    private void updateImageView(String pokemonName) {
+        String imagePath = "images/" + pokemonName.toLowerCase() + ".png";
 
         URL imageUrl = getResource(imagePath);
 

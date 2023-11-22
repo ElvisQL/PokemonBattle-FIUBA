@@ -20,9 +20,6 @@ public class PlayerSetupController extends BaseController {
     private Label playerNameTitle;
     @FXML
     private TextField playerNameText;
-    private int playerCount = 0;
-
-    private Player currentPlayer;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,22 +38,23 @@ public class PlayerSetupController extends BaseController {
     private void onNextClick(MouseEvent event) throws InvalidSelectionException, IOException {
         String name = playerNameText.getText();
 
-        currentPlayer = gameAPI.createPlayer(name);
+        Player currentPlayer = gameAPI.createPlayer(name);
         currentPlayer.setCurrentPokemon(currentPlayer.getPokemons().get(0)); // TODO hardcodeado
 
-        playerCount++;
-        if (playerCount >= 2) {
+        if (gameAPI.getPlayers().size() >= 2) {
             // TODO esto tiene que pasar al choose pokemon
             gameAPI.start();
             changeScene(event, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
-            return;
+        } else {
+            PokemonChoiceController controller = (PokemonChoiceController) changeScene(event, getResource("views/pokemon-choice.fxml"));
+            controller.setCurrentPlayer(currentPlayer);
+            controller.setPreviousViewUrl(null);
+            controller.setNextViewUrl(getResource("views/player-setup-view.fxml"));
         }
-
-        updatePlayerNameText();
     }
 
     private void updatePlayerNameText() {
-        playerNameTitle.setText("Jugador " + (playerCount + 1));
+        playerNameTitle.setText("Jugador " + (gameAPI.getPlayers().size() + 1));
         playerNameText.clear();
     }
 }
