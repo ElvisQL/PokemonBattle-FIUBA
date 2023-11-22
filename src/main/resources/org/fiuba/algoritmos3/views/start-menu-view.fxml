@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import org.fiuba.algoritmos3.view.BaseButton?>
+<BorderPane prefHeight="768.0" prefWidth="1024.0" styleClass="root" stylesheets="@../styles/menu.css"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.fiuba.algoritmos3.controller.StartMenuController">
+
+    <top>
+        <HBox alignment="CENTER" prefHeight="173.0" prefWidth="744.0" spacing="10.0">
+            <ImageView fitHeight="97.0" fitWidth="347.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../images/pokelogo.png"/>
+            </ImageView>
+        </HBox>
+    </top>
+
+
+    <center>
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <children>
+                    <BaseButton fx:id="startButton" onAction="#startGame" prefHeight="56.0" prefWidth="165.0"
+                                text="Start Game"/>
+                    <BaseButton fx:id="exitButton" maxHeight="56.0" maxWidth="165.0" onAction="#onClickExit"
+                                prefHeight="56" prefWidth="165" text="Exit"/>
+                </children>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <VBox alignment="CENTER" spacing="10.0">
+            <Pane prefHeight="336.0" prefWidth="744.0">
+                <children>
+                    <ImageView fitHeight="195.0" fitWidth="381.0" layoutX="359.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@../images/dancing-squirtle.gif"/>
+                        </image>
+                    </ImageView>
+                    <BaseButton defaultImageUrl="images/mute.png" layoutX="759.0" layoutY="213.0" minHeight="-Infinity"
+                                minWidth="-Infinity" onMouseClicked="#onMuteButtonClick" prefHeight="75.0"
+                                prefWidth="75.0"/>
+                </children>
+            </Pane>
+        </VBox>
+    </bottom>
+
+</BorderPane>

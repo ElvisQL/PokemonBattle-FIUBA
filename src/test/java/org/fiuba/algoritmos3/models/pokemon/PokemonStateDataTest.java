@@ -1,8 +1,8 @@
 package org.fiuba.algoritmos3.models.pokemon;
 
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.game.model.pokemon.*;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.AttackSkill;
+import org.fiuba.algoritmos3.model.pokemon.*;
+import org.fiuba.algoritmos3.model.pokemon.skills.AttackSkill;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

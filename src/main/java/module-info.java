@@ -12,6 +12,10 @@ module org.fiuba.algoritmos3 {
 
     opens org.fiuba.algoritmos3 to javafx.fxml;
     exports org.fiuba.algoritmos3;
-    exports org.fiuba.algoritmos3.ui.controller;
-    opens org.fiuba.algoritmos3.ui.controller to javafx.fxml;
+    exports org.fiuba.algoritmos3.controller;
+    opens org.fiuba.algoritmos3.controller to javafx.fxml;
+    exports org.fiuba.algoritmos3.view;
+    opens org.fiuba.algoritmos3.view to javafx.fxml;
+    exports org.fiuba.algoritmos3.view.chooseGameMove;
+    opens org.fiuba.algoritmos3.view.chooseGameMove to javafx.fxml;
 }

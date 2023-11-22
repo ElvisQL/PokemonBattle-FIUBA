@@ -1,7 +1,7 @@
 package org.fiuba.algoritmos3.jsonManager.deserializer;
 
-import org.fiuba.algoritmos3.game.error.InvalidDataException;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.ConcreteSkill;
+import org.fiuba.algoritmos3.model.error.InvalidDataException;
+import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

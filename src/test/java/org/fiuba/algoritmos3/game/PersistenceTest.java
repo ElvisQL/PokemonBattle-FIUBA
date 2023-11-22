@@ -1,15 +1,17 @@
 package org.fiuba.algoritmos3.game;
 
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.game.model.Player;
-import org.fiuba.algoritmos3.game.model.item.IncreaseDefenseItem;
-import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
-import org.fiuba.algoritmos3.game.model.pokemon.PokemonBuilder;
-import org.fiuba.algoritmos3.game.model.pokemon.PokemonSpecies;
-import org.fiuba.algoritmos3.game.model.pokemon.PokemonType;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.AttackSkill;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.BuffSkill;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.StatType;
+import org.fiuba.algoritmos3.model.GameState;
+import org.fiuba.algoritmos3.model.Persistence;
+import org.fiuba.algoritmos3.model.Player;
+import org.fiuba.algoritmos3.model.item.IncreaseDefenseItem;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
+import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;
+import org.fiuba.algoritmos3.model.pokemon.PokemonType;
+import org.fiuba.algoritmos3.model.pokemon.skills.AttackSkill;
+import org.fiuba.algoritmos3.model.pokemon.skills.BuffSkill;
+import org.fiuba.algoritmos3.model.pokemon.skills.StatType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -73,7 +75,9 @@ class PersistenceTest {
     @Test
     @DisplayName("File from savePlayersInfo exists")
     void savePlayersInfo() {
-        GameState gameState = new GameState(activePlayer, jane);
+        GameState gameState = new GameState();
+        gameState.addPlayer(activePlayer);
+        gameState.addPlayer(jane);
         Persistence.savePlayersInfo(gameState);
 
         Assertions.assertTrue(Files.exists(new File("src/resources/players.json").toPath()));

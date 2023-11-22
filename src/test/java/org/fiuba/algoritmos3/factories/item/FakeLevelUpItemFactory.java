@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3.factories.item;
 
 import net.datafaker.Faker;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.game.model.item.LevelUpItem;
+import org.fiuba.algoritmos3.model.item.LevelUpItem;
 
 public class FakeLevelUpItemFactory implements FakeModelFactory<LevelUpItem> {
     Faker faker = new Faker();

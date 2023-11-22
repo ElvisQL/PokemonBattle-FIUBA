@@ -4,13 +4,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.fiuba.algoritmos3.game.Game;
-import org.fiuba.algoritmos3.game.error.InvalidDataException;
-import org.fiuba.algoritmos3.game.model.item.Item;
-import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.controller.StartMenuController;
 import org.fiuba.algoritmos3.jsonManager.deserializer.ItemDeserializer;
 import org.fiuba.algoritmos3.jsonManager.deserializer.PokemonDeserializer;
-import org.fiuba.algoritmos3.ui.controller.StartMenuController;
+import org.fiuba.algoritmos3.model.Game;
+import org.fiuba.algoritmos3.model.error.InvalidDataException;
+import org.fiuba.algoritmos3.model.item.Item;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.util.HashMap;
 
@@ -45,7 +45,7 @@ public class PokemonApp extends Application {
         stage.setTitle("Pokemon Game");
         stage.setResizable(false);
 
-        FXMLLoader startMenuFXML = new FXMLLoader(getClass().getResource("start-menu-view.fxml"));
+        FXMLLoader startMenuFXML = new FXMLLoader(getClass().getResource("views/start-menu-view.fxml"));
         Scene startMenuScene = new Scene(startMenuFXML.load(), 768, 768);
         stage.setScene(startMenuScene);
 

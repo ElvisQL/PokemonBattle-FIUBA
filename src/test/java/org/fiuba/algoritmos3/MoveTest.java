@@ -2,25 +2,25 @@ package org.fiuba.algoritmos3;
 
 import com.github.underscore.U;
 import org.fiuba.algoritmos3.factories.pokemon.FakePokemonFactory;
-import org.fiuba.algoritmos3.game.GameState;
-import org.fiuba.algoritmos3.game.error.InvalidSelectionException;
-import org.fiuba.algoritmos3.game.menu.operation.OperationResult;
-import org.fiuba.algoritmos3.game.menu.operation.errors.NoRemainingUsesError;
-import org.fiuba.algoritmos3.game.menu.operation.errors.OwnershipError;
-import org.fiuba.algoritmos3.game.model.Player;
-import org.fiuba.algoritmos3.game.model.item.Item;
-import org.fiuba.algoritmos3.game.model.item.RestoreStatusItem;
-import org.fiuba.algoritmos3.game.model.item.ReviveItem;
-import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
-import org.fiuba.algoritmos3.game.model.pokemon.PokemonBuilder;
-import org.fiuba.algoritmos3.game.model.pokemon.PokemonSpecies;
-import org.fiuba.algoritmos3.game.model.pokemon.PokemonType;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.*;
-import org.fiuba.algoritmos3.game.model.pokemon.status.ParalyzedStatus;
-import org.fiuba.algoritmos3.game.move.ChangePokemon;
-import org.fiuba.algoritmos3.game.move.Surrender;
-import org.fiuba.algoritmos3.game.move.UseItem;
-import org.fiuba.algoritmos3.game.move.UseSkill;
+import org.fiuba.algoritmos3.model.GameState;
+import org.fiuba.algoritmos3.model.Player;
+import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
+import org.fiuba.algoritmos3.model.item.Item;
+import org.fiuba.algoritmos3.model.item.RestoreStatusItem;
+import org.fiuba.algoritmos3.model.item.ReviveItem;
+import org.fiuba.algoritmos3.model.menu.operation.OperationResult;
+import org.fiuba.algoritmos3.model.menu.operation.errors.NoRemainingUsesError;
+import org.fiuba.algoritmos3.model.menu.operation.errors.OwnershipError;
+import org.fiuba.algoritmos3.model.move.ChangePokemon;
+import org.fiuba.algoritmos3.model.move.Surrender;
+import org.fiuba.algoritmos3.model.move.UseItem;
+import org.fiuba.algoritmos3.model.move.UseSkill;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
+import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;
+import org.fiuba.algoritmos3.model.pokemon.PokemonType;
+import org.fiuba.algoritmos3.model.pokemon.skills.*;
+import org.fiuba.algoritmos3.model.pokemon.status.ParalyzedStatus;
 import org.javatuples.Pair;
 import org.junit.jupiter.api.*;
 
@@ -94,7 +94,7 @@ public class MoveTest {
     );
 
     UserInterface ui = new MockUI();
-    GameState gameState = new GameState(john, jane);
+    GameState gameState = new GameState();
     ChangePokemon change = new ChangePokemon(gameState);
     Surrender surrender = new Surrender(gameState);
     UseItem useItem = new UseItem(gameState);
@@ -110,7 +110,9 @@ public class MoveTest {
     @DisplayName("with John as the current player")
     class JohnAsThePlayer {
         @BeforeEach
-        public void setJohnAsThePlayer() {
+        public void beforeEach() {
+            gameState.addPlayer(john);
+            gameState.addPlayer(jane);
             gameState.setCurrentPlayer(john);
         }
 

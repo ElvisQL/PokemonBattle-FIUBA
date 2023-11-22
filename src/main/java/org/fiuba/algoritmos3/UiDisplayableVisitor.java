@@ -1,9 +1,9 @@
 package org.fiuba.algoritmos3;
 
-import org.fiuba.algoritmos3.game.model.item.Item;
-import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.ConcreteSkill;
-import org.fiuba.algoritmos3.game.model.pokemon.status.Status;
+import org.fiuba.algoritmos3.model.item.Item;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
+import org.fiuba.algoritmos3.model.pokemon.status.Status;
 
 public class UiDisplayableVisitor implements Visitor, UIDisplayable {
 
