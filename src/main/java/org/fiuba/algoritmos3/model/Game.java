@@ -27,9 +27,20 @@ public class Game implements GameAPI {
     }
 
     public void start() {
-        gameState.setWeather(Math.random() < 2.0 / 3.0 ? new NoneWeather() : U.sample(List.of(new FogWeather(),
-                new HurricaneWeather(), new RainWeather(),
-                new SandstormWeather(), new SunnyWeather(), new ThunderstormWeather())));
+        boolean hasWeather = Math.random() < 2.0 / 3.0;
+        Weather weather;
+        if (!hasWeather)
+            weather = new NoneWeather();
+        else
+            weather = U.sample(List.of(
+                    new FogWeather(),
+                    new HurricaneWeather(),
+                    new RainWeather(),
+                    new SandstormWeather(),
+                    new SunnyWeather(),
+                    new ThunderstormWeather()
+            ));
+        gameState.setWeather(weather);
 
         // Save Initial State of players and info in JSON
         Persistence.savePlayersInfo(gameState);

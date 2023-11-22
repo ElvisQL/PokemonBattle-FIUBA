@@ -35,23 +35,13 @@ public class BaseButton extends Button {
         refreshDefaultImage();
         refreshSelectedImage();
 
-        // TODO auto resize image with button
-//        imageView.fitWidthProperty().bind(this.widthProperty());
-//        imageView.fitHeightProperty().bind(this.heightProperty());
+        // auto resize image with button
+        imageView.setPreserveRatio(true);
+        imageView.fitWidthProperty().bind(this.prefWidthProperty());
+        imageView.fitHeightProperty().bind(this.prefHeightProperty());
 
         this.setOnMouseEntered(e -> imageView.setImage(selectedImage));
         this.setOnMouseExited(e -> imageView.setImage(defaultImage));
-
-        imageView.fitWidthProperty().set(this.getPrefWidth());
-        imageView.fitHeightProperty().set(this.getPrefHeight());
-    }
-
-    @Override
-    public void setPrefSize(double v, double v1) {
-        super.setPrefSize(v, v1);
-
-        imageView.fitWidthProperty().set(this.getPrefWidth());
-        imageView.fitHeightProperty().set(this.getPrefHeight());
     }
 
     public String getDefaultImageUrl() {
