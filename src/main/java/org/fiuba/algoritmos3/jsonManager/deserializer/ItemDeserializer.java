@@ -1,10 +1,10 @@
 package org.fiuba.algoritmos3.jsonManager.deserializer;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.fiuba.algoritmos3.game.error.InvalidDataException;
-import org.fiuba.algoritmos3.game.model.item.*;
 import org.fiuba.algoritmos3.jsonManager.JsonManager;
 import org.fiuba.algoritmos3.jsonManager.JsonPath;
+import org.fiuba.algoritmos3.model.error.InvalidDataException;
+import org.fiuba.algoritmos3.model.item.*;
 
 import java.util.HashMap;
 

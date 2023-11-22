@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3.factories.item;
 
 import net.datafaker.Faker;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.game.model.item.IncreaseDefenseItem;
+import org.fiuba.algoritmos3.model.item.IncreaseDefenseItem;
 
 public class FakeIncreaseDefenseItemFactory implements FakeModelFactory<IncreaseDefenseItem> {
     Faker faker = new Faker();

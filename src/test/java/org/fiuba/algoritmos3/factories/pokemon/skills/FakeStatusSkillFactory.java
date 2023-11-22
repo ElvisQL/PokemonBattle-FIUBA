@@ -3,11 +3,11 @@ package org.fiuba.algoritmos3.factories.pokemon.skills;
 import com.github.underscore.U;
 import net.datafaker.Faker;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.StatusSkill;
-import org.fiuba.algoritmos3.game.model.pokemon.status.AsleepStatus;
-import org.fiuba.algoritmos3.game.model.pokemon.status.ConfusedStatus;
-import org.fiuba.algoritmos3.game.model.pokemon.status.ParalyzedStatus;
-import org.fiuba.algoritmos3.game.model.pokemon.status.PoisonedStatus;
+import org.fiuba.algoritmos3.model.pokemon.skills.StatusSkill;
+import org.fiuba.algoritmos3.model.pokemon.status.AsleepStatus;
+import org.fiuba.algoritmos3.model.pokemon.status.ConfusedStatus;
+import org.fiuba.algoritmos3.model.pokemon.status.ParalyzedStatus;
+import org.fiuba.algoritmos3.model.pokemon.status.PoisonedStatus;
 
 import java.util.List;
 

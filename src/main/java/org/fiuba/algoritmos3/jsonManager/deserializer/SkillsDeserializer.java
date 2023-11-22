@@ -2,11 +2,11 @@ package org.fiuba.algoritmos3.jsonManager.deserializer;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.game.error.InvalidDataException;
-import org.fiuba.algoritmos3.game.model.pokemon.skills.*;
-import org.fiuba.algoritmos3.game.model.pokemon.status.*;
 import org.fiuba.algoritmos3.jsonManager.JsonManager;
 import org.fiuba.algoritmos3.jsonManager.JsonPath;
+import org.fiuba.algoritmos3.model.error.InvalidDataException;
+import org.fiuba.algoritmos3.model.pokemon.skills.*;
+import org.fiuba.algoritmos3.model.pokemon.status.*;
 
 import java.util.HashMap;
 

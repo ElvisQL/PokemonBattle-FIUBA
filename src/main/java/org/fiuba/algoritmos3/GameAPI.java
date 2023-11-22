@@ -1,6 +1,6 @@
 package org.fiuba.algoritmos3;
 
-import org.fiuba.algoritmos3.game.model.Player;
+import org.fiuba.algoritmos3.model.Player;
 
 public interface GameAPI {
 
@@ -9,4 +9,6 @@ public interface GameAPI {
     void stop();
 
     Player createPlayer(String name);
+
+    Player currentPlayer();
 }

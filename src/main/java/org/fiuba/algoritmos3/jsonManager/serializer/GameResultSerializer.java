@@ -1,8 +1,8 @@
 package org.fiuba.algoritmos3.jsonManager.serializer;
 
-import org.fiuba.algoritmos3.game.GameOverStateData;
-import org.fiuba.algoritmos3.game.model.Player;
 import org.fiuba.algoritmos3.jsonManager.JsonManager;
+import org.fiuba.algoritmos3.model.GameOverStateData;
+import org.fiuba.algoritmos3.model.Player;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

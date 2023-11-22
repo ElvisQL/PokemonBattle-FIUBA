@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3.factories.item;
 
 import net.datafaker.Faker;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.game.model.item.FixedHealingItem;
+import org.fiuba.algoritmos3.model.item.FixedHealingItem;
 
 public class FakeFixedHealingItemFactory implements FakeModelFactory<FixedHealingItem> {
     Faker faker = new Faker();

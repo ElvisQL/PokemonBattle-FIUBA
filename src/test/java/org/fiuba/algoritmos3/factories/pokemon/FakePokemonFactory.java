@@ -2,8 +2,8 @@ package org.fiuba.algoritmos3.factories.pokemon;
 
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
 import org.fiuba.algoritmos3.factories.pokemon.skills.FakeSkillFactory;
-import org.fiuba.algoritmos3.game.model.pokemon.Pokemon;
-import org.fiuba.algoritmos3.game.model.pokemon.PokemonBuilder;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
 
 public class FakePokemonFactory implements FakeModelFactory<Pokemon> {
 

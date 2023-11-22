@@ -2,7 +2,7 @@ package org.fiuba.algoritmos3.factories.item;
 
 import net.datafaker.Faker;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
-import org.fiuba.algoritmos3.game.model.item.RestoreStatusItem;
+import org.fiuba.algoritmos3.model.item.RestoreStatusItem;
 
 public class FakeRestoreStatusItemFactory implements FakeModelFactory<RestoreStatusItem> {
     Faker faker = new Faker();
