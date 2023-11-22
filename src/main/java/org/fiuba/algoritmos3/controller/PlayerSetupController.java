@@ -48,7 +48,7 @@ public class PlayerSetupController extends BaseController {
         if (playerCount >= 2) {
             // TODO esto tiene que pasar al choose pokemon
             gameAPI.start();
-            changeScene(event, getResource("choose-game-move-view.fxml"));
+            changeScene(event, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
             return;
         }
 

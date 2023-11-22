@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3.view;
+package org.fiuba.algoritmos3.view.chooseGameMove;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -16,7 +16,7 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import java.io.IOException;
 import java.net.URL;
 
-public class PokemonBattlefieldView extends HBox {
+public class PokemonView extends HBox {
     @FXML
     private VBox statsBox;
     @FXML
@@ -31,8 +31,8 @@ public class PokemonBattlefieldView extends HBox {
     private ImageView pokemonImageView;
     private final BooleanProperty flipped = new SimpleBooleanProperty(false);
 
-    public PokemonBattlefieldView(Pokemon pokemon) {
-        FXMLLoader fxmlLoader = new FXMLLoader(PokemonApp.class.getResource("pokemon-battlefield-view.fxml"));
+    public PokemonView(Pokemon pokemon) {
+        FXMLLoader fxmlLoader = new FXMLLoader(PokemonApp.class.getResource("views/chooseGameMove/pokemon-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

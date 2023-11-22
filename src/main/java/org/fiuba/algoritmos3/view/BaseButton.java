@@ -22,7 +22,7 @@ public class BaseButton extends Button {
     private Image selectedImage;
 
     public BaseButton() {
-        FXMLLoader fxmlLoader = new FXMLLoader(PokemonApp.class.getResource("base-button.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PokemonApp.class.getResource("views/components/base-button.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

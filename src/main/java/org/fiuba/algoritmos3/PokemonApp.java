@@ -45,7 +45,7 @@ public class PokemonApp extends Application {
         stage.setTitle("Pokemon Game");
         stage.setResizable(false);
 
-        FXMLLoader startMenuFXML = new FXMLLoader(getClass().getResource("start-menu-view.fxml"));
+        FXMLLoader startMenuFXML = new FXMLLoader(getClass().getResource("views/start-menu-view.fxml"));
         Scene startMenuScene = new Scene(startMenuFXML.load(), 768, 768);
         stage.setScene(startMenuScene);
 

@@ -54,7 +54,7 @@ public class StartMenuController extends BaseController {
 
     @FXML
     public void startGame(ActionEvent actionEvent) throws IOException {
-        changeScene(actionEvent, getResource("player-setup-view.fxml"));
+        changeScene(actionEvent, getResource("views/player-setup-view.fxml"));
     }
 
     @FXML

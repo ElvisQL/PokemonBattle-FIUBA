@@ -12,7 +12,7 @@
         <ImageView fx:id="pokemonImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
                    scaleX="-1.0" smooth="false">
             <image>
-                <Image url="@images/pokemon/squirtle.png"/>
+                <Image url="@../../images/pokemon/squirtle.png"/>
             </image>
         </ImageView>
         <VBox fx:id="statsBox" alignment="CENTER" prefHeight="91.0" prefWidth="263.0"
@@ -31,7 +31,7 @@
                         <ImageView fx:id="pokemonTypeImageView" fitHeight="24.0" fitWidth="64.0" pickOnBounds="true"
                                    preserveRatio="true">
                             <image>
-                                <Image url="@images/pokemon-type/water.png"/>
+                                <Image url="@../../images/pokemon-type/water.png"/>
                             </image>
                         </ImageView>
                         <Label fx:id="pokemonLevel1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="132.0"
