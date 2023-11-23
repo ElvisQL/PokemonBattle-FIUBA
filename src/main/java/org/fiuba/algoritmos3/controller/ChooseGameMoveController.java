@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import org.fiuba.algoritmos3.controller.gameMove.ChangePokemonController;
 import org.fiuba.algoritmos3.controller.gameMove.GameMoveController;
+import org.fiuba.algoritmos3.controller.gameMove.UseItemController;
 import org.fiuba.algoritmos3.view.chooseGameMove.PokemonView;
 
 import java.io.IOException;
@@ -49,11 +50,7 @@ public class ChooseGameMoveController extends BaseController {
 
     @FXML
     private void handleUseItemButtonAction(ActionEvent event) {
-        try {
-            changeScene(event, getResource("views/item-picker.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        loadGameMoveController(event, new UseItemController());
     }
 
 }
