@@ -24,7 +24,6 @@ public class Player {
         this.name = name;
         this.pokemons = pokemons;
         this.items = items;
-        this.currentPokemon = this.pokemons.get(0);
     }
 
     public List<Pokemon> getPokemons() {

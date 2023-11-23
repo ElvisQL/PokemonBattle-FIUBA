@@ -16,6 +16,7 @@ import static org.fiuba.algoritmos3.Constants.*;
 
 
 public class Game implements GameAPI {
+    private final int MAX_PLAYERS = 2;
 
     private final HashMap<Integer, Item> sourceItemsHash;
     private final HashMap<Integer, Pokemon> sourcePokemonHash;
@@ -27,6 +28,14 @@ public class Game implements GameAPI {
     }
 
     public void start() {
+        List<Player> players = gameState.getPlayers();
+        if (players.size() >= MAX_PLAYERS) {
+            players.get(0).setOpponent(players.get(1));
+            players.get(1).setOpponent(players.get(0));
+
+            gameState.setCurrentPlayer(getFirstPlayer(players));
+        }
+
         boolean hasWeather = Math.random() < 2.0 / 3.0;
         Weather weather;
         if (!hasWeather)
@@ -72,6 +81,9 @@ public class Game implements GameAPI {
 //        return winner;
     }
 
+    private Player getFirstPlayer(List<Player> players) {
+        return U.max(players, player -> player.getCurrentPokemon().getAttackSpeed());
+    }
 
     private void applyStatusesAndWeather() {
         applyPokemonStatuses();
@@ -131,6 +143,9 @@ public class Game implements GameAPI {
 
     @Override
     public Player createPlayer(String playerName) {
+        if (gameState.getPlayers().size() >= MAX_PLAYERS) {
+            throw new IllegalArgumentException("The max amount of players is " + MAX_PLAYERS);
+        }
         if (playerName.length() > MAX_NAME_LEN) {
             throw new IllegalArgumentException("Names can have up to " + MAX_NAME_LEN + " characters");
         }

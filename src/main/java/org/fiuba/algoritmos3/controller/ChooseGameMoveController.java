@@ -28,7 +28,7 @@ public class ChooseGameMoveController extends BaseController {
     }
 
     private void loadGameMoveController(Event e, GameMoveController<?> controller) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/game-move.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/picker-wrapper.fxml"));
         controller.setPreviousController(this);
         fxmlLoader.setController(controller);
 

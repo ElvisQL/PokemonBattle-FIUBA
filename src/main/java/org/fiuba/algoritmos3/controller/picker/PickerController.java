@@ -24,7 +24,4 @@ public abstract class PickerController<T> extends BaseController {
         this.selection.addListener(listener);
     }
 
-//    public static String getViewUrl() {
-//        return "views/pickers/" + U.kebabCase(this.getClass().getName()) + ".fxml";
-//    }
 }

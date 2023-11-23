@@ -26,9 +26,16 @@ public abstract class BaseController implements Initializable {
         return changeScene(stage, url);
     }
 
-    protected BaseController changeScene(Stage stage, URL url) throws IOException {
+    protected BaseController changeScene(Stage stage, URL url) {
         FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load(), 768, 768);
+
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load(), 768, 768);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         stage.setScene(scene);
 
         BaseController nextController = fxmlLoader.getController();
@@ -36,7 +43,7 @@ public abstract class BaseController implements Initializable {
         return nextController;
     }
 
-    protected BaseController changeScene(Event e, Scene scene) {
+    protected void changeScene(Event e, Scene scene) {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }

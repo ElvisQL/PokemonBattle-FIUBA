@@ -1,61 +1,57 @@
 package org.fiuba.algoritmos3.controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.fiuba.algoritmos3.controller.picker.PlayerNamePickerController;
+import org.fiuba.algoritmos3.controller.picker.PokemonPickerController;
 import org.fiuba.algoritmos3.model.Player;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PlayerSetupController extends BaseController {
-    public AnchorPane rootPane;
-    @FXML
-    private Button nextButton;
-    @FXML
-    private Label playerNameTitle;
-    @FXML
-    private TextField playerNameText;
+public class PlayerSetupController extends PickerWrapperController {
+    Player player;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        updatePlayerNameText();
+        loadPicker(PlayerNamePickerController.class, null, this::onPlayerNamePicked);
     }
 
-    @FXML
-    public void onKeyTyped(KeyEvent keyEvent) {
-        int nameLength = playerNameText.getText().length();
-        boolean nameLengthWithinBounds = 0 < nameLength && nameLength < 50;
-        nextButton.setDisable(!nameLengthWithinBounds);
+    private void onPlayerNamePicked(ObservableValue<?> _obs, String oldName, String newName) {
+        player = gameAPI.createPlayer(newName);
+        loadPicker(PokemonPickerController.class, player.getPokemons(), this::onPokemonPicked);
     }
 
-    @FXML
-    private void onNextClick(MouseEvent event) throws IOException, InvalidSelectionException {
-        String name = playerNameText.getText();
+    private void onPokemonPicked(ObservableValue<?> _obs, Pokemon oldPokemon, Pokemon newPokemon) {
+        try {
+            player.setCurrentPokemon(newPokemon);
+        } catch (InvalidSelectionException e) {
+            throw new RuntimeException(e);
+        }
 
-        Player currentPlayer = gameAPI.createPlayer(name);
-        currentPlayer.setCurrentPokemon(currentPlayer.getPokemons().get(0));
-//        PokemonPickerController controller = (PokemonPickerController) changeScene(event, getResource("views/pokemon-picker.fxml"));
-//        controller.setCurrentPlayer(currentPlayer);
-//        controller.setPreviousViewUrl(null);
-//
-        if (gameAPI.getPlayers().size() >= 2)
-            changeScene(event, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
-        else
-            changeScene(event, getResource("views/player-setup-view.fxml"));
-//            controller.setNextViewUrl(getResource("views/chooseGameMove/choose-game-move-view.fxml"));
-//        else
-//            controller.setNextViewUrl(getResource("views/player-setup-view.fxml"));
-    }
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        if (gameAPI.getPlayers().size() >= 2) {
+            gameAPI.start();
+            changeScene(stage, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
+        } else {
+            BaseController controller = new PlayerSetupController();
+            FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/picker-wrapper.fxml"));
+            controller.setPreviousController(this);
+            fxmlLoader.setController(controller);
 
-    private void updatePlayerNameText() {
-        playerNameTitle.setText("Jugador " + (gameAPI.getPlayers().size() + 1));
-        playerNameText.clear();
+            Scene scene;
+            try {
+                scene = new Scene(fxmlLoader.load(), 768, 768);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
+            stage.setScene(scene);
+        }
     }
 }

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameState {
-    private final int MAX_PLAYERS = 2;
 
     public List<Player> getPlayers() {
         return players;
@@ -22,18 +21,7 @@ public class GameState {
     private Weather weather = new NoneWeather();
 
     public void addPlayer(Player player) {
-        if (players.size() >= MAX_PLAYERS) {
-            throw new IllegalArgumentException("The max amount of players is " + MAX_PLAYERS);
-        }
-
         this.players.add(player);
-
-        if (players.size() >= MAX_PLAYERS) {
-            this.players.get(0).setOpponent(this.players.get(1));
-            this.players.get(1).setOpponent(this.players.get(0));
-
-            this.currentPlayer = getFirstPlayer();
-        }
     }
 
     public Player getCurrentPlayer() {
@@ -63,9 +51,5 @@ public class GameState {
     private Boolean playerIsWinner(Player player) {
         if (U.all(player.getOpponent().getPokemons(), Pokemon::isDead)) return true;
         return player.getOpponent().getSurrendered();
-    }
-
-    private Player getFirstPlayer() {
-        return U.max(players, player -> player.getCurrentPokemon().getAttackSpeed());
     }
 }

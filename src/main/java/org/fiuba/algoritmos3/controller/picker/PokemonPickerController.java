@@ -14,21 +14,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
-import org.fiuba.algoritmos3.model.Player;
+import org.fiuba.algoritmos3.PokemonApp;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.view.BaseButton;
 
-import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class PokemonPickerController extends PickerController<Pokemon> {
-    private Player currentPlayer = gameAPI.currentPlayer();
-
-    private URL previousViewUrl = getResource("views/chooseGameMove/choose-game-move-view.fxml");
-    private URL nextViewUrl = getResource("views/chooseGameMove/choose-game-move-view.fxml");
-
     @FXML
     private VBox pokemonChooserMenu;
     private int selectedIndex;
@@ -58,14 +53,13 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     private ProgressBar viewProgressBar;
 
 
-    public BaseButton okButton;
+    @FXML
+    private BaseButton okButton;
     @FXML
     private BaseButton backButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadPokemons();
-
         for (Node node : pokemonChooserMenu.getChildren()) {
             if (node instanceof Pane pane) {
                 pane.setOnMouseClicked(this::handleChoosePokemonMouseClick);
@@ -75,25 +69,13 @@ public class PokemonPickerController extends PickerController<Pokemon> {
         }
     }
 
-    public void setCurrentPlayer(Player currentPlayer) {
-        this.currentPlayer = currentPlayer;
+    @Override
+    public void setOptions(List<Pokemon> options) {
+        super.setOptions(options);
         loadPokemons();
     }
 
-    public void setPreviousViewUrl(URL previousViewUrl) {
-        this.previousViewUrl = previousViewUrl;
-        backButton.setDisable(previousViewUrl == null);
-    }
-
-    public void setNextViewUrl(URL nextViewUrl) {
-        this.nextViewUrl = nextViewUrl;
-    }
-
     private void loadPokemons() {
-        if (currentPlayer == null)
-            return;
-
-        options = currentPlayer.getPokemons();
         for (int i = 0; i < options.size(); i++) {
             Pokemon pokemon = options.get(i);
             Pane pane = (Pane) pokemonChooserMenu.getChildren().get(i);
@@ -137,21 +119,12 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     @FXML
     private void handleOkButtonAction(ActionEvent event) {
-        selection.setValue(currentPlayer.getPokemons().get(selectedIndex));
-        try {
-            changeScene(event, nextViewUrl);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        selection.setValue(options.get(selectedIndex));
     }
 
     @FXML
     private void handleBackButtonAction(ActionEvent event) {
-        try {
-            changeScene(event, previousViewUrl);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void handleMouseEntered(MouseEvent event) {

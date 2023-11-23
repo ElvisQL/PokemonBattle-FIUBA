@@ -3,7 +3,9 @@ package org.fiuba.algoritmos3.controller;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
@@ -53,8 +55,20 @@ public class StartMenuController extends BaseController {
     }
 
     @FXML
-    public void startGame(ActionEvent actionEvent) throws IOException {
-        changeScene(actionEvent, getResource("views/player-setup-view.fxml"));
+    public void startGame(ActionEvent actionEvent) {
+        BaseController controller = new PlayerSetupController();
+        FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/picker-wrapper.fxml"));
+        controller.setPreviousController(this);
+        fxmlLoader.setController(controller);
+
+        Scene scene;
+        try {
+            scene = new Scene(fxmlLoader.load(), 768, 768);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+
+        changeScene(actionEvent, scene);
     }
 
     @FXML

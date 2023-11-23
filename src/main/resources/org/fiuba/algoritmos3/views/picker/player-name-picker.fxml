@@ -9,10 +9,11 @@
 <?import java.net.URL?>
 <AnchorPane fx:id="rootPane" styleClass="main-background" prefHeight="500.0" prefWidth="500.0"
             xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.PlayerSetupController">
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.fiuba.algoritmos3.controller.picker.PlayerNamePickerController">
 
     <stylesheets>
-        <URL value="@../styles/base.css"/>
+        <URL value="@../../styles/base.css"/>
     </stylesheets>
     <children>
         <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
