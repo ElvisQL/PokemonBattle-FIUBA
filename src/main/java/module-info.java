@@ -10,10 +10,14 @@ module org.fiuba.algoritmos3 {
     requires consoleui;
     requires jansi;
 
-    opens org.fiuba.algoritmos3 to javafx.fxml;
     exports org.fiuba.algoritmos3;
+    opens org.fiuba.algoritmos3 to javafx.fxml;
     exports org.fiuba.algoritmos3.controller;
     opens org.fiuba.algoritmos3.controller to javafx.fxml;
+    exports org.fiuba.algoritmos3.controller.picker;
+    opens org.fiuba.algoritmos3.controller.picker to javafx.fxml;
+    exports org.fiuba.algoritmos3.controller.gameMove;
+    opens org.fiuba.algoritmos3.controller.gameMove to javafx.fxml;
     exports org.fiuba.algoritmos3.view;
     opens org.fiuba.algoritmos3.view to javafx.fxml;
     exports org.fiuba.algoritmos3.view.chooseGameMove;

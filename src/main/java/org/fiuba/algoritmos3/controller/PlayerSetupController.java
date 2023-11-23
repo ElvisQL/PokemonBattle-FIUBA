@@ -8,6 +8,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import org.fiuba.algoritmos3.model.Player;
+import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,19 +36,22 @@ public class PlayerSetupController extends BaseController {
     }
 
     @FXML
-    private void onNextClick(MouseEvent event) throws IOException {
+    private void onNextClick(MouseEvent event) throws IOException, InvalidSelectionException {
         String name = playerNameText.getText();
 
         Player currentPlayer = gameAPI.createPlayer(name);
-
-        ChoosePokemonController controller = (ChoosePokemonController) changeScene(event, getResource("views/pokemon-choice.fxml"));
-        controller.setCurrentPlayer(currentPlayer);
-        controller.setPreviousViewUrl(null);
-
+        currentPlayer.setCurrentPokemon(currentPlayer.getPokemons().get(0));
+//        PokemonPickerController controller = (PokemonPickerController) changeScene(event, getResource("views/pokemon-picker.fxml"));
+//        controller.setCurrentPlayer(currentPlayer);
+//        controller.setPreviousViewUrl(null);
+//
         if (gameAPI.getPlayers().size() >= 2)
-            controller.setNextViewUrl(getResource("views/chooseGameMove/choose-game-move-view.fxml"));
+            changeScene(event, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
         else
-            controller.setNextViewUrl(getResource("views/player-setup-view.fxml"));
+            changeScene(event, getResource("views/player-setup-view.fxml"));
+//            controller.setNextViewUrl(getResource("views/chooseGameMove/choose-game-move-view.fxml"));
+//        else
+//            controller.setNextViewUrl(getResource("views/player-setup-view.fxml"));
     }
 
     private void updatePlayerNameText() {

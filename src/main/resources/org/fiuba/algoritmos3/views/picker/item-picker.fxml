@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import org.fiuba.algoritmos3.view.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="768.0" stylesheets="@../styles/backpack.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.ItemMenuController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="768.0" stylesheets="@../../styles/backpack.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.ItemPickerController">
     <children>
         <Pane prefHeight="583.0" prefWidth="768.0" styleClass="item-pane-top">
             <children>
@@ -16,12 +16,12 @@
                         <Ellipse fill="#9b9b9d" layoutX="118.0" layoutY="277.0" radiusX="56.0" radiusY="26.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
                         <ImageView fitHeight="125.0" fitWidth="138.0" layoutX="62.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/backpack.png" />
+                                <Image url="@../../images/backpack.png" />
                             </image>
                         </ImageView>
                         <ImageView fitHeight="90.0" fitWidth="215.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/box-tittle.png" />
+                                <Image url="@../../images/box-tittle.png" />
                             </image>
                         </ImageView>
                         <Label alignment="CENTER" layoutX="20.0" layoutY="16.0" prefHeight="46.0" prefWidth="198.0" text="OBJETOS" textAlignment="CENTER">

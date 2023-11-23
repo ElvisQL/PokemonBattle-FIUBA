@@ -11,7 +11,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       onMouseClicked="#handleChoosePokemonMouseClick" prefHeight="768.0" prefWidth="768.0"
       xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.fiuba.algoritmos3.controller.ChoosePokemonController">
+      fx:controller="org.fiuba.algoritmos3.controller.picker.PokemonPickerController">
 
     <fx:define>
         <Font fx:id="vt323" name="VT323"/>
@@ -280,7 +280,7 @@
                 </Label>
                 <ImageView fitHeight="177.0" fitWidth="553.0" pickOnBounds="true" preserveRatio="false">
                     <image>
-                        <Image url="@../images/dialogboxsquare.png"/>
+                        <Image url="@../../images/dialogboxsquare.png"/>
                     </image>
                 </ImageView>
             </children>

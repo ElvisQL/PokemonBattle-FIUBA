@@ -17,7 +17,7 @@ public abstract class BaseController implements Initializable {
 
     protected BaseController previousController;
 
-    BaseController() {
+    protected BaseController() {
         gameAPI = PokemonApp.getGameAPI();
     }
 
@@ -36,14 +36,9 @@ public abstract class BaseController implements Initializable {
         return nextController;
     }
 
-    protected BaseController changeScene(URL url) throws IOException {
-        Stage stage = PokemonApp.getMainStage();
-        FXMLLoader fxmlLoader = new FXMLLoader(url);
-        Scene scene = new Scene(fxmlLoader.load(), 768, 768);
+    protected BaseController changeScene(Event e, Scene scene) {
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(scene);
-        BaseController nextController = fxmlLoader.getController();
-        nextController.setPreviousController(this);
-        return nextController;
     }
 
     protected URL getResource(String name) {

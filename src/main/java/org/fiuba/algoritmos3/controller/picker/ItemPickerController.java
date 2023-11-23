@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3.controller;
+package org.fiuba.algoritmos3.controller.picker;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,16 +9,18 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-
 import org.fiuba.algoritmos3.model.Player;
 import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.view.BaseButton;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 
-public class ItemMenuController extends BaseController {
+public class ItemPickerController extends PickerController<Item> {
     @FXML
     public BaseButton backButton;
     @FXML
@@ -28,7 +30,6 @@ public class ItemMenuController extends BaseController {
     @FXML
     private Pane descriptionBox;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.scrollPane = new ScrollPane();
@@ -37,16 +38,17 @@ public class ItemMenuController extends BaseController {
         List<Item> items = currentPlayer.getItems();
         setItems(items);
     }
-    private void setItems(List<Item> items){
 
-        Map<Integer,Integer> itemCountMap = new HashMap<>();
+    private void setItems(List<Item> items) {
 
-        for (Item item : items){
-            itemCountMap.put(item.getId(),itemCountMap.getOrDefault(item.getId(),0) + 1);
+        Map<Integer, Integer> itemCountMap = new HashMap<>();
+
+        for (Item item : items) {
+            itemCountMap.put(item.getId(), itemCountMap.getOrDefault(item.getId(), 0) + 1);
         }
 
 
-        for (Item item : items){
+        for (Item item : items) {
             Pane pane = new Pane();
             HBox labelsContainer = new HBox();
             labelsContainer.setAlignment(Pos.CENTER_LEFT);
@@ -55,15 +57,15 @@ public class ItemMenuController extends BaseController {
 
             HBox.setHgrow(nameLabel, Priority.ALWAYS);
 
-            labelsContainer.getChildren().addAll(nameLabel,quantityLabel);
+            labelsContainer.getChildren().addAll(nameLabel, quantityLabel);
 
             pane.getChildren().add(labelsContainer);
 
 
-           pane.setOnMouseEntered(event ->{
-               Label description = new Label(item.getDescription());
-               descriptionBox.getChildren().setAll(description);
-           });
+            pane.setOnMouseEntered(event -> {
+                Label description = new Label(item.getDescription());
+                descriptionBox.getChildren().setAll(description);
+            });
 
 
             pane.getStyleClass().add("item-container");

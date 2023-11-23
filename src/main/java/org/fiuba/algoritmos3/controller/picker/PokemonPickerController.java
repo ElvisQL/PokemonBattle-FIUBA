@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3.controller;
+package org.fiuba.algoritmos3.controller.picker;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -15,19 +15,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import org.fiuba.algoritmos3.model.Player;
-import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.view.BaseButton;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class ChoosePokemonController extends BaseController {
+public class PokemonPickerController extends PickerController<Pokemon> {
     private Player currentPlayer = gameAPI.currentPlayer();
-    private Pokemon selectedPokemon;
 
     private URL previousViewUrl = getResource("views/chooseGameMove/choose-game-move-view.fxml");
     private URL nextViewUrl = getResource("views/chooseGameMove/choose-game-move-view.fxml");
@@ -38,8 +35,6 @@ public class ChoosePokemonController extends BaseController {
 
     @FXML
     private Pane viewPokemon;
-
-    private List<Pokemon> pokemons;
     @FXML
     private Text pokemonNameText;
 
@@ -98,9 +93,9 @@ public class ChoosePokemonController extends BaseController {
         if (currentPlayer == null)
             return;
 
-        pokemons = currentPlayer.getPokemons();
-        for (int i = 0; i < pokemons.size(); i++) {
-            Pokemon pokemon = pokemons.get(i);
+        options = currentPlayer.getPokemons();
+        for (int i = 0; i < options.size(); i++) {
+            Pokemon pokemon = options.get(i);
             Pane pane = (Pane) pokemonChooserMenu.getChildren().get(i);
 
             Text nameText = (Text) pane.lookup(".nameText");
@@ -126,8 +121,6 @@ public class ChoosePokemonController extends BaseController {
                 }
             }
         }
-
-        selectedPokemon = currentPlayer.getCurrentPokemon();
     }
 
     @FXML
@@ -138,14 +131,13 @@ public class ChoosePokemonController extends BaseController {
 
         selectedIndex = pokemonChooserMenu.getChildren().indexOf(clickedPane);
         updateSelection();
-        selectedPokemon = currentPlayer.getPokemons().get(selectedIndex);
 
         okButton.setDisable(false);
     }
 
     @FXML
-    private void handleOkButtonAction(ActionEvent event) throws InvalidSelectionException {
-        currentPlayer.setCurrentPokemon(selectedPokemon);
+    private void handleOkButtonAction(ActionEvent event) {
+        selection.setValue(currentPlayer.getPokemons().get(selectedIndex));
         try {
             changeScene(event, nextViewUrl);
         } catch (IOException e) {
