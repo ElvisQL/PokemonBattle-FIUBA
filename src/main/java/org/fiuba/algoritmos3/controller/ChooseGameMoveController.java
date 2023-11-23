@@ -27,7 +27,7 @@ public class ChooseGameMoveController extends BaseController {
         pokemonsSplitPane.getChildren().add(currentPokemonView);
     }
 
-    private void loadGameMoveController(Event e, GameMoveController<?> controller) {
+    private void loadGameMoveController(Event e, GameMoveController<?, ?> controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/picker-wrapper.fxml"));
         controller.setPreviousController(this);
         fxmlLoader.setController(controller);

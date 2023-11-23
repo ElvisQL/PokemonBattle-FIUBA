@@ -1,7 +1,7 @@
 package org.fiuba.algoritmos3.model.item;
 
 import org.fiuba.algoritmos3.Visitor;
-import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
+import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public abstract class Item {
@@ -18,7 +18,7 @@ public abstract class Item {
         this.description = description;
     }
 
-    public abstract void use(Pokemon pokemon) throws InvalidSelectionException;
+    public abstract void use(Pokemon pokemon) throws BaseError;
 
     public String getName() {
         return name;

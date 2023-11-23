@@ -1,6 +1,6 @@
 package org.fiuba.algoritmos3.model.error;
 
-public class InvalidDataException extends Exception {
+public class InvalidDataException extends BaseError {
     /*
     @param expected invalid file name as String
      */

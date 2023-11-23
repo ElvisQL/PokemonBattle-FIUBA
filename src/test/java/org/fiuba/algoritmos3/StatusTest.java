@@ -1,7 +1,7 @@
 package org.fiuba.algoritmos3;
 
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.model.menu.operation.errors.NoRemainingUsesError;
+import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
 import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;

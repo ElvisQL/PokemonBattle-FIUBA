@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3.model.weather;
 
-import org.fiuba.algoritmos3.model.menu.operation.errors.NoRemainingUsesError;
+import org.fiuba.algoritmos3.model.error.BaseError;
+import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.PokemonType;
 import org.fiuba.algoritmos3.model.pokemon.skills.AttackSkill;
@@ -12,7 +13,7 @@ import java.util.List;
 public abstract class BoostingWeather extends SkillModifier implements Weather {
 
     @Override
-    public void use(Pokemon pokemon, Pokemon otherPokemon) throws NoRemainingUsesError, IOException {
+    public void use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError {
         if (getSkillType() != AttackSkill.class && !boostedPokemonTypes().contains(pokemon.getType())) {
             this.wrappee.use(pokemon, otherPokemon);
         }

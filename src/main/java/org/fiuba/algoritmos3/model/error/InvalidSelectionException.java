@@ -1,6 +1,6 @@
 package org.fiuba.algoritmos3.model.error;
 
-public class InvalidSelectionException extends Exception {
+public class InvalidSelectionException extends BaseError {
     /*
     @param expected invalid object type as String
      */

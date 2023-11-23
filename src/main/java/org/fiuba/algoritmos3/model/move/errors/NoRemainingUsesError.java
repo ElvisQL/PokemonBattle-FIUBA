@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3.model.menu.operation.errors;
+package org.fiuba.algoritmos3.model.move.errors;
 
 public class NoRemainingUsesError extends SkillError {
     /*

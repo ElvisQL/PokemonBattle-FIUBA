@@ -1,52 +1,32 @@
 package org.fiuba.algoritmos3.model.move;
 
-import com.github.underscore.U;
 import org.fiuba.algoritmos3.UiDisplayableVisitor;
-import org.fiuba.algoritmos3.UserInterface;
 import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.Player;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
-import org.fiuba.algoritmos3.model.menu.Menu;
-import org.fiuba.algoritmos3.model.menu.MenuItem;
-import org.fiuba.algoritmos3.model.menu.operation.OperationResult;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
-public class ChangePokemon extends GameMove<String, Pokemon> {
+public class ChangePokemon extends GameMove {
     public final static String label = "Change Pokemon";
 
-    public ChangePokemon(GameState gameState) {
-        super(gameState);
+    private final Pokemon chosenPokemon;
+
+    public ChangePokemon(Pokemon selectedPokemon) {
+        this.chosenPokemon = selectedPokemon;
     }
 
-
     @Override
-    public OperationResult<String> run(UserInterface ui, OperationResult<Pokemon> pokemonResult) throws InvalidSelectionException {
+    public GameMoveResult<String> run(GameState gameState) {
+        Player player = gameState.getCurrentPlayer();
+        UiDisplayableVisitor uiDisplayableVisitor = new UiDisplayableVisitor();
 
-        if (pokemonResult.isErr()) {
-            return new OperationResult<String>().Err(pokemonResult.getError());
+        try {
+            player.setCurrentPokemon(chosenPokemon);
+        } catch (InvalidSelectionException e) {
+            return new GameMoveResult<String>().Err(e);
         }
-        Player player = gameState.getCurrentPlayer();
-        UiDisplayableVisitor uiDisplayableVisitor = new UiDisplayableVisitor();
 
-        Pokemon chosenPokemon = pokemonResult.getResult();
-        chosenPokemon.accept(uiDisplayableVisitor);
-        player.setCurrentPokemon(chosenPokemon);
-
-        return new OperationResult<String>().Ok(player.getName() + " changed pokemon to: " + uiDisplayableVisitor.getItemText());
+        return new GameMoveResult<String>().Ok(player.getName() + " changed pokemon to: " + uiDisplayableVisitor.getItemText());
     }
 
-    @Override
-    public @NotNull Menu<Pokemon> generateSubmenu() {
-        UiDisplayableVisitor uiDisplayableVisitor = new UiDisplayableVisitor();
-        Player player = gameState.getCurrentPlayer();
-
-        List<MenuItem<Pokemon, ?>> items = U.map(player.getPokemons(), pokemon -> {
-            pokemon.accept(uiDisplayableVisitor);
-            return new MenuItem<>(uiDisplayableVisitor.getItemText(), pokemon);
-        });
-        return new Menu<>(items);
-    }
 }

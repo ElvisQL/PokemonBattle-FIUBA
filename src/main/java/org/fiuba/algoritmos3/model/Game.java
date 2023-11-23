@@ -2,12 +2,17 @@ package org.fiuba.algoritmos3.model;
 
 import com.github.underscore.U;
 import org.fiuba.algoritmos3.GameAPI;
+import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.item.Item;
+import org.fiuba.algoritmos3.model.move.GameMove;
+import org.fiuba.algoritmos3.model.move.GameMoveResult;
+import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;
 import org.fiuba.algoritmos3.model.pokemon.status.ApplyableStatus;
 import org.fiuba.algoritmos3.model.weather.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,6 +58,11 @@ public class Game implements GameAPI {
 
         // Save Initial State of players and info in JSON
         Persistence.savePlayersInfo(gameState);
+    }
+
+    @Override
+    public <T extends GameMove> GameMoveResult<String> play(T gameMove) {
+        return gameMove.run(gameState);
     }
 
     public void stop() {

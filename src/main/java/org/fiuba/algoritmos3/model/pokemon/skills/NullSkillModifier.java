@@ -1,13 +1,11 @@
 package org.fiuba.algoritmos3.model.pokemon.skills;
 
-import org.fiuba.algoritmos3.model.menu.operation.errors.NoRemainingUsesError;
+import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
-
-import java.io.IOException;
 
 public class NullSkillModifier extends SkillModifier {
     @Override
-    public void use(Pokemon pokemon, Pokemon otherPokemon) throws NoRemainingUsesError, IOException {
+    public void use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError {
         this.wrappee.use(pokemon, otherPokemon);
     }
 

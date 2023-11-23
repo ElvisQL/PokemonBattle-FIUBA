@@ -8,9 +8,9 @@ import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.item.RestoreStatusItem;
 import org.fiuba.algoritmos3.model.item.ReviveItem;
-import org.fiuba.algoritmos3.model.menu.operation.OperationResult;
-import org.fiuba.algoritmos3.model.menu.operation.errors.NoRemainingUsesError;
-import org.fiuba.algoritmos3.model.menu.operation.errors.OwnershipError;
+import org.fiuba.algoritmos3.model.move.GameMoveResult;
+import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
+import org.fiuba.algoritmos3.model.move.errors.OwnershipError;
 import org.fiuba.algoritmos3.model.move.ChangePokemon;
 import org.fiuba.algoritmos3.model.move.Surrender;
 import org.fiuba.algoritmos3.model.move.UseItem;
@@ -125,7 +125,7 @@ public class MoveTest {
                 john.setCurrentPokemon(charizard);
                 Assertions.assertEquals(charizard, john.getCurrentPokemon());
 
-                change.run(ui, new OperationResult<Pokemon>().Ok(squirtle));
+                change.run(ui, new GameMoveResult<Pokemon>().Ok(squirtle));
 
                 Assertions.assertEquals(john.getCurrentPokemon(), squirtle);
             }
@@ -134,7 +134,7 @@ public class MoveTest {
             @DisplayName("changing Pokemon to one that isn't in that player's roster fails")
             public void testChangePokemon_PokemonNotInRoster() {
                 Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-                    change.run(ui, new OperationResult<Pokemon>().Ok(pikachu));
+                    change.run(ui, new GameMoveResult<Pokemon>().Ok(pikachu));
                 });
 
                 checkAssertionMessage(exception, "Pokemon");
@@ -146,7 +146,7 @@ public class MoveTest {
                 john.setCurrentPokemon(charizard);
                 squirtle.kill();
                 Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-                    change.run(ui, new OperationResult<Pokemon>().Ok(squirtle));
+                    change.run(ui, new GameMoveResult<Pokemon>().Ok(squirtle));
                 });
 
                 checkAssertionMessage(exception, "Pokemon");
@@ -168,11 +168,11 @@ public class MoveTest {
                 john.setCurrentPokemon(squirtle);
                 squirtle.addStatus(new ParalyzedStatus());
 
-                OperationResult<Pair<Item, Pokemon>> submenuResult = new OperationResult<Pair<Item, Pokemon>>().Ok(new Pair<>(
+                GameMoveResult<Pair<Item, Pokemon>> submenuResult = new GameMoveResult<Pair<Item, Pokemon>>().Ok(new Pair<>(
                         restore,
                         squirtle
                 ));
-                OperationResult<?> result = useItem.run(ui, submenuResult);
+                GameMoveResult<?> result = useItem.run(ui, submenuResult);
 
                 assertTrue(result.isOk());
 
@@ -186,13 +186,13 @@ public class MoveTest {
                 john.getItems().clear();
                 john.getItems().add(reviveFullItem);
 
-                OperationResult<Pair<Item, Pokemon>> submenuResult = new OperationResult<Pair<Item, Pokemon>>().Ok(new Pair<>(
+                GameMoveResult<Pair<Item, Pokemon>> submenuResult = new GameMoveResult<Pair<Item, Pokemon>>().Ok(new Pair<>(
                         reviveFullItem,
                         squirtle
                 ));
 
                 squirtle.kill();
-                OperationResult<?> result = useItem.run(ui, submenuResult);
+                GameMoveResult<?> result = useItem.run(ui, submenuResult);
                 assertTrue(result.isOk());
                 assertFalse(squirtle.isDead());
             }
@@ -203,12 +203,12 @@ public class MoveTest {
                 john.setCurrentPokemon(squirtle);
                 john.getItems().clear();
 
-                OperationResult<Pair<Item, Pokemon>> submenuResult = new OperationResult<Pair<Item, Pokemon>>().Ok(new Pair<>(
+                GameMoveResult<Pair<Item, Pokemon>> submenuResult = new GameMoveResult<Pair<Item, Pokemon>>().Ok(new Pair<>(
                         restore,
                         squirtle
                 ));
 
-                OperationResult<?> result = useItem.run(ui, submenuResult);
+                GameMoveResult<?> result = useItem.run(ui, submenuResult);
                 assertTrue(result.isErr());
 
                 assertEquals(result.getError().getClass(), OwnershipError.class);
@@ -223,7 +223,7 @@ public class MoveTest {
             public void testUseSkill() throws NoRemainingUsesError, IOException, InvalidSelectionException {
                 john.setCurrentPokemon(squirtle);
                 Integer quirtleDefense = squirtle.getDefencePoints();
-                useSkill.run(ui, new OperationResult<ConcreteSkill>().Ok(squirtle.getSkills().get(1)));
+                useSkill.run(ui, new GameMoveResult<ConcreteSkill>().Ok(squirtle.getSkills().get(1)));
                 Assertions.assertTrue(squirtle.getDefencePoints() > quirtleDefense);
             }
 
@@ -235,7 +235,7 @@ public class MoveTest {
                 squirtle.getSkills().add(skillWithoutUses);
 
                 Exception exception = assertThrows(NoRemainingUsesError.class, () -> {
-                    useSkill.run(ui, new OperationResult<ConcreteSkill>().Ok(skillWithoutUses));
+                    useSkill.run(ui, new GameMoveResult<ConcreteSkill>().Ok(skillWithoutUses));
                 });
             }
         }

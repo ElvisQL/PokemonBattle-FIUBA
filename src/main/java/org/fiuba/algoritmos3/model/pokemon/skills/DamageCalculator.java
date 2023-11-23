@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.pokemon.skills;
 
+import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.PokemonType;
 
@@ -15,8 +16,13 @@ public class DamageCalculator {
         this.power = power;
     }
 
-    public Double calculateDamage(Pokemon pokemonAttacker, Pokemon pokemonTarget) throws IOException {
-        HashMap<PokemonType, HashMap<PokemonType, Double>> efficacyHash = EfficacyTableLoader.load();
+    public Double calculateDamage(Pokemon pokemonAttacker, Pokemon pokemonTarget) throws BaseError {
+        HashMap<PokemonType, HashMap<PokemonType, Double>> efficacyHash = null;
+        try {
+            efficacyHash = EfficacyTableLoader.load();
+        } catch (IOException e) {
+            throw new BaseError(e.getMessage());
+        }
 
         Double efficacyType = getEfficacyType(pokemonAttacker.getType(), pokemonTarget.getType(), efficacyHash);
         Double sameType = sameType(pokemonAttacker, pokemonTarget);

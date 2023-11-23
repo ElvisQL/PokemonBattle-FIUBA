@@ -1,9 +1,8 @@
 package org.fiuba.algoritmos3.model.pokemon.skills;
 
-import org.fiuba.algoritmos3.model.menu.operation.errors.NoRemainingUsesError;
+import org.fiuba.algoritmos3.model.error.BaseError;
+import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
-
-import java.io.IOException;
 
 public class AttackSkill extends ConcreteSkill {
     private Integer remainingUses;
@@ -17,7 +16,7 @@ public class AttackSkill extends ConcreteSkill {
     }
 
     @Override
-    public void apply(Pokemon pokemonAttacker, Pokemon pokemonTarget) throws IOException, NoRemainingUsesError {
+    public void apply(Pokemon pokemonAttacker, Pokemon pokemonTarget) throws BaseError {
         if (remainingUses <= 0) {
             throw new NoRemainingUsesError();
         }

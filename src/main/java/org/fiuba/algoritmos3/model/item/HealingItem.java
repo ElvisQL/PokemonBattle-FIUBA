@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.item;
 
+import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 

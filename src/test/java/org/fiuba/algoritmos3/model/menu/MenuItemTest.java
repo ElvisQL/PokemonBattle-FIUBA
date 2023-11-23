@@ -3,8 +3,8 @@ package org.fiuba.algoritmos3.model.menu;
 import org.fiuba.algoritmos3.UserInterface;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.menu.operation.Operation;
-import org.fiuba.algoritmos3.model.menu.operation.OperationResult;
-import org.fiuba.algoritmos3.model.menu.operation.errors.BaseError;
+import org.fiuba.algoritmos3.model.move.GameMoveResult;
+import org.fiuba.algoritmos3.model.error.BaseError;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -37,7 +37,7 @@ class MenuItemTest {
         UserInterface ui;
         @Mock
         Operation<String, String> operation;
-        OperationResult<String> submenuResult;
+        GameMoveResult<String> submenuResult;
         @Mock
         Menu<String> submenu;
 
@@ -46,13 +46,13 @@ class MenuItemTest {
             MenuItem<String, String> item = new MenuItem<>("label", operation);
 
             doReturn(submenu).when(operation).generateSubmenu();
-            submenuResult = new OperationResult<String>().Ok("it's all good man");
+            submenuResult = new GameMoveResult<String>().Ok("it's all good man");
             doReturn(submenuResult).when(submenu).show(ui);
 
-            OperationResult<String> menuItemResult = new OperationResult<String>().Ok("chillin'");
+            GameMoveResult<String> menuItemResult = new GameMoveResult<String>().Ok("chillin'");
             doReturn(menuItemResult).when(operation).run(ui, submenuResult);
 
-            OperationResult<?> result = item.runOperation(ui);
+            GameMoveResult<?> result = item.runOperation(ui);
             assertTrue(result.isOk());
             assertEquals(result, menuItemResult);
         }
@@ -64,7 +64,7 @@ class MenuItemTest {
             BaseError error = new BaseError("passed");
             doThrow(error).when(operation).generateSubmenu();
 
-            OperationResult<?> result = item.runOperation(ui);
+            GameMoveResult<?> result = item.runOperation(ui);
             assertTrue(result.isErr());
             assertEquals(result.getError(), error);
         }
