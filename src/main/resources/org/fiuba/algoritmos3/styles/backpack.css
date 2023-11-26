@@ -2,17 +2,46 @@
     -fx-background-image: url('../images/main-background.jpg');
     -fx-background-size: cover;
 }
+.label-item{
+    -fx-font-weight: bolder;
+    -fx-font-family: VT323;
+    -fx-fill: black;
+
+}
+
+.vbox-items{
+    -fx-spacing: 15px;
+    -fx-background-color: #f0c060;
+
+}
+
 .item-container{
-    -fx-min-height: 20px;
-
-
+    -fx-min-height: 80px;
     -fx-background-color: #f9f6cf;
     -fx-border-width: 3px;
     -fx-border-color: #d5ba67;
-
-
 }
-
+.item-mouse-entered{
+    -fx-border-color: #000000;
+}
+.marked-item{
+    -fx-border-color: #810202;
+}
 .item-container Label{
     -fx-font-size: 18px;
 }
+
+#descriptionBox{
+    -fx-padding: 5px;
+    -fx-alignment: CENTER;
+
+}
+#descriptionBox .label-description{
+    -fx-font-size: 32px;
+    -fx-font-family: VT323;
+    -fx-fill:#f3f3f3;
+    -fx-stroke-width: 0.5;
+    -fx-stroke: black;
+
+}
+

@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3;
+package org.fiuba.algoritmos3.controller;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;

@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import org.fiuba.algoritmos3.view.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="768.0" stylesheets="@../../styles/backpack.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.ItemPickerController">
+<?import org.fiuba.algoritmos3.view.BaseButton?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="768.0" stylesheets="@../../styles/backpack.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.ItemPickerController">
     <children>
         <Pane prefHeight="583.0" prefWidth="768.0" styleClass="item-pane-top">
             <children>
@@ -33,19 +38,22 @@
                 </Pane>
                 <Pane layoutX="229.0" layoutY="14.0" prefHeight="549.0" prefWidth="533.0" style="-fx-background-color: #f0c060; -fx-border-width: 10px; -fx-border-color: black;">
                     <children>
-                        <VBox fx:id="itemsBox" layoutX="26.0" layoutY="-13.0" prefHeight="528.0" prefWidth="517.0" style="-fx-border-color: #d89840; -fx-border-width: 10px; -fx-border-radius: 5px;" />
+                  <VBox fx:id="itemsBox" layoutX="13.0" layoutY="14.0" prefHeight="516.0" prefWidth="504.0" styleClass="vbox-items" stylesheets="@../../styles/backpack.css" />
+                  <ScrollPane fx:id="scrollItems" hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0" prefHeight="516.0" prefWidth="504.0" stylesheets="@../../styles/backpack.css" vbarPolicy="NEVER" />
                     </children>
                 </Pane>
             </children>
         </Pane>
         <Pane layoutX="-1.0" layoutY="568.0" prefHeight="200.0" prefWidth="768.0" style="-fx-background-color: #2c65a3; -fx-border-width: 10px; -fx-border-color: #204e6f; -fx-border-radius: 15px;">
             <children>
-                <Pane fx:id="descriptionBox" prefHeight="200.0" prefWidth="533.0" />
-                <VBox alignment="CENTER" layoutX="546.0" layoutY="7.0" prefHeight="183.0" prefWidth="215.0">
-                    <children>
-                        <BaseButton fx:id="backButton" onAction="#handleButtonAction" prefHeight="52.0" prefWidth="171.0" text="Volver" />
-                    </children>
-                </VBox>
+            <TextFlow fx:id="descriptionBox" layoutX="14.0" layoutY="11.0" prefHeight="180.0" prefWidth="533.0" />
+            <VBox alignment="CENTER" layoutX="556.0" layoutY="11.0" prefHeight="180.0" prefWidth="198.0">
+               <children>
+                   <BaseButton text="Seleccionar" fx:id="okButton" prefWidth="171" prefHeight="55" onAction="#handleOkButton"/>
+                   <BaseButton text="Volver" fx:id="backButton" prefHeight="55" prefWidth="171" onAction="#handleBackButtonAction"/>
+
+               </children>
+            </VBox>
             </children>
         </Pane>
 
