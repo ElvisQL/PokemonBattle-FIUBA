@@ -9,14 +9,18 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
-
 <?import org.fiuba.algoritmos3.view.BaseButton?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="768.0" stylesheets="@../../styles/backpack.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.ItemPickerController">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
+      prefWidth="768.0" stylesheets="@../../styles/backpack.css" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.ItemPickerController">
     <children>
-        <Pane prefHeight="583.0" prefWidth="768.0" styleClass="item-pane-top">
+        <Pane prefHeight="600.0" prefWidth="768.0" styleClass="item-pane-top">
             <children>
-                <Pane prefHeight="583.0" prefWidth="231.0">
+                <Pane prefHeight="583.0" prefWidth="231.0" >
                     <children>
                         <Ellipse fill="#9b9b9d" layoutX="118.0" layoutY="277.0" radiusX="56.0" radiusY="26.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
                         <ImageView fitHeight="125.0" fitWidth="138.0" layoutX="62.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
@@ -24,38 +28,67 @@
                                 <Image url="@../../images/backpack.png" />
                             </image>
                         </ImageView>
-                        <ImageView fitHeight="90.0" fitWidth="215.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../images/box-tittle.png" />
-                            </image>
-                        </ImageView>
-                        <Label alignment="CENTER" layoutX="20.0" layoutY="16.0" prefHeight="46.0" prefWidth="198.0" text="OBJETOS" textAlignment="CENTER">
-                            <font>
-                                <Font name="VT323 Regular" size="31.0" />
-                            </font>
-                        </Label>
+<!--                        <ImageView fitHeight="90.0" fitWidth="215.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">-->
+<!--                            <image>-->
+<!--                                <Image url="@../../images/box-tittle.png" />-->
+<!--                            </image>-->
+<!--                        </ImageView>-->
+<!--                        <Label alignment="CENTER" layoutX="20.0" layoutY="16.0" prefHeight="46.0" prefWidth="198.0" text="OBJETOS" textAlignment="CENTER">-->
+<!--                            <font>-->
+<!--                                <Font name="VT323 Regular" size="31.0" />-->
+<!--                            </font>-->
+<!--                        </Label>-->
                     </children>
                 </Pane>
-                <Pane layoutX="229.0" layoutY="14.0" prefHeight="549.0" prefWidth="533.0" style="-fx-background-color: #f0c060; -fx-border-width: 10px; -fx-border-color: black;">
+                <Pane layoutX="229.0" layoutY="14.0" prefHeight="549.0" prefWidth="533.0" style=" -fx-border-radius: 5;
+                -fx-background-radius: 10; -fx-background-color: #f0c060; -fx-border-width: 10px; -fx-border-color: #2d2a23;">
                     <children>
-                  <VBox fx:id="itemsBox" layoutX="13.0" layoutY="14.0" prefHeight="516.0" prefWidth="504.0" styleClass="vbox-items" stylesheets="@../../styles/backpack.css" />
+                  <VBox fx:id="itemsBox" layoutX="13.0" layoutY="14.0" prefHeight="516.0" prefWidth="504.0"
+                        styleClass="vbox-items" stylesheets="@../../styles/backpack.css"/>
                   <ScrollPane fx:id="scrollItems" hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0" prefHeight="516.0" prefWidth="504.0" stylesheets="@../../styles/backpack.css" vbarPolicy="NEVER" />
                     </children>
                 </Pane>
             </children>
         </Pane>
-        <Pane layoutX="-1.0" layoutY="568.0" prefHeight="200.0" prefWidth="768.0" style="-fx-background-color: #2c65a3; -fx-border-width: 10px; -fx-border-color: #204e6f; -fx-border-radius: 15px;">
-            <children>
-            <TextFlow fx:id="descriptionBox" layoutX="14.0" layoutY="11.0" prefHeight="180.0" prefWidth="533.0" />
-            <VBox alignment="CENTER" layoutX="556.0" layoutY="11.0" prefHeight="180.0" prefWidth="198.0">
-               <children>
-                   <BaseButton text="Seleccionar" fx:id="okButton" prefWidth="171" prefHeight="55" onAction="#handleOkButton"/>
-                   <BaseButton text="Volver" fx:id="backButton" prefHeight="55" prefWidth="171" onAction="#handleBackButtonAction"/>
 
-               </children>
-            </VBox>
-            </children>
-        </Pane>
-
+            <HBox alignment="CENTER" prefHeight="168.0" prefWidth="768.0"
+                  style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;"
+                  layoutX="0" layoutY="600">
+                <children>
+                    <AnchorPane
+                            style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;"
+                            HBox.hgrow="ALWAYS">
+                        <children>
+                            <TextFlow fx:id="descriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0" prefWidth="533.0"
+                                      AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0"/>
+                        </children>
+                    </AnchorPane>
+                    <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0"
+                              style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
+                        <children>
+                            <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                        minWidth="-Infinity" mnemonicParsing="false" fx:id="backButton"
+                                        onAction="#handleBackButtonAction" prefHeight="52.0"
+                                        prefWidth="130.0" text="BACK" GridPane.halignment="CENTER"
+                                        GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER"
+                                        GridPane.vgrow="ALWAYS">
+                                <font>
+                                    <Font size="15.0"/>
+                                </font>
+                            </BaseButton>
+                            <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                        minWidth="-Infinity" mnemonicParsing="false"  fx:id="okButton"
+                                        onAction="#handleOkButton" prefHeight="55.0" prefWidth="171.0"
+                                        text="SELECT" GridPane.halignment="CENTER"
+                                        GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER"
+                                        GridPane.vgrow="ALWAYS">
+                                <font>
+                                    <Font size="15.0"/>
+                                </font>
+                            </BaseButton>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </HBox>
     </children>
 </Pane>

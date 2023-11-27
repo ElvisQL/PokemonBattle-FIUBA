@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import org.fiuba.algoritmos3.controller.gameMove.ChangePokemonController;
 import org.fiuba.algoritmos3.controller.gameMove.GameMoveController;
 import org.fiuba.algoritmos3.controller.gameMove.UseItemController;
@@ -17,6 +20,7 @@ import java.util.ResourceBundle;
 
 public class ChooseGameMoveController extends BaseController {
     public VBox pokemonsSplitPane;
+    public TextFlow gameMoveDescriptionLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -26,6 +30,10 @@ public class ChooseGameMoveController extends BaseController {
 
         PokemonView currentPokemonView = new PokemonView(gameAPI.currentPlayer().getCurrentPokemon());
         pokemonsSplitPane.getChildren().add(currentPokemonView);
+
+        Text msg = new Text("What will "+gameAPI.currentPlayer().getCurrentPokemon().getName()+" do?");
+        msg.setFill(Color.WHITE); // TODO move a views?
+        gameMoveDescriptionLabel.getChildren().add(msg);
     }
 
     private void loadGameMoveController(Event e, GameMoveController<?, ?> controller) {

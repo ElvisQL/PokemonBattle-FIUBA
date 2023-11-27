@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import org.fiuba.algoritmos3.PokemonApp;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.view.BaseButton;
@@ -25,6 +26,8 @@ import java.util.ResourceBundle;
 
 
 public class PokemonPickerController extends PickerController<Pokemon> {
+
+    public TextFlow descriptionBox;
     @FXML
     private VBox pokemonChooserMenu;
     private int selectedIndex;
@@ -63,6 +66,9 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Text newText= new Text("Choose wisely"); //TODO change message when needed
+                newText.setFill(Color.WHITE);
+        descriptionBox.getChildren().add(newText);
 
         for (Node node : pokemonChooserMenu.getChildren()) {
             if (node instanceof Pane pane) {

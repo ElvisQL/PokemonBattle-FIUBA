@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane fx:id="rootPane" style="-fx-background-image: url('org/fiuba/algoritmos3/images/backgrounds/woods.jpg');" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.MessageDisplayController">
+
+   <HBox layoutY="34.0" prefHeight="250.0" prefWidth="768.0">
+      <children>
+         <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="352.0">
+            <children>
+               <GridPane fx:id="oppPokeballGrid" prefHeight="30.0" prefWidth="230.0">
+               </GridPane>
+               <Rectangle fx:id="rightBar" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="7.0" nodeOrientation="RIGHT_TO_LEFT" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="260.0" />
+            </children>
+         </VBox>
+         <ImageView fx:id="oppositeTrainer" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      </children>
+   </HBox>
+   <HBox layoutY="450.0" prefHeight="150.0" prefWidth="768">
+      <ImageView fx:id="activeTrainer" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="600" />
+      <VBox prefHeight="150.0" prefWidth="292.0" AnchorPane.bottomAnchor="600" AnchorPane.leftAnchor="768">
+         <children>
+            <GridPane fx:id="actPokeballGrid" prefHeight="30.0" prefWidth="230.0">
+         </GridPane>
+            <Rectangle fx:id="leftBar" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="7.0" nodeOrientation="RIGHT_TO_LEFT" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="260.0" />
+         </children>
+      </VBox>
+   </HBox>
+
+
+   <HBox fx:id="msgbox" alignment="CENTER" layoutY="600.0" prefHeight="168.0" prefWidth="768.0" style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
+      <children>
+         <AnchorPane style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+            <children>
+               <Label fx:id="message" layoutX="95.0" layoutY="22.0" textFill="#ccd1d7" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
+            </children>
+         </AnchorPane>
+      </children>
+   </HBox>
+
+
+</AnchorPane>

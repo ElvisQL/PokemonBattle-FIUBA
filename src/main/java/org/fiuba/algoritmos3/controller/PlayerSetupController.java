@@ -37,7 +37,13 @@ public class PlayerSetupController extends PickerWrapperController {
         Stage stage = (Stage) rootPane.getScene().getWindow();
         if (gameAPI.getPlayers().size() >= 2) {
             gameAPI.start();
-            changeScene(stage, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
+
+            // show message
+            changeScene(stage, getResource("views/trainersBattlefield/trainer-view.fxml"));
+
+            // change scene
+           // changeScene(stage, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
+
         } else {
             BaseController controller = new PlayerSetupController();
             FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/picker-wrapper.fxml"));

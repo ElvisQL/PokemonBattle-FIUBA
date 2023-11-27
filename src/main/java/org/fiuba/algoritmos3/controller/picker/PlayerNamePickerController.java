@@ -21,7 +21,7 @@ public class PlayerNamePickerController extends PickerController<String> {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        playerNameTitle.setText("Jugador " + (gameAPI.getPlayers().size() + 1));
+        playerNameTitle.setText("Player " + (gameAPI.getPlayers().size() + 1));
         playerNameText.clear();
     }
 

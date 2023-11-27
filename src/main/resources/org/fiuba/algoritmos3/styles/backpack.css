@@ -28,7 +28,7 @@
     -fx-border-color: #810202;
 }
 .item-container Label{
-    -fx-font-size: 18px;
+    -fx-font-size: 14px;
 }
 
 #descriptionBox{
@@ -37,7 +37,7 @@
 
 }
 #descriptionBox .label-description{
-    -fx-font-size: 32px;
+    -fx-font-size: 15px;
     -fx-font-family: VT323;
     -fx-fill:#f3f3f3;
     -fx-stroke-width: 0.5;
