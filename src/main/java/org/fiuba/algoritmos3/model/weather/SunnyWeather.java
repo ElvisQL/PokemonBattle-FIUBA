@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.weather;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.pokemon.PokemonType;
 
 import java.util.List;
@@ -13,5 +14,10 @@ public class SunnyWeather extends BoostingWeather {
     @Override
     public String getName() {
         return "Sunny";
+    }
+
+    @Override
+    public void endTurn(GameState gameState) {
+
     }
 }

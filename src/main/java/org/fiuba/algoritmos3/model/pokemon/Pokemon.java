@@ -116,32 +116,11 @@ public class Pokemon {
         return description.toString().trim();
     }
 
-    public Status getStatus(Class<? extends Status> strategyClass) {
-        Status status = null;
-        for (Status strategy : this.statuses) {
-            if (strategy.getClass() == strategyClass) {
-                status = strategy;
-            }
-        }
-        return status;
-    }
 
     public void clearStatuses() {
         this.statuses.clear();
     }
 
-    public void deleteStatus(Status status) {
-        this.statuses.remove(status);
-    }
-
-    public boolean hasStatus(Class<? extends Status> statusClass) {
-        for (Status strategy : this.statuses) {
-            if (statusClass.isInstance(strategy)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     public void kill() {
         this.statuses.clear();
@@ -153,7 +132,12 @@ public class Pokemon {
     }
 
     public boolean isDead() {
-        return this.hasStatus(DeadStatus.class);
+        for (Status status : statuses){
+            if (status.getName().equals(DeadStatus.class.getName())){
+                return true;
+            };
+        }
+        return false;
     }
 
     // UI -------------------------------------------------------------------------------------------------------------

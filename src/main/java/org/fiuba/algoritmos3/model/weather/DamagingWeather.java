@@ -6,6 +6,7 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import java.util.List;
 
 public interface DamagingWeather extends Weather {
+    @Override
     default void endTurn(GameState gameState) {
         List<Pokemon> pokemons = List.of(
                 gameState.getCurrentPlayer().getCurrentPokemon(),

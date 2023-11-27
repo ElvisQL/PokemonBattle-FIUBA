@@ -146,9 +146,8 @@ public class Game implements GameAPI {
 
     private void applyWeather() {
         Weather weather = gameState.getWeather();
-        if (weather instanceof DamagingWeather damagingWeather) {
-            damagingWeather.endTurn(gameState);
-        }
+        weather.endTurn(gameState);
+
     }
 
     @Override

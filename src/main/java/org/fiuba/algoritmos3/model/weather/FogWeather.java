@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.weather;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.pokemon.PokemonType;
 
 import java.util.List;
@@ -14,5 +15,10 @@ public class FogWeather extends BoostingWeather {
     @Override
     public String getName() {
         return "Fog";
+    }
+
+    @Override
+    public void endTurn(GameState gameState) {
+
     }
 }
