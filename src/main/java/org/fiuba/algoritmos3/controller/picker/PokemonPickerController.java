@@ -63,6 +63,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         for (Node node : pokemonChooserMenu.getChildren()) {
             if (node instanceof Pane pane) {
                 pane.setOnMouseClicked(this::handleChoosePokemonMouseClick);
@@ -82,7 +83,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     }
 
     private void loadPokemons() {
-        for (int i = 0; i < options.size(); i++) {
+        for (int i = 0; i < options.size() && i < pokemonChooserMenu.getChildren().size(); i++) {
             Pokemon pokemon = options.get(i);
             Pane pane = (Pane) pokemonChooserMenu.getChildren().get(i);
 
