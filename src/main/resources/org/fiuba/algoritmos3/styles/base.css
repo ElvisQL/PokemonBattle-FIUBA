@@ -2,7 +2,7 @@
     -fx-background-image: url('../images/main-background.jpg');
     -fx-background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    -fx-background-position: center center;
 }
 
 

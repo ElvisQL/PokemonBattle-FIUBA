@@ -6,40 +6,50 @@
 <?import org.fiuba.algoritmos3.view.BaseButton?>
 
 <?import java.net.URL?>
-<BorderPane prefHeight="768.0" prefWidth="1024.0" styleClass="main-background"
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="768.0" prefWidth="7681024.0" styleClass="main-background"
             xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.fiuba.algoritmos3.controller.StartMenuController">
     <stylesheets>
         <URL value="@../styles/base.css" />
         <URL value="@../styles/menu.css" />
     </stylesheets>
-    <center>
-        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                <children>
-                    <ImageView fitHeight="97.0" fitWidth="347.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../images/pokelogo.png"/>
-                    </ImageView>
-                    <BaseButton fx:id="startButton" onAction="#startGame" prefHeight="56.0" prefWidth="165.0"
-                                text="Start Game"/>
-                    <BaseButton fx:id="exitButton" maxHeight="56.0" maxWidth="165.0" onAction="#onClickExit"
-                                prefHeight="56" prefWidth="165" text="Exit"/>
-                </children>
-            </VBox>
-        </HBox>
-    </center>
+    <VBox alignment="CENTER">
+        <Pane prefWidth="768.0" prefHeight="290">
+            <ImageView layoutX="225" layoutY="50.0" fitHeight="110.0" fitWidth="347.0" preserveRatio="true">
+                <Image url="@../images/pokelogo.png"/>
+            </ImageView>
+        </Pane>
 
-    <bottom>
-        <VBox alignment="BOTTOM_CENTER" spacing="10.0">
-            <ImageView fitHeight="195.0" fitWidth="381.0" pickOnBounds="true" preserveRatio="true">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="768.0" layoutY="300">
+            <children>
+
+                <BaseButton layoutY="300" fx:id="startButton" onAction="#startGame" prefHeight="56.0" prefWidth="220.0"
+                            text="START GAME">
+                    <font>
+                        <Font size="22.0"/>
+                    </font>
+
+                </BaseButton>
+                <BaseButton fx:id="exitButton" maxHeight="56.0" maxWidth="150.0" onAction="#onClickExit"
+                            prefHeight="56" prefWidth="150" text="EXIT">
+                <font>
+                    <Font size="13.0"/>
+                </font>
+                </BaseButton>
+            </children>
+        </VBox>
+
+    </VBox>
+        <VBox alignment="CENTER" layoutY="468" prefWidth="768" prefHeight="300">
+            <ImageView layoutX="378.0" fitHeight="195.0" fitWidth="378.0" pickOnBounds="true" preserveRatio="true">
                 <image>
                     <Image url="@../images/dancing-squirtle.gif"/>
                 </image>
             </ImageView>
-            <BaseButton fx:id="muteButton" defaultImageUrl="images/mute.png" minHeight="-Infinity" minWidth="-Infinity"
-                        onMouseClicked="#onMuteButtonClick" prefHeight="75.0" prefWidth="75.0"
+            <BaseButton layoutY="700" layoutX="372.0" fx:id="muteButton" defaultImageUrl="images/mute.png" minHeight="-Infinity" minWidth="-Infinity"
+                        onMouseClicked="#onMuteButtonClick" prefHeight="30.0" prefWidth="30.0"
                         selectedImageUrl="images/mute-selected.png"/>
         </VBox>
-    </bottom>
 
-</BorderPane>
+</AnchorPane>
