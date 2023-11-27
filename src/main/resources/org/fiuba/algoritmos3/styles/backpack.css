@@ -1,12 +1,11 @@
 .item-pane-top{
-    -fx-background-image: url('../images/main-background.jpg');
     -fx-background-size: cover;
+    -fx-background-image: url('../images/backgrounds/backmenu.png');
 }
 .label-item{
     -fx-font-weight: bolder;
     -fx-font-family: VT323;
     -fx-fill: black;
-
 }
 
 .vbox-items{
@@ -18,14 +17,20 @@
 .item-container{
     -fx-min-height: 80px;
     -fx-background-color: #f9f6cf;
-    -fx-border-width: 3px;
     -fx-border-color: #d5ba67;
+    -fx-background-radius: 15;
+    -fx-border-radius: 10;
 }
 .item-mouse-entered{
-    -fx-border-color: #000000;
+    -fx-font-size: 18;
+    -fx-background-color: #e3af48;
 }
 .marked-item{
-    -fx-border-color: #810202;
+    -fx-border-color: #2f4e62;
+    -fx-border-width: 5px;
+    -fx-background-color: #f9f6cf;
+    -fx-scale-y: 0.95;
+    -fx-scale-x: 0.95;
 }
 .item-container Label{
     -fx-font-size: 14px;
@@ -33,15 +38,12 @@
 
 #descriptionBox{
     -fx-padding: 5px;
-    -fx-alignment: CENTER;
 
 }
 #descriptionBox .label-description{
-    -fx-font-size: 15px;
+    -fx-font-size: 14px;
     -fx-font-family: VT323;
     -fx-fill:#f3f3f3;
-    -fx-stroke-width: 0.5;
-    -fx-stroke: black;
 
 }
 

@@ -22,37 +22,28 @@
             <children>
                 <Pane prefHeight="583.0" prefWidth="231.0" >
                     <children>
-                        <Ellipse fill="#9b9b9d" layoutX="118.0" layoutY="277.0" radiusX="56.0" radiusY="26.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
-                        <ImageView fitHeight="125.0" fitWidth="138.0" layoutX="62.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+                        <Ellipse fill="#9b9b9d" layoutX="128.0" layoutY="390.0" radiusX="66.0" radiusY="23.0" smooth="false" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <ImageView fitHeight="180.0" fitWidth="138.0" layoutX="62.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../images/backpack.png" />
                             </image>
                         </ImageView>
-<!--                        <ImageView fitHeight="90.0" fitWidth="215.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">-->
-<!--                            <image>-->
-<!--                                <Image url="@../../images/box-tittle.png" />-->
-<!--                            </image>-->
-<!--                        </ImageView>-->
-<!--                        <Label alignment="CENTER" layoutX="20.0" layoutY="16.0" prefHeight="46.0" prefWidth="198.0" text="OBJETOS" textAlignment="CENTER">-->
-<!--                            <font>-->
-<!--                                <Font name="VT323 Regular" size="31.0" />-->
-<!--                            </font>-->
-<!--                        </Label>-->
+
                     </children>
                 </Pane>
-                <Pane layoutX="229.0" layoutY="14.0" prefHeight="549.0" prefWidth="533.0" style=" -fx-border-radius: 5;
-                -fx-background-radius: 10; -fx-background-color: #f0c060; -fx-border-width: 10px; -fx-border-color: #2d2a23;">
+                <Pane layoutX="254.0" layoutY="36.0" prefHeight="529.0" prefWidth="480.0" style=" -fx-border-radius: 5;
+                -fx-background-radius: 10; -fx-background-color: #f0c060; -fx-border-width: 7px; -fx-border-color: #2f4e62;">
                     <children>
-                  <VBox fx:id="itemsBox" layoutX="13.0" layoutY="14.0" prefHeight="516.0" prefWidth="504.0"
+                  <VBox fx:id="itemsBox" layoutX="13.0" layoutY="14.0" prefHeight="496.0" prefWidth="450.0"
                         styleClass="vbox-items" stylesheets="@../../styles/backpack.css"/>
-                  <ScrollPane fx:id="scrollItems" hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0" prefHeight="516.0" prefWidth="504.0" stylesheets="@../../styles/backpack.css" vbarPolicy="NEVER" />
+                  <ScrollPane fx:id="scrollItems" hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0" prefHeight="496.0" prefWidth="450.0" stylesheets="@../../styles/backpack.css" vbarPolicy="NEVER" />
                     </children>
                 </Pane>
             </children>
         </Pane>
 
             <HBox alignment="CENTER" prefHeight="168.0" prefWidth="768.0"
-                  style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;"
+                  style="-fx-background-color: #2a2e2d; -fx-border-color: #343434; -fx-border-width: 3;"
                   layoutX="0" layoutY="600">
                 <children>
                     <AnchorPane
