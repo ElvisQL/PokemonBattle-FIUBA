@@ -4,6 +4,7 @@ import com.github.underscore.U;
 import org.fiuba.algoritmos3.GameAPI;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.item.Item;
+import org.fiuba.algoritmos3.model.item.ItemManager;
 import org.fiuba.algoritmos3.model.move.GameMove;
 import org.fiuba.algoritmos3.model.move.GameMoveResult;
 import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
@@ -161,30 +162,12 @@ public class Game implements GameAPI {
 
         ArrayList<Item> itemsList = new ArrayList<>(U.sample(List.copyOf(sourceItemsHash.values()), INITIAL_ITEMS));
 
-        // TODO que pingo es este hardcodeo?
-        List<Item> hyperPotions = itemsList.stream()
-                .filter(item -> item.getName().equals("Hyper Potion"))
-                .toList();
-
-       ensureSingleHyperPotion(hyperPotions,itemsList);
-
         Player player = new Player(playerName, generatePokemonRoster(), itemsList);
         gameState.addPlayer(player);
 
         return player;
     }
-    private void ensureSingleHyperPotion(List<Item> hyperPotions, List<Item> itemsList) {
-        if (hyperPotions.size() > 1) {
-            hyperPotions.subList(1, hyperPotions.size()).clear();
-        }
 
-        itemsList.removeAll(hyperPotions);  // Elimino todas las hyper potions
-
-        // Añado una hyper Potion
-        if (!hyperPotions.isEmpty()) {
-            itemsList.add(hyperPotions.get(0));
-        }
-    }
     @Override
     public Player currentPlayer() {
         return gameState.getCurrentPlayer();

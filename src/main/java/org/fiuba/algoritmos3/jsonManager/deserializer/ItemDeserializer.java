@@ -11,6 +11,7 @@ import java.util.HashMap;
 public class ItemDeserializer {
 
     private HashMap<Integer, Item> items;
+    private ItemManager itemManager;
 
     public ItemDeserializer() throws InvalidDataException {
         try {
@@ -18,6 +19,11 @@ public class ItemDeserializer {
                     .Reader(JsonPath.ITEMS.toString())
                     .getNode();
             this.items = this.use(jsonNode);
+            this.itemManager = new ItemManager(items);
+
+            itemManager.applyItemLimitations("Hyper Potion",1);
+            //Aqui se puede añadir mas...
+
         } catch (InvalidDataException e) {
             e.printStackTrace();
         }
@@ -28,7 +34,6 @@ public class ItemDeserializer {
         return items;
     }
 
-    // TODO refactor into proper faaaactory
     private Item createItem(JsonNode item) throws InvalidDataException {
         String cat = item.get("category").asText();
         String name = item.get("name").asText();
@@ -52,9 +57,11 @@ public class ItemDeserializer {
 
         HashMap<Integer, Item> itemsHash = new HashMap<>();
         if (itemsNode != null && itemsNode.isArray()) {
+
             for (JsonNode item : itemsNode) {
                 itemsHash.put(item.get("id").asInt(), createItem(item));
             }
+
             return itemsHash;
         } else {
             throw new InvalidDataException("items.json");
