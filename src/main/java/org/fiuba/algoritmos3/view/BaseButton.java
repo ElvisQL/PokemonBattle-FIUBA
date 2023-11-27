@@ -80,6 +80,7 @@ public class BaseButton extends Button {
 
     private void refreshDefaultImage() {
         URL resource = PokemonApp.class.getResource(defaultImageUrl.getValue());
+        assert resource != null;
         defaultImage = new Image(resource.toExternalForm(), imageView.getFitWidth(), imageView.getFitHeight(), true, false);
 
         if (!isSelected)
@@ -88,6 +89,7 @@ public class BaseButton extends Button {
 
     private void refreshSelectedImage() {
         URL resource = PokemonApp.class.getResource(selectedImageUrl.getValue());
+        assert resource != null;
         selectedImage = new Image(resource.toExternalForm(), imageView.getFitWidth(), imageView.getFitHeight(), true, false);
 
         if (isSelected)

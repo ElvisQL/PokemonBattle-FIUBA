@@ -57,7 +57,10 @@
                                 <Insets right="10.0" />
                             </HBox.margin>
                         </Label>
-                        <ProgressBar fx:id="healthBar" prefWidth="200.0" progress="0.43" style="-fx-accent: #65ea9f; -fx-text-box-border: transparent; -fx-control-inner-background: transparent; -fx-background-radius: 0; -fx-border-radius: 0; -fx-background-color: transparent;" />
+                        <ProgressBar fx:id="healthBar" prefWidth="200.0" progress="0.43"
+                                     style="-fx-accent: #65ea9f; -fx-text-box-border: transparent;
+                                     -fx-control-inner-background: transparent; -fx-background-radius: 0;
+                                     -fx-border-radius: 0; -fx-background-color: transparent;" />
                     </children>
                 </HBox>
             </children>
