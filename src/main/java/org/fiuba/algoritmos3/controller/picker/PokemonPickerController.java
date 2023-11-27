@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.controller.picker;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -35,9 +36,11 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     @FXML
     private Text levelText;
+    @FXML
+    private Text maxHealth;
 
     @FXML
-    private Text lifeText;
+    private Text currentLife;
 
     @FXML
     private Text attackText;
@@ -65,8 +68,11 @@ public class PokemonPickerController extends PickerController<Pokemon> {
                 pane.setOnMouseClicked(this::handleChoosePokemonMouseClick);
                 pane.setOnMouseEntered(this::handleMouseEntered);
                 pane.setOnMouseExited(this::handleMouseExited);
+
+
             }
         }
+
     }
 
     @Override
@@ -80,26 +86,26 @@ public class PokemonPickerController extends PickerController<Pokemon> {
             Pokemon pokemon = options.get(i);
             Pane pane = (Pane) pokemonChooserMenu.getChildren().get(i);
 
-            Text nameText = (Text) pane.lookup(".nameText");
-            Text levelTextR = (Text) pane.lookup(".levelTextR");
-            Text lifeTextT = (Text) pane.lookup(".lifeTextT");
-            ProgressBar progressBar = (ProgressBar) pane.lookup(".progressBar");
+            Text nameTextMenu = (Text) pane.lookup(".nameTextMenu");
+            Text levelTextMenu = (Text) pane.lookup(".levelTextMenu");
+            Text lifeTextMenu = (Text) pane.lookup(".lifeTextMenu");
+            ProgressBar progressBarMenu = (ProgressBar) pane.lookup(".progressBarMenu");
 
-            if (nameText != null && levelTextR != null && lifeTextT != null) {
-                nameText.setText(pokemon.getName());
-                levelTextR.setText(String.valueOf(pokemon.getLevel()));
-                lifeTextT.setText(pokemon.getHealth() + "/" + pokemon.getMaxHealth());
+            if (nameTextMenu != null && levelTextMenu != null && lifeTextMenu != null) {
+                nameTextMenu.setText(pokemon.getName());
+                levelTextMenu.setText(String.valueOf(pokemon.getLevel()));
+                lifeTextMenu.setText(pokemon.getHealth() + "/" + pokemon.getMaxHealth());
 
                 Double healthPercentage = (double) pokemon.getHealth() / (double) pokemon.getMaxHealth();
-                progressBar.setProgress(healthPercentage);
+                progressBarMenu.setProgress(healthPercentage);
 
-                String typeImagePath = "images/" + pokemon.getType().toString().toLowerCase() + ".png";
+                String typeImagePath = "images/pokemon-type/" + pokemon.getType().toString().toLowerCase() + ".png";
                 URL typeImageUrl = getResource(typeImagePath);
 
                 if (typeImageUrl != null) {
                     Image typeImage = new Image(typeImageUrl.toExternalForm());
-                    ImageView typeImageView = (ImageView) pane.lookup(".imageType");
-                    typeImageView.setImage(typeImage);
+                    ImageView imageType = (ImageView) pane.lookup(".imageType");
+                    imageType.setImage(typeImage);
                 }
             }
         }
@@ -187,8 +193,9 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     }
 
     private void moveSelector(Double posY) {
-        Polygon selector = (Polygon) viewPokemon.lookup("#selector");
-        selector.setLayoutY(posY);
+        Polygon selectorPokemon = (Polygon) viewPokemon.lookup("#selectorPokemon");
+        posY = posY + 99.0;
+        selectorPokemon.setLayoutY(posY);
     }
 
     private Double calculatePosition() {
@@ -200,39 +207,28 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     }
 
     private void updateLabelDetails(int index) {
-        if (index >= 0 && index < pokemonChooserMenu.getChildren().size()) {
-            Pane selectedPane = (Pane) pokemonChooserMenu.getChildren().get(index);
+        if (index >= 0 && index < options.size()) {
+            Pokemon pokemon = options.get(index);
+            String pokemonName = pokemon.getName();
 
-            Text pokemonNameText = (Text) selectedPane.lookup(".nameText");
-            Text levelText = (Text) selectedPane.lookup(".levelTextR");
-            Text lifeText = (Text) selectedPane.lookup(".lifeTextT");
-            ProgressBar progressBar1 = (ProgressBar) selectedPane.lookup(".progressBar");
-            //String attack = ((Text) selectedPane.lookup(".attackText")).getText();
-            //String defense = ((Text) selectedPane.lookup(".defenseText")).getText();
-            //String speed = ((Text) selectedPane.lookup(".speedText")).getText();
+            pokemonNameText.setText(pokemon.getName());
+            levelText.setText(String.valueOf(pokemon.getLevel()));
+            currentLife.setText(pokemon.getHealth().toString());
+            maxHealth.setText(pokemon.getMaxHealth().toString());
 
-            if (pokemonNameText != null) {
-                String pokemonName = pokemonNameText.getText();
-                String level = levelText.getText();
-                String life = lifeText.getText();
-                Double progressPercentage = progressBar1.getProgress();
+            attackText.setText(pokemon.getAttackPoints().toString());
+            defenseText.setText(pokemon.getDefencePoints().toString());
+            speedText.setText(pokemon.getAttackSpeed().toString());
 
-                viewProgressBar.setProgress(progressPercentage);
-                pokemonNameText.setText(pokemonName);
-                levelText.setText(level);
-                lifeText.setText(life);
+            Double healthPercentage = (double) pokemon.getHealth() / (double) pokemon.getMaxHealth();
+            viewProgressBar.setProgress(healthPercentage);
 
-                updateImageView(pokemonName);
-            }
-            //attackText.setText("60");
-            //defenseText.setText("50");
-            //speedText.setText("30");
+            updateImageView(pokemonName);
         }
     }
 
     private void updateImageView(String pokemonName) {
-        String imagePath = "images/" + pokemonName.toLowerCase() + ".png";
-
+        String imagePath = "images/pokemon/" + pokemonName.toLowerCase() + ".png";
         URL imageUrl = getResource(imagePath);
 
         if (imageUrl != null) {

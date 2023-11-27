@@ -3,6 +3,7 @@ package org.fiuba.algoritmos3;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.controller.StartMenuController;
 import org.fiuba.algoritmos3.jsonManager.deserializer.ItemDeserializer;
@@ -13,6 +14,7 @@ import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class PokemonApp extends Application {
@@ -32,7 +34,7 @@ public class PokemonApp extends Application {
 
         try {
             items = new ItemDeserializer().getItems();
-            pokemons = new PokemonDeserializer().getPokemon();
+            pokemons = new  PokemonDeserializer().getPokemon();
         } catch (InvalidDataException e) {
             System.exit(1);
         }
@@ -46,7 +48,10 @@ public class PokemonApp extends Application {
     public void start(Stage stage) throws Exception {
         mainStage = stage;
         mainStage.setTitle("Pokemon Game");
+        Image icono = new Image(getClass().getResourceAsStream("images/icono-pokemon.png"));
+        mainStage.getIcons().add(icono);
         mainStage.setResizable(false);
+
 
         FXMLLoader startMenuFXML = new FXMLLoader(getClass().getResource("views/start-menu-view.fxml"));
         Scene startMenuScene = new Scene(startMenuFXML.load(), 768, 768);
