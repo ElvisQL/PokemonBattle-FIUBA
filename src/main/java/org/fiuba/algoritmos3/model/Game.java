@@ -167,18 +167,25 @@ public class Game implements GameAPI {
                 .filter(item -> item.getName().equals("Hyper Potion"))
                 .toList();
 
-        if (hyperPotions.size() > 1) {
-            hyperPotions.subList(1, hyperPotions.size()).clear(); //dejo por ejemplo el primer hyperpotion
-        }
-
-        itemsList.addAll(hyperPotions);
+       ensureSingleHyperPotion(hyperPotions,itemsList);
 
         Player player = new Player(playerName, generatePokemonRoster(), itemsList);
         gameState.addPlayer(player);
 
         return player;
     }
+    private void ensureSingleHyperPotion(List<Item> hyperPotions, List<Item> itemsList) {
+        if (hyperPotions.size() > 1) {
+            hyperPotions.subList(1, hyperPotions.size()).clear();
+        }
 
+        itemsList.removeAll(hyperPotions);  // Elimino todas las hyper potions
+
+        // Añado una hyper Potion
+        if (!hyperPotions.isEmpty()) {
+            itemsList.add(hyperPotions.get(0));
+        }
+    }
     @Override
     public Player currentPlayer() {
         return gameState.getCurrentPlayer();

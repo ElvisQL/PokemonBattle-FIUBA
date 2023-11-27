@@ -38,7 +38,7 @@ public class ItemDeserializer {
         return switch (cat) {
             case "HealingFixed" -> new FixedHealingItem(id, name, description, item.get("HP").asInt());
             case "HealingPercentage" ->
-                    new PercentageHealingItem(id, name, description, item.get("HP" /*podria ser percentage en items.json*/).asInt());
+                    new PercentageHealingItem(id, name, description, item.get("HP").asInt());
             case "Revival" -> new ReviveItem(id, name, description, item.get("percentage").asInt());
             case "Status" -> new RestoreStatusItem(id, name, description);
             case "Attack" -> new IncreaseAttackItem(id, name, description, item.get("percentage").asInt());

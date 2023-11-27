@@ -112,29 +112,36 @@ public class ItemPickerController extends PickerController<Item> {
         }
 
 
-        for (Item item : items) {
+        for (Map.Entry<Integer, Integer> entry : itemCountMap.entrySet()) {
+            int itemId = entry.getKey();
+            int quantity = entry.getValue();
+
             HBox pane = new HBox(300);
 
-            Label nameLabel = new Label(item.getName());
-            Label quantityLabel = new Label("x"+ itemCountMap.get(item.getId()).toString());
-            nameLabel.setStyle("-fx-font-size: 28px;");
-            quantityLabel.setStyle("-fx-font-size: 28px;");
+            Item item = items.stream().filter(i -> i.getId() == itemId).findFirst().orElse(null);
+            if (item != null){
+                Label nameLabel = new Label(item.getName());
+                Label quantityLabel = new Label("x" + quantity);
+                nameLabel.setStyle("-fx-font-size: 28px;");
+                quantityLabel.setStyle("-fx-font-size: 28px;");
 
-            nameLabel.getStyleClass().add("label-item");
-            quantityLabel.getStyleClass().add("label-item");
+                nameLabel.getStyleClass().add("label-item");
+                quantityLabel.getStyleClass().add("label-item");
 
-            HBox.setHgrow(nameLabel, Priority.ALWAYS);
-            pane.getChildren().addAll(nameLabel, quantityLabel);
-            pane.setAlignment(Pos.CENTER);
+                HBox.setHgrow(nameLabel, Priority.ALWAYS);
+                pane.getChildren().addAll(nameLabel, quantityLabel);
+                pane.setAlignment(Pos.CENTER);
 
-            pane.setUserData(item);
+                pane.setUserData(item);
 
-            pane.setOnMouseEntered(this::handleMouseEntered);
-            pane.setOnMouseExited(this::handleMouseExited);
-            pane.setOnMouseClicked(this::handleMouseClicked);
+                pane.setOnMouseEntered(this::handleMouseEntered);
+                pane.setOnMouseExited(this::handleMouseExited);
+                pane.setOnMouseClicked(this::handleMouseClicked);
 
-            pane.getStyleClass().add("item-container");
-            itemsBox.getChildren().add(pane);
+                pane.getStyleClass().add("item-container");
+                itemsBox.getChildren().add(pane);
+            }
+
 
         }
         scrollItems.setContent(itemsBox);
