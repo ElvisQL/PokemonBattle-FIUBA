@@ -27,8 +27,8 @@
                             </image>
                         </ImageView>
                         <BaseButton fx:id="newGameButton" text="New Game"/>
-                        <BaseButton fx:id="newGameButton1" layoutX="58.0" layoutY="506.0" prefWidth="200.0"
-                                    text="EXIT"/>
+                        <BaseButton fx:id="exitButton" layoutX="58.0" layoutY="506.0" prefWidth="200.0"
+                                    text="EXIT" onAction="#onClickExit"/>
                     </children>
                 </VBox>
             </children>

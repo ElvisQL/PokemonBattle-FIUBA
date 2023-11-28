@@ -49,7 +49,13 @@ public class GameState {
     }
 
     private Boolean playerIsWinner(Player player) {
-        if (U.all(player.getOpponent().getPokemons(), Pokemon::isDead)) return true;
-        return player.getOpponent().getSurrendered();
+        Player opponent = player.getOpponent();
+        if (opponent != null) {
+            if (U.all(opponent.getPokemons(), Pokemon::isDead)) {
+                return true;
+            }
+            return opponent.getSurrendered();
+        }
+        return false;
     }
 }
