@@ -19,36 +19,23 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static org.fiuba.algoritmos3.PokemonApp.mediaPlayer;
+
 public class StartMenuController extends BaseController {
     public Button startButton;
     public Button exitButton;
     public BaseButton muteButton;
-    @FXML
-    private MediaView mediaView;
-    public MediaPlayer mediaPlayer;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String musicFile = Objects.requireNonNull(getResource("audio/mainmusic.wav")).toExternalForm();
-
-        Media media = new Media(musicFile);
-        this.mediaPlayer = new MediaPlayer(media);
-        this.mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        this.mediaPlayer.setMute(true);
-
-        this.mediaView = new MediaView();
-        this.mediaView.setMediaPlayer(mediaPlayer);
-
+        loadMusic("audio/mainmusic.wav");
         updateMuteButtonImages();
-    }
-
-    public MediaPlayer getMediaPlayer() {
-        return mediaPlayer;
     }
 
     @FXML
     public void onClickExit(Event e) {
-        mediaPlayer.stop();
+        stopMusic();
         Node source = (Node) e.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

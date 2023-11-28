@@ -93,7 +93,7 @@ public class ItemPickerController extends PickerController<Item> {
         }
     }
 
-    @Override
+
     protected void updateView() {
         List<Item> items = getOptions();
         Map<Integer, Integer> itemCountMap = new HashMap<>();
