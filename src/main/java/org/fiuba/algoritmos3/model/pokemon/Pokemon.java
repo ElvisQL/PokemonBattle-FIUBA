@@ -1,7 +1,6 @@
 package org.fiuba.algoritmos3.model.pokemon;
 
 
-import org.fiuba.algoritmos3.Visitor;
 import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 import org.fiuba.algoritmos3.model.pokemon.status.DeadStatus;
 import org.fiuba.algoritmos3.model.pokemon.status.Status;
@@ -133,19 +132,15 @@ public class Pokemon {
     }
 
     public boolean isDead() {
-        for (Status status : statuses){
-            if (status.getName().equals(DeadStatus.class.getName())){
+        for (Status status : statuses) {
+            if (status.getName().equals(DeadStatus.class.getName())) {
                 return true;
-            };
+            }
         }
         return false;
     }
 
     // UI -------------------------------------------------------------------------------------------------------------
-
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
 
     public String getHistory() {
         return history;

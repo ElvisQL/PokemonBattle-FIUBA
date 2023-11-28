@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.model.pokemon.status;
 
-import org.fiuba.algoritmos3.Visitor;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public class ParalyzedStatus extends UseSkillStatus {
@@ -15,8 +14,4 @@ public class ParalyzedStatus extends UseSkillStatus {
         return "Paralyzed";
     }
 
-    @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
 }

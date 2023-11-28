@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.model.pokemon.status;
 
-import org.fiuba.algoritmos3.Visitor;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public class ConfusedStatus extends UseSkillStatus {
@@ -28,10 +27,5 @@ public class ConfusedStatus extends UseSkillStatus {
         double currentHealth = pokemon.getHealth();
         double damage = pokemon.getMaxHealth() * 0.15;
         pokemon.setHealth((int) (currentHealth - damage));
-    }
-
-    @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
     }
 }

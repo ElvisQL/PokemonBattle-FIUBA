@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.model.move;
 
-import org.fiuba.algoritmos3.UiDisplayableVisitor;
 import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.Player;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
@@ -18,7 +17,6 @@ public class ChangePokemon extends GameMove {
     @Override
     public GameMoveResult<String> run(GameState gameState) {
         Player player = gameState.getCurrentPlayer();
-        UiDisplayableVisitor uiDisplayableVisitor = new UiDisplayableVisitor();
 
         try {
             player.setCurrentPokemon(chosenPokemon);
@@ -26,7 +24,7 @@ public class ChangePokemon extends GameMove {
             return new GameMoveResult<String>().Err(e);
         }
 
-        return new GameMoveResult<String>().Ok(player.getName() + " changed pokemon to: " + uiDisplayableVisitor.getItemText());
+        return new GameMoveResult<String>().Ok("Changed pokemon");
     }
 
 }

@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.model.pokemon.status;
 
-import org.fiuba.algoritmos3.Visitor;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public class AsleepStatus extends UseSkillStatus {
@@ -25,11 +24,6 @@ public class AsleepStatus extends UseSkillStatus {
     @Override
     public String getName() {
         return "Asleep";
-    }
-
-    @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
     }
 
 }

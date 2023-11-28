@@ -8,13 +8,9 @@ import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.item.RestoreStatusItem;
 import org.fiuba.algoritmos3.model.item.ReviveItem;
-import org.fiuba.algoritmos3.model.move.GameMoveResult;
+import org.fiuba.algoritmos3.model.move.*;
 import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.move.errors.OwnershipError;
-import org.fiuba.algoritmos3.model.move.ChangePokemon;
-import org.fiuba.algoritmos3.model.move.Surrender;
-import org.fiuba.algoritmos3.model.move.UseItem;
-import org.fiuba.algoritmos3.model.move.UseSkill;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
 import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;
@@ -92,8 +88,6 @@ public class MoveTest {
             List.of(pikachu, jigglypuff),
             new ArrayList<>()
     );
-
-    UserInterface ui = new MockUI();
     GameState gameState = new GameState();
     ChangePokemon change = new ChangePokemon(gameState);
     Surrender surrender = new Surrender(gameState);
