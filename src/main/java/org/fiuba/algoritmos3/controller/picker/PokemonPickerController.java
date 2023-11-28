@@ -15,6 +15,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
@@ -110,6 +111,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
                 Double healthPercentage = (double) pokemon.getHealth() / (double) pokemon.getMaxHealth();
                 progressBarMenu.setProgress(healthPercentage);
 
+                // Get and set pokemon type icon
                 String typeImagePath = "images/pokemon-type/" + pokemon.getType().toString().toLowerCase() + ".png";
                 URL typeImageUrl = getResource(typeImagePath);
 
@@ -117,6 +119,17 @@ public class PokemonPickerController extends PickerController<Pokemon> {
                     Image typeImage = new Image(typeImageUrl.toExternalForm());
                     ImageView imageType = (ImageView) pane.lookup(".imageType");
                     imageType.setImage(typeImage);
+                }
+
+                // Get and set pokemon icon
+                String pokePath = "images/pokemon/" + pokemon.getName().toLowerCase() + ".png"; // TODO get icon sprites
+                URL pokeUrl = getResource(pokePath);
+
+                if (pokeUrl != null) {
+                    Image image = new Image(pokeUrl.toExternalForm());
+                    ImageView imageElem = (ImageView) pane.lookup("#triangle"+i);
+                    imageElem.setOpacity(0.5);
+                    imageElem.setImage(image);
                 }
             }
         }
@@ -155,45 +168,50 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     public void handleMouseEntered(MouseEvent event) {
         Node source = (Node) event.getSource();
 
+        ImageView icon = null;
         if (source instanceof Pane pane) {
             int index = pokemonChooserMenu.getChildren().indexOf(pane);
-            Polygon triangle = (Polygon) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane) + 1));
-            triangle.setFill(Color.web("#2e6099"));
-
+            icon = (ImageView) pane.lookup("#triangle" + index);
             updateLabelDetails(index);
-        } else if (source instanceof Polygon) {
-            Polygon triangle = (Polygon) source;
-            triangle.setFill(Color.web("#2e6099"));
 
-            String triangleId = triangle.getId();
-            if (triangleId != null && triangleId.matches("triangle\\d+")) {
-                int index = Integer.parseInt(triangleId.substring(8)) - 1;
-                updateLabelDetails(index);
-            }
+        } else if (source instanceof ImageView) {
+            icon = (ImageView) source;
+
         }
+
+        icon.setOpacity(1.0);
+        icon.setScaleY(1.2);
+        icon.setScaleX(1.2);
     }
 
     public void handleMouseExited(MouseEvent event) {
         Node source = (Node) event.getSource();
 
+        ImageView icon = null;
         if (source instanceof Pane pane) {
             int index = pokemonChooserMenu.getChildren().indexOf(pane);
-            Polygon triangle = (Polygon) pane.lookup("#triangle" + (index + 1));
-            if (triangle != null) {
-                triangle.setFill(Color.web("#4a8ac6"));
-            }
-        } else if (source instanceof Polygon) {
-            Polygon triangle = (Polygon) source;
-            triangle.setFill(Color.web("#4a8ac6"));
+            icon = (ImageView) pane.lookup("#triangle" + index);
+            updateLabelDetails(index);
+            
+            
+        } else if (source instanceof ImageView) {
+            icon = (ImageView) source;
+            
         }
+
+        icon.setOpacity(0.5);
+        icon.setScaleY(1.0);
+        icon.setScaleX(1.0);
     }
 
     private void updateSelection() {
         for (Node nodo : pokemonChooserMenu.getChildren()) {
             if (nodo instanceof Pane) {
                 Pane pane = (Pane) nodo;
-                Polygon triangle = (Polygon) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane) + 1));
-                triangle.setFill(Color.web("#4a8ac6"));
+                ImageView icon = (ImageView) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane)));
+                icon.setOpacity(0.5);
+                icon.setScaleY(1.0);
+                icon.setScaleX(1.0);
             }
         }
 
@@ -203,8 +221,13 @@ public class PokemonPickerController extends PickerController<Pokemon> {
         }
 
         if (selectedPane != null) {
-            Polygon selectedTriangle = (Polygon) selectedPane.lookup("#triangle" + (selectedIndex + 1));
-            selectedTriangle.setFill(Color.web("#2e6099"));
+
+            ImageView icon = (ImageView) selectedPane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(selectedPane)));
+            icon.setOpacity(1.0);
+            icon.setScaleY(1.2);
+            icon.setScaleX(1.2);
+
+            selectedPane.setStyle("-fx-stroke: #FF712F;");
 
             Double posY = calculatePosition();
             moveSelector(posY);
@@ -247,6 +270,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
             updateImageView(pokemonName);
         }
     }
+
 
     private void updateImageView(String pokemonName) {
         String imagePath = "images/pokemon/" + pokemonName.toLowerCase() + ".png";
