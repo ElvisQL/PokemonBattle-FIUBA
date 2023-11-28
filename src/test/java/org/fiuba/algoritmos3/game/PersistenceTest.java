@@ -23,70 +23,58 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 class PersistenceTest {
-
-    Pokemon charizard = new PokemonBuilder()
-            .setID(1)
-            .setSpecies(
-                    new PokemonSpecies(
-                            "Charizard",
-                            "Charizard es un Pokémon de tipo Fuego/Volador. Es la evolución final de Charmander y es conocido por su poderoso aliento de fuego y su apariencia similar a un dragón.",
-                            PokemonType.valueOf("Fire")
-                    ))
-            .setSkills(
-                    new ArrayList<>(List.of(
-                            new AttackSkill("Lanzallamas", 90, U.random(10)),
-                            new AttackSkill("Vuelo", 70, U.random(10))
-                    ))
-            )
-            .setRandomAttributes()
-            .build();
-
-    Pokemon squirtle = new PokemonBuilder()
-            .setID(2)
-            .setRandomAttributes()
-            .setSpecies(
-                    new PokemonSpecies(
-                            "Squirtle",
-                            "Squirtle es un Pokémon de tipo Agua. Es uno de los Pokémon iniciales originales y es conocido por sus cañones de agua en su espalda.",
-                            PokemonType.valueOf("Water")
-                    ))
-            .setSkills(
-                    new ArrayList<>(List.of(
-                            new AttackSkill("Pistola Agua", 40, U.random(10)),
-                            new BuffSkill("Refugio", StatType.valueOf("DEFENSE"), 20)
-                    )))
-            .build();
-
-    Player activePlayer = new Player(
-            "John",
-            List.of(charizard, squirtle),
-            new ArrayList<>(List.of(new IncreaseDefenseItem(1, "testDefense", "mi super descripcion", 15)))
-    );
-    Player jane = new Player(
-            "Jane",
-            List.of(squirtle),
-            new ArrayList<>()
-    );
 
     @Test
     @DisplayName("File from savePlayersInfo exists")
     void savePlayersInfo() {
+        Pokemon charizard = mock(Pokemon.class);
+        when(charizard.getID()).thenReturn(1);
+
+        Pokemon squirtle = mock(Pokemon.class);
+        when(squirtle.getID()).thenReturn(2);
+
+        Player activePlayer = mock(Player.class);
+        when(activePlayer.getName()).thenReturn("John");
+        when(activePlayer.getPokemons()).thenReturn(List.of(charizard, squirtle));
+        when(activePlayer.getItems()).thenReturn(List.of(new IncreaseDefenseItem(1, "testDefense", "mi super descripcion", 15)));
+
+        Player jane = mock(Player.class);
+        when(jane.getName()).thenReturn("Jane");
+        when(jane.getPokemons()).thenReturn(List.of(squirtle));
+        when(jane.getItems()).thenReturn(new ArrayList<>());
+
         GameState gameState = new GameState();
         gameState.addPlayer(activePlayer);
         gameState.addPlayer(jane);
+
         Persistence.savePlayersInfo(gameState);
 
         Assertions.assertTrue(Files.exists(new File("src/resources/players.json").toPath()));
-        // TODO: Add assertions to check if the serialization was successful and saved as expected
+        //TODO: Add assertions to check if the serialization was successful and saved as expected
     }
 
     @Test
     @DisplayName("File from Game Result exists")
     public void testGameOverStateGetsSaved() {
+        Pokemon charizard = mock(Pokemon.class);
+        when(charizard.getID()).thenReturn(1);
+
+        Player jane = mock(Player.class);
+        Pokemon squirtle = mock(Pokemon.class);
+        when(squirtle.getID()).thenReturn(2);
+
+        when(jane.getName()).thenReturn("Jane");
+        when(jane.getPokemons()).thenReturn(List.of(squirtle));
+        when(jane.getItems()).thenReturn(new ArrayList<>());
+
+        Player activePlayer = mock(Player.class);
+        when(activePlayer.getName()).thenReturn("John");
+        when(activePlayer.getPokemons()).thenReturn(List.of(charizard, squirtle));
+        when(activePlayer.getItems()).thenReturn(List.of(new IncreaseDefenseItem(1, "testDefense", "mi super descripcion", 15)));
+
         jane.setOpponent(activePlayer);
         GameState gameState = mock();
         doReturn(jane).when(gameState).getWinner();
@@ -98,5 +86,4 @@ class PersistenceTest {
         Assertions.assertTrue(Files.exists(new File(fileName).toPath()));
         // TODO: Add assertions to check if the serialization was successful and saved as expected
     }
-
 }

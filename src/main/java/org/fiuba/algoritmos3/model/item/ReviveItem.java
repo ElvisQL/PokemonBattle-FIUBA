@@ -13,6 +13,10 @@ public class ReviveItem extends Item {
         this.restoredHealth = percentage;
     }
 
+    public Integer getRestoredHealth() {
+        return restoredHealth;
+    }
+
     @Override
     public void use(Pokemon pokemon) throws InvalidSelectionException {
         if (!pokemon.isDead()) {

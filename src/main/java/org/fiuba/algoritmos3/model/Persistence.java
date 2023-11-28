@@ -9,15 +9,19 @@ public class Persistence {
 
     public static void savePlayersInfo(GameState gameState) {
         Player playerOne = gameState.getCurrentPlayer();
-        Player playerTwo = gameState.getCurrentPlayer().getOpponent();
 
-        // Players info into Hashmap
-        HashMap<String, Player> players = new HashMap<>();
-        players.put(playerOne.getName(), playerOne);
-        players.put(playerTwo.getName(), playerTwo);
+        if (playerOne != null) {
+            Player playerTwo = playerOne.getOpponent();
 
-        // Save to json with serializer
-        new PlayerSerializer(players);
+            HashMap<String, Player> players = new HashMap<>();
+            players.put(playerOne.getName(), playerOne);
+
+            if (playerTwo != null) {
+                players.put(playerTwo.getName(), playerTwo);
+            }
+
+            new PlayerSerializer(players);
+        }
     }
 
     public static void saveGameResult(GameState gameState) {

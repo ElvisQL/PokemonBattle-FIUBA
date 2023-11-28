@@ -17,50 +17,28 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 class PlayerDataTest {
-    Pokemon charizard = new PokemonBuilder()
-            .setID(1)
-            .setSpecies(
-                    new PokemonSpecies(
-                            "Charizard",
-                            "Charizard es un Pokémon de tipo Fuego/Volador. Es la evolución final de Charmander y es conocido por su poderoso aliento de fuego y su apariencia similar a un dragón.",
-                            PokemonType.valueOf("Fire")
-                    ))
-            .setSkills(
-                    new ArrayList<>(List.of(
-                            new AttackSkill("Lanzallamas", 90, U.random(10)),
-                            new AttackSkill("Vuelo", 70, U.random(10))
-                    ))
-            )
-            .setRandomAttributes()
-            .build();
-
-    Pokemon squirtle = new PokemonBuilder()
-            .setID(2)
-            .setRandomAttributes()
-            .setSpecies(
-                    new PokemonSpecies(
-                            "Squirtle",
-                            "Squirtle es un Pokémon de tipo Agua. Es uno de los Pokémon iniciales originales y es conocido por sus cañones de agua en su espalda.",
-                            PokemonType.valueOf("Water")
-                    ))
-            .setSkills(
-                    new ArrayList<>(List.of(
-                            new AttackSkill("Pistola Agua", 40, U.random(10)),
-                            new BuffSkill("Refugio", StatType.valueOf("DEFENSE"), 20)
-                    )))
-            .build();
-
-    Player activePlayer = new Player(
-            "John",
-            List.of(charizard, squirtle),
-            new ArrayList<>(List.of(new IncreaseDefenseItem(1, "testDefense", "mi super descripcion", 15)))
-    );
-
     @Test
     void buildFromActivePlayer() {
+        Pokemon charizardMock = mock(Pokemon.class);
+        when(charizardMock.getID()).thenReturn(1);
+
+        Pokemon squirtleMock = mock(Pokemon.class);
+        when(squirtleMock.getID()).thenReturn(2);
+
+        // Mock de Player
+        Player activePlayerMock = mock(Player.class);
+        when(activePlayerMock.getName()).thenReturn("John");
+        when(activePlayerMock.getItems()).thenReturn(
+                List.of(new IncreaseDefenseItem(1, "testDefense", "mi super descripcion", 15))
+        );
+        when(activePlayerMock.getPokemons()).thenReturn(List.of(charizardMock, squirtleMock));
+
         // Create a PlayerData instance from the active Player
-        PlayerData playerData = new PlayerData().buildFromActivePlayer(activePlayer);
+        PlayerData playerData = new PlayerData().buildFromActivePlayer(activePlayerMock);
 
         // Verify that the PlayerData instance is correctly built
         Assertions.assertEquals("John", playerData.getName());

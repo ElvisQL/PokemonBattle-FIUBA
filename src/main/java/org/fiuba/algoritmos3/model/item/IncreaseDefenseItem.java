@@ -14,10 +14,14 @@ public class IncreaseDefenseItem extends Item {
         this.percentageIncrease = percentageIncrease;
     }
 
+    public Integer getPercentageIncrease() {
+        return percentageIncrease;
+    }
+
     @Override
     public void use(Pokemon pokemon) throws InvalidSelectionException {
         if (pokemon.isDead()) {
-            throw new InvalidSelectionException("Pokemon");
+            throw new InvalidSelectionException("The user chose an invalid Pokemon");
         }
         Integer currentDefense = pokemon.getDefencePoints();
         Integer increaseDefense = currentDefense * percentageIncrease / PERCENT;

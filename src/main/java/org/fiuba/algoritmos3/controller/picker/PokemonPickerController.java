@@ -238,7 +238,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     private void moveSelector(Double posY) {
         Polygon selectorPokemon = (Polygon) viewPokemon.lookup("#selectorPokemon");
-        posY = posY + 99.0;
+        posY = posY + 120.0;
         selectorPokemon.setLayoutY(posY);
     }
 

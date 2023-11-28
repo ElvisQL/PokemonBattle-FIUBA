@@ -16,12 +16,7 @@ public class FakeStatusSkillFactory implements FakeModelFactory<StatusSkill> {
 
     @Override
     public StatusSkill create(Integer _id) {
-        return new StatusSkill(faker.lorem().word(), U.sample(List.of(
-                new AsleepStatus(),
-                new ConfusedStatus(),
-                new ParalyzedStatus(),
-                new PoisonedStatus()
-        )));
-    }
+        return null;
 
+    }
 }

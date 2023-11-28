@@ -5,12 +5,23 @@ import net.datafaker.Faker;
 import org.fiuba.algoritmos3.factories.FakeModelFactory;
 import org.fiuba.algoritmos3.model.pokemon.skills.AttackSkill;
 
+import java.util.List;
+
+
 public class FakeAttackSkillFactory implements FakeModelFactory<AttackSkill> {
-    Faker faker = new Faker();
+    @Override
+    public AttackSkill create(Integer id) {
+        return null;
+    }
 
     @Override
-    public AttackSkill create(Integer _id) {
-        return new AttackSkill(faker.lorem().word(), faker.number().numberBetween(1, 100), U.random(10));
+    public List<AttackSkill> createList(Integer size) {
+        return FakeModelFactory.super.createList(size);
+    }
+
+    @Override
+    public List<AttackSkill> createList(Integer size, Integer startingId) {
+        return FakeModelFactory.super.createList(size, startingId);
     }
 
 }

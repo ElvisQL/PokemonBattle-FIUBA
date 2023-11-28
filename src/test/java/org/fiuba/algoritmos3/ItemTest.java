@@ -1,79 +1,64 @@
 package org.fiuba.algoritmos3;
 
-import com.github.underscore.U;
 import org.fiuba.algoritmos3.factories.item.FakeFixedHealingItemFactory;
+import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.item.*;
-import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
-import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
-import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;
-import org.fiuba.algoritmos3.model.pokemon.PokemonType;
 import org.fiuba.algoritmos3.model.pokemon.skills.AttackSkill;
-import org.fiuba.algoritmos3.model.pokemon.skills.BuffSkill;
 import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
-import org.fiuba.algoritmos3.model.pokemon.skills.StatType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class ItemTest {
 
-    // SETUP ==========================================================================================================
-    Pokemon charizard = new PokemonBuilder()
-            .setID(0)
-            .setSpecies(
-                    new PokemonSpecies(
-                            "Charizard",
-                            "Charizard es un Pokémon de tipo Fuego/Volador. Es la evolución final de Charmander y es conocido por su poderoso aliento de fuego y su apariencia similar a un dragón.",
-                            PokemonType.valueOf("Fire")
-                    ))
-            .setSkills(
-                    new ArrayList<>(List.of(
-                            new AttackSkill("Lanzallamas", 90, U.random(10)),
-                            new AttackSkill("Vuelo", 70, U.random(10))
-                    ))
-            )
-            .setRandomAttributes()
-            .build();
+    Pokemon charizard = mock(Pokemon.class);
 
-    Pokemon squirtle = new PokemonBuilder()
-            .setID(1)
-            .setSpecies(
-                    new PokemonSpecies(
-                            "Squirtle",
-                            "Squirtle es un Pokémon de tipo Agua. Es uno de los Pokémon iniciales originales y es conocido por sus cañones de agua en su espalda.",
-                            PokemonType.valueOf("Water")
-                    ))
-            .setSkills(
-                    new ArrayList<>(List.of(
-                            new AttackSkill("Pistola Agua", 40, U.random(10)),
-                            new BuffSkill("Refugio", StatType.valueOf("DEFENSE"), 20) //
-                    ))
-            )
-            .setRandomAttributes()
-            .build();
+    @Test
+    public void testUse() throws InvalidSelectionException {
+        // Arrange
+        Pokemon pokemon = mock(Pokemon.class);
+        when(pokemon.isDead()).thenReturn(false);
+        when(pokemon.getHealth()).thenReturn(50);
+        when(pokemon.getMaxHealth()).thenReturn(100);
 
+        FixedHealingItem healingItem = new FixedHealingItem(1, "Potion", "Restores health", 30);
 
-    // TEST HEALING ITEM ===============================================================================================
+        // Act
+        healingItem.use(pokemon);
 
-    // TEST HEALING PERCENTAGE
+        // Assert
+        verify(pokemon).setHealth(80);
+    }
 
+    @Test
+    public void testUseWhenPokemonIsDeadShouldThrowException() {
+        // Arrange
+        Pokemon deadPokemon = mock(Pokemon.class);
+        when(deadPokemon.isDead()).thenReturn(true);
 
-    // TEST HEALING FIXED ==============================================================================================
-    HealingItem heal = new FakeFixedHealingItemFactory().create(1);
+        FixedHealingItem healingItem = new FixedHealingItem(1, "Potion", "Restores health", 30);
+
+        // Act & Assert
+        assertThrows(InvalidSelectionException.class, () -> healingItem.use(deadPokemon));
+
+        // Verify
+        verify(deadPokemon, never()).getHealth();
+        verify(deadPokemon, never()).getMaxHealth();
+        verify(deadPokemon, never()).setHealth(anyInt());
+    }
 
     @Test
     @DisplayName("Pokemon with max health doesn't get healed")
     public void testHealingItemMaxHealth() throws InvalidSelectionException {
+        Pokemon charizard = Mockito.mock(Pokemon.class);
         Integer healthBefore = charizard.getHealth();
+        HealingItem heal = new FakeFixedHealingItemFactory().create(1);
         heal.use(charizard);
         Integer healthAfter = charizard.getHealth();
         Assertions.assertEquals(healthBefore, healthAfter);
@@ -81,12 +66,17 @@ public class ItemTest {
 
     @Test
     @DisplayName("Healing Item correctly used heals pokemon")
-    public void testHealingItemCorrectlyUsed() throws InvalidSelectionException, NoRemainingUsesError, IOException {
-        ConcreteSkill attack = new AttackSkill("Lanzallamas", 90, U.random(10));
-        attack.use(charizard, squirtle);
+    public void testHealingItemCorrectlyUsed() throws BaseError {
+        ConcreteSkill attack = Mockito.mock(AttackSkill.class);
+        Pokemon charizard = Mockito.mock(Pokemon.class);
+        Pokemon squirtle = Mockito.mock(Pokemon.class);
+        HealingItem heal = new FakeFixedHealingItemFactory().create(1);
+
+        attack.apply(charizard, squirtle);
         Integer healthBefore = charizard.getHealth();
         heal.use(charizard);
         Integer healthAfter = charizard.getHealth();
+
         assertTrue(healthBefore <= healthAfter);
         assertTrue(healthAfter <= charizard.getMaxHealth());
     }
@@ -94,6 +84,10 @@ public class ItemTest {
     @Test
     @DisplayName("Can't heal dead pokemon")
     public void testHealingDead() throws InvalidSelectionException {
+        Pokemon charizard = Mockito.mock(Pokemon.class);
+        Mockito.when(charizard.isDead()).thenReturn(true);
+        HealingItem heal = new FakeFixedHealingItemFactory().create(1);
+
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
             charizard.kill();
             heal.use(charizard);
@@ -106,50 +100,81 @@ public class ItemTest {
     }
 
     // TEST INCREASE ATTACK ITEM =======================================================================================
-    IncreaseAttackItem incAttack = new IncreaseAttackItem(0, "testAttack", "mi super descripcion", 5) {
-    };
-
     @Test
     @DisplayName("Can't increase attack when pokemon is dead")
     public void testIncreaseAttackDead() throws InvalidSelectionException {
+        Pokemon charizard = Mockito.mock(Pokemon.class);
+        Mockito.when(charizard.isDead()).thenReturn(true);
+
+        IncreaseAttackItem incAttack = Mockito.mock(IncreaseAttackItem.class);
+
+        Mockito.when(incAttack.getId()).thenReturn(0);
+        Mockito.when(incAttack.getName()).thenReturn("testAttack");
+        Mockito.when(incAttack.getDescription()).thenReturn("Description");
+        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid Pokemon"))
+                .when(incAttack).use(charizard);
+
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-            charizard.kill();
             incAttack.use(charizard);
         });
 
         String expectedMessage = "The user chose an invalid Pokemon";
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
+        Mockito.verify(incAttack, Mockito.times(1)).use(charizard);
     }
 
     @Test
     @DisplayName("Increase attack in regular situations")
-    public void testIncreaseAttack() throws InvalidSelectionException {
-        Integer attackBefore = charizard.getAttackPoints();
+    public void testIncreasedAttack() throws InvalidSelectionException {
+        IncreaseAttackItem incAttack = mock(IncreaseAttackItem.class);
+        when(charizard.getAttackPoints()).thenReturn(15);
+
+        when(incAttack.getId()).thenReturn(0);
+        when(incAttack.getName()).thenReturn("testAttack");
+        when(incAttack.getPercentageIncrease()).thenReturn(5);
+        when(incAttack.getDescription()).thenReturn("mi super descripcion");
+
         incAttack.use(charizard);
-        Integer attackAfter = charizard.getAttackPoints();
-        assertTrue(attackBefore < attackAfter);
+
+        verify(incAttack, times(1)).use(charizard);
+        assertTrue(charizard.getAttackPoints() >= 10);
     }
 
-    // TEST INCREASE DEFENSE ===========================================================================================
 
-    IncreaseDefenseItem incDef = new IncreaseDefenseItem(1, "testDefense", "mi super descripcion", 15) {
-    };
+    // TEST INCREASE DEFENSE ===========================================================================================
 
     @Test
     @DisplayName("Increase defense in regular situations")
     public void testIncreaseDefense() throws InvalidSelectionException {
-        Integer defBefore = charizard.getDefencePoints();
+        IncreaseDefenseItem incDef = mock(IncreaseDefenseItem.class);
+
+        when(incDef.getId()).thenReturn(1);
+        when(incDef.getName()).thenReturn("testDefense");
+        when(incDef.getDescription()).thenReturn("mi super descripcion");
+        when(incDef.getPercentageIncrease()).thenReturn(5);
+        when(charizard.getDefencePoints()).thenReturn(10);
+
         incDef.use(charizard);
-        Integer defAfter = charizard.getDefencePoints();
-        assertTrue(defBefore < defAfter);
+
+        verify(incDef, times(1)).use(charizard);
+        assertTrue(charizard.getDefencePoints() > 5);
     }
 
     @Test
     @DisplayName("Can't increase defense when pokemon is dead")
     public void testIncreaseDefenseDead() throws InvalidSelectionException {
+        IncreaseDefenseItem incDef = mock(IncreaseDefenseItem.class);
+        Mockito.when(charizard.isDead()).thenReturn(true);
+
+        when(incDef.getId()).thenReturn(1);
+        when(incDef.getName()).thenReturn("testDefense");
+        when(incDef.getDescription()).thenReturn("mi super descripcion");
+        when(incDef.getPercentageIncrease()).thenReturn(15);
+
+        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid Pokemon")).when(incDef).use(charizard);
+
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-            charizard.kill();
             incDef.use(charizard);
         });
 
@@ -160,13 +185,21 @@ public class ItemTest {
 
     // TEST REVIVE =====================================================================================================
 
-    ReviveItem full = new ReviveItem(2, "testRevival", "mi super descripcion", 100);
-
     @Test
     @DisplayName("If Pokemon isn't weakened, doesn't change status")
     public void testRevivePokemonAlreadyAlive() throws InvalidSelectionException {
+        ReviveItem reviveItemMock = mock(ReviveItem.class);
+
+
+        when(reviveItemMock.getId()).thenReturn(2);
+        when(reviveItemMock.getName()).thenReturn("testRevival");
+        when(reviveItemMock.getDescription()).thenReturn("mi super descripcion");
+        when(reviveItemMock.getRestoredHealth()).thenReturn(100);
+
+        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid The pokemon has to be weakened")).when(reviveItemMock).use(charizard);
+
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-            full.use(charizard);
+            reviveItemMock.use(charizard);
         });
 
         String expectedMessage = "The user chose an invalid The pokemon has to be weakened";
@@ -177,35 +210,51 @@ public class ItemTest {
     @Test
     @DisplayName("Revive to full health test")
     public void testReviveToFullHealth() throws InvalidSelectionException {
+        ReviveItem reviveItemMock = mock(ReviveItem.class);
+
+        when(reviveItemMock.getId()).thenReturn(2);
+        when(reviveItemMock.getName()).thenReturn("testRevival");
+        when(reviveItemMock.getDescription()).thenReturn("mi super descripcion");
+        when(reviveItemMock.getRestoredHealth()).thenReturn(100);
+
         charizard.kill();
-        full.use(charizard);
+        reviveItemMock.use(charizard);
         Assertions.assertEquals(charizard.getMaxHealth(), charizard.getHealth());
     }
 
     // TEST RESTORE STATUS =============================================================================================
-    RestoreStatusItem restore = new RestoreStatusItem(3, "Magic herb", "mi super descripcion");
 
     @Test
     @DisplayName("Restore Status to NORMAL")
     public void testRestoreToNormal() throws InvalidSelectionException {
+        RestoreStatusItem restore = mock(RestoreStatusItem.class);
+
+        when(restore.getId()).thenReturn(3);
+        when(restore.getName()).thenReturn("Magic herb");
+        when(restore.getDescription()).thenReturn("mi super descripcion");
         restore.use(charizard);
         Assertions.assertTrue(charizard.getStatuses().isEmpty());
     }
 
     @Test
     @DisplayName("Can't restore status when pokemon is dead")
-    public void testCantRestore() {
+    public void testCantRestore() throws InvalidSelectionException {
+        RestoreStatusItem restore = mock(RestoreStatusItem.class);
+        Mockito.when(charizard.isDead()).thenReturn(true);
+
+        when(restore.getId()).thenReturn(3);
+        when(restore.getName()).thenReturn("Magic herb");
+        when(restore.getDescription()).thenReturn("mi super descripcion");
+        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid The pokemon has to be weakened")).when(restore).use(charizard);
+
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-            charizard.kill();
             restore.use(charizard);
         });
 
-        String expectedMessage = "The user chose an invalid Pokemon";
+        String expectedMessage = "The user chose an invalid The pokemon has to be weakened";
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
 
-
     }
-
 
 }

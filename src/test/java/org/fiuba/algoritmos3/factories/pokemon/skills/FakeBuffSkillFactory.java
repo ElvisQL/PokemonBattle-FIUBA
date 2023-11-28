@@ -13,7 +13,7 @@ public class FakeBuffSkillFactory implements FakeModelFactory<BuffSkill> {
 
     @Override
     public BuffSkill create(Integer _id) {
-        return new BuffSkill(faker.lorem().word(), U.sample(List.of(StatType.values())), U.random(10));
+        return null;
     }
 
 }

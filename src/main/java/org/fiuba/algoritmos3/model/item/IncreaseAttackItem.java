@@ -13,6 +13,10 @@ public class IncreaseAttackItem extends Item {
         this.percentageIncrease = percentageIncrease;
     }
 
+    public Integer getPercentageIncrease() {
+        return percentageIncrease;
+    }
+
     @Override
     public void use(Pokemon pokemon) throws InvalidSelectionException {
         if (pokemon.isDead()) {
