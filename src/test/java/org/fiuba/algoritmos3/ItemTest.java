@@ -21,7 +21,6 @@ public class ItemTest {
 
     @Test
     public void testUse() throws InvalidSelectionException {
-        // Arrange
         Pokemon pokemon = mock(Pokemon.class);
         when(pokemon.isDead()).thenReturn(false);
         when(pokemon.getHealth()).thenReturn(50);
@@ -29,25 +28,20 @@ public class ItemTest {
 
         FixedHealingItem healingItem = new FixedHealingItem(1, "Potion", "Restores health", 30);
 
-        // Act
         healingItem.use(pokemon);
 
-        // Assert
         verify(pokemon).setHealth(80);
     }
 
     @Test
     public void testUseWhenPokemonIsDeadShouldThrowException() {
-        // Arrange
         Pokemon deadPokemon = mock(Pokemon.class);
         when(deadPokemon.isDead()).thenReturn(true);
 
         FixedHealingItem healingItem = new FixedHealingItem(1, "Potion", "Restores health", 30);
 
-        // Act & Assert
         assertThrows(InvalidSelectionException.class, () -> healingItem.use(deadPokemon));
 
-        // Verify
         verify(deadPokemon, never()).getHealth();
         verify(deadPokemon, never()).getMaxHealth();
         verify(deadPokemon, never()).setHealth(anyInt());

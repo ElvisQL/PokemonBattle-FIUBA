@@ -16,6 +16,10 @@ public class AttackSkill extends ConcreteSkill {
 
     }
 
+    public Integer getRemainingUses() {
+        return remainingUses;
+    }
+
     @Override
     public void apply(Pokemon pokemonAttacker, Pokemon pokemonTarget) throws BaseError {
         if (remainingUses <= 0) {
@@ -25,7 +29,5 @@ public class AttackSkill extends ConcreteSkill {
         remainingUses--;
         pokemonTarget.setHealth(pokemonTarget.getHealth() - damage.intValue());
     }
-
-
 }
 

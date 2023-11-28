@@ -23,24 +23,23 @@ import static org.mockito.Mockito.when;
 class PlayerDataTest {
     @Test
     void buildFromActivePlayer() {
-        Pokemon charizardMock = mock(Pokemon.class);
-        when(charizardMock.getID()).thenReturn(1);
+        Pokemon charizard = mock(Pokemon.class);
+        when(charizard.getID()).thenReturn(1);
 
-        Pokemon squirtleMock = mock(Pokemon.class);
-        when(squirtleMock.getID()).thenReturn(2);
+        Pokemon squirtle = mock(Pokemon.class);
+        when(squirtle.getID()).thenReturn(2);
 
-        // Mock de Player
         Player activePlayerMock = mock(Player.class);
         when(activePlayerMock.getName()).thenReturn("John");
         when(activePlayerMock.getItems()).thenReturn(
                 List.of(new IncreaseDefenseItem(1, "testDefense", "mi super descripcion", 15))
         );
-        when(activePlayerMock.getPokemons()).thenReturn(List.of(charizardMock, squirtleMock));
+        when(activePlayerMock.getPokemons()).thenReturn(List.of(charizard, squirtle));
 
-        // Create a PlayerData instance from the active Player
+
         PlayerData playerData = new PlayerData().buildFromActivePlayer(activePlayerMock);
 
-        // Verify that the PlayerData instance is correctly built
+
         Assertions.assertEquals("John", playerData.getName());
         Assertions.assertEquals(1, playerData.getItems().size());
         Assertions.assertTrue(playerData.getItems().containsKey(1));

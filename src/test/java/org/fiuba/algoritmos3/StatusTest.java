@@ -3,24 +3,22 @@ package org.fiuba.algoritmos3;
 import org.fiuba.algoritmos3.model.Player;
 import org.fiuba.algoritmos3.model.PlayerData;
 import org.fiuba.algoritmos3.model.item.IncreaseDefenseItem;
-import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.status.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.io.IOException;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class StatusTest {
     @Test
     @DisplayName("An asleep pokemon can use some skill at the 4th turn")
-    public void testAsleepStatusCanUseSkillProbability() throws NoRemainingUsesError, IOException {
+    public void testAsleepStatusCanUseSkillProbability() {
         Pokemon charizard = mock(Pokemon.class);
         AsleepStatus asleepStatus = new AsleepStatus();
         int totalTurns = 4;
@@ -31,7 +29,7 @@ public class StatusTest {
 
         double awakenProbability = (double) asleepStatus.getElapsedRounds() / totalTurns;
 
-        Assertions.assertEquals(1.0, awakenProbability);
+        assertEquals(1.0, awakenProbability);
 
     }
 
@@ -141,12 +139,22 @@ public class StatusTest {
 
         PlayerData playerData = new PlayerData().buildFromActivePlayer(activePlayerMock);
 
-        Assertions.assertEquals("John", playerData.getName());
-        Assertions.assertEquals(1, playerData.getItems().size());
+        assertEquals("John", playerData.getName());
+        assertEquals(1, playerData.getItems().size());
         Assertions.assertTrue(playerData.getItems().containsKey(1));
-        Assertions.assertEquals(1, playerData.getItems().get(1));
-        Assertions.assertEquals(2, playerData.getPokemons().size());
+        assertEquals(1, playerData.getItems().get(1));
+        assertEquals(2, playerData.getPokemons().size());
         Assertions.assertTrue(playerData.getPokemons().contains(1));
     }
+
+    @Test
+    void testGetName() {
+        DeadStatus deadStatus = new DeadStatus();
+
+        String result = deadStatus.getName();
+
+        assertEquals("Dead", result);
+    }
+
 
 }

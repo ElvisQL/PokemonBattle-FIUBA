@@ -133,9 +133,11 @@ public class Pokemon {
 
     public boolean isDead() {
         for (Status status : statuses) {
-            if (status.getName().equals(DeadStatus.class.getName())) {
+            if (status instanceof DeadStatus) {
                 return true;
+
             }
+
         }
         return false;
     }
