@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.controller.picker;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -16,7 +15,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import org.fiuba.algoritmos3.PokemonApp;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.view.BaseButton;
 
@@ -66,8 +64,8 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Text newText= new Text("Choose wisely"); //TODO change message when needed
-                newText.setFill(Color.WHITE);
+        Text newText = new Text("Choose wisely"); //TODO change message when needed
+        newText.setFill(Color.WHITE);
         descriptionBox.getChildren().add(newText);
 
         for (Node node : pokemonChooserMenu.getChildren()) {
@@ -83,12 +81,8 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     }
 
     @Override
-    public void setOptions(List<Pokemon> options) {
-        super.setOptions(options);
-        loadPokemons();
-    }
-
-    private void loadPokemons() {
+    protected void updateView() {
+        List<Pokemon> options = getOptions();
         for (int i = 0; i < options.size() && i < pokemonChooserMenu.getChildren().size(); i++) {
             Pokemon pokemon = options.get(i);
             Pane pane = (Pane) pokemonChooserMenu.getChildren().get(i);
@@ -132,7 +126,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     @FXML
     private void handleOkButtonAction(ActionEvent event) {
-        selection.setValue(options.get(selectedIndex));
+        selection.setValue(getOptions().get(selectedIndex));
     }
 
     @FXML
@@ -214,6 +208,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     }
 
     private void updateLabelDetails(int index) {
+        List<Pokemon> options = getOptions();
         if (index >= 0 && index < options.size()) {
             Pokemon pokemon = options.get(index);
             String pokemonName = pokemon.getName();

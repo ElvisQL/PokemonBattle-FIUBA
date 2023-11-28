@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -36,4 +35,5 @@ public class PlayerNamePickerController extends PickerController<String> {
     private void onNextClick(MouseEvent event) {
         selection.setValue(playerNameText.getText());
     }
+
 }

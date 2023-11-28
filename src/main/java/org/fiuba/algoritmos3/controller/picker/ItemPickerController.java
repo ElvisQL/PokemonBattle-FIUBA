@@ -40,16 +40,10 @@ public class ItemPickerController extends PickerController<Item> {
         okButton.setDisable(true);
     }
 
-    @Override
-    public void setOptions(List<Item> options) {
-        super.setOptions(options);
-        setItems(options);
-    }
-
     private void handleMouseClicked(MouseEvent e) {
         Node source = (Node) e.getSource();
         Item item = (Item) source.getUserData();
-        if(markedItem != null){
+        if (markedItem != null) {
             if (markedItem.equals(source)) {
                 markedItem.getStyleClass().remove("marked-item");
                 markedItem.setOnMouseEntered(this::handleMouseEntered);
@@ -75,7 +69,7 @@ public class ItemPickerController extends PickerController<Item> {
 
     private void handleMouseExited(MouseEvent e) {
         Node source = (Node) e.getSource();
-        if(source instanceof HBox hBox && hBox != markedItem){
+        if (source instanceof HBox hBox && hBox != markedItem) {
             source.getStyleClass().clear();
             source.getStyleClass().add("item-container");
             Text description = new Text(lastDescription);
@@ -86,10 +80,10 @@ public class ItemPickerController extends PickerController<Item> {
 
     }
 
-    private void handleMouseEntered(MouseEvent e){
+    private void handleMouseEntered(MouseEvent e) {
 
         Node source = (Node) e.getSource();
-        if(source instanceof HBox hBox && hBox!=markedItem){
+        if (source instanceof HBox hBox && hBox != markedItem) {
             source.getStyleClass().add("item-mouse-entered");
 
             Item item = (Item) source.getUserData();
@@ -103,8 +97,10 @@ public class ItemPickerController extends PickerController<Item> {
 
 
     }
-    private void setItems(List<Item> items) {
 
+    @Override
+    protected void updateView() {
+        List<Item> items = getOptions();
         Map<Integer, Integer> itemCountMap = new HashMap<>();
 
         for (Item item : items) {
@@ -118,9 +114,9 @@ public class ItemPickerController extends PickerController<Item> {
             HBox pane = new HBox(230);
 
             Item item = items.stream().filter(i -> i.getId() == itemId).findFirst().orElse(null);
-            if (item != null){
-                Label nameLabel = new Label("   "+item.getName().toUpperCase());
-                Label quantityLabel = new Label("x"+ itemCountMap.get(item.getId()).toString());
+            if (item != null) {
+                Label nameLabel = new Label("   " + item.getName().toUpperCase());
+                Label quantityLabel = new Label("x" + itemCountMap.get(item.getId()).toString());
                 nameLabel.setStyle("-fx-font-size: 16px;");
                 quantityLabel.setStyle("-fx-font-size: 16px;");
 
