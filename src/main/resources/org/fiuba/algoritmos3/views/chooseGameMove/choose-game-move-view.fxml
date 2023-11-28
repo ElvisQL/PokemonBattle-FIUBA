@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 <?import org.fiuba.algoritmos3.view.BaseButton?>
-<?import javafx.scene.text.TextFlow?>
 <AnchorPane prefHeight="768.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.fiuba.algoritmos3.controller.ChooseGameMoveController">
@@ -24,7 +22,7 @@
                                 HBox.hgrow="ALWAYS">
                             <children>
                                 <TextFlow fx:id="gameMoveDescriptionLabel" layoutX="95.0" layoutY="22.0"
-                                           AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0"/>
+                                          AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0"/>
                             </children>
                         </AnchorPane>
                         <GridPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="368.0"

@@ -1,7 +1,6 @@
 package org.fiuba.algoritmos3.game;
 
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.MockUI;
 import org.fiuba.algoritmos3.factories.item.FakeItemFactory;
 import org.fiuba.algoritmos3.factories.pokemon.FakePokemonFactory;
 import org.fiuba.algoritmos3.factories.pokemon.skills.FakeAttackSkillFactory;

@@ -190,8 +190,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     private void updateSelection() {
         for (Node nodo : pokemonChooserMenu.getChildren()) {
-            if (nodo instanceof Pane) {
-                Pane pane = (Pane) nodo;
+            if (nodo instanceof Pane pane) {
                 Polygon triangle = (Polygon) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane) + 1));
                 triangle.setFill(Color.web("#4a8ac6"));
             }

@@ -32,7 +32,7 @@ public class ChooseGameMoveController extends BaseController {
         PokemonView currentPokemonView = new PokemonView(gameAPI.currentPlayer().getCurrentPokemon());
         pokemonsSplitPane.getChildren().add(currentPokemonView);
 
-        Text msg = new Text("What will "+gameAPI.currentPlayer().getCurrentPokemon().getName()+" do?");
+        Text msg = new Text("What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
         msg.setFill(Color.WHITE); // TODO move a views?
         gameMoveDescriptionLabel.getChildren().add(msg);
     }

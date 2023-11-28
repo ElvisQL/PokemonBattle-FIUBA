@@ -14,7 +14,6 @@ import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class PokemonApp extends Application {
@@ -34,7 +33,7 @@ public class PokemonApp extends Application {
 
         try {
             items = new ItemDeserializer().getItems();
-            pokemons = new  PokemonDeserializer().getPokemon();
+            pokemons = new PokemonDeserializer().getPokemon();
         } catch (InvalidDataException e) {
             System.exit(1);
         }
