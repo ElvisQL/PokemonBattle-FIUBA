@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import org.fiuba.algoritmos3.controller.gameMove.ChangePokemonController;
 import org.fiuba.algoritmos3.controller.gameMove.GameMoveController;
+import org.fiuba.algoritmos3.controller.gameMove.SurrenderController;
 import org.fiuba.algoritmos3.controller.gameMove.UseItemController;
 import org.fiuba.algoritmos3.view.chooseGameMove.PokemonView;
 
@@ -59,6 +60,11 @@ public class ChooseGameMoveController extends BaseController {
     @FXML
     private void handleUseItemButtonAction(ActionEvent event) {
         loadGameMoveController(event, new UseItemController());
+    }
+
+    @FXML
+    private void handleSurrenderButtonAction(ActionEvent event) {
+        loadGameMoveController(event, new SurrenderController());
     }
 
 }

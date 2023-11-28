@@ -1,10 +1,9 @@
 package org.fiuba.algoritmos3.controller.gameMove;
 
 import javafx.beans.value.ObservableValue;
-import org.fiuba.algoritmos3.controller.picker.PokemonPickerController;
+import org.fiuba.algoritmos3.controller.picker.BooleanPickerController;
 import org.fiuba.algoritmos3.model.move.Surrender;
 import org.fiuba.algoritmos3.model.move.builder.SurrenderBuilder;
-import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,13 +13,16 @@ public class SurrenderController extends GameMoveController<Surrender, Surrender
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         builder = new SurrenderBuilder();
-        loadPicker(PokemonPickerController.class, null, null);
-        executeGameMove();
+        BooleanPickerController controller = (BooleanPickerController) loadPicker(BooleanPickerController.class, null, this::onBooleanChosen);
+        controller.setQuestion("Are you sure you want to surrender?");
     }
 
 
-    private void onPokemonPicked(ObservableValue<?> _obs, Pokemon oldPokemon, Pokemon newPokemon) {
-        executeGameMove();
+    private void onBooleanChosen(ObservableValue<?> _obs, Boolean oldPokemon, Boolean newPokemon) {
+        if (newPokemon)
+            executeGameMove();
+        else
+            return; // TODO call back listener
     }
 
 }

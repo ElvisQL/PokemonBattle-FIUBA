@@ -69,7 +69,7 @@
                                 </BaseButton>
                                 <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                                             minWidth="-Infinity" mnemonicParsing="false"
-                                            onAction="#handleUseItemButtonAction" prefHeight="55.0" prefWidth="150.0"
+                                            onAction="#handleSurrenderButtonAction" prefHeight="55.0" prefWidth="150.0"
                                             text="RUN" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                                             GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER"
                                             GridPane.vgrow="ALWAYS">

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import org.fiuba.algoritmos3.view.BaseButton?>
+<?import java.net.URL?>
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="500.0" styleClass="main-background"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.fiuba.algoritmos3.controller.picker.BooleanPickerController">
+
+    <stylesheets>
+        <URL value="@../../styles/base.css"/>
+    </stylesheets>
+    <children>
+        <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox alignment="CENTER">
+                    <children>
+                        <Label fx:id="questionTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0"
+                               prefWidth="289.0" style="-fx-alignment: center; -fx-font-family: 'Roboto Black';"
+                               text="Estás seguro?" textAlignment="CENTER">
+                            <font>
+                                <Font size="18.0"/>
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER">
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                            <children>
+                                <BaseButton fx:id="nextButton" alignment="CENTER" cancelButton="true"
+                                            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                            minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onNextClick"
+                                            prefHeight="60.0" prefWidth="138.0" text="Cancelar" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="10.0"/>
+                                    </HBox.margin>
+                                </BaseButton>
+                                <BaseButton fx:id="backButton" alignment="CENTER" defaultButton="true"
+                                            layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                                            minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                                            onMouseClicked="#onBackClick" prefHeight="60.0" prefWidth="138.0"
+                                            text="Siguiente" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets left="10.0"/>
+                                    </HBox.margin>
+                                </BaseButton>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

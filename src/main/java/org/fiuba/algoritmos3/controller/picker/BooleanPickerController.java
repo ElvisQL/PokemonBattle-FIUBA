@@ -1,39 +1,33 @@
 package org.fiuba.algoritmos3.controller.picker;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BooleanPickerController extends PickerController<String> {
+public class BooleanPickerController extends PickerController<Boolean> {
+
     @FXML
-    private Button nextButton;
-    @FXML
-    private Label playerNameTitle;
-    @FXML
-    private TextField playerNameText;
+    private Label questionTitle;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        playerNameTitle.setText("Player " + (gameAPI.getPlayers().size() + 1));
-        playerNameText.clear();
+        questionTitle.setText("Player " + (gameAPI.currentPlayer().getName()));
     }
 
-    @FXML
-    public void onKeyTyped(KeyEvent keyEvent) {
-        int nameLength = playerNameText.getText().length();
-        boolean nameLengthWithinBounds = 0 < nameLength && nameLength < 50;
-        nextButton.setDisable(!nameLengthWithinBounds);
+    public void setQuestion(String question) {
+        this.questionTitle.setText(question);
     }
 
     @FXML
     private void onNextClick(MouseEvent event) {
-        selection.setValue(playerNameText.getText());
+        selection.setValue(true);
     }
 
+    @FXML
+    private void onBackClick(MouseEvent event) {
+        selection.setValue(false);
+    }
 }

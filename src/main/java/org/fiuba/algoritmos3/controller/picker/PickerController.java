@@ -32,6 +32,10 @@ public abstract class PickerController<T> extends BaseController {
         this.selection.addListener(listener);
     }
 
+    public void addBackListener(ChangeListener<? super T> listener) {
+        throw new RuntimeException("NotImplementedError");
+    }
+
     protected void updateView() {
         // Do nothing
     }
