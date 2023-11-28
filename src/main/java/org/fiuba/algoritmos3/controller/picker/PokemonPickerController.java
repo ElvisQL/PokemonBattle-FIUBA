@@ -152,7 +152,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     private void setDescriptionBox(String text) {
         descriptionBox.getChildren().clear();
         Text description = new Text(text);
-        description.setFill(Color.WHITE);
+        description.setFill(Color.web("#2d2a23"));
         descriptionBox.getChildren().add(description);
     }
 

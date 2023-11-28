@@ -28,14 +28,19 @@
 
 
         <children>
-            <Rectangle fx:id="pokemonPreview" arcHeight="5.0" arcWidth="5.0" fill="#2c4859" height="521.0" layoutX="25.0" layoutY="14.0" smooth="false" width="269.0" />
+
+            <Rectangle fx:id="pokemonPreview" arcHeight="5.0" arcWidth="5.0" fill="#84c5e0" height="521.0" layoutX="25.0" layoutY="14.0" smooth="false" stroke="#454662" strokeType="INSIDE" strokeWidth="5.0" width="269.0" />
+            <Rectangle arcWidth="5.0" fill="#3a93e0" height="252.0" layoutX="38.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0" />
+            <Rectangle arcWidth="5.0" fill="#3a93e0" height="507.0" layoutX="272.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="17.0" />
+            <Rectangle arcWidth="5.0" fill="#3a93e0" height="7.0" layoutX="38.0" layoutY="281.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0" />
+
             <Polygon fx:id="selectorPokemon" fill="#2c4859" layoutX="359.0" layoutY="96.0" points="-65.0, -82.0, -65.0, -22.0, -10.0, -51.0" stroke="#2c4859" strokeType="INSIDE" />
-            <Text fx:id="pokemonNameText" layoutX="44.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokemon" wrappingWidth="118.0">
+            <Text fx:id="pokemonNameText" layoutX="61.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokemon" wrappingWidth="212.0">
                 <font>
                     <Font name="VT323" size="24.0" />
                 </font>
             </Text>
-            <Text fx:id="levelText" layoutX="78.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level" wrappingWidth="55.0">
+            <Text fx:id="levelText" layoutX="94.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level" wrappingWidth="55.0">
                 <font>
                     <Font size="18.0" />
                 </font>
@@ -137,7 +142,7 @@
                             -fx-control-inner-background: #ABF5AE;
                         </style>
                     </ProgressBar>
-                    <ImageView fx:id="triangle0" fitHeight="30" fitWidth="30" layoutX="20.0" layoutY="20.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
+                    <ImageView fx:id="triangle0" fitHeight="50" fitWidth="50" layoutX="4.0" layoutY="4.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
 <!--                    <Polygon fx:id="triangle0" fill="#4a8ac6" layoutX="54.0" layoutY="35.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />-->
                     <Text fx:id="nameTextMenu" layoutX="70.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="nameTextMenu" text="pokemon" wrappingWidth="81.0" />
                     <Text fx:id="levelTextMenu" layoutX="213.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="levelTextMenu" text="lvl" wrappingWidth="28.40625" />
@@ -164,7 +169,7 @@
                         </style>
                     </ProgressBar>
 <!--                    <Polygon fx:id="triangle1" fill="#4a8ac6" layoutX="54.0" layoutY="33.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />-->
-                    <ImageView fx:id="triangle1" fitHeight="50" fitWidth="50" layoutX="8.0" layoutY="7.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
+                    <ImageView fx:id="triangle1" fitHeight="50" fitWidth="50" layoutX="3.0" layoutY="6.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
                     <ImageView fitHeight="26.0" fitWidth="118.0" layoutX="256.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
                 </children>
             </Pane>
@@ -187,7 +192,7 @@
                         </style>
                     </ProgressBar>
 <!--                    <Polygon fx:id="triangle2" fill="#4a8ac6" layoutX="55.0" layoutY="36.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />-->
-                    <ImageView fx:id="triangle2" fitHeight="50" fitWidth="50" layoutX="9.0" layoutY="7.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
+                    <ImageView fx:id="triangle2" fitHeight="50" fitWidth="50" layoutX="4.0" layoutY="5.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
                     <ImageView fitHeight="26.0" fitWidth="118.0" layoutX="256.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
                 </children>
             </Pane>
@@ -209,7 +214,7 @@
                             -fx-control-inner-background: #ABF5AE;
                         </style>
                     </ProgressBar>
-                    <ImageView fx:id="triangle3" fitHeight="50.0" fitWidth="50.0" layoutX="19.0" layoutY="14.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
+                    <ImageView fx:id="triangle3" fitHeight="50.0" fitWidth="50.0" layoutX="5.0" layoutY="3.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
 <!--                    <Polygon fx:id="triangle3" fill="#4a8ac6" layoutX="54.0" layoutY="35.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />-->
                     <ImageView fitHeight="26.0" fitWidth="118.0" layoutX="256.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
                 </children>
@@ -232,7 +237,7 @@
                             -fx-control-inner-background: #ABF5AE;
                         </style>
                     </ProgressBar>
-                    <ImageView fx:id="triangle4" fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="19.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
+                    <ImageView fx:id="triangle4" fitHeight="50.0" fitWidth="50.0" layoutX="5.0" layoutY="3.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
 <!--                    <Polygon fx:id="triangle4" fill="#4a8ac6" layoutX="54.0" layoutY="35.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />-->
                     <ImageView fitHeight="26.0" fitWidth="118.0" layoutX="256.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
                 </children>
@@ -255,7 +260,7 @@
                             -fx-control-inner-background: #ABF5AE;
                         </style>
                     </ProgressBar>
-                    <ImageView fx:id="triangle5" fitHeight="50.0" fitWidth="50.0" layoutX="18.0" layoutY="17.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
+                    <ImageView fx:id="triangle5" fitHeight="50.0" fitWidth="50.0" layoutX="9.0" layoutY="6.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" preserveRatio="true" />
 <!--                    <Polygon fx:id="triangle5" fill="#4a8ac6" layoutX="54.0" layoutY="35.0" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" points="-42.0, -28.0, -42.0, 24.0, 10.0, -4.0" stroke="#53a9ff" strokeType="INSIDE" />-->
                     <ImageView fitHeight="26.0" fitWidth="118.0" layoutX="256.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" styleClass="imageType" />
                 </children>
@@ -265,9 +270,7 @@
     <HBox alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0" style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
         <children>
             <AnchorPane style="-fx-background-color: #d6dde5; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
-                <children>
-                    <TextFlow fx:id="descriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0" prefWidth="533.0" style="-fx-font-size: 18px; fx-text-fill: #f3f3f3;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
-                </children>
+                <TextFlow fx:id="descriptionBox" layoutX="15.0" layoutY="14.0" prefHeight="145.0" prefWidth="541.0" style="-fx-font-size: 18px;" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="14.0" />
             </AnchorPane>
             <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0" style="-fx-background-color: #5c448d; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
                 <children>
@@ -292,8 +295,5 @@
             </GridPane>
         </children>
     </HBox>
-    <fx:define>
-        <Font fx:id="vt323" name="VT323" />
-    </fx:define>
 
 </AnchorPane>

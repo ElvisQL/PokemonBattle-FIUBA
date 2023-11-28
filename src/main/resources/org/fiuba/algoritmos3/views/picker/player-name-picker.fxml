@@ -23,23 +23,23 @@
                     <children>
                         <Label fx:id="playerNameTitle" alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0"
                                prefWidth="289.0" style="-fx-alignment: center; -fx-font-family: 'Roboto Black';"
-                               text="Jugador #" textAlignment="CENTER">
+                               text="Player #" textAlignment="CENTER">
                             <font>
                                 <Font size="18.0"/>
                             </font>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="289.0"
                                style="-fx-alignment: center; -fx-font-family: 'Roboto Black'"
-                               text="1. Escribe tu nombre:" textAlignment="CENTER"/>
+                               text="Your name:" textAlignment="CENTER"/>
                         <TextField fx:id="playerNameText" alignment="CENTER" onKeyTyped="#onKeyTyped" prefHeight="25.0"
-                                   prefWidth="227.0" promptText="Hasta 50 caracteres"/>
+                                   prefWidth="227.0" promptText="Name can't be longer than 50 characters"/>
                         <BaseButton fx:id="nextButton" alignment="CENTER" defaultButton="true" disable="true"
                                     maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                                     minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onNextClick"
-                                    prefHeight="60.0" prefWidth="138.0" text="Siguiente" textAlignment="CENTER">
-                            <VBox.margin>
-                                <Insets/>
-                            </VBox.margin>
+                                    prefHeight="90.0" prefWidth="110.0" text="NEXT" textAlignment="CENTER">
+                            <font>
+                                <Font size="13.0"/>
+                            </font>
                         </BaseButton>
                     </children>
                 </VBox>
