@@ -37,7 +37,7 @@ public class GameState {
     }
 
     public Player getWinner() {
-        return U.find(players, this::playerIsWinner).get();
+        return U.find(players, this::playerIsWinner).orNull();
     }
 
     public void setWeather(Weather weather) {

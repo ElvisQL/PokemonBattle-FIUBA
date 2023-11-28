@@ -28,6 +28,6 @@ public class BooleanPickerController extends PickerController<Boolean> {
 
     @FXML
     private void onBackClick(MouseEvent event) {
-        selection.setValue(false);
+        back.setValue(true);
     }
 }

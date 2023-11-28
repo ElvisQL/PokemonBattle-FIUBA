@@ -10,6 +10,7 @@ public abstract class PickerController<T> extends BaseController {
 
     private List<T> options;
     protected final GenericObservable<T> selection = new GenericObservable<>();
+    protected final GenericObservable<Boolean> back = new GenericObservable<>();
 
     PickerController() {
         super();
@@ -32,8 +33,8 @@ public abstract class PickerController<T> extends BaseController {
         this.selection.addListener(listener);
     }
 
-    public void addBackListener(ChangeListener<? super T> listener) {
-        throw new RuntimeException("NotImplementedError");
+    public void addBackListener(ChangeListener<Boolean> listener) {
+        this.back.addListener(listener);
     }
 
     protected void updateView() {

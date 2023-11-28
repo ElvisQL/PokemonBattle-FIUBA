@@ -18,16 +18,21 @@ public class UseItemController extends GameMoveController<UseItem, UseItemBuilde
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         builder = new UseItemBuilder();
-        loadPicker(ItemPickerController.class, gameAPI.currentPlayer().getItems(), this::onItemPicked);
+        loadItemPicker();
+    }
+
+    private void loadItemPicker() {
+        loadPicker(ItemPickerController.class, gameAPI.currentPlayer().getItems(), this::onItemPicked, (_a, _b, _c) -> loadChooseGameMove());
     }
 
     private void onItemPicked(ObservableValue<?> _obs, Item oldItem, Item newItem) {
         builder.setItem(newItem);
-        List<Pokemon> pokemons = Stream.concat(
-                gameAPI.currentPlayer().getPokemons().stream(),
-                gameAPI.currentPlayer().getOpponent().getPokemons().stream()
-        ).toList();
-        loadPicker(PokemonPickerController.class, pokemons, this::onPokemonPicked);
+        loadPokemonPicker();
+    }
+
+    private void loadPokemonPicker() {
+        List<Pokemon> pokemons = Stream.concat(gameAPI.currentPlayer().getPokemons().stream(), gameAPI.currentPlayer().getOpponent().getPokemons().stream()).toList();
+        loadPicker(PokemonPickerController.class, pokemons, this::onPokemonPicked, (_a, _b, _c) -> loadItemPicker());
     }
 
     private void onPokemonPicked(ObservableValue<?> _obs, Pokemon oldPokemon, Pokemon newPokemon) {

@@ -84,8 +84,6 @@ public class PokemonPickerController extends PickerController<Pokemon> {
                 pane.setOnMouseClicked(this::handleChoosePokemonMouseClick);
                 pane.setOnMouseEntered(this::handleMouseEntered);
                 pane.setOnMouseExited(this::handleMouseExited);
-
-
             }
         }
 
@@ -151,7 +149,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     @FXML
     private void handleBackButtonAction(ActionEvent event) {
-
+        back.setValue(true);
     }
 
     public void handleMouseEntered(MouseEvent event) {

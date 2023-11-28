@@ -15,7 +15,6 @@ import javafx.scene.text.TextFlow;
 import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.view.BaseButton;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -77,11 +76,9 @@ public class ItemPickerController extends PickerController<Item> {
             descriptionBox.getChildren().clear();
             descriptionBox.getChildren().add(description);
         }
-
     }
 
     private void handleMouseEntered(MouseEvent e) {
-
         Node source = (Node) e.getSource();
         if (source instanceof HBox hBox && hBox != markedItem) {
             source.getStyleClass().add("item-mouse-entered");
@@ -94,8 +91,6 @@ public class ItemPickerController extends PickerController<Item> {
 
             lastDescription = item.getDescription();
         }
-
-
     }
 
     @Override
@@ -146,11 +141,7 @@ public class ItemPickerController extends PickerController<Item> {
 
     @FXML
     private void handleBackButtonAction(ActionEvent event) {
-        try {
-            changeScene(event, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        back.setValue(true);
     }
 
     public void handleOkButton(ActionEvent event) {

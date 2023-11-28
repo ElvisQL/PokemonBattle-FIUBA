@@ -13,16 +13,13 @@ public class SurrenderController extends GameMoveController<Surrender, Surrender
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         builder = new SurrenderBuilder();
-        BooleanPickerController controller = (BooleanPickerController) loadPicker(BooleanPickerController.class, null, this::onBooleanChosen);
+        BooleanPickerController controller = (BooleanPickerController) loadPicker(BooleanPickerController.class, null, this::onBooleanChosen, (_a, _b, _c) -> loadChooseGameMove());
         controller.setQuestion("Are you sure you want to surrender?");
     }
 
 
-    private void onBooleanChosen(ObservableValue<?> _obs, Boolean oldPokemon, Boolean newPokemon) {
-        if (newPokemon)
-            executeGameMove();
-        else
-            return; // TODO call back listener
+    private void onBooleanChosen(ObservableValue<?> _obs, Boolean old, Boolean hasSurrendered) {
+        executeGameMove();
     }
 
 }

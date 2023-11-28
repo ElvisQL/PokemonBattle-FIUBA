@@ -14,9 +14,8 @@ public class ChangePokemonController extends GameMoveController<ChangePokemon, C
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         builder = new ChangePokemonBuilder();
-        loadPicker(PokemonPickerController.class, gameAPI.currentPlayer().getPokemons(), this::onPokemonPicked);
+        loadPicker(PokemonPickerController.class, gameAPI.currentPlayer().getPokemons(), this::onPokemonPicked, (_a, _b, _c) -> loadChooseGameMove());
     }
-
 
     private void onPokemonPicked(ObservableValue<?> _obs, Pokemon oldPokemon, Pokemon newPokemon) {
         builder.setNewPokemon(newPokemon);
