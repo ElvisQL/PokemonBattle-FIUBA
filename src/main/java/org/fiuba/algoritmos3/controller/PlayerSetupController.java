@@ -4,6 +4,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.controller.picker.PickerController;
 import org.fiuba.algoritmos3.controller.picker.PlayerNamePickerController;
 import org.fiuba.algoritmos3.controller.picker.PokemonPickerController;
 import org.fiuba.algoritmos3.model.Player;
@@ -19,12 +20,14 @@ public class PlayerSetupController extends PickerWrapperController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadPicker(PlayerNamePickerController.class, null, this::onPlayerNamePicked);
+        PickerController<String> controller = loadPicker(PlayerNamePickerController.class, null);
+        controller.addSelectionListener(this::onPlayerNamePicked);
     }
 
     private void onPlayerNamePicked(ObservableValue<?> _obs, String oldName, String newName) {
         player = gameAPI.createPlayer(newName);
-        loadPicker(PokemonPickerController.class, player.getPokemons(), this::onPokemonPicked);
+        PickerController<Pokemon> controller = loadPicker(PokemonPickerController.class, player.getPokemons());
+        controller.addSelectionListener(this::onPokemonPicked);
     }
 
     private void onPokemonPicked(ObservableValue<?> _obs, Pokemon oldPokemon, Pokemon newPokemon) {
@@ -40,10 +43,6 @@ public class PlayerSetupController extends PickerWrapperController {
 
             // show message
             changeScene(stage, getResource("views/trainersBattlefield/trainer-view.fxml"));
-
-            // change scene
-           // changeScene(stage, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
-
         } else {
             BaseController controller = new PlayerSetupController();
             FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/picker-wrapper.fxml"));

@@ -5,12 +5,15 @@ import org.fiuba.algoritmos3.GenericObservable;
 import org.fiuba.algoritmos3.controller.BaseController;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public abstract class PickerController<T> extends BaseController {
 
     private List<T> options;
     protected final GenericObservable<T> selection = new GenericObservable<>();
     protected final GenericObservable<Boolean> back = new GenericObservable<>();
+
+    protected Predicate<T> filterFunction = (a) -> true;
 
     PickerController() {
         super();
@@ -22,11 +25,11 @@ public abstract class PickerController<T> extends BaseController {
     }
 
     protected List<T> getOptions() {
-        return this.options.stream().filter(this::filterFunction).toList();
+        return this.options.stream().filter(filterFunction).toList();
     }
 
-    protected boolean filterFunction(T option) {
-        return true;
+    public void setFilterFunction(Predicate<T> filterFunction) {
+        this.filterFunction = filterFunction;
     }
 
     public void addSelectionListener(ChangeListener<? super T> listener) {

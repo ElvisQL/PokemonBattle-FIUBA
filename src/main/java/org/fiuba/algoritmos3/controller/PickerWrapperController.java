@@ -19,11 +19,7 @@ public abstract class PickerWrapperController extends BaseController {
     protected PickerController<?> previousController;
     protected PickerController<?> currentController;
 
-    protected <S> PickerController<S> loadPicker(Class<? extends PickerController<S>> clazz, List<S> options, ChangeListener<S> selectionListener) throws RuntimeException {
-        return loadPicker(clazz, options, selectionListener, null);
-    }
-
-    protected <S> PickerController<S> loadPicker(Class<? extends PickerController<S>> clazz, List<S> options, ChangeListener<S> selectionListener, ChangeListener<Boolean> backListener) throws RuntimeException {
+    protected <S> PickerController<S> loadPicker(Class<? extends PickerController<S>> clazz, List<S> options) throws RuntimeException {
         String viewUrl = "views/picker/" + U.kebabCase(clazz.getSimpleName().replace("Controller", "")) + ".fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(getResource(viewUrl));
 
@@ -36,8 +32,6 @@ public abstract class PickerWrapperController extends BaseController {
 
         PickerController<S> pickerController = fxmlLoader.getController();
         pickerController.setOptions(options);
-        pickerController.addSelectionListener(selectionListener);
-        pickerController.addBackListener(backListener);
 
         rootPane.getChildren().removeAll();
         rootPane.getChildren().add(node);

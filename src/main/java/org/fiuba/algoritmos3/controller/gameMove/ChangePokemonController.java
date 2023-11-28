@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3.controller.gameMove;
 
 import javafx.beans.value.ObservableValue;
+import org.fiuba.algoritmos3.controller.picker.PickerController;
 import org.fiuba.algoritmos3.controller.picker.PokemonPickerController;
 import org.fiuba.algoritmos3.model.move.ChangePokemon;
 import org.fiuba.algoritmos3.model.move.builder.ChangePokemonBuilder;
@@ -14,7 +15,10 @@ public class ChangePokemonController extends GameMoveController<ChangePokemon, C
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         builder = new ChangePokemonBuilder();
-        loadPicker(PokemonPickerController.class, gameAPI.currentPlayer().getPokemons(), this::onPokemonPicked, (_a, _b, _c) -> loadChooseGameMove());
+        PickerController<Pokemon> controller = loadPicker(PokemonPickerController.class, gameAPI.currentPlayer().getPokemons());
+        controller.addSelectionListener(this::onPokemonPicked);
+        controller.addBackListener((_a, _b, _c) -> loadChooseGameMove());
+        controller.setFilterFunction((pokemon -> !pokemon.isDead()));
     }
 
     private void onPokemonPicked(ObservableValue<?> _obs, Pokemon oldPokemon, Pokemon newPokemon) {
