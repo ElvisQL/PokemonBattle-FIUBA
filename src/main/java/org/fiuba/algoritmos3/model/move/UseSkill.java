@@ -2,7 +2,6 @@ package org.fiuba.algoritmos3.model.move;
 
 import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.error.BaseError;
-import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 import org.fiuba.algoritmos3.model.pokemon.skills.NullSkillModifier;

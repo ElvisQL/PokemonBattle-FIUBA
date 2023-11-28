@@ -1,10 +1,9 @@
 package org.fiuba.algoritmos3.model.menu;
 
-import org.fiuba.algoritmos3.UserInterface;
+import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.menu.operation.Operation;
 import org.fiuba.algoritmos3.model.move.GameMoveResult;
-import org.fiuba.algoritmos3.model.error.BaseError;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -34,15 +33,13 @@ class MenuItemTest {
     @Nested
     class runOperation {
         @Mock
-        UserInterface ui;
-        @Mock
         Operation<String, String> operation;
         GameMoveResult<String> submenuResult;
         @Mock
         Menu<String> submenu;
 
         @Test
-        void runOperation_successful_result() throws IOException, InvalidSelectionException, BaseError {
+        void runOperation_successful_result() throws IOException, BaseError {
             MenuItem<String, String> item = new MenuItem<>("label", operation);
 
             doReturn(submenu).when(operation).generateSubmenu();
@@ -58,7 +55,7 @@ class MenuItemTest {
         }
 
         @Test
-        void runOperation_error_result() throws IOException, InvalidSelectionException, BaseError {
+        void runOperation_error_result() throws IOException, BaseError {
             MenuItem<String, String> item = new MenuItem<>("label", operation);
 
             BaseError error = new BaseError("passed");

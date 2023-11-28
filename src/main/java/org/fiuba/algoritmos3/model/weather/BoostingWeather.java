@@ -1,13 +1,11 @@
 package org.fiuba.algoritmos3.model.weather;
 
 import org.fiuba.algoritmos3.model.error.BaseError;
-import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.PokemonType;
 import org.fiuba.algoritmos3.model.pokemon.skills.AttackSkill;
 import org.fiuba.algoritmos3.model.pokemon.skills.SkillModifier;
 
-import java.io.IOException;
 import java.util.List;
 
 public abstract class BoostingWeather extends SkillModifier implements Weather {

@@ -1,10 +1,6 @@
 package org.fiuba.algoritmos3.model.event;
 
-import org.fiuba.algoritmos3.model.event.listener.GameEventListener;
-
-import java.util.ArrayList;
 import java.util.EventObject;
-import java.util.List;
 
 public abstract class GameEvent extends EventObject {
     /**

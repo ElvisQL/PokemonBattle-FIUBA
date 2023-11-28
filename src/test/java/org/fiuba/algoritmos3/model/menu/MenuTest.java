@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.model.menu;
 
-import org.fiuba.algoritmos3.MockUI;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.IOException;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class MenuTest {

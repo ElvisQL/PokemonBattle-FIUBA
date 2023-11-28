@@ -45,7 +45,8 @@ public class SkillsDeserializer {
         String description = skill.get("description").asText();
 
         return switch (cat) {
-            case "Attack" -> new AttackSkill(skillName, skill.get("power").asInt(), U.random(0,MAX_SKILL_USAGE), description);
+            case "Attack" ->
+                    new AttackSkill(skillName, skill.get("power").asInt(), U.random(0, MAX_SKILL_USAGE), description);
             case "Buff" ->
                     new BuffSkill(skillName, StatType.valueOf(skill.get("attribute").asText().toUpperCase()), skill.get("percentage").asInt(), description);
             case "Status" -> new StatusSkill(skillName, getStatus(skill.get("attribute").asText()), description);

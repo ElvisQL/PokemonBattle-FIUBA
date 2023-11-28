@@ -21,7 +21,7 @@ public class ItemDeserializer {
             this.items = this.use(jsonNode);
             this.itemManager = new ItemManager(items);
 
-            itemManager.applyItemLimitations("Hyper Potion",1);
+            itemManager.applyItemLimitations("Hyper Potion", 1);
             //Aqui se puede añadir mas...
 
         } catch (InvalidDataException e) {
@@ -42,8 +42,7 @@ public class ItemDeserializer {
 
         return switch (cat) {
             case "HealingFixed" -> new FixedHealingItem(id, name, description, item.get("HP").asInt());
-            case "HealingPercentage" ->
-                    new PercentageHealingItem(id, name, description, item.get("HP").asInt());
+            case "HealingPercentage" -> new PercentageHealingItem(id, name, description, item.get("HP").asInt());
             case "Revival" -> new ReviveItem(id, name, description, item.get("percentage").asInt());
             case "Status" -> new RestoreStatusItem(id, name, description);
             case "Attack" -> new IncreaseAttackItem(id, name, description, item.get("percentage").asInt());

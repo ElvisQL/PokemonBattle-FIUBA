@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.controller.gameMove;
 
-import javafx.beans.value.ObservableValue;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.controller.PickerWrapperController;
 import org.fiuba.algoritmos3.controller.WinnerViewController;

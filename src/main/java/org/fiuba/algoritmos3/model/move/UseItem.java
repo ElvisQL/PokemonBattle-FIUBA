@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.model.move;
 
-import org.fiuba.algoritmos3.UiDisplayableVisitor;
 import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.Player;
 import org.fiuba.algoritmos3.model.error.BaseError;
@@ -22,7 +21,6 @@ public class UseItem extends GameMove {
     @Override
     public GameMoveResult<String> run(GameState gameState) {
         Player player = gameState.getCurrentPlayer();
-        UiDisplayableVisitor uiDisplayableVisitor = new UiDisplayableVisitor();
 
         if (!player.getItems().contains(chosenItem)) {
             return new GameMoveResult<String>().Err(new OwnershipError("The selected item doesn't belong to the current player"));
@@ -34,10 +32,8 @@ public class UseItem extends GameMove {
             return new GameMoveResult<String>().Err(e);
         }
 
-        chosenItem.accept(uiDisplayableVisitor);
         player.getItems().remove(chosenItem);
 
-        return new GameMoveResult<String>().Ok(player.getName() + " used " + uiDisplayableVisitor.getItemText()
-                + " against " + chosenPokemon.getName());
+        return new GameMoveResult<String>().Ok("Used item");
     }
 }

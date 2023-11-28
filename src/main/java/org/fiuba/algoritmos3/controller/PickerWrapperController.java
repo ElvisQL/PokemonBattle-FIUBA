@@ -1,7 +1,6 @@
 package org.fiuba.algoritmos3.controller;
 
 import com.github.underscore.U;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

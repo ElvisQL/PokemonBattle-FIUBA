@@ -82,6 +82,11 @@ public class Game implements GameAPI {
     }
 
     @Override
+    public void clearPlayer() {
+        gameState.getPlayers().clear();
+    }
+
+    @Override
     public Player createPlayer(String playerName) {
         if (gameState.getPlayers().size() >= MAX_PLAYERS) {
             throw new IllegalArgumentException("The max amount of players is " + MAX_PLAYERS);
@@ -111,6 +116,11 @@ public class Game implements GameAPI {
     @Override
     public Player getWinner() {
         return gameState.getWinner();
+    }
+
+    @Override
+    public Weather getWeather() {
+        return gameState.getWeather();
     }
 
     private Player getFirstPlayer(List<Player> players) {

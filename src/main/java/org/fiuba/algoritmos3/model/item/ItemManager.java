@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 public class ItemManager {
 
     private HashMap<Integer, Item> items;
-    private Map<String, Integer> limitedItemLimits;
+    private final Map<String, Integer> limitedItemLimits;
 
     public ItemManager(HashMap<Integer, Item> items) {
         this.items = items;

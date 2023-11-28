@@ -6,25 +6,18 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.fiuba.algoritmos3.GameAPI;
 import org.fiuba.algoritmos3.PokemonApp;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static java.lang.Thread.sleep;
 
 public class MessageDisplayController extends BaseController {
 
@@ -91,7 +84,8 @@ public class MessageDisplayController extends BaseController {
         timeline.play();
 
 
-}
+    }
+
     private void fillGrid(GridPane grid) {
         grid.setHgap(10);
         for (int col = 0; col < 6; col++) { // TODO analizar cada pokemon

@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import org.fiuba.algoritmos3.view.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="root" stylesheets="@../styles/winnerView.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.WinnerViewController">
+<?import javafx.scene.text.Font?>
+<?import org.fiuba.algoritmos3.view.BaseButton?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
+            prefWidth="1024.0" styleClass="root" stylesheets="@../styles/winnerView.css"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.fiuba.algoritmos3.controller.WinnerViewController">
     <children>
-        <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
             <children>
                 <VBox alignment="CENTER">
                     <children>
                         <Label fx:id="winnerName" text="Player X wins">
                             <font>
-                                <Font name="VT323 Regular" size="48.0" />
+                                <Font name="VT323 Regular" size="48.0"/>
                             </font>
                         </Label>
                         <ImageView fitHeight="242.0" fitWidth="691.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/dancing-squirtle.gif" />
+                                <Image url="@../images/dancing-squirtle.gif"/>
                             </image>
                         </ImageView>
-                        <BaseButton fx:id="newGameButton" text="New Game" />
-                  <BaseButton fx:id="newGameButton1" layoutX="58.0" layoutY="506.0" prefWidth="200.0" text="EXIT" />
+                        <BaseButton fx:id="newGameButton" text="New Game"/>
+                        <BaseButton fx:id="exitButton" layoutX="58.0" layoutY="506.0" prefWidth="200.0"
+                                    text="EXIT" onAction="#onClickExit"/>
                     </children>
                 </VBox>
             </children>

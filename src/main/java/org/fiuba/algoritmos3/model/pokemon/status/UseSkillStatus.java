@@ -1,11 +1,8 @@
 package org.fiuba.algoritmos3.model.pokemon.status;
 
 import org.fiuba.algoritmos3.model.error.BaseError;
-import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.skills.SkillModifier;
-
-import java.io.IOException;
 
 public abstract class UseSkillStatus extends SkillModifier implements Status {
     @Override

@@ -1,8 +1,6 @@
 package org.fiuba.algoritmos3.model.pokemon.skills;
 
-import org.fiuba.algoritmos3.Visitor;
 import org.fiuba.algoritmos3.model.error.BaseError;
-import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public abstract class ConcreteSkill implements Skill {
@@ -11,7 +9,8 @@ public abstract class ConcreteSkill implements Skill {
     String description;
 
     protected ConcreteSkill(String name, String description) {
-        this.name = name; this.description = description;
+        this.name = name;
+        this.description = description;
     }
 
     public void use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError {
@@ -26,9 +25,7 @@ public abstract class ConcreteSkill implements Skill {
         return name;
     }
 
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public String getDescription() {
+        return this.description;
     }
-
-    public String getDescription(){ return this.description;}
 }

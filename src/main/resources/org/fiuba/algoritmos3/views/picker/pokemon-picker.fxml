@@ -28,17 +28,14 @@
 
 
         <children>
-            <Rectangle fx:id="pokemonPreview" arcHeight="5.0" arcWidth="5.0" fill="#84c5e0" height="521.0" layoutX="25.0" layoutY="14.0" smooth="false" stroke="#454662" strokeType="INSIDE" strokeWidth="5.0" width="269.0" />
-         <Rectangle arcWidth="5.0" fill="#3a93e0" height="252.0" layoutX="38.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0" />
-         <Rectangle arcWidth="5.0" fill="#3a93e0" height="507.0" layoutX="272.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="17.0" />
-         <Rectangle arcWidth="5.0" fill="#3a93e0" height="7.0" layoutX="38.0" layoutY="281.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0" />
-            <Polygon fx:id="selectorPokemon" fill="#454662" layoutX="359.0" layoutY="96.0" points="-65.0, -82.0, -65.0, -22.0, -10.0, -51.0" stroke="#454662" strokeType="INSIDE" />
-            <Text fx:id="pokemonNameText" fill="WHITE" layoutX="60.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokemon" wrappingWidth="204.0">
+            <Rectangle fx:id="pokemonPreview" arcHeight="5.0" arcWidth="5.0" fill="#2c4859" height="521.0" layoutX="25.0" layoutY="14.0" smooth="false" width="269.0" />
+            <Polygon fx:id="selectorPokemon" fill="#2c4859" layoutX="359.0" layoutY="96.0" points="-65.0, -82.0, -65.0, -22.0, -10.0, -51.0" stroke="#2c4859" strokeType="INSIDE" />
+            <Text fx:id="pokemonNameText" layoutX="44.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokemon" wrappingWidth="118.0">
                 <font>
                     <Font name="VT323" size="24.0" />
                 </font>
             </Text>
-            <Text fx:id="levelText" layoutX="93.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level" wrappingWidth="55.0">
+            <Text fx:id="levelText" layoutX="78.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level" wrappingWidth="55.0">
                 <font>
                     <Font size="18.0" />
                 </font>
@@ -63,7 +60,7 @@
                     -fx-control-inner-background: #ABF5AE;
                 </style>
             </ProgressBar>
-            <Text fx:id="attackText" layoutX="195.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0">
+            <Text fx:id="attackText" layoutX="195.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0">
                 <font>
                     <Font size="20.0" />
                 </font>
@@ -73,12 +70,12 @@
                     <Font size="18.0" />
                 </font>
             </Text>
-            <Text fx:id="defenseText" layoutX="195.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0">
+            <Text fx:id="defenseText" layoutX="195.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0">
                 <font>
                     <Font size="20.0" />
                 </font>
             </Text>
-            <Text fx:id="speedText" layoutX="195.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0">
+            <Text fx:id="speedText" layoutX="195.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0">
                 <font>
                     <Font size="20.0" />
                 </font>
@@ -269,7 +266,7 @@
         <children>
             <AnchorPane style="-fx-background-color: #d6dde5; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
                 <children>
-                    <TextFlow fx:id="descriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0" prefWidth="533.0" style="-fx-font-size: 18px; fx-text-fill: #2d2a23;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
+                    <TextFlow fx:id="descriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0" prefWidth="533.0" style="-fx-font-size: 18px; fx-text-fill: #f3f3f3;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
                 </children>
             </AnchorPane>
             <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0" style="-fx-background-color: #5c448d; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
@@ -279,7 +276,7 @@
                             <Font size="15.0" />
                         </font>
                     </BaseButton>
-                    <BaseButton fx:id="okButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="55.0" prefWidth="171.0" text="SELECT" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <BaseButton fx:id="okButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="55.0" prefWidth="171.0" text="SELECT" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                         <font>
                             <Font size="15.0" />
                         </font>

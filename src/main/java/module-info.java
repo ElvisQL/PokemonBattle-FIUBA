@@ -22,6 +22,7 @@ module org.fiuba.algoritmos3 {
     opens org.fiuba.algoritmos3.view to javafx.fxml;
     exports org.fiuba.algoritmos3.view.chooseGameMove;
     opens org.fiuba.algoritmos3.view.chooseGameMove to javafx.fxml;
+    exports org.fiuba.algoritmos3.model.pokemon to com.fasterxml.jackson.databind;
 
     exports org.fiuba.algoritmos3.model;
 

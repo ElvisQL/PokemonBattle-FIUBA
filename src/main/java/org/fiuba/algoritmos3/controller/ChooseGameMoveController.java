@@ -5,6 +5,8 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -22,6 +24,8 @@ import java.util.ResourceBundle;
 public class ChooseGameMoveController extends BaseController {
     public VBox pokemonsSplitPane;
     public TextFlow gameMoveDescriptionLabel;
+    @FXML
+    private ImageView backGroundWeather;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -32,10 +36,12 @@ public class ChooseGameMoveController extends BaseController {
         PokemonView currentPokemonView = new PokemonView(gameAPI.currentPlayer().getCurrentPokemon());
         pokemonsSplitPane.getChildren().add(currentPokemonView);
 
-        Text msg = new Text("What will "+gameAPI.currentPlayer().getCurrentPokemon().getName()+" do?");
+        Text msg = new Text("What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
         msg.setFill(Color.WHITE); // TODO move a views?
         gameMoveDescriptionLabel.getChildren().add(msg);
+        changeWeatherImage();
     }
+
 
     private void loadGameMoveController(Event e, GameMoveController<?, ?> controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/picker-wrapper.fxml"));
@@ -50,6 +56,20 @@ public class ChooseGameMoveController extends BaseController {
         }
 
         changeScene(e, scene);
+    }
+
+    @FXML
+    public void changeWeatherImage() {
+        String weatherName = gameAPI.getWeather().getName();
+        String weatherImage = getResource("images/backgrounds/" + weatherName.toLowerCase() + ".png").toExternalForm();
+
+
+        try {
+            Image newImage = new Image(weatherImage);
+            backGroundWeather.setImage(newImage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

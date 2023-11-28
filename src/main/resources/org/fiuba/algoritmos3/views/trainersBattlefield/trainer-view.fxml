@@ -1,80 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import org.fiuba.algoritmos3.view.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import org.fiuba.algoritmos3.view.BaseButton?>
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.fiuba.algoritmos3.controller.MessageDisplayController">
+    <Pane prefHeight="600" prefWidth="768">
+        <ImageView fitWidth="768" preserveRatio="true" style=" -fx-background-size: cover;">
+            <image>
+                <Image url="@../../images/backgrounds/woods.jpg"/>
+            </image>
+        </ImageView>
+    </Pane>
+    <HBox layoutX="200" layoutY="34.0" prefHeight="280.0" prefWidth="568">
 
-<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.MessageDisplayController">
-   <Pane prefHeight="600" prefWidth="768">
-   <ImageView fitWidth="768" preserveRatio="true" style=" -fx-background-size: cover;">
-   <image><Image url="@../../images/backgrounds/woods.jpg" /></image>
-   </ImageView>
-   </Pane>
-   <HBox layoutX="200" layoutY="34.0" prefHeight="280.0" prefWidth="568">
 
+        <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="69.0">
+            <GridPane fx:id="oppPokeballGrid" prefHeight="35.0" prefWidth="230.0">
+            </GridPane>
+            <Rectangle fx:id="rightBar" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="7.0"
+                       nodeOrientation="RIGHT_TO_LEFT" stroke="#2d2a23" strokeType="INSIDE" strokeWidth="3.0"
+                       width="260.0"/>
+        </VBox>
+        <ImageView fx:id="oppositeTrainer" fitHeight="280.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true"/>
 
-      <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="69.0">
-         <GridPane fx:id="oppPokeballGrid" prefHeight="35.0" prefWidth="230.0">
-         </GridPane>
-         <Rectangle fx:id="rightBar" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="7.0" nodeOrientation="RIGHT_TO_LEFT" stroke="#2d2a23" strokeType="INSIDE" strokeWidth="3.0" width="260.0" />
-      </VBox>
-      <ImageView fx:id="oppositeTrainer" fitHeight="280.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true" />
-
-   </HBox>
-   <HBox layoutY="400.0" prefHeight="200.0" prefWidth="768">
-      <ImageView fx:id="activeTrainer" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="600" />
-      <VBox layoutX="500" prefHeight="150.0" prefWidth="292.0" AnchorPane.bottomAnchor="600" AnchorPane.leftAnchor="768">
-         <children>
-            <GridPane fx:id="actPokeballGrid" prefHeight="35.0" prefWidth="230.0">
-         </GridPane>
-         <Rectangle fx:id="leftBar" arcHeight="2.0" arcWidth="2.0" fill="#1f93ff00" height="7.0" stroke="#2d2a23" strokeType="INSIDE" strokeWidth="3.0" width="260.0" />
-         </children>
-      </VBox>
-   </HBox>
-
-   <HBox fx:id="msgBox" alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0" style="-fx-background-color: #2a2e2d; -fx-border-color: #343434; -fx-border-width: 3;">
-      <children>
-         <AnchorPane style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+    </HBox>
+    <HBox layoutY="400.0" prefHeight="200.0" prefWidth="768">
+        <ImageView fx:id="activeTrainer" fitWidth="300.0" pickOnBounds="true" preserveRatio="true"
+                   AnchorPane.bottomAnchor="600"/>
+        <VBox layoutX="500" prefHeight="150.0" prefWidth="292.0" AnchorPane.bottomAnchor="600"
+              AnchorPane.leftAnchor="768">
             <children>
-               <Label fx:id="message" layoutX="0" layoutY="5" prefHeight="137.0" prefWidth="518.0"
-                      style="-fx-font-size: 16px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
-                      wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="21.0">
-                  <opaqueInsets>
-                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                  </opaqueInsets>
-                  <cursor>
-                     <Cursor fx:constant="DEFAULT" />
-                  </cursor></Label>
+                <GridPane fx:id="actPokeballGrid" prefHeight="35.0" prefWidth="230.0">
+                </GridPane>
+                <Rectangle fx:id="leftBar" arcHeight="2.0" arcWidth="2.0" fill="#1f93ff00" height="7.0" stroke="#2d2a23"
+                           strokeType="INSIDE" strokeWidth="3.0" width="260.0"/>
             </children>
-         </AnchorPane>
-         <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0" style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
-            <children>
-               <BaseButton fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="52.0" prefWidth="130.0" text="BACK" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                  <font>
-                     <Font size="13.0" />
-                  </font>
-               </BaseButton>
-               <BaseButton fx:id="okButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOkButton" prefHeight="55.0" prefWidth="171.0" text="BATTLE!" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-                  <font>
-                     <Font size="15.0" />
-                  </font>
-               </BaseButton>
-            </children>
-            <columnConstraints>
-               <ColumnConstraints />
-            </columnConstraints>
-            <rowConstraints>
-               <RowConstraints />
-               <RowConstraints />
-            </rowConstraints>
-         </GridPane>
-      </children>
-   </HBox>
+        </VBox>
+    </HBox>
+
+    <HBox fx:id="msgBox" alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0"
+          style="-fx-background-color: #2a2e2d; -fx-border-color: #343434; -fx-border-width: 3;">
+        <children>
+            <AnchorPane
+                    style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;"
+                    HBox.hgrow="ALWAYS">
+                <children>
+                    <Label fx:id="message" layoutX="0" layoutY="5" prefHeight="137.0" prefWidth="518.0"
+                           style="-fx-font-size: 16px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
+                           wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="21.0">
+                        <opaqueInsets>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </opaqueInsets>
+                        <cursor>
+                            <Cursor fx:constant="DEFAULT"/>
+                        </cursor>
+                    </Label>
+                </children>
+            </AnchorPane>
+            <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0"
+                      style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
+                <children>
+                    <BaseButton fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButtonAction"
+                                prefHeight="52.0" prefWidth="130.0" text="BACK" GridPane.halignment="CENTER"
+                                GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER"
+                                GridPane.vgrow="ALWAYS">
+                        <font>
+                            <Font size="13.0"/>
+                        </font>
+                    </BaseButton>
+                    <BaseButton fx:id="okButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOkButton"
+                                prefHeight="55.0" prefWidth="171.0" text="BATTLE!" GridPane.halignment="CENTER"
+                                GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER"
+                                GridPane.vgrow="ALWAYS">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </BaseButton>
+                </children>
+                <columnConstraints>
+                    <ColumnConstraints/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints/>
+                    <RowConstraints/>
+                </rowConstraints>
+            </GridPane>
+        </children>
+    </HBox>
 
 
 </AnchorPane>
