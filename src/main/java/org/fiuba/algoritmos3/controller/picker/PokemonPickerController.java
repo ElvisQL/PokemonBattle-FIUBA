@@ -11,15 +11,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.view.BaseButton;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -56,6 +60,8 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     @FXML
     private ProgressBar viewProgressBar;
 
+    private MediaPlayer clickButton;
+
 
     @FXML
     private BaseButton okButton;
@@ -65,6 +71,11 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Text newText = new Text("Choose wisely"); //TODO change message when needed
+        String clickButton = Objects.requireNonNull(getResource("audio/clickButton.mp3")).toExternalForm();
+
+        Media media = new Media(clickButton);
+        this.clickButton = new MediaPlayer(media);
+
         newText.setFill(Color.WHITE);
         descriptionBox.getChildren().add(newText);
 
@@ -121,10 +132,15 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
         selectedIndex = pokemonChooserMenu.getChildren().indexOf(clickedPane);
         Pokemon pokemon = (Pokemon) pokemonChooserMenu.getChildren().get(selectedIndex).getUserData();
+
+        descriptionBox.getChildren().clear();
+
         Text description = new Text(pokemon.getHistory());
         descriptionBox.getChildren().add(description);
         updateSelection();
 
+        clickButton.seek(Duration.ZERO);
+        clickButton.play();
         okButton.setDisable(false);
     }
 
