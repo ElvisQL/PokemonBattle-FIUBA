@@ -42,12 +42,13 @@ public class SkillsDeserializer {
 
         String cat = skill.get("category").asText();
         String skillName = skill.get("name").asText();
+        String description = skill.get("description").asText();
 
         return switch (cat) {
-            case "Attack" -> new AttackSkill(skillName, skill.get("power").asInt(), U.random(MAX_SKILL_USAGE));
+            case "Attack" -> new AttackSkill(skillName, skill.get("power").asInt(), U.random(0,MAX_SKILL_USAGE), description);
             case "Buff" ->
-                    new BuffSkill(skillName, StatType.valueOf(skill.get("attribute").asText().toUpperCase()), skill.get("percentage").asInt());
-            case "Status" -> new StatusSkill(skillName, getStatus(skill.get("attribute").asText()));
+                    new BuffSkill(skillName, StatType.valueOf(skill.get("attribute").asText().toUpperCase()), skill.get("percentage").asInt(), description);
+            case "Status" -> new StatusSkill(skillName, getStatus(skill.get("attribute").asText()), description);
             default -> throw new InvalidDataException("skills.json");
         };
 

@@ -11,5 +11,4 @@ public interface Skill {
     void use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError;
 
     String getName() throws Exception;
-
 }

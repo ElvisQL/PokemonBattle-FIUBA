@@ -6,8 +6,8 @@ public class BuffSkill extends ConcreteSkill {
     private final StatType statToModify;
     private final Integer amount;
 
-    public BuffSkill(String name, StatType statToModify, Integer modifierValue) {
-        super(name);
+    public BuffSkill(String name, StatType statToModify, Integer modifierValue, String description) {
+        super(name, description);
         this.statToModify = statToModify;
         this.amount = modifierValue;
     }

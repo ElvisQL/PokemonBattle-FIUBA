@@ -9,10 +9,11 @@ public class AttackSkill extends ConcreteSkill {
     private final DamageCalculator damageCalculator;
 
 
-    public AttackSkill(String name, Integer power, Integer remainingUses) {
-        super(name);
+    public AttackSkill(String name, Integer power, Integer remainingUses, String description) {
+        super(name, description);
         this.remainingUses = remainingUses;
         this.damageCalculator = new DamageCalculator(power);
+
     }
 
     @Override
