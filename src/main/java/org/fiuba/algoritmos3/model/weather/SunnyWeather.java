@@ -17,7 +17,7 @@ public class SunnyWeather extends BoostingWeather {
     }
 
     @Override
-    public void endTurn(GameState gameState) {
+    public void applyTo(GameState gameState) {
 
     }
 }

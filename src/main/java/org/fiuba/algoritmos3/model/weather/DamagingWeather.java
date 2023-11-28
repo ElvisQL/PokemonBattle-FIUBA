@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface DamagingWeather extends Weather {
     @Override
-    default void endTurn(GameState gameState) {
+    default void applyTo(GameState gameState) {
         List<Pokemon> pokemons = List.of(
                 gameState.getCurrentPlayer().getCurrentPokemon(),
                 gameState.getCurrentPlayer().getOpponent().getCurrentPokemon()

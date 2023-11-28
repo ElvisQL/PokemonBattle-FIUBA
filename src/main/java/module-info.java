@@ -27,5 +27,10 @@ module org.fiuba.algoritmos3 {
 
     exports org.fiuba.algoritmos3.view.battlefield;
     opens org.fiuba.algoritmos3.view.battlefield to javafx.fxml;
+    opens org.fiuba.algoritmos3.model to javafx.fxml;
+    exports org.fiuba.algoritmos3.model.event;
+    opens org.fiuba.algoritmos3.model.event to javafx.fxml;
+    exports org.fiuba.algoritmos3.model.event.listener;
+    opens org.fiuba.algoritmos3.model.event.listener to javafx.fxml;
 
 }

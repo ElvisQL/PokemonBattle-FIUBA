@@ -18,7 +18,7 @@ public class SandstormWeather extends BoostingWeather {
     }
 
     @Override
-    public void endTurn(GameState gameState) {
+    public void applyTo(GameState gameState) {
 
     }
 }

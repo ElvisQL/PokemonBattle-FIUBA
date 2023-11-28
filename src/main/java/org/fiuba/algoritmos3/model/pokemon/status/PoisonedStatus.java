@@ -3,7 +3,7 @@ package org.fiuba.algoritmos3.model.pokemon.status;
 import org.fiuba.algoritmos3.Visitor;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
-public class PoisonedStatus implements ApplyableStatus {
+public class PoisonedStatus implements ApplicableStatus {
 
     @Override
     public void apply(Pokemon pokemon) {

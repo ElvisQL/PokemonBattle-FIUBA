@@ -33,7 +33,7 @@ public abstract class PickerController<T> extends BaseController {
     }
 
     protected void updateView() {
-        throw new RuntimeException("NotImplementedException");
+        // Do nothing
     }
 
 }
