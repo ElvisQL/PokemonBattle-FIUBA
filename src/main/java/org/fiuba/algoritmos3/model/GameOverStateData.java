@@ -32,6 +32,9 @@ public class GameOverStateData {
     private ArrayList<PokemonStateData> pokemons;
 
     public GameOverStateData buildPlayerGameOverState(Player player) {
+        if (player == null) {
+            return new GameOverStateData();
+        }
 
         return new GameOverStateData()
                 .getPokemonStates(player.getPokemons())

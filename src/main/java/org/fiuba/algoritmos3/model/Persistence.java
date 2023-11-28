@@ -23,8 +23,10 @@ public class Persistence {
     public static void saveGameResult(GameState gameState) {
         // Players info into Hashmap
         HashMap<String, Player> players = new HashMap<>();
-        players.put("winner", gameState.getWinner());
-        players.put("loser", gameState.getWinner().getOpponent());
+        Player winner = gameState.getWinner();
+        Player loser = (winner != null) ? winner.getOpponent() : null;
+        players.put("winner", winner);
+        players.put("loser", loser);
 
         // Save to json with serializer
         new GameResultSerializer(players);
