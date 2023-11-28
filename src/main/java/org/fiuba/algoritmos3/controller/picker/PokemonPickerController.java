@@ -86,13 +86,14 @@ public class PokemonPickerController extends PickerController<Pokemon> {
         for (int i = 0; i < options.size() && i < pokemonChooserMenu.getChildren().size(); i++) {
             Pokemon pokemon = options.get(i);
             Pane pane = (Pane) pokemonChooserMenu.getChildren().get(i);
-
+            pane.setUserData(pokemon);
             Text nameTextMenu = (Text) pane.lookup(".nameTextMenu");
             Text levelTextMenu = (Text) pane.lookup(".levelTextMenu");
             Text lifeTextMenu = (Text) pane.lookup(".lifeTextMenu");
             ProgressBar progressBarMenu = (ProgressBar) pane.lookup(".progressBarMenu");
 
             if (nameTextMenu != null && levelTextMenu != null && lifeTextMenu != null) {
+
                 nameTextMenu.setText(pokemon.getName());
                 levelTextMenu.setText(String.valueOf(pokemon.getLevel()));
                 lifeTextMenu.setText(pokemon.getHealth() + "/" + pokemon.getMaxHealth());
@@ -119,6 +120,9 @@ public class PokemonPickerController extends PickerController<Pokemon> {
             return;
 
         selectedIndex = pokemonChooserMenu.getChildren().indexOf(clickedPane);
+        Pokemon pokemon = (Pokemon) pokemonChooserMenu.getChildren().get(selectedIndex).getUserData();
+        Text description = new Text(pokemon.getHistory());
+        descriptionBox.getChildren().add(description);
         updateSelection();
 
         okButton.setDisable(false);
@@ -191,6 +195,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
             Double posY = calculatePosition();
             moveSelector(posY);
         }
+
     }
 
     private void moveSelector(Double posY) {
