@@ -33,7 +33,7 @@
                             <children>
                                 <BaseButton fx:id="nextButton" alignment="CENTER" cancelButton="true"
                                             maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                            minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onNextClick"
+                                            minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onBackClick"
                                             prefHeight="60.0" prefWidth="138.0" text="Cancelar" textAlignment="CENTER">
                                     <HBox.margin>
                                         <Insets right="10.0"/>
@@ -42,7 +42,7 @@
                                 <BaseButton fx:id="backButton" alignment="CENTER" defaultButton="true"
                                             layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity"
                                             minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                                            onMouseClicked="#onBackClick" prefHeight="60.0" prefWidth="138.0"
+                                            onMouseClicked="#onNextClick" prefHeight="60.0" prefWidth="138.0"
                                             text="Siguiente" textAlignment="CENTER">
                                     <HBox.margin>
                                         <Insets left="10.0"/>

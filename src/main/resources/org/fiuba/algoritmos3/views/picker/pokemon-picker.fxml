@@ -29,7 +29,7 @@
             <children>
                 <Rectangle fx:id="pokemonPreview" arcHeight="5.0" arcWidth="5.0" fill="#4c5962" height="521.0"
                            layoutX="25.0" layoutY="14.0" smooth="false" width="269.0"/>
-                <Polygon fx:id="selectorPokemon" fill="#53a9ff" layoutX="358.0" layoutY="96.0"
+                <Polygon fx:id="selectorPokemon" fill="#4c5962" layoutX="358.0" layoutY="96.0"
                          points="-65.0, -82.0, -65.0, -22.0, -10.0, -51.0" stroke="#53a9ff" strokeType="INSIDE"/>
                 <Text fx:id="pokemonNameText" layoutX="44.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0"
                       text="Pokemon" wrappingWidth="118.0">
@@ -288,13 +288,12 @@
         <HBox alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0"
               style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
             <children>
-                <AnchorPane
-                        style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;"
-                        HBox.hgrow="ALWAYS">
+                <AnchorPane style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;"
+                            HBox.hgrow="ALWAYS">
                     <children>
-                        <TextFlow fx:id="descriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0"
-                                  prefWidth="533.0" style="-fx-fill:#f3f3f3;" AnchorPane.leftAnchor="15.0"
-                                  AnchorPane.topAnchor="10.0"/>
+                        <TextFlow fx:id="descriptionBox" layoutX="95.0" prefHeight="145.0" prefWidth="533.0"
+                                  style="-fx-fill: #f3f3f3; -fx-font-size: 20;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0"
+                                  AnchorPane.bottomAnchor="10.0"/>
                     </children>
                 </AnchorPane>
                 <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0"
