@@ -27,6 +27,7 @@ public class Pokemon {
     protected PokemonSpecies species;
     protected Integer ID;
 
+
     // BUILD POKEMON -------------------------------------------------------------------------------------------------
     protected Pokemon() {
     }
@@ -146,4 +147,7 @@ public class Pokemon {
         visitor.visit(this);
     }
 
+    public String getHistory() {
+        return history;
+    }
 }
