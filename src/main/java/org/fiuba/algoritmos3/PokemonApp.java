@@ -4,7 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.fiuba.algoritmos3.controller.StartMenuController;
 import org.fiuba.algoritmos3.jsonManager.deserializer.ItemDeserializer;
 import org.fiuba.algoritmos3.jsonManager.deserializer.PokemonDeserializer;
@@ -14,6 +17,8 @@ import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 
 public class PokemonApp extends Application {
@@ -21,10 +26,13 @@ public class PokemonApp extends Application {
     private static GameAPI gameAPI;
 
     private static Stage mainStage;
+    public static MediaPlayer mediaPlayer;
 
     public static void main(String[] args) {
         launch();
     }
+
+
 
     @Override
     public void init() throws Exception {
@@ -39,12 +47,12 @@ public class PokemonApp extends Application {
         }
 
         gameAPI = new Game(items, pokemons);
-
         super.init();
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+
         mainStage = stage;
         mainStage.setTitle("Pokemon Game");
         Image icono = new Image(getClass().getResourceAsStream("images/icono-pokemon.png"));
@@ -59,9 +67,21 @@ public class PokemonApp extends Application {
         mainStage.show();
 
         startMenuController = startMenuFXML.getController();
-        startMenuController.getMediaPlayer().play();
-    }
 
+
+    }
+    public static void playMusic(Media music) {
+        stopmusic();
+        mediaPlayer = new MediaPlayer(music);
+        mediaPlayer.setVolume(0.5);
+        mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
+        mediaPlayer.play();
+    }
+    public static void stopmusic(){
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
+    }
     @Override
     public void stop() throws Exception {
         gameAPI.stop();
@@ -75,4 +95,5 @@ public class PokemonApp extends Application {
     public static Stage getMainStage() {
         return mainStage;
     }
+
 }

@@ -8,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -19,6 +22,7 @@ import org.fiuba.algoritmos3.view.chooseGameMove.PokemonView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ChooseGameMoveController extends BaseController {
@@ -29,6 +33,7 @@ public class ChooseGameMoveController extends BaseController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         PokemonView opponentPokemonView = new PokemonView(gameAPI.currentPlayer().getOpponent().getCurrentPokemon());
         opponentPokemonView.setFlipped(true);
         pokemonsSplitPane.getChildren().add(opponentPokemonView);

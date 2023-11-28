@@ -10,11 +10,15 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.fiuba.algoritmos3.PokemonApp;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -37,6 +41,7 @@ public class MessageDisplayController extends BaseController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        loadMusic("audio/battleMusic.wav");
         // Load opposite trainer image
         URL oppositeTrainerUrl = PokemonApp.class.getResource("images/trainers/" + "gen3_boy_front" + ".png");
         if (oppositeTrainerUrl != null) {

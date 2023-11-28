@@ -5,15 +5,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.GameAPI;
 import org.fiuba.algoritmos3.PokemonApp;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
 public abstract class BaseController implements Initializable {
+
     protected final GameAPI gameAPI;
 
     protected BaseController previousController;
@@ -25,6 +30,10 @@ public abstract class BaseController implements Initializable {
     protected BaseController changeScene(Event e, URL url) throws IOException {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         return changeScene(stage, url);
+    }
+    protected void loadMusic(String musicFile) {
+        Media media = new Media(getResource(musicFile).toExternalForm());
+        PokemonApp.playMusic(media);
     }
 
     protected BaseController changeScene(Stage stage, URL url) {
@@ -55,5 +64,8 @@ public abstract class BaseController implements Initializable {
 
     public void setPreviousController(BaseController previousController) {
         this.previousController = previousController;
+    }
+    protected void stopMusic(){
+        PokemonApp.stopmusic();
     }
 }
