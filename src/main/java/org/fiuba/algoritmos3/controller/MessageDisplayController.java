@@ -6,16 +6,21 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.fiuba.algoritmos3.GameAPI;
 import org.fiuba.algoritmos3.PokemonApp;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -62,7 +67,12 @@ public class MessageDisplayController extends BaseController {
     }
 
     private void animateMessage() {
-        String str = "Very long long long long message we gotta be able to change";
+        BattleMessages[] enumValues = BattleMessages.values();
+
+        Random random = new Random();
+        int randomIndex = random.nextInt(enumValues.length);
+        String str = enumValues[randomIndex].toString();
+
 
         AtomicInteger i = new AtomicInteger();
         Timeline timeline = new Timeline();
@@ -71,14 +81,6 @@ public class MessageDisplayController extends BaseController {
                 event -> {
                     if (i.get() > str.length()) {
                         timeline.stop();
-                        try {
-                            sleep(1000);
-                            onMessageCompleted(event);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
                     } else {
                         message.setText(str.substring(0, i.get()));
                         i.getAndIncrement();
@@ -90,13 +92,6 @@ public class MessageDisplayController extends BaseController {
 
 
 }
-
-    private void onMessageCompleted(ActionEvent event) throws IOException {
-        Stage stage = (Stage) rootPane.getScene().getWindow();
-        changeScene(stage, getResource("views/chooseGameMove/choose-game-move-view.fxml")); //TODO cambiar a diferentes ventanas?
-    }
-
-
     private void fillGrid(GridPane grid) {
 
         for (int col = 0; col < 6; col++) { // TODO analizar cada pokemon
@@ -107,6 +102,14 @@ public class MessageDisplayController extends BaseController {
             grid.add(imageView, col, 0);
 
         }
+    }
+
+    public void handleOkButton(ActionEvent event) {
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        changeScene(stage, getResource("views/chooseGameMove/choose-game-move-view.fxml")); //TODO cambiar a diferentes ventanas?
+    }
+
+    public void handleBackButtonAction(ActionEvent event) {
     }
 }
 
