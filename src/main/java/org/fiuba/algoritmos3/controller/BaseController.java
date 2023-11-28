@@ -11,6 +11,7 @@ import org.fiuba.algoritmos3.PokemonApp;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 public abstract class BaseController implements Initializable {
     protected final GameAPI gameAPI;
@@ -49,7 +50,7 @@ public abstract class BaseController implements Initializable {
     }
 
     protected URL getResource(String name) {
-        return PokemonApp.class.getResource(name);
+        return Objects.requireNonNull(PokemonApp.class.getResource(name));
     }
 
     public void setPreviousController(BaseController previousController) {

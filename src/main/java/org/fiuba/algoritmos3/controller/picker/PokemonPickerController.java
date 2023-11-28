@@ -23,13 +23,13 @@ import org.fiuba.algoritmos3.view.BaseButton;
 
 import java.net.URL;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 
 public class PokemonPickerController extends PickerController<Pokemon> {
 
-    public TextFlow descriptionBox;
+    @FXML
+    private TextFlow descriptionBox;
     @FXML
     private VBox pokemonChooserMenu;
     private int selectedIndex;
@@ -60,7 +60,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     @FXML
     private ProgressBar viewProgressBar;
 
-    private MediaPlayer clickButton;
+    private MediaPlayer mediaPlayer;
 
 
     @FXML
@@ -70,14 +70,10 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Text newText = new Text("Choose wisely"); //TODO change message when needed
-        String clickButton = Objects.requireNonNull(getResource("audio/clickButton.mp3")).toExternalForm();
+        Media media = new Media(getResource("audio/clickButton.mp3").toExternalForm());
+        this.mediaPlayer = new MediaPlayer(media);
 
-        Media media = new Media(clickButton);
-        this.clickButton = new MediaPlayer(media);
-
-        newText.setFill(Color.WHITE);
-        descriptionBox.getChildren().add(newText);
+        setDescriptionBox("Choose wisely");
 
         for (Node node : pokemonChooserMenu.getChildren()) {
             if (node instanceof Pane pane) {
@@ -131,15 +127,19 @@ public class PokemonPickerController extends PickerController<Pokemon> {
         selectedIndex = pokemonChooserMenu.getChildren().indexOf(clickedPane);
         Pokemon pokemon = (Pokemon) pokemonChooserMenu.getChildren().get(selectedIndex).getUserData();
 
-        descriptionBox.getChildren().clear();
-
-        Text description = new Text(pokemon.getHistory());
-        descriptionBox.getChildren().add(description);
+        setDescriptionBox(pokemon.getHistory());
         updateSelection();
 
-        clickButton.seek(Duration.ZERO);
-        clickButton.play();
+        mediaPlayer.seek(Duration.ZERO);
+        mediaPlayer.play();
         okButton.setDisable(false);
+    }
+
+    private void setDescriptionBox(String text) {
+        descriptionBox.getChildren().clear();
+        Text description = new Text(text);
+        description.setFill(Color.WHITE);
+        descriptionBox.getChildren().add(description);
     }
 
     @FXML
@@ -253,7 +253,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
         URL imageUrl = getResource(imagePath);
 
         if (imageUrl != null) {
-            Image image = new Image(imageUrl.toExternalForm());
+            Image image = new Image(imageUrl.toExternalForm(), pokemonImage.getFitWidth(), pokemonImage.getFitHeight(), true, false);
             pokemonImage.setImage(image);
         }
     }
