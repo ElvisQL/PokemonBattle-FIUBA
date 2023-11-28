@@ -93,12 +93,12 @@ public class MessageDisplayController extends BaseController {
 
 }
     private void fillGrid(GridPane grid) {
-
+        grid.setHgap(10);
         for (int col = 0; col < 6; col++) { // TODO analizar cada pokemon
             Image image = new Image("org/fiuba/algoritmos3/images/pokeball-type/standard.png"); // TODO cambiar por pokeball view factory
             ImageView imageView = new ImageView(image);
             imageView.setPreserveRatio(true);
-            imageView.setFitHeight(30);// Set the width of the ImageView
+            imageView.setFitHeight(30);
             grid.add(imageView, col, 0);
 
         }

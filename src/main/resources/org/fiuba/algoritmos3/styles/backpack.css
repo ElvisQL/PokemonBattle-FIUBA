@@ -1,6 +1,6 @@
 .item-pane-top{
     -fx-background-size: cover;
-    -fx-background-image: url('../images/backgrounds/backmenu.png');
+    -fx-background-image: url('../images/backgrounds/woods.jpg');
 }
 .label-item{
     -fx-font-weight: bolder;
