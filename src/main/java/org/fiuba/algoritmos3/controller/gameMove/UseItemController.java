@@ -2,6 +2,7 @@ package org.fiuba.algoritmos3.controller.gameMove;
 
 import javafx.beans.value.ObservableValue;
 import org.fiuba.algoritmos3.controller.picker.ItemPickerController;
+import org.fiuba.algoritmos3.controller.picker.PickerController;
 import org.fiuba.algoritmos3.controller.picker.PokemonPickerController;
 import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.move.UseItem;
@@ -14,6 +15,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
 public class UseItemController extends GameMoveController<UseItem, UseItemBuilder> {
+    private Item selectedItem;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -22,17 +24,22 @@ public class UseItemController extends GameMoveController<UseItem, UseItemBuilde
     }
 
     private void loadItemPicker() {
-        loadPicker(ItemPickerController.class, gameAPI.currentPlayer().getItems(), this::onItemPicked, (_a, _b, _c) -> loadChooseGameMove());
+        PickerController<Item> controller = loadPicker(ItemPickerController.class, gameAPI.currentPlayer().getItems());
+        controller.addSelectionListener(this::onItemPicked);
+        controller.addBackListener((_a, _b, _c) -> loadChooseGameMove());
     }
 
     private void onItemPicked(ObservableValue<?> _obs, Item oldItem, Item newItem) {
         builder.setItem(newItem);
+        selectedItem = newItem;
         loadPokemonPicker();
     }
 
     private void loadPokemonPicker() {
         List<Pokemon> pokemons = Stream.concat(gameAPI.currentPlayer().getPokemons().stream(), gameAPI.currentPlayer().getOpponent().getPokemons().stream()).toList();
-        loadPicker(PokemonPickerController.class, pokemons, this::onPokemonPicked, (_a, _b, _c) -> loadItemPicker());
+        PickerController<Pokemon> controller = loadPicker(PokemonPickerController.class, pokemons);
+        controller.addSelectionListener(this::onPokemonPicked);
+        controller.addBackListener((_a, _b, _c) -> loadItemPicker());
     }
 
     private void onPokemonPicked(ObservableValue<?> _obs, Pokemon oldPokemon, Pokemon newPokemon) {

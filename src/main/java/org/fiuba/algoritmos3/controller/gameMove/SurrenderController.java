@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.controller.gameMove;
 
-import javafx.beans.value.ObservableValue;
 import org.fiuba.algoritmos3.controller.picker.BooleanPickerController;
 import org.fiuba.algoritmos3.model.move.Surrender;
 import org.fiuba.algoritmos3.model.move.builder.SurrenderBuilder;
@@ -13,13 +12,10 @@ public class SurrenderController extends GameMoveController<Surrender, Surrender
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         builder = new SurrenderBuilder();
-        BooleanPickerController controller = (BooleanPickerController) loadPicker(BooleanPickerController.class, null, this::onBooleanChosen, (_a, _b, _c) -> loadChooseGameMove());
+        BooleanPickerController controller = (BooleanPickerController) loadPicker(BooleanPickerController.class, null);
         controller.setQuestion("Are you sure you want to surrender?");
-    }
-
-
-    private void onBooleanChosen(ObservableValue<?> _obs, Boolean old, Boolean hasSurrendered) {
-        executeGameMove();
+        controller.addSelectionListener((_a, _b, _c) -> executeGameMove());
+        controller.addBackListener((_a, _b, _c) -> loadChooseGameMove());
     }
 
 }
