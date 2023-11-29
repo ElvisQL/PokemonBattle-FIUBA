@@ -10,6 +10,7 @@ import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.move.GameMove;
 import org.fiuba.algoritmos3.model.move.GameMoveResult;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
 import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;
 import org.fiuba.algoritmos3.model.weather.*;
 
@@ -23,15 +24,17 @@ import static org.fiuba.algoritmos3.Constants.*;
 public class Game implements GameAPI {
     private final int MAX_PLAYERS = 2;
 
+    private final List<PokemonSpecies> pokemonSpecies;
     private final HashMap<Integer, Item> sourceItemsHash;
     private final HashMap<Integer, Pokemon> sourcePokemonHash;
     private final GameState gameState = new GameState();
     private GameMoveResult<String> msg;
     private final GameEventBroker<RoundOverEvent> roundOverBroker = new GameEventBroker<>();
 
-    public Game(HashMap<Integer, Item> itemsHash, HashMap<Integer, Pokemon> pokemonsHash) {
+    public Game(HashMap<Integer, Item> itemsHash, HashMap<Integer, Pokemon> pokemonsHash, List<PokemonSpecies> pokemonSpecies) {
         this.sourceItemsHash = itemsHash;
         this.sourcePokemonHash = pokemonsHash;
+        this.pokemonSpecies = pokemonSpecies;
 
         roundOverBroker.addListener(new WeatherListener(gameState));
         roundOverBroker.addListener(new StatusListener(gameState));
@@ -130,16 +133,22 @@ public class Game implements GameAPI {
 
     private ArrayList<Pokemon> generatePokemonRoster() {
         ArrayList<Pokemon> pokemons = new ArrayList<>();
-        ArrayList<PokemonSpecies> existingSpecies = new ArrayList<>();
 
+        List<PokemonSpecies> differentSpecies = U.sample(pokemonSpecies, POKEMON_ROSTER_SIZE).stream().toList();
         for (int i = 0; i < POKEMON_ROSTER_SIZE; i++) {
-            Pokemon pokemon;
-            do {
-                pokemon = randomPokemon();
-            } while (existingSpecies.contains(pokemon.getSpecies()));
-
-            existingSpecies.add(pokemon.getSpecies());
-            pokemons.add(pokemon);
+            PokemonSpecies species = differentSpecies.get(i);
+            pokemons.add(
+                    new PokemonBuilder()
+                            .setID(i)
+                            .setSpecies(species)
+                            .setAttackPoints(U.random(20, 100))
+                            .setAttackSpeed(U.random(20, 100))
+                            .setBaseHealth(U.random(20, 100))
+                            .setDefencePoints(U.random(20, 100))
+                            .setLevel(U.random(1, 100))
+                            .setSkills(species.getSkills())
+                            .build()
+            );
         }
 
         return pokemons;

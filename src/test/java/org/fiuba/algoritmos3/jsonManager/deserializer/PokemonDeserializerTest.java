@@ -13,7 +13,7 @@ class PokemonDeserializerTest {
 
     @Test
     void getPokemon() throws InvalidDataException {
-        HashMap<Integer, Pokemon> pokemonDeserializer = new PokemonDeserializer().getPokemon();
+        HashMap<Integer, Pokemon> pokemonDeserializer = new PokemonDeserializer().getPokemons();
 
 
         assertNotNull(pokemonDeserializer);

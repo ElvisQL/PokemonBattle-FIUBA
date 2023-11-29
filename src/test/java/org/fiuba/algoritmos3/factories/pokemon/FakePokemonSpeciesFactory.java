@@ -16,7 +16,7 @@ public class FakePokemonSpeciesFactory implements FakeModelFactory<PokemonSpecie
         return new PokemonSpecies(
                 faker.pokemon().name(),
                 faker.lorem().paragraph(),
-                U.sample(List.of(PokemonType.values()))
-        );
+                U.sample(List.of(PokemonType.values())),
+                skills);
     }
 }

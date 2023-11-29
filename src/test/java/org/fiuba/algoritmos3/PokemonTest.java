@@ -30,8 +30,8 @@ public class PokemonTest {
                     new PokemonSpecies(
                             "Pikachu",
                             "Pikachu es un Pokémon eléctrico.",
-                            PokemonType.valueOf("Electric")
-                    ))
+                            PokemonType.valueOf("Electric"),
+                            skills))
             .setSkills(
                     new ArrayList<>(List.of(
                             new AttackSkill("Impactrueno", 80, 1, "hola"),

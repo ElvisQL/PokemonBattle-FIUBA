@@ -36,8 +36,8 @@ public class MoveTest {
             .setSpecies(new PokemonSpecies(
                     "Charizard",
                     "Charizard es un Pokémon de tipo Fuego/Volador. Es la evolución final de Charmander y es conocido por su poderoso aliento de fuego y su apariencia similar a un dragón.",
-                    PokemonType.valueOf("Fire")
-            ))
+                    PokemonType.valueOf("Fire"),
+                    skills))
             .setSkills(
                     new ArrayList<>(List.of(
                             new AttackSkill("Lanzallamas", 90, U.random(10)),
@@ -52,8 +52,8 @@ public class MoveTest {
                     new PokemonSpecies(
                             "Squirtle",
                             "Squirtle es un Pokémon de tipo Agua. Es uno de los Pokémon iniciales originales y es conocido por sus cañones de agua en su espalda.",
-                            PokemonType.valueOf("Water")
-                    ))
+                            PokemonType.valueOf("Water"),
+                            skills))
             .setSkills(
                     new ArrayList<>(List.of(
                             new AttackSkill("Pistola Agua", 40, U.random(10)),
@@ -68,8 +68,8 @@ public class MoveTest {
                     new PokemonSpecies(
                             "Pikachu",
                             "Pikachu es un Pokémon de tipo Eléctrico conocido por su cola en forma de rayo. Es uno de los Pokémon más icónicos y queridos, a menudo reconocido como la mascota de la franquicia Pokémon.",
-                            PokemonType.valueOf("Electric")
-                    ))
+                            PokemonType.valueOf("Electric"),
+                            skills))
             .setSkills(
                     new ArrayList<>(List.of(
                             new AttackSkill("Rayo", 90, 0),

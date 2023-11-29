@@ -27,72 +27,64 @@ public class PokemonDeserializer {
             JsonNode jsonNode = new JsonManager()
                     .Reader(JsonPath.POKEMON.toString())
                     .getNode();
-            this.pokemon = this.use(jsonNode);
-            // TODO podrian ser singleton?
+
+            this.pokemon = this.parse(jsonNode);
+
         } catch (InvalidDataException e) {
             e.printStackTrace();
         }
-
-
     }
 
-    public HashMap<Integer, Pokemon> getPokemon() {
+    public HashMap<Integer, Pokemon> getPokemons() {
         return pokemon;
     }
 
-    private ArrayList<ConcreteSkill> selectSkills(JsonNode jsonNode) throws InvalidDataException {
 
-        if (jsonNode != null && jsonNode.isArray()) {
-
-            int maxSkill = SKILLS_LIMIT;
-            ArrayList<ConcreteSkill> skillArrayList = new ArrayList<>(SKILLS_LIMIT);
-            for (JsonNode skill : jsonNode) {
-                if (maxSkill > 0) {
-                    skillArrayList.add(skillsIndex.get(skill.asInt()));
-                    maxSkill--;
-                }
-            }
-            return skillArrayList;
-
-        } else {
-            throw new InvalidDataException("pokemon.json - INVALID SKILL");
-        }
-    }
-
-    private HashMap<Integer, Pokemon> use(JsonNode jsonNode) throws InvalidDataException {
-
+    private HashMap<Integer, Pokemon> parse(JsonNode jsonNode) throws InvalidDataException {
         HashMap<Integer, Pokemon> pokeHash = new HashMap<>();
-        if (jsonNode != null && jsonNode.isArray()) {
 
-            for (JsonNode poke : jsonNode) {
-                // Construimos Pokemon
-                Pokemon pokemon = new PokemonBuilder()
-                        .setID(poke.get("ID").asInt())
-                        .setSpecies(
-                                new PokemonSpecies(
-                                        poke.get("name").asText(),
-                                        poke.get("history").asText(),
-                                        PokemonType.valueOf(poke.get("type").asText())
-                                ))
-                        .setAttackPoints(poke.get("baseAttack").asInt())
-                        .setAttackSpeed(poke.get("baseSpeed").asInt())
-                        .setBaseHealth(poke.get("baseMaxHealth").asInt())
-                        .setDefencePoints(poke.get("baseDefense").asInt())
-                        .setLevel(poke.get("level").asInt())
-                        .setSkills(selectSkills(poke.get("skills")))
-                        .build();
-
-                // Guardamos Pokemon en el node en Hash de Pokemons
-                pokeHash.put(poke.get("ID").asInt(), pokemon);
-
-            }
-
-        } else {
+        if (jsonNode == null || !jsonNode.isArray())
             throw new InvalidDataException("pokemon.json");
+
+        for (JsonNode poke : jsonNode) {
+            // Construimos el Pokemon
+            Pokemon pokemon = new PokemonBuilder()
+                    .setID(poke.get("ID").asInt())
+                    .setSpecies(
+                            new PokemonSpecies(
+                                    poke.get("name").asText(),
+                                    poke.get("history").asText(),
+                                    PokemonType.valueOf(poke.get("type").asText()),
+                                    selectSkills(poke.get("skills"))))
+                    .setAttackPoints(poke.get("baseAttack").asInt())
+                    .setAttackSpeed(poke.get("baseSpeed").asInt())
+                    .setBaseHealth(poke.get("baseMaxHealth").asInt())
+                    .setDefencePoints(poke.get("baseDefense").asInt())
+                    .setLevel(poke.get("level").asInt())
+                    .setSkills(selectSkills(poke.get("skills")))
+                    .build();
+
+            // Guardamos Pokemon en el node en Hash de Pokemons
+            pokeHash.put(poke.get("ID").asInt(), pokemon);
         }
 
         return pokeHash;
     }
 
+    private ArrayList<ConcreteSkill> selectSkills(JsonNode jsonNode) throws InvalidDataException {
+        if (jsonNode == null || !jsonNode.isArray()) {
+            throw new InvalidDataException("pokemon.json - INVALID SKILL");
+        }
 
+        int maxSkill = SKILLS_LIMIT;
+        ArrayList<ConcreteSkill> skillArrayList = new ArrayList<>(SKILLS_LIMIT);
+        for (JsonNode skill : jsonNode) {
+            if (maxSkill > 0) {
+                skillArrayList.add(skillsIndex.get(skill.asInt()));
+                maxSkill--;
+            }
+        }
+
+        return skillArrayList;
+    }
 }

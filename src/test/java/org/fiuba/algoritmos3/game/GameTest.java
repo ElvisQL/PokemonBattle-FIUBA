@@ -70,7 +70,7 @@ class GameTest {
             pokemonHash.put(pokemon.getID(), pokemon);
         });
 
-        Game game = new Game(itemHash, pokemonHash);
+        Game game = new Game(pokemonSpecies, itemHash, pokemonHash);
 
         doReturn("player 1 name", "player 2 name").when(ui).askForText(contains("name"));
 

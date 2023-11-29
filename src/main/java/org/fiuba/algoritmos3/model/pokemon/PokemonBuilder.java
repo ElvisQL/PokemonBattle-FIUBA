@@ -84,9 +84,8 @@ public class PokemonBuilder {
     }
 
     public Pokemon build() {
-        if (!validate()) {
+        if (!validate())
             return null;
-        }
 
         Pokemon pokemon = new Pokemon();
         pokemon.ID = this.ID;
@@ -96,7 +95,7 @@ public class PokemonBuilder {
         pokemon.history = this.history;
         pokemon.species = this.species;
         pokemon.baseHealth = this.baseHealth;
-        Integer maxHealthBuilder = this.baseHealth * this.level;
+        Integer maxHealthBuilder = this.baseHealth;
         if (maxHealthBuilder > 500) {
             pokemon.maxHealth = 500;
         } else {

@@ -11,12 +11,15 @@ import javafx.util.Duration;
 import org.fiuba.algoritmos3.controller.StartMenuController;
 import org.fiuba.algoritmos3.jsonManager.deserializer.ItemDeserializer;
 import org.fiuba.algoritmos3.jsonManager.deserializer.PokemonDeserializer;
+import org.fiuba.algoritmos3.jsonManager.deserializer.PokemonSpeciesDeserializer;
 import org.fiuba.algoritmos3.model.Game;
 import org.fiuba.algoritmos3.model.error.InvalidDataException;
 import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 public class PokemonApp extends Application {
@@ -35,15 +38,17 @@ public class PokemonApp extends Application {
     public void init() throws Exception {
         HashMap<Integer, Item> items = null;
         HashMap<Integer, Pokemon> pokemons = null;
+        List<PokemonSpecies> pokemonSpecies = null;
 
         try {
             items = new ItemDeserializer().getItems();
-            pokemons = new PokemonDeserializer().getPokemon();
+            pokemons = new PokemonDeserializer().getPokemons();
+            pokemonSpecies = new PokemonSpeciesDeserializer().getPokemonSpecies();
         } catch (InvalidDataException e) {
             System.exit(1);
         }
 
-        gameAPI = new Game(items, pokemons);
+        gameAPI = new Game(items, pokemons, pokemonSpecies);
         super.init();
     }
 
