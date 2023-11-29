@@ -9,17 +9,13 @@
 <fx:root alignment="CENTER" fillHeight="false" prefHeight="280.0" prefWidth="768.0" type="javafx.scene.layout.HBox"
          xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Pane prefHeight="271.0" prefWidth="228.0">
-            <children>
-                <ImageView fx:id="pokemonImageView" fitHeight="227.0" fitWidth="288.0" layoutX="-63.0" layoutY="86.0"
-                           pickOnBounds="true" preserveRatio="true" scaleX="-1.0" smooth="false">
-                    <image>
-                        <Image preserveRatio="true" requestedHeight="227.0" requestedWidth="288.0" smooth="false"
-                               url="@../../images/pokemon/squirtle.png"/>
-                    </image>
-                </ImageView>
-            </children>
-        </Pane>
+        <ImageView fx:id="pokemonImageView" fitHeight="227.0" fitWidth="288.0" layoutX="-63.0" layoutY="86.0"
+                   pickOnBounds="true" preserveRatio="true" scaleX="-1.0" smooth="false">
+            <image>
+                <Image preserveRatio="true" requestedHeight="227.0" requestedWidth="288.0" smooth="false"
+                       url="@../../images/pokemon/squirtle.png"/>
+            </image>
+        </ImageView>
         <StackPane>
             <children>
                 <VBox fx:id="statsBox" alignment="TOP_RIGHT" prefHeight="80.0" prefWidth="310.0"

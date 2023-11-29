@@ -13,22 +13,20 @@ public class BuffSkill extends ConcreteSkill {
     }
 
     public String apply(Pokemon pokemon, Pokemon otherPokemon) {
-
         switch (statToModify) {
-            case ATTACK -> {
-                pokemon.setAttackPoints(pokemon.getAttackPoints() + amount);
-            }
-            case HEALTH -> {
-                pokemon.setHealth(pokemon.getHealth() + amount);
-            }
-            case DEFENSE -> {
-                pokemon.setDefencePoints(pokemon.getDefencePoints() + amount);
-            }
-            case SPEED -> {
-                pokemon.setAttackSpeed(pokemon.getAttackSpeed() + amount);
-            }
+            case ATTACK -> pokemon.setAttackPoints(pokemon.getAttackPoints() + amount);
+            case HEALTH -> pokemon.setHealth(pokemon.getHealth() + amount);
+            case DEFENSE -> pokemon.setDefencePoints(pokemon.getDefencePoints() + amount);
+            case SPEED -> pokemon.setAttackSpeed(pokemon.getAttackSpeed() + amount);
         }
-        return (pokemon.getName() + " has modified his stat " + statToModify.name() + " for " + amount.toString());
+
+        String changeDirection;
+        if (amount >= 0)
+            changeDirection = "increased";
+        else
+            changeDirection = "decreased";
+
+        return (pokemon.getName() + " has " + changeDirection + " it's " + statToModify.name() + " by " + amount.toString());
     }
 
 }

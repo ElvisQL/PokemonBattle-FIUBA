@@ -23,9 +23,9 @@ import java.util.ResourceBundle;
 
 public class ChooseGameMoveController extends BaseController {
     @FXML
-    private AnchorPane rootPane;
+    private AnchorPane battlefieldPane;
     @FXML
-    private VBox pokemonsSplitPane;
+    private VBox pokemonsContainer;
     @FXML
     private TextFlow gameMoveDescriptionTextFlow;
     @FXML
@@ -37,6 +37,29 @@ public class ChooseGameMoveController extends BaseController {
     private BaseButton useSkillButton;
 
     private GameMoveResult<String> gameMoveResult;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        PokemonView opponentPokemonView = new PokemonView(gameAPI.currentPlayer().getOpponent().getCurrentPokemon());
+        opponentPokemonView.setFlipped(true);
+        pokemonsContainer.getChildren().add(opponentPokemonView);
+
+        Pokemon currentPokemon = gameAPI.currentPlayer().getCurrentPokemon();
+        PokemonView currentPokemonView = new PokemonView(currentPokemon);
+        pokemonsContainer.getChildren().add(currentPokemonView);
+
+        if (currentPokemon.isDead()) {
+            useItemButton.setDisable(true);
+            useSkillButton.setDisable(true);
+        }
+
+        Text msg = new Text("What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
+        msg.getStyleClass().add("message-text-choose-game-move");
+
+        gameMoveDescriptionTextFlow.getChildren().add(msg);
+
+        updateWeatherBackground();
+    }
 
     public void setGameMoveResult(GameMoveResult<String> gameMoveResult) {
         this.gameMoveResult = gameMoveResult;
@@ -57,31 +80,8 @@ public class ChooseGameMoveController extends BaseController {
         gameMoveDescriptionTextFlow.getChildren().add(msg);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        PokemonView opponentPokemonView = new PokemonView(gameAPI.currentPlayer().getOpponent().getCurrentPokemon());
-        opponentPokemonView.setFlipped(true);
-        pokemonsSplitPane.getChildren().add(opponentPokemonView);
 
-        Pokemon currentPokemon = gameAPI.currentPlayer().getCurrentPokemon();
-        PokemonView currentPokemonView = new PokemonView(currentPokemon);
-        pokemonsSplitPane.getChildren().add(currentPokemonView);
-
-        if (currentPokemon.isDead()) {
-            useItemButton.setDisable(true);
-            useSkillButton.setDisable(true);
-        }
-
-        Text msg = new Text("What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
-        msg.getStyleClass().add("message-text-choose-game-move");
-
-        gameMoveDescriptionTextFlow.getChildren().add(msg);
-
-        updateWeatherBackground();
-    }
-
-
-    private void loadGameMoveController(Event e, GameMoveController<?, ?> controller) {
+    private void loadGameMove(Event e, GameMoveController<?, ?> controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/picker-wrapper.fxml"));
         controller.setPreviousController(this);
         fxmlLoader.setController(controller);
@@ -101,13 +101,13 @@ public class ChooseGameMoveController extends BaseController {
         String weatherName = gameAPI.getWeather().getName();
         String weatherImage = getResource("images/backgrounds/" + weatherName.toLowerCase() + ".png").toExternalForm();
 
-        Image newImage = new Image(weatherImage, rootPane.getWidth(), rootPane.getHeight(), true, false);
+        Image newImage = new Image(weatherImage, battlefieldPane.getWidth(), battlefieldPane.getHeight(), true, false);
         weatherBackground.setImage(newImage);
     }
 
     @FXML
     private void handleUseItemButtonAction(ActionEvent event) {
-        loadGameMoveController(event, new UseItemController());
+        loadGameMove(event, new UseItemController());
     }
 
     @FXML
@@ -115,18 +115,18 @@ public class ChooseGameMoveController extends BaseController {
         if (gameAPI.currentPlayer().getCurrentPokemon().isDead()) {
             handleChangePokemonButtonAction(event);
         } else {
-            loadGameMoveController(event, new UseSkillController());
+            loadGameMove(event, new UseSkillController());
         }
     }
 
     @FXML
     private void handleChangePokemonButtonAction(ActionEvent event) {
-        loadGameMoveController(event, new ChangePokemonController());
+        loadGameMove(event, new ChangePokemonController());
     }
 
     @FXML
     private void handleSurrenderButtonAction(ActionEvent event) {
-        loadGameMoveController(event, new SurrenderController());
+        loadGameMove(event, new SurrenderController());
     }
 
 }

@@ -29,7 +29,7 @@ public class AttackSkill extends ConcreteSkill {
         remainingUses--;
         pokemonTarget.setHealth(pokemonTarget.getHealth() - damage.intValue());
 
-        return (pokemonAttacker.getName() + " has damaged to " + pokemonTarget.getName() + " for -" + damage.intValue());
+        return (pokemonAttacker.getName() + " damaged " + pokemonTarget.getName() + " by -" + damage.intValue());
     }
 }
 

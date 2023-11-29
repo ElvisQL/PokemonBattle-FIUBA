@@ -27,7 +27,8 @@ public abstract class GameMoveController<T extends GameMove, B extends GameMoveB
             return;
         }
 
-        loadChooseGameMove().setGameMoveResult(gameMoveResult);
+        ChooseGameMoveController controller = loadChooseGameMove();
+        controller.setGameMoveResult(gameMoveResult);
     }
 
     protected ChooseGameMoveController loadChooseGameMove() {

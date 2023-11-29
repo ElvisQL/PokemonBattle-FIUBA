@@ -92,19 +92,19 @@ public class PokemonView extends HBox {
         return flipped;
     }
 
-    public void setFlipped(boolean flipped) {
-        if (this.isFlipped() != flipped)
-            flipView();
-        this.flipped.set(flipped);
+    public void setFlipped(boolean newFlipped) {
+        if (this.flipped.get() != newFlipped)
+            flipView(newFlipped);
+        this.flipped.set(newFlipped);
     }
 
-    private void flipView() {
-        if (flipped.get()) {
-            statsBox.toFront();
-            pokemonImageView.toBack();
-        } else {
+    private void flipView(Boolean newFlipped) {
+        if (newFlipped) {
             pokemonImageView.toFront();
             statsBox.toBack();
+        } else {
+            statsBox.toFront();
+            pokemonImageView.toBack();
         }
 
         pokemonImageView.setScaleX(pokemonImageView.getScaleX() * -1);
