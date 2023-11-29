@@ -76,14 +76,6 @@ public class Game implements GameAPI {
     }
 
     @Override
-    public void setMoveMessage(GameMoveResult<String> msg) {
-        this.msg = msg;
-    }
-    public GameMoveResult<String> getMoveMessage(){
-        return this.msg;
-    }
-
-    @Override
     public void stop() {
         // Save Game Result and Players' State in JSON
         Persistence.saveGameResult(gameState);

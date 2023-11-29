@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import org.fiuba.algoritmos3.PokemonApp;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -26,13 +25,18 @@ public class PokemonView extends HBox {
     private Label pokemonLevel;
     @FXML
     private ProgressBar healthBar;
-
-    @FXML private Label hpActual;
-    @FXML private Label hpMax;
+    @FXML
+    private Label healthLabel;
+    @FXML
+    private Label maxHealthLabel;
     @FXML
     private ImageView pokemonTypeImageView;
     @FXML
     private ImageView pokemonImageView;
+
+    @FXML
+    private Label deadLabel;
+
     private final BooleanProperty flipped = new SimpleBooleanProperty(false);
 
     public PokemonView(Pokemon pokemon) {
@@ -46,10 +50,15 @@ public class PokemonView extends HBox {
             throw new RuntimeException(exception);
         }
 
+        if (pokemon.isDead()) {
+            statsBox.setDisable(true);
+            deadLabel.setVisible(true);
+        }
+
         pokemonName.setText(pokemon.getName());
 
         pokemonLevel.setText(pokemon.getLevel().toString());
-        hpMax.setText(pokemon.getMaxHealth().toString());
+        maxHealthLabel.setText(pokemon.getMaxHealth().toString());
 
         updateProgressBar(pokemon);
 
@@ -60,16 +69,16 @@ public class PokemonView extends HBox {
         pokemonImageView.setImage(new Image(pokemonUrl.toExternalForm(), pokemonImageView.getFitWidth(), pokemonImageView.getFitHeight(), true, false));
     }
 
-    private void updateProgressBar(Pokemon pokemon){
+    private void updateProgressBar(Pokemon pokemon) {
         double mitad = (double) pokemon.getMaxHealth() / 2 / pokemon.getMaxHealth();
 
         healthBar.setProgress((double) pokemon.getHealth() / pokemon.getMaxHealth());
-        hpActual.setText(pokemon.getHealth().toString());
+        healthLabel.setText(pokemon.getHealth().toString());
         if (healthBar.getProgress() < mitad) {
             healthBar.setStyle("-fx-accent: red;");
-        } else if (healthBar.getProgress() <= 0){
+        } else if (healthBar.getProgress() <= 0) {
             healthBar.setStyle("-fx-accent: white;");
-        }else {
+        } else {
             healthBar.setStyle("");
         }
     }

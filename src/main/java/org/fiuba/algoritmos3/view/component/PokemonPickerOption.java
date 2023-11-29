@@ -126,7 +126,7 @@ public class PokemonPickerOption extends AnchorPane {
 
     public void setEnemy(boolean enemy) {
         this.enemy.set(enemy);
-        updateEnemyStyle();
+        updateCardStyle();
     }
 
     private void loadPokemon(Pokemon pokemon) {
@@ -157,7 +157,7 @@ public class PokemonPickerOption extends AnchorPane {
         }
     }
 
-    private void updateEnemyStyle() {
+    private void updateCardStyle() {
         if (enemy.get()) {
             background.setFill(Color.web("#de8785"));
             largeAccent.setFill(Color.web("#ff1f1f"));

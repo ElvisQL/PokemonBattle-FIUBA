@@ -35,5 +35,7 @@ module org.fiuba.algoritmos3 {
     opens org.fiuba.algoritmos3.model.event.listener to javafx.fxml;
     exports org.fiuba.algoritmos3.view.component;
     opens org.fiuba.algoritmos3.view.component to javafx.fxml;
+    exports org.fiuba.algoritmos3.controller.messages;
+    opens org.fiuba.algoritmos3.controller.messages to javafx.fxml;
 
 }
