@@ -159,9 +159,9 @@ public class PokemonPickerOption extends AnchorPane {
 
     private void updateCardStyle() {
         if (enemy.get()) {
-            background.setFill(Color.web("#de8785"));
-            largeAccent.setFill(Color.web("#ff1f1f"));
-            smallAccent.setFill(Color.web("#ff1f1f"));
+            background.setFill(Color.web("#83c4de"));
+            largeAccent.setFill(Color.DODGERBLUE);
+            smallAccent.setFill(Color.DODGERBLUE);
             triangle.setFill(Color.web("#c44b4b"));
             triangle.setStroke(Color.web("#ff5854"));
         } else {
