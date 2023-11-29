@@ -10,7 +10,7 @@
 <?import org.fiuba.algoritmos3.view.component.BaseButton?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
       prefWidth="768.0" stylesheets="@../../styles/backpack.css" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.ItemPickerController">
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.SkillPickerController">
     <children>
         <Pane prefHeight="600.0" prefWidth="768.0" styleClass="item-pane-top">
             <children>
@@ -60,8 +60,7 @@
                           style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
                     <children>
                         <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                    minWidth="-Infinity" mnemonicParsing="false" fx:id="backButton"
-                                    onAction="#handleBackButtonAction" prefHeight="52.0"
+                                    minWidth="-Infinity" mnemonicParsing="false" fx:id="backButton" prefHeight="52.0"
                                     prefWidth="130.0" text="BACK" GridPane.halignment="CENTER"
                                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER"
                                     GridPane.vgrow="ALWAYS">
@@ -70,8 +69,7 @@
                             </font>
                         </BaseButton>
                         <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                    minWidth="-Infinity" mnemonicParsing="false" fx:id="okButton"
-                                    onAction="#handleOkButton" prefHeight="55.0" prefWidth="171.0"
+                                    minWidth="-Infinity" mnemonicParsing="false" fx:id="okButton" prefHeight="55.0" prefWidth="171.0"
                                     text="SELECT" GridPane.halignment="CENTER"
                                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER"
                                     GridPane.vgrow="ALWAYS">

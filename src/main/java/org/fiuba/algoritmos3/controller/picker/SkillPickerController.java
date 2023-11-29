@@ -1,6 +1,5 @@
 package org.fiuba.algoritmos3.controller.picker;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -10,14 +9,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import org.fiuba.algoritmos3.model.item.Item;
+import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
+import org.fiuba.algoritmos3.model.pokemon.skills.Skill;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 
-public class ItemPickerController extends PickerController<Item> {
+public class SkillPickerController extends PickerController<ConcreteSkill> {
     @FXML
     private VBox itemsContainer;
     @FXML
@@ -27,16 +25,18 @@ public class ItemPickerController extends PickerController<Item> {
     @FXML
     private HBox markedItem;
 
-    private Item currentItem;
+    private ConcreteSkill currentSkill;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         okButton.setDisable(true);
+        okButton.setOnMouseClicked(this::handleOkButtonClick);
+        backButton.setOnMouseClicked(this::handleBackButtonClick);
     }
 
     private void handleMouseClicked(MouseEvent e) {
         Node source = (Node) e.getSource();
-        currentItem = (Item) source.getUserData();
+        currentSkill = (ConcreteSkill) source.getUserData();
         if (markedItem != null) {
             if (markedItem.equals(source)) {
                 markedItem.getStyleClass().remove("marked-item");
@@ -58,6 +58,7 @@ public class ItemPickerController extends PickerController<Item> {
         source.setOnMouseExited(null);
         markedItem = (HBox) source;
         okButton.setDisable(false);
+
     }
 
     private void handleMouseExited(MouseEvent e) {
@@ -77,7 +78,7 @@ public class ItemPickerController extends PickerController<Item> {
         if (source instanceof HBox hBox && hBox != markedItem) {
             source.getStyleClass().add("item-mouse-entered");
 
-            Item item = (Item) source.getUserData();
+            ConcreteSkill item = (ConcreteSkill) source.getUserData();
 
             Text description = new Text(item.getDescription());
             description.getStyleClass().add("label-description");
@@ -89,47 +90,35 @@ public class ItemPickerController extends PickerController<Item> {
 
 
     protected void updateView() {
-        List<Item> items = getOptions();
-        Map<Integer, Integer> itemCountMap = new HashMap<>();
-
-        for (Item item : items) {
-            itemCountMap.put(item.getId(), itemCountMap.getOrDefault(item.getId(), 0) + 1);
-        }
-
-        for (Map.Entry<Integer, Integer> entry : itemCountMap.entrySet()) {
-            int itemId = entry.getKey();
-
+        for (ConcreteSkill skill : getOptions()) {
             HBox itemBox = new HBox(230);
 
-            Item item = items.stream().filter(i -> i.getId() == itemId).findFirst().orElse(null);
-            if (item != null) {
-                Label nameLabel = new Label("   " + item.getName().toUpperCase());
-                Label quantityLabel = new Label("x" + itemCountMap.get(item.getId()).toString());
+            Label nameLabel = new Label("   " + skill.getName().toUpperCase());
 
-                nameLabel.getStyleClass().add("label-item");
-                quantityLabel.getStyleClass().add("label-item");
+            nameLabel.getStyleClass().add("label-item");
 
-                itemBox.getChildren().addAll(nameLabel, quantityLabel);
+            itemBox.getChildren().addAll(nameLabel);
 
-                itemBox.setUserData(item);
+            itemBox.setUserData(skill);
 
-                itemBox.setOnMouseEntered(this::handleMouseEntered);
-                itemBox.setOnMouseExited(this::handleMouseExited);
-                itemBox.setOnMouseClicked(this::handleMouseClicked);
+            itemBox.setOnMouseEntered(this::handleMouseEntered);
+            itemBox.setOnMouseExited(this::handleMouseExited);
+            itemBox.setOnMouseClicked(this::handleMouseClicked);
 
-                itemBox.getStyleClass().add("item-container");
-                itemsContainer.getChildren().add(itemBox);
-            }
+            itemBox.getStyleClass().add("item-container");
+            itemsContainer.getChildren().add(itemBox);
         }
     }
 
 
     @FXML
-    private void handleBackButtonAction(ActionEvent event) {
+    private void handleBackButtonClick(MouseEvent event) {
         back.setValue(true);
     }
 
-    public void handleOkButton(ActionEvent event) {
-        selection.setValue(currentItem);
+
+    @FXML
+    private void handleOkButtonClick(MouseEvent event) {
+        selection.setValue(currentSkill);
     }
 }
