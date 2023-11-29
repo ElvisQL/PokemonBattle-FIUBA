@@ -4,11 +4,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -18,6 +20,7 @@ import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 import org.fiuba.algoritmos3.model.Player;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.status.Status;
 import org.fiuba.algoritmos3.view.component.BaseButton;
 import org.fiuba.algoritmos3.view.component.PokemonPickerOption;
 
@@ -56,6 +59,8 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     @FXML
     private VBox pokemonOptionsParent;
+    @FXML
+    private GridPane statusGrid;
 
     private MediaPlayer mediaPlayer;
 
@@ -141,6 +146,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     }
 
     private void updateDetailsPanel(Pokemon pokemon) {
+        statusGrid.getChildren().clear();
         nameText.setText(pokemon.getName());
         levelText.setText(String.valueOf(pokemon.getLevel()));
         healthText.setText(pokemon.getHealth().toString());
@@ -152,6 +158,42 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
         Double healthPercentage = (double) pokemon.getHealth() / (double) pokemon.getMaxHealth();
         viewProgressBar.setProgress(healthPercentage);
+        int row = 0;
+        for (Status status : pokemon.getStatuses()) {
+            if (pokemon.isDead()) {
+                Label normalLabel = new Label("Dead");
+                statusGrid.add(normalLabel, 0, row);
+            } else {
+                String statusImagePath = "images/pokemon-status/" + status.getName().toLowerCase() + ".png";
+                URL statusImageUrl = Objects.requireNonNull(getResource(statusImagePath));
+
+                if (statusImageUrl != null) {
+                    Image statusImage = new Image(statusImageUrl.toExternalForm());
+                    ImageView statusImageView = new ImageView(statusImage);
+
+                    statusImageView.setFitWidth(90);
+                    statusImageView.setFitHeight(30);
+
+                    statusGrid.add(statusImageView, 0, row);
+                    row++;
+                }
+            }
+
+        }
+        if (pokemon.getStatuses().isEmpty()) {
+            String normalImagePath = "images/pokemon-status/normal.png";
+            URL normalImageUrl = Objects.requireNonNull(getResource(normalImagePath));
+
+            if (normalImageUrl != null) {
+                Image normalImage = new Image(normalImageUrl.toExternalForm());
+                ImageView normalImageView = new ImageView(normalImage);
+
+                normalImageView.setFitWidth(90);
+                normalImageView.setFitHeight(30);
+
+                statusGrid.add(normalImageView, 0, row);
+            }
+        }
 
         URL imageUrl = Objects.requireNonNull(getResource("images/pokemon/" + pokemon.getName().toLowerCase() + ".png"));
         Image image = new Image(imageUrl.toExternalForm(), pokemonImage.getFitWidth(), pokemonImage.getFitHeight(), true, false);
