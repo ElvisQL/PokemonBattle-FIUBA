@@ -26,4 +26,6 @@ public interface GameAPI {
     Player getWinner();
 
     Weather getWeather();
+    GameMoveResult<String> getMoveMessage();
+    void setMoveMessage(GameMoveResult<String> msg);
 }

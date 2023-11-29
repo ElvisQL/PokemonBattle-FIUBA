@@ -5,6 +5,7 @@ import org.fiuba.algoritmos3.controller.PickerWrapperController;
 import org.fiuba.algoritmos3.controller.WinnerViewController;
 import org.fiuba.algoritmos3.model.Player;
 import org.fiuba.algoritmos3.model.move.GameMove;
+import org.fiuba.algoritmos3.model.move.GameMoveResult;
 import org.fiuba.algoritmos3.model.move.builder.GameMoveBuilder;
 
 public abstract class GameMoveController<T extends GameMove, B extends GameMoveBuilder<T>> extends PickerWrapperController {
@@ -14,7 +15,9 @@ public abstract class GameMoveController<T extends GameMove, B extends GameMoveB
     protected void executeGameMove() {
         T gameMove = builder.build();
 
-        gameAPI.play(gameMove);
+        GameMoveResult<String> gameMoveResult= gameAPI.play(gameMove);
+        System.out.println(gameMoveResult);
+        gameAPI.setMoveMessage(gameMoveResult);
 
         Stage stage = (Stage) rootPane.getScene().getWindow();
 

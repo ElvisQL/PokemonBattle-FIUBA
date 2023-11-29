@@ -9,7 +9,7 @@ public class FixedHealingItem extends HealingItem {
     }
 
     @Override
-    public void use(Pokemon pokemon) throws InvalidSelectionException {
+    public String use(Pokemon pokemon) throws InvalidSelectionException {
         if (pokemon.isDead()) {
             throw new InvalidSelectionException("Pokemon");
         }
@@ -17,5 +17,9 @@ public class FixedHealingItem extends HealingItem {
         int currentHealth = pokemon.getHealth();
         int increaseHealth = Math.min(currentHealth + healing, pokemon.getMaxHealth());
         pokemon.setHealth(increaseHealth);
+
+        return (pokemon.getName() + "has fixed its health: " + "+"+ healing);
+
+
     }
 }

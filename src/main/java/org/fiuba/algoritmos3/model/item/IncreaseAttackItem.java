@@ -18,7 +18,7 @@ public class IncreaseAttackItem extends Item {
     }
 
     @Override
-    public void use(Pokemon pokemon) throws InvalidSelectionException {
+    public String use(Pokemon pokemon) throws InvalidSelectionException {
         if (pokemon.isDead()) {
             throw new InvalidSelectionException("Pokemon");
         }
@@ -26,6 +26,7 @@ public class IncreaseAttackItem extends Item {
         Integer currentAttack = pokemon.getAttackPoints();
         Integer increaseAttack = currentAttack * percentageIncrease / PERCENT;
         pokemon.setAttackPoints(increaseAttack + currentAttack);
+        return pokemon.getName() + " has increased its attack for " + increaseAttack;
     }
 
 }

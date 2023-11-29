@@ -38,11 +38,20 @@ public class ChooseGameMoveController extends BaseController {
 
         PokemonView currentPokemonView = new PokemonView(gameAPI.currentPlayer().getCurrentPokemon());
         pokemonsSplitPane.getChildren().add(currentPokemonView);
+        if(gameAPI.getMoveMessage() != null){
+            Text msg = new Text(gameAPI.getMoveMessage().getResult() + "\n" + " What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
+            msg.getStyleClass().add("message-text-choose-game-move");
+            gameMoveDescriptionLabel.getChildren().add(msg);
+        }
+        else{
 
-        Text msg = new Text("What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
-        msg.getStyleClass().add("message-text-choose-game-move");
+            Text msg = new Text("What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
+            msg.getStyleClass().add("message-text-choose-game-move");
+            gameMoveDescriptionLabel.getChildren().add(msg);
+        }
 
-        gameMoveDescriptionLabel.getChildren().add(msg);
+
+
         changeWeatherImage();
     }
 

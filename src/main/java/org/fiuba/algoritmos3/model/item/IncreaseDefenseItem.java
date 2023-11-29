@@ -19,12 +19,13 @@ public class IncreaseDefenseItem extends Item {
     }
 
     @Override
-    public void use(Pokemon pokemon) throws InvalidSelectionException {
+    public String use(Pokemon pokemon) throws InvalidSelectionException {
         if (pokemon.isDead()) {
             throw new InvalidSelectionException("The user chose an invalid Pokemon");
         }
         Integer currentDefense = pokemon.getDefencePoints();
         Integer increaseDefense = currentDefense * percentageIncrease / PERCENT;
         pokemon.setDefencePoints(increaseDefense + currentDefense);
+        return (pokemon.getName() + " has increased defense for "+ increaseDefense);
     }
 }

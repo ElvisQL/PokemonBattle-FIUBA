@@ -26,7 +26,7 @@ public class Game implements GameAPI {
     private final HashMap<Integer, Item> sourceItemsHash;
     private final HashMap<Integer, Pokemon> sourcePokemonHash;
     private final GameState gameState = new GameState();
-
+    private GameMoveResult<String> msg;
     private final GameEventBroker<RoundOverEvent> roundOverBroker = new GameEventBroker<>();
 
     public Game(HashMap<Integer, Item> itemsHash, HashMap<Integer, Pokemon> pokemonsHash) {
@@ -73,6 +73,14 @@ public class Game implements GameAPI {
         roundOverBroker.fireEvent();
 
         return result;
+    }
+
+    @Override
+    public void setMoveMessage(GameMoveResult<String> msg) {
+        this.msg = msg;
+    }
+    public GameMoveResult<String> getMoveMessage(){
+        return this.msg;
     }
 
     @Override

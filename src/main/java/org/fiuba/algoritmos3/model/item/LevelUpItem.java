@@ -13,10 +13,11 @@ public class LevelUpItem extends Item {
     }
 
     @Override
-    public void use(Pokemon pokemon) throws InvalidSelectionException {
+    public String use(Pokemon pokemon) throws InvalidSelectionException {
         if (pokemon.isDead()) {
             throw new InvalidSelectionException("Pokemon");
         }
         pokemon.levelUp(this.increment);
+        return pokemon.getName()+ " has leveled up to " + pokemon.getLevel();
     }
 }
