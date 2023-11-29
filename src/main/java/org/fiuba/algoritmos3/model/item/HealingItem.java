@@ -12,6 +12,6 @@ public abstract class HealingItem extends Item {
     }
 
     @Override
-    public abstract void use(Pokemon pokemon) throws InvalidSelectionException;
+    public abstract String use(Pokemon pokemon) throws InvalidSelectionException;
 
 }

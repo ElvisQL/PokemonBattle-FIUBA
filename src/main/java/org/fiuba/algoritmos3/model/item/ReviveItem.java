@@ -18,11 +18,12 @@ public class ReviveItem extends Item {
     }
 
     @Override
-    public void use(Pokemon pokemon) throws InvalidSelectionException {
+    public String use(Pokemon pokemon) throws InvalidSelectionException {
         if (!pokemon.isDead()) {
             throw new InvalidSelectionException("The pokemon has to be weakened");
         }
         pokemon.clearStatuses();
         pokemon.setHealth(pokemon.getMaxHealth() * this.restoredHealth / PERCENT);
+        return pokemon.getName() + "has revived ";
     }
 }

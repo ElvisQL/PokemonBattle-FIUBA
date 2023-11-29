@@ -17,7 +17,7 @@ public abstract class Item {
         this.description = description;
     }
 
-    public abstract void use(Pokemon pokemon) throws BaseError;
+    public abstract String use(Pokemon pokemon) throws BaseError;
 
     public String getName() {
         return name;

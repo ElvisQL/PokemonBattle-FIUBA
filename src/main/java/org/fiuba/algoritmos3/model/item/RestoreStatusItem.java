@@ -11,10 +11,11 @@ public class RestoreStatusItem extends Item {
     }
 
     @Override
-    public void use(Pokemon pokemon) throws InvalidSelectionException {
+    public String use(Pokemon pokemon) throws InvalidSelectionException {
         if (pokemon.isDead()) {
             throw new InvalidSelectionException("Pokemon");
         }
         pokemon.clearStatuses();
+        return (pokemon.getName() + " has restored all its states");
     }
 }
