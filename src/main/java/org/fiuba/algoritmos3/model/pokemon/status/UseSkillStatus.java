@@ -11,7 +11,7 @@ public abstract class UseSkillStatus extends SkillModifier implements Status {
         if (canUseSkill(pokemon)) {
             this.wrappee.use(pokemon, otherPokemon,state);
         }
-        state.setAdittionalMsg(pokemon.getName() + "hasnt use skill because its " + pokemon.getStatuses().toString());
+        state.setAdittionalMsg(pokemon.getName() + " hasnt use skill because its affected with statuses");
 
     }
 
