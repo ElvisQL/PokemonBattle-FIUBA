@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3.model.pokemon;
 
 
+import com.github.underscore.U;
 import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 import org.fiuba.algoritmos3.model.pokemon.status.DeadStatus;
 import org.fiuba.algoritmos3.model.pokemon.status.Status;
@@ -79,11 +80,10 @@ public class Pokemon {
 
     // REGULAR SETTERS --------------------------------------------------------------------------------------------------------
     public void setHealth(Integer health) {
-        this.health = Math.min(health, this.getMaxHealth());
-        if (this.health <= 0) {
-            this.health = 0;
+        this.health = Math.min(Math.max(0, health), this.getMaxHealth());
+
+        if (this.health <= 0)
             this.kill();
-        }
     }
 
     public void setAttackPoints(int i) {
@@ -106,7 +106,6 @@ public class Pokemon {
 
     public boolean addStatus(Status status) {
         return statuses.add(status);
-
     }
 
     public String getStatusDescription() {
@@ -133,14 +132,7 @@ public class Pokemon {
     }
 
     public boolean isDead() {
-        for (Status status : statuses) {
-            if (status instanceof DeadStatus) {
-                return true;
-
-            }
-
-        }
-        return false;
+        return U.any(statuses, status -> status instanceof DeadStatus);
     }
 
     // UI -------------------------------------------------------------------------------------------------------------

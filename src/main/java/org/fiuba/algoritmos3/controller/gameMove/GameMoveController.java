@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3.controller.gameMove;
 
 import javafx.stage.Stage;
+import org.fiuba.algoritmos3.controller.ChooseGameMoveController;
 import org.fiuba.algoritmos3.controller.PickerWrapperController;
 import org.fiuba.algoritmos3.controller.WinnerViewController;
 import org.fiuba.algoritmos3.model.Player;
@@ -15,9 +16,7 @@ public abstract class GameMoveController<T extends GameMove, B extends GameMoveB
     protected void executeGameMove() {
         T gameMove = builder.build();
 
-        GameMoveResult<String> gameMoveResult= gameAPI.play(gameMove);
-        System.out.println(gameMoveResult);
-        gameAPI.setMoveMessage(gameMoveResult);
+        GameMoveResult<String> gameMoveResult = gameAPI.play(gameMove);
 
         Stage stage = (Stage) rootPane.getScene().getWindow();
 
@@ -28,11 +27,11 @@ public abstract class GameMoveController<T extends GameMove, B extends GameMoveB
             return;
         }
 
-        loadChooseGameMove();
+        loadChooseGameMove().setGameMoveResult(gameMoveResult);
     }
 
-    protected void loadChooseGameMove() {
+    protected ChooseGameMoveController loadChooseGameMove() {
         Stage stage = (Stage) rootPane.getScene().getWindow();
-        changeScene(stage, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
+        return (ChooseGameMoveController) changeScene(stage, getResource("views/chooseGameMove/choose-game-move-view.fxml"));
     }
 }

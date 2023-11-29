@@ -7,52 +7,77 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import org.fiuba.algoritmos3.controller.gameMove.*;
+import org.fiuba.algoritmos3.model.move.GameMoveResult;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.view.chooseGameMove.PokemonView;
+import org.fiuba.algoritmos3.view.component.BaseButton;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ChooseGameMoveController extends BaseController {
-    public VBox pokemonsSplitPane;
-    public TextFlow gameMoveDescriptionLabel;
     @FXML
-    private ImageView backGroundWeather;
+    private AnchorPane rootPane;
+    @FXML
+    private VBox pokemonsSplitPane;
+    @FXML
+    private TextFlow gameMoveDescriptionTextFlow;
+    @FXML
+    private ImageView weatherBackground;
+
+    @FXML
+    private BaseButton useItemButton;
+    @FXML
+    private BaseButton useSkillButton;
+
+    private GameMoveResult<String> gameMoveResult;
+
+    public void setGameMoveResult(GameMoveResult<String> gameMoveResult) {
+        this.gameMoveResult = gameMoveResult;
+        updateGameMoveDescription();
+    }
+
+    private void updateGameMoveDescription() {
+        if (gameMoveResult == null)
+            return;
+
+        gameMoveDescriptionTextFlow.getChildren().clear();
+
+        String text = gameMoveResult.getResult();
+        text += '\n' + "What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?";
+        Text msg = new Text(text);
+        msg.getStyleClass().add("message-text-choose-game-move");
+
+        gameMoveDescriptionTextFlow.getChildren().add(msg);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         PokemonView opponentPokemonView = new PokemonView(gameAPI.currentPlayer().getOpponent().getCurrentPokemon());
         opponentPokemonView.setFlipped(true);
         pokemonsSplitPane.getChildren().add(opponentPokemonView);
 
-
-        PokemonView currentPokemonView = new PokemonView(gameAPI.currentPlayer().getCurrentPokemon());
+        Pokemon currentPokemon = gameAPI.currentPlayer().getCurrentPokemon();
+        PokemonView currentPokemonView = new PokemonView(currentPokemon);
         pokemonsSplitPane.getChildren().add(currentPokemonView);
-        if(gameAPI.getMoveMessage() != null){
-            Text msg = new Text(gameAPI.getMoveMessage().getResult() + "\n" + " What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
-            msg.getStyleClass().add("message-text-choose-game-move");
-            gameMoveDescriptionLabel.getChildren().add(msg);
-        }
-        else{
 
-            Text msg = new Text("What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
-            msg.getStyleClass().add("message-text-choose-game-move");
-            gameMoveDescriptionLabel.getChildren().add(msg);
+        if (currentPokemon.isDead()) {
+            useItemButton.setDisable(true);
+            useSkillButton.setDisable(true);
         }
 
+        Text msg = new Text("What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
+        msg.getStyleClass().add("message-text-choose-game-move");
 
+        gameMoveDescriptionTextFlow.getChildren().add(msg);
 
-        changeWeatherImage();
+        updateWeatherBackground();
     }
 
 
@@ -72,17 +97,12 @@ public class ChooseGameMoveController extends BaseController {
     }
 
     @FXML
-    public void changeWeatherImage() {
+    public void updateWeatherBackground() {
         String weatherName = gameAPI.getWeather().getName();
         String weatherImage = getResource("images/backgrounds/" + weatherName.toLowerCase() + ".png").toExternalForm();
 
-
-        try {
-            Image newImage = new Image(weatherImage);
-            backGroundWeather.setImage(newImage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Image newImage = new Image(weatherImage, rootPane.getWidth(), rootPane.getHeight(), true, false);
+        weatherBackground.setImage(newImage);
     }
 
     @FXML

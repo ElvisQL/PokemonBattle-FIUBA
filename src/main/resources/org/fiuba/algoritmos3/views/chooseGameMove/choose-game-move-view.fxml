@@ -1,66 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.*?>
 <?import org.fiuba.algoritmos3.view.component.BaseButton?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.TextFlow?>
-<AnchorPane prefHeight="768.0" prefWidth="768.0" stylesheets="@../../styles/choose-game-move.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.ChooseGameMoveController">
-    <Pane prefHeight="600" prefWidth="768">
-        <ImageView fx:id="backGroundWeather" fitWidth="768" preserveRatio="true" style=" -fx-background-size: cover;">
+<AnchorPane fx:id="rootPane" prefHeight="768.0" prefWidth="768.0" stylesheets="@../../styles/choose-game-move.css"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.fiuba.algoritmos3.controller.ChooseGameMoveController">
+
+    <children>
+        <ImageView fx:id="weatherBackground" preserveRatio="true" smooth="false"
+                   style=" -fx-background-size: cover;" AnchorPane.bottomAnchor="0.0"
+                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
-                <Image url="@../../images/backgrounds/normal.png" />
+                <Image url="@../../images/backgrounds/normal.png" requestedWidth="768" requestedHeight="768" preserveRatio="true" smooth="false"/>
             </image>
         </ImageView>
-    </Pane>
-    <children>
-        <VBox layoutX="242.0" layoutY="28.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox layoutX="242.0" layoutY="28.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <VBox fx:id="pokemonsSplitPane" alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                <VBox fx:id="pokemonsSplitPane" alignment="CENTER" fillWidth="false"
+                      prefWidth="100.0" VBox.vgrow="ALWAYS">
                     <!-- The pokemons are placed dynamically here-->
                 </VBox>
-                <HBox alignment="CENTER" prefHeight="168.0" prefWidth="768.0" style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
+                <HBox alignment="CENTER" prefHeight="168.0" prefWidth="768.0"
+                      style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
                     <children>
                         <AnchorPane
                                 style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
                                 HBox.hgrow="ALWAYS">
                             <children>
-                                <TextFlow fx:id="gameMoveDescriptionLabel" layoutX="95.0" layoutY="22.0"
+                                <TextFlow fx:id="gameMoveDescriptionTextFlow" layoutX="95.0" layoutY="22.0"
                                           style="-fx-text-fill: #f3f3f3; -fx-font-size: 18px"
-                                          AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0"
-                                          AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+                                          AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
+                                          AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0"/>
                             </children>
                         </AnchorPane>
                         <GridPane alignment="CENTER_RIGHT" prefHeight="140.0" prefWidth="368.0"
                                   style="-fx-background-color: #fefcfd; -fx-border-color: #74707e; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;">
                             <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleUseItemButtonAction" prefHeight="55.0" prefWidth="150.0" text="BAG" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <BaseButton fx:id="useItemButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                            minWidth="-Infinity" mnemonicParsing="false"
+                                            onAction="#handleUseItemButtonAction" prefHeight="55.0" prefWidth="150.0"
+                                            text="BAG" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                                            GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                     <font>
-                                        <Font size="13.0" />
+                                        <Font size="13.0"/>
                                     </font>
                                 </BaseButton>
-                                <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleUseSkillButtonAction" prefHeight="55.0" prefWidth="150.0" text="FIGHT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <BaseButton fx:id="useSkillButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                            minWidth="-Infinity" mnemonicParsing="false"
+                                            onAction="#handleUseSkillButtonAction" prefHeight="55.0" prefWidth="150.0"
+                                            text="FIGHT" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                                            GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER"
+                                            GridPane.vgrow="ALWAYS">
                                     <font>
-                                        <Font size="13.0" />
+                                        <Font size="13.0"/>
                                     </font>
                                 </BaseButton>
-                                <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleChangePokemonButtonAction" prefHeight="55.0" prefWidth="150.0" text="SWITCH" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                            minWidth="-Infinity" mnemonicParsing="false"
+                                            onAction="#handleChangePokemonButtonAction" prefHeight="55.0"
+                                            prefWidth="150.0" text="SWITCH" GridPane.halignment="CENTER"
+                                            GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER"
+                                            GridPane.vgrow="ALWAYS">
                                     <font>
-                                        <Font size="13.0" />
+                                        <Font size="13.0"/>
                                     </font>
                                 </BaseButton>
-                                <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSurrenderButtonAction" prefHeight="55.0" prefWidth="150.0" text="RUN" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                                <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                            minWidth="-Infinity" mnemonicParsing="false"
+                                            onAction="#handleSurrenderButtonAction" prefHeight="55.0" prefWidth="150.0"
+                                            text="RUN" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                                            GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER"
+                                            GridPane.vgrow="ALWAYS">
                                     <font>
-                                        <Font size="13.0" />
+                                        <Font size="13.0"/>
                                     </font>
                                 </BaseButton>
                             </children>
