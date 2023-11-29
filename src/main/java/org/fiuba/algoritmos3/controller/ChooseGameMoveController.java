@@ -82,7 +82,11 @@ public class ChooseGameMoveController extends BaseController {
 
     @FXML
     private void handleUseSkillButtonAction(ActionEvent event) {
-        loadGameMoveController(event, new UseSkillController());
+        if (gameAPI.currentPlayer().getCurrentPokemon().isDead()) {
+            handleChangePokemonButtonAction(event);
+        } else {
+            loadGameMoveController(event, new UseSkillController());
+        }
     }
 
     @FXML
