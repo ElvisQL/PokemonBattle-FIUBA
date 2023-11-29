@@ -75,7 +75,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
         Media media = new Media(getResource("audio/clickButton.mp3").toExternalForm());
         this.mediaPlayer = new MediaPlayer(media);
 
-        setDescriptionBox("Choose wisely");
+        setDescriptionBox("Choose wisely...");
 
         for (Node node : pokemonChooserMenu.getChildren()) {
             if (node instanceof Pane pane) {
@@ -118,16 +118,6 @@ public class PokemonPickerController extends PickerController<Pokemon> {
                     imageType.setImage(typeImage);
                 }
 
-                // Get and set pokemon icon
-                String pokePath = "images/pokemon/" + pokemon.getName().toLowerCase() + ".png"; // TODO get icon sprites
-                URL pokeUrl = getResource(pokePath);
-
-                if (pokeUrl != null) {
-                    Image image = new Image(pokeUrl.toExternalForm());
-                    ImageView imageElem = (ImageView) pane.lookup("#triangle"+i);
-                    imageElem.setOpacity(0.5);
-                    imageElem.setImage(image);
-                }
             }
         }
     }
@@ -141,7 +131,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
         selectedIndex = pokemonChooserMenu.getChildren().indexOf(clickedPane);
         Pokemon pokemon = (Pokemon) pokemonChooserMenu.getChildren().get(selectedIndex).getUserData();
 
-        setDescriptionBox(pokemon.getHistory());
+        setDescriptionBox(pokemon.getHistory()+ "Do you want to select "+pokemon.getName().toUpperCase()+"?");
         updateSelection();
 
         mediaPlayer.seek(Duration.ZERO);
@@ -152,7 +142,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     private void setDescriptionBox(String text) {
         descriptionBox.getChildren().clear();
         Text description = new Text(text);
-        description.setFill(Color.web("#2d2a23"));
+        description.setFill(Color.BLACK);
         descriptionBox.getChildren().add(description);
     }
 
@@ -169,69 +159,66 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     public void handleMouseEntered(MouseEvent event) {
         Node source = (Node) event.getSource();
 
-        ImageView icon = null;
         if (source instanceof Pane pane) {
             int index = pokemonChooserMenu.getChildren().indexOf(pane);
-            icon = (ImageView) pane.lookup("#triangle" + index);
+            Polygon triangle = (Polygon) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane)));
+            triangle.setFill(Color.web("#2e6099"));
+
             updateLabelDetails(index);
+        } else if (source instanceof Polygon) {
+            Polygon triangle = (Polygon) source;
+            triangle.setFill(Color.web("#2e6099"));
 
-        } else if (source instanceof ImageView) {
-            icon = (ImageView) source;
-
+            String triangleId = triangle.getId();
+            if (triangleId != null && triangleId.matches("triangle\\d+")) {
+                int index = Integer.parseInt(triangleId.substring(8)) - 1;
+                updateLabelDetails(index);
+            }
         }
-
-        icon.setOpacity(1.0);
-        icon.setScaleY(1.2);
-        icon.setScaleX(1.2);
     }
 
     public void handleMouseExited(MouseEvent event) {
         Node source = (Node) event.getSource();
 
-        ImageView icon = null;
         if (source instanceof Pane pane) {
             int index = pokemonChooserMenu.getChildren().indexOf(pane);
-            icon = (ImageView) pane.lookup("#triangle" + index);
-            updateLabelDetails(index);
-
-
-        } else if (source instanceof ImageView) {
-            icon = (ImageView) source;
-
+            Polygon triangle = (Polygon) pane.lookup("#triangle" + (index));
+            if (triangle != null) {
+                triangle.setFill(Color.web("#4a8ac6"));
+            }
+        } else if (source instanceof Polygon) {
+            Polygon triangle = (Polygon) source;
+            triangle.setFill(Color.web("#4a8ac6"));
         }
-
-        icon.setOpacity(0.5);
-        icon.setScaleY(1.0);
-        icon.setScaleX(1.0);
     }
 
     private void updateSelection() {
         for (Node nodo : pokemonChooserMenu.getChildren()) {
             if (nodo instanceof Pane) {
                 Pane pane = (Pane) nodo;
-                ImageView icon = (ImageView) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane)));
-                icon.setOpacity(0.5);
-                icon.setScaleY(1.0);
-                icon.setScaleX(1.0);
+                if (nodo instanceof Pane) {
+                    Polygon triangle = (Polygon) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane)));
+                    triangle.setFill(Color.web("#4a8ac6"));
+
+//                    Rectangle container = (Rectangle) pane.lookup("#container");
+//                    container.setStroke(Color.web("454661"));
+                }
             }
-        }
 
-        Pane selectedPane = null;
-        if (selectedIndex >= 0 && selectedIndex < pokemonChooserMenu.getChildren().size()) {
-            selectedPane = (Pane) pokemonChooserMenu.getChildren().get(selectedIndex);
-        }
+            Pane selectedPane = null;
+            if (selectedIndex >= 0 && selectedIndex < pokemonChooserMenu.getChildren().size()) {
+                selectedPane = (Pane) pokemonChooserMenu.getChildren().get(selectedIndex);
+            }
 
-        if (selectedPane != null) {
+            if (selectedPane != null) {
+//                Rectangle container = (Rectangle) selectedPane.lookup("#container");
+//                container.setStroke(Color.web("FF712F"));
+                Polygon selectedTriangle = (Polygon) selectedPane.lookup("#triangle" + (selectedIndex));
+                selectedTriangle.setFill(Color.web("#2e6099"));
 
-            ImageView icon = (ImageView) selectedPane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(selectedPane)));
-            icon.setOpacity(1.0);
-            icon.setScaleY(1.2);
-            icon.setScaleX(1.2);
-
-            selectedPane.setStyle("-fx-stroke: #FF712F;");
-
-            Double posY = calculatePosition();
-            moveSelector(posY);
+                Double posY = calculatePosition();
+                moveSelector(posY);
+            }
         }
 
     }
