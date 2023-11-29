@@ -9,7 +9,7 @@
 <?import javafx.scene.text.*?>
 <?import org.fiuba.algoritmos3.view.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleChoosePokemonMouseClick" prefHeight="768.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.PokemonPickerController">
+<AnchorPane  stylesheets="@../../styles/choosepokemon.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleChoosePokemonMouseClick" prefHeight="768.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.PokemonPickerController">
     <Pane prefHeight="200.0" prefWidth="200.0" />
     <Pane prefHeight="600" prefWidth="768" style="-fx-background-color: #206860">
         <!--        <ImageView fitWidth="768" preserveRatio="true" style=" -fx-background-size: cover;">-->

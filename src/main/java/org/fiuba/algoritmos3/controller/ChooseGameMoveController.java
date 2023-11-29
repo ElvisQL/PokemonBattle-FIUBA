@@ -42,7 +42,8 @@ public class ChooseGameMoveController extends BaseController {
         pokemonsSplitPane.getChildren().add(currentPokemonView);
 
         Text msg = new Text("What will " + gameAPI.currentPlayer().getCurrentPokemon().getName() + " do?");
-        msg.setFill(Color.WHITE); // TODO move a views?
+        msg.getStyleClass().add("message-text-choose-game-move");
+
         gameMoveDescriptionLabel.getChildren().add(msg);
         changeWeatherImage();
     }

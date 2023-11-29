@@ -105,22 +105,18 @@ public class ItemPickerController extends PickerController<Item> {
 
         for (Map.Entry<Integer, Integer> entry : itemCountMap.entrySet()) {
             int itemId = entry.getKey();
-            int quantity = entry.getValue();
+
             HBox pane = new HBox(230);
 
             Item item = items.stream().filter(i -> i.getId() == itemId).findFirst().orElse(null);
             if (item != null) {
                 Label nameLabel = new Label("   " + item.getName().toUpperCase());
                 Label quantityLabel = new Label("x" + itemCountMap.get(item.getId()).toString());
-                nameLabel.setStyle("-fx-font-size: 16px;");
-                quantityLabel.setStyle("-fx-font-size: 16px;");
 
                 nameLabel.getStyleClass().add("label-item");
                 quantityLabel.getStyleClass().add("label-item");
 
-                HBox.setHgrow(nameLabel, Priority.ALWAYS);
                 pane.getChildren().addAll(nameLabel, quantityLabel);
-                pane.setAlignment(Pos.CENTER_LEFT);
 
                 pane.setUserData(item);
 

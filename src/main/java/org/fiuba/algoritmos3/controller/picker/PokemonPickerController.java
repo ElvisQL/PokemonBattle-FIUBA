@@ -142,7 +142,8 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     private void setDescriptionBox(String text) {
         descriptionBox.getChildren().clear();
         Text description = new Text(text);
-        description.setFill(Color.BLACK);
+        description.getStyleClass().add("description-pokemon-label");
+
         descriptionBox.getChildren().add(description);
     }
 
@@ -162,12 +163,14 @@ public class PokemonPickerController extends PickerController<Pokemon> {
         if (source instanceof Pane pane) {
             int index = pokemonChooserMenu.getChildren().indexOf(pane);
             Polygon triangle = (Polygon) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane)));
-            triangle.setFill(Color.web("#2e6099"));
+            triangle.getStyleClass().add("triangle-selected");
+
 
             updateLabelDetails(index);
         } else if (source instanceof Polygon) {
             Polygon triangle = (Polygon) source;
-            triangle.setFill(Color.web("#2e6099"));
+            triangle.getStyleClass().add("triangle-selected");
+
 
             String triangleId = triangle.getId();
             if (triangleId != null && triangleId.matches("triangle\\d+")) {
@@ -184,11 +187,13 @@ public class PokemonPickerController extends PickerController<Pokemon> {
             int index = pokemonChooserMenu.getChildren().indexOf(pane);
             Polygon triangle = (Polygon) pane.lookup("#triangle" + (index));
             if (triangle != null) {
-                triangle.setFill(Color.web("#4a8ac6"));
+                triangle.getStyleClass().add("triangle-not-selected");
+
             }
         } else if (source instanceof Polygon) {
             Polygon triangle = (Polygon) source;
-            triangle.setFill(Color.web("#4a8ac6"));
+            triangle.getStyleClass().add("triangle-not-selected");
+
         }
     }
 
@@ -198,7 +203,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
                 Pane pane = (Pane) nodo;
                 if (nodo instanceof Pane) {
                     Polygon triangle = (Polygon) pane.lookup("#triangle" + (pokemonChooserMenu.getChildren().indexOf(pane)));
-                    triangle.setFill(Color.web("#4a8ac6"));
+                    triangle.getStyleClass().add("triangle-not-selected");
 
 //                    Rectangle container = (Rectangle) pane.lookup("#container");
 //                    container.setStroke(Color.web("454661"));
@@ -214,7 +219,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 //                Rectangle container = (Rectangle) selectedPane.lookup("#container");
 //                container.setStroke(Color.web("FF712F"));
                 Polygon selectedTriangle = (Polygon) selectedPane.lookup("#triangle" + (selectedIndex));
-                selectedTriangle.setFill(Color.web("#2e6099"));
+                selectedTriangle.getStyleClass().add("triangle-selected");
 
                 Double posY = calculatePosition();
                 moveSelector(posY);
