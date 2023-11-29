@@ -12,17 +12,16 @@ import org.fiuba.algoritmos3.model.weather.Weather;
 public class UseSkill extends GameMove {
     public final static String label = "Use Skill";
 
-    private final ConcreteSkill skillResult;
+    private final ConcreteSkill chosenSkill;
 
-    public UseSkill(ConcreteSkill skillResult) {
-        this.skillResult = skillResult;
+    public UseSkill(ConcreteSkill chosenSkill) {
+        this.chosenSkill = chosenSkill;
     }
 
     @Override
     public GameMoveResult<String> run(GameState gameState) {
         Pokemon pokemon = gameState.getCurrentPlayer().getCurrentPokemon();
         Pokemon opponentPokemon = gameState.getCurrentPlayer().getOpponent().getCurrentPokemon();
-        ConcreteSkill chosenSkill = skillResult;
 
         SkillModifier skill = new NullSkillModifier().wrap(chosenSkill);
         for (Status status : pokemon.getStatuses()) {

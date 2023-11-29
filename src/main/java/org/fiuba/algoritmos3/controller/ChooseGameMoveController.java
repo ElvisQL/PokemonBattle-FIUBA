@@ -14,10 +14,7 @@ import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import org.fiuba.algoritmos3.controller.gameMove.ChangePokemonController;
-import org.fiuba.algoritmos3.controller.gameMove.GameMoveController;
-import org.fiuba.algoritmos3.controller.gameMove.SurrenderController;
-import org.fiuba.algoritmos3.controller.gameMove.UseItemController;
+import org.fiuba.algoritmos3.controller.gameMove.*;
 import org.fiuba.algoritmos3.view.chooseGameMove.PokemonView;
 
 import java.io.IOException;
@@ -79,13 +76,18 @@ public class ChooseGameMoveController extends BaseController {
     }
 
     @FXML
-    private void handleChangePokemonButtonAction(ActionEvent event) {
-        loadGameMoveController(event, new ChangePokemonController());
+    private void handleUseItemButtonAction(ActionEvent event) {
+        loadGameMoveController(event, new UseItemController());
     }
 
     @FXML
-    private void handleUseItemButtonAction(ActionEvent event) {
-        loadGameMoveController(event, new UseItemController());
+    private void handleUseSkillButtonAction(ActionEvent event) {
+        loadGameMoveController(event, new UseSkillController());
+    }
+
+    @FXML
+    private void handleChangePokemonButtonAction(ActionEvent event) {
+        loadGameMoveController(event, new ChangePokemonController());
     }
 
     @FXML

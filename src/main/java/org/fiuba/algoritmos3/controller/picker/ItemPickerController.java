@@ -2,18 +2,14 @@ package org.fiuba.algoritmos3.controller.picker;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import org.fiuba.algoritmos3.model.item.Item;
-import org.fiuba.algoritmos3.view.component.BaseButton;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -23,16 +19,15 @@ import java.util.ResourceBundle;
 
 public class ItemPickerController extends PickerController<Item> {
     @FXML
-    public BaseButton backButton;
-    public BaseButton okButton;
-    @FXML
-    private ScrollPane scrollItems;
-    @FXML
-    private VBox itemsBox;
+    private VBox itemsContainer;
     @FXML
     private TextFlow descriptionBox;
+    @FXML
     private String lastDescription = "";
+    @FXML
     private HBox markedItem;
+
+    private Item currentItem;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,7 +36,7 @@ public class ItemPickerController extends PickerController<Item> {
 
     private void handleMouseClicked(MouseEvent e) {
         Node source = (Node) e.getSource();
-        Item item = (Item) source.getUserData();
+        currentItem = (Item) source.getUserData();
         if (markedItem != null) {
             if (markedItem.equals(source)) {
                 markedItem.getStyleClass().remove("marked-item");
@@ -63,7 +58,6 @@ public class ItemPickerController extends PickerController<Item> {
         source.setOnMouseExited(null);
         markedItem = (HBox) source;
         okButton.setDisable(false);
-
     }
 
     private void handleMouseExited(MouseEvent e) {
@@ -102,11 +96,10 @@ public class ItemPickerController extends PickerController<Item> {
             itemCountMap.put(item.getId(), itemCountMap.getOrDefault(item.getId(), 0) + 1);
         }
 
-
         for (Map.Entry<Integer, Integer> entry : itemCountMap.entrySet()) {
             int itemId = entry.getKey();
 
-            HBox pane = new HBox(230);
+            HBox itemBox = new HBox(230);
 
             Item item = items.stream().filter(i -> i.getId() == itemId).findFirst().orElse(null);
             if (item != null) {
@@ -116,22 +109,18 @@ public class ItemPickerController extends PickerController<Item> {
                 nameLabel.getStyleClass().add("label-item");
                 quantityLabel.getStyleClass().add("label-item");
 
-                pane.getChildren().addAll(nameLabel, quantityLabel);
+                itemBox.getChildren().addAll(nameLabel, quantityLabel);
 
-                pane.setUserData(item);
+                itemBox.setUserData(item);
 
-                pane.setOnMouseEntered(this::handleMouseEntered);
-                pane.setOnMouseExited(this::handleMouseExited);
-                pane.setOnMouseClicked(this::handleMouseClicked);
+                itemBox.setOnMouseEntered(this::handleMouseEntered);
+                itemBox.setOnMouseExited(this::handleMouseExited);
+                itemBox.setOnMouseClicked(this::handleMouseClicked);
 
-                pane.getStyleClass().add("item-container");
-                itemsBox.getChildren().add(pane);
+                itemBox.getStyleClass().add("item-container");
+                itemsContainer.getChildren().add(itemBox);
             }
-
-
         }
-        scrollItems.setContent(itemsBox);
-
     }
 
 
@@ -141,7 +130,6 @@ public class ItemPickerController extends PickerController<Item> {
     }
 
     public void handleOkButton(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        selection.setValue((Item) source.getUserData());
+        selection.setValue(currentItem);
     }
 }
