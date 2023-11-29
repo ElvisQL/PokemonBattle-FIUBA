@@ -52,7 +52,7 @@ class PersistenceTest {
 
         Persistence.savePlayersInfo(gameState);
 
-        Assertions.assertTrue(Files.exists(new File("src/resources/players.json").toPath()));
+        Assertions.assertTrue(Files.exists(new File("data/players.json").toPath()));
         //TODO: Add assertions to check if the serialization was successful and saved as expected
     }
 
@@ -81,9 +81,8 @@ class PersistenceTest {
         Persistence.saveGameResult(gameState);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String fileName = sdf.format(new Date()) + "-summary.json";
+        String fileName = "data/" + sdf.format(new Date()) + "-summary.json";
 
         Assertions.assertTrue(Files.exists(new File(fileName).toPath()));
-        // TODO: Add assertions to check if the serialization was successful and saved as expected
     }
 }
