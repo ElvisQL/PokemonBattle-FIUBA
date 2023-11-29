@@ -36,7 +36,13 @@ public class UseItemController extends GameMoveController<UseItem, UseItemBuilde
     }
 
     private void loadPokemonPicker() {
-        List<Pokemon> pokemons = Stream.concat(gameAPI.currentPlayer().getPokemons().stream(), gameAPI.currentPlayer().getOpponent().getPokemons().stream()).toList();
+        List<Pokemon> pokemons = Stream.concat(
+                        gameAPI.currentPlayer().getPokemons().stream(),
+                        gameAPI.currentPlayer().getOpponent().getPokemons().stream()
+                )
+                .filter((pokemon) -> selectedItem.canUse(pokemon))
+                .toList();
+
         PickerController<Pokemon> controller = loadPicker(PokemonPickerController.class, pokemons);
         controller.addSelectionListener(this::onPokemonPicked);
         controller.addBackListener((_a, _b, _c) -> loadItemPicker());

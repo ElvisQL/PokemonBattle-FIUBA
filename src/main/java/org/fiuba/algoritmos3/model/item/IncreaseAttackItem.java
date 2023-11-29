@@ -20,9 +20,8 @@ public class IncreaseAttackItem extends Item {
 
     @Override
     public void use(Pokemon pokemon, GameState gameState) throws InvalidSelectionException {
-        if (pokemon.isDead()) {
+        if (!canUse(pokemon))
             throw new InvalidSelectionException("Pokemon");
-        }
 
         Integer currentAttack = pokemon.getAttackPoints();
         Integer increaseAttack = currentAttack * percentageIncrease / PERCENT;
@@ -31,4 +30,8 @@ public class IncreaseAttackItem extends Item {
 
     }
 
+    @Override
+    public boolean canUse(Pokemon pokemon) {
+        return !pokemon.isDead();
+    }
 }

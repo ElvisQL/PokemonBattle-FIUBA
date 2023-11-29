@@ -27,7 +27,7 @@ public class UseItem extends GameMove {
         }
 
         try {
-            chosenItem.use(chosenPokemon ,gameState);
+            chosenItem.use(chosenPokemon, gameState);
         } catch (BaseError e) {
             return new GameMoveResult<String>().Err(e);
         }

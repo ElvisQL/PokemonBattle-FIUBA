@@ -28,4 +28,9 @@ public class ReviveItem extends Item {
         gameState.setAdittionalMsg(pokemon.getName() + " has revived ");
 
     }
+
+    @Override
+    public boolean canUse(Pokemon pokemon) {
+        return pokemon.isDead();
+    }
 }

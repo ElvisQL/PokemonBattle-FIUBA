@@ -10,18 +10,18 @@ public class FixedHealingItem extends HealingItem {
     }
 
     @Override
-    public void use(Pokemon pokemon,GameState gameState) throws InvalidSelectionException {
-        if (pokemon.isDead()) {
+    public void use(Pokemon pokemon, GameState gameState) throws InvalidSelectionException {
+        if (!canUse(pokemon))
             throw new InvalidSelectionException("Pokemon");
-        }
 
         int currentHealth = pokemon.getHealth();
         int increaseHealth = Math.min(currentHealth + healing, pokemon.getMaxHealth());
         pokemon.setHealth(increaseHealth);
-        gameState.setAdittionalMsg((pokemon.getName() + " has fixed its health: " + "+"+ healing));
+        gameState.setAdittionalMsg((pokemon.getName() + " has fixed its health: " + "+" + healing));
+    }
 
-
-
-
+    @Override
+    public boolean canUse(Pokemon pokemon) {
+        return !pokemon.isDead();
     }
 }

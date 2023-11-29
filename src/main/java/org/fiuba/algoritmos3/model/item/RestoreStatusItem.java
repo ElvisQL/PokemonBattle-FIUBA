@@ -13,11 +13,16 @@ public class RestoreStatusItem extends Item {
 
     @Override
     public void use(Pokemon pokemon, GameState gameState) throws InvalidSelectionException {
-        if (pokemon.isDead()) {
+        if (!canUse(pokemon))
             throw new InvalidSelectionException("Pokemon");
-        }
+
         pokemon.clearStatuses();
         gameState.setAdittionalMsg(pokemon.getName() + " has restored all its states");
 
+    }
+
+    @Override
+    public boolean canUse(Pokemon pokemon) {
+        return !pokemon.isDead() && !pokemon.getStatuses().isEmpty();
     }
 }

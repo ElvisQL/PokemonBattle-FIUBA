@@ -6,11 +6,9 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public abstract class Item {
 
+    protected final Integer id;
     protected final String name;
     protected final String description;
-
-
-    protected final Integer id;
 
     protected Item(Integer id, String name, String description) {
         this.id = id;
@@ -32,4 +30,5 @@ public abstract class Item {
         return description;
     }
 
+    public abstract boolean canUse(Pokemon pokemon);
 }

@@ -12,14 +12,18 @@ public class PercentageHealingItem extends HealingItem {
 
     @Override
     public void use(Pokemon pokemon, GameState gameState) throws InvalidSelectionException {
-        if (pokemon.isDead()) {
+        if (!canUse(pokemon))
             throw new InvalidSelectionException("Pokemon");
-        }
 
         int currentHealth = pokemon.getHealth();
         int increaseHealth = Math.min(currentHealth + (pokemon.getMaxHealth() * 100 / healing), pokemon.getMaxHealth());
         pokemon.setHealth(increaseHealth);
         gameState.setAdittionalMsg(pokemon.getName() + " has increased its health for " + increaseHealth);
 
+    }
+
+    @Override
+    public boolean canUse(Pokemon pokemon) {
+        return !pokemon.isDead();
     }
 }
