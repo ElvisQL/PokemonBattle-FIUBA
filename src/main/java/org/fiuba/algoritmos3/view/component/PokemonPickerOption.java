@@ -50,6 +50,10 @@ public class PokemonPickerOption extends AnchorPane {
 
     private final BooleanProperty enemy = new SimpleBooleanProperty();
 
+    private final Color originalColor = Color.web("#2e6099");
+    private final Color darkenedColor = originalColor.darker();
+
+
     public PokemonPickerOption() {
         super();
         initialize();
@@ -66,9 +70,20 @@ public class PokemonPickerOption extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        parentAnchorPane.setOnMouseEntered(e -> darkenColor(triangle));
+        parentAnchorPane.setOnMouseExited(e -> restoreOriginalColor(triangle));
+
         parentAnchorPane.setOnMouseEntered((e) -> triangle.setFill(Color.web("#2e6099")));
         parentAnchorPane.setOnMouseEntered((e) -> triangle.getStyleClass().add("triangle-not-selected"));
         parentAnchorPane.setOnMouseClicked((e) -> setSelected(!selected.get()));
+    }
+
+    private void darkenColor(Polygon polygon) {
+        polygon.setFill(darkenedColor);
+    }
+
+    private void restoreOriginalColor(Polygon polygon) {
+        polygon.setFill(originalColor);
     }
 
     public Pokemon getPokemon() {
