@@ -168,10 +168,11 @@
           style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
         <children>
             <AnchorPane
-                    style="-fx-background-color: #d6dde5; -fx-border-color: #c3a749; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
+                    style="-fx-background-color: #d6dde5; -fx-border-color: #c3a749;-fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
                     HBox.hgrow="ALWAYS">
                 <TextFlow fx:id="descriptionBox" layoutX="15.0" layoutY="14.0" prefHeight="145.0" prefWidth="541.0"
-                          style="-fx-font-size: 18px;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
+                          style="-fx-font-size: 18px;"
+                          AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
                           AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="14.0"/>
             </AnchorPane>
             <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0"

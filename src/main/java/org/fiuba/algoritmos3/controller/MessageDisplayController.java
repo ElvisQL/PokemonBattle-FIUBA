@@ -57,21 +57,18 @@ public class MessageDisplayController extends BaseController {
         // Fill grids
         fillGrid(oppPokeballGrid);
         fillGrid(actPokeballGrid);
-        // TODO check pokemons status and set pokeballs accordingly
 
-        // Start the message animation
-        animateMessage();
-
-    }
-
-    private void animateMessage() {
         BattleMessages[] enumValues = BattleMessages.values();
 
         Random random = new Random();
         int randomIndex = random.nextInt(enumValues.length);
-        String str = enumValues[randomIndex].toString();
+        String str = this.gameAPI.currentPlayer().getOpponent().getName().toUpperCase() +": "+ enumValues[randomIndex].toString();
+        // Start the message animation
+        animateMessage(str);
 
+    }
 
+    private void animateMessage(String str) {
         AtomicInteger i = new AtomicInteger();
         Timeline timeline = new Timeline();
         KeyFrame keyFrame = new KeyFrame(
@@ -104,11 +101,17 @@ public class MessageDisplayController extends BaseController {
     }
 
     public void handleOkButton(ActionEvent event) {
+//        message.setText(" ");
+//        animateMessage("LET'S GO");
+
+
         Stage stage = (Stage) rootPane.getScene().getWindow();
         changeScene(stage, getResource("views/chooseGameMove/choose-game-move-view.fxml")); //TODO cambiar a diferentes ventanas?
     }
 
-    public void handleBackButtonAction(ActionEvent event) {
+    @FXML
+    private void handleBackButtonAction(ActionEvent event) {
+        // TODO
     }
 }
 

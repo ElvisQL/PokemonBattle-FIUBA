@@ -7,12 +7,13 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
+
 <?import org.fiuba.algoritmos3.view.component.BaseButton?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
-      prefWidth="768.0" stylesheets="@../../styles/backpack.css" xmlns="http://javafx.com/javafx/21"
+      prefWidth="768.0" stylesheets="@../../styles/skills.css" xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.SkillPickerController">
     <children>
-        <Pane prefHeight="600.0" prefWidth="768.0" styleClass="item-pane-top">
+        <Pane prefHeight="600.0" prefWidth="768.0" styleClass="skill-pane-top">
             <children>
                 <Pane prefHeight="583.0" prefWidth="231.0">
                     <children>
@@ -28,13 +29,13 @@
                     </children>
                 </Pane>
                 <Pane layoutX="254.0" layoutY="36.0" prefHeight="529.0" prefWidth="480.0" style=" -fx-border-radius: 5;
-                -fx-background-radius: 10; -fx-background-color: #f0c060; -fx-border-width: 7px; -fx-border-color: #2f4e62;">
+                -fx-background-radius: 10; -fx-background-color: #5c448d; -fx-border-width: 7px; -fx-border-color: #d6dde5;">
                     <children>
                         <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0"
-                                    prefHeight="496.0" prefWidth="450.0" stylesheets="@../../styles/backpack.css"
+                                    prefHeight="496.0" prefWidth="450.0" stylesheets="@../../styles/skills.css"
                                     vbarPolicy="NEVER">
-                            <VBox fx:id="itemsContainer" layoutX="13.0" layoutY="14.0" prefHeight="496.0" prefWidth="450.0"
-                                  styleClass="vbox-items" stylesheets="@../../styles/backpack.css"/>
+                            <VBox fx:id="skillsContainer" layoutX="13.0" layoutY="14.0" prefHeight="496.0" prefWidth="450.0"
+                                  styleClass="vbox-skills" stylesheets="@../../styles/skills.css"/>
                         </ScrollPane>
                     </children>
                 </Pane>
@@ -46,18 +47,19 @@
               layoutX="0" layoutY="600">
             <children>
                 <AnchorPane
-                        style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;"
+                        style="-fx-background-color: #d6dde5; -fx-border-color: #5c448d;-fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
                         HBox.hgrow="ALWAYS">
                     <children>
-                        <TextFlow fx:id="descriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0"
+                        <TextFlow fx:id="skillDescriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0"
                                   prefWidth="533.0"
-                                  AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0"
-                                  style="-fx-font-size: 16px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
+                                  AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0"
+                                  AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0"
+                                  style="-fx-font-size: 18px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
                         />
                     </children>
                 </AnchorPane>
                 <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0"
-                          style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
+                          style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;">
                     <children>
                         <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                                     minWidth="-Infinity" mnemonicParsing="false" fx:id="backButton" prefHeight="52.0"

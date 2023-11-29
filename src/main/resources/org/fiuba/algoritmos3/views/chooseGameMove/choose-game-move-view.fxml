@@ -22,12 +22,18 @@
                 </VBox>
                 <HBox alignment="CENTER" prefHeight="168.0" prefWidth="768.0" style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
                     <children>
-                        <AnchorPane style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
+                        <AnchorPane
+                                style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
+                                HBox.hgrow="ALWAYS">
                             <children>
-                                <TextFlow fx:id="gameMoveDescriptionLabel" layoutX="95.0" layoutY="22.0" style="-fx-font-size: 18px; -fx-text-fill: #f3f3f3;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0" />
+                                <TextFlow fx:id="gameMoveDescriptionLabel" layoutX="95.0" layoutY="22.0"
+                                          style="-fx-text-fill: #f3f3f3; -fx-font-size: 18px"
+                                          AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0"
+                                          AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
                             </children>
                         </AnchorPane>
-                        <GridPane alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="368.0" style="-fx-background-color: #fefcfd; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
+                        <GridPane alignment="CENTER_RIGHT" prefHeight="140.0" prefWidth="368.0"
+                                  style="-fx-background-color: #fefcfd; -fx-border-color: #74707e; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />

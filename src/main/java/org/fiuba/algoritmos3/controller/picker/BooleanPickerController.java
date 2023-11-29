@@ -15,6 +15,7 @@ public class BooleanPickerController extends PickerController<Boolean> {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         questionTitle.setText("Player " + (gameAPI.currentPlayer().getName()));
+        questionTitle.setStyle("-fx-wrap-text: true;");
     }
 
     public void setQuestion(String question) {

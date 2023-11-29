@@ -49,12 +49,14 @@
           style="-fx-background-color: #2a2e2d; -fx-border-color: #343434; -fx-border-width: 3;">
         <children>
             <AnchorPane
-                    style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;"
+                    style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
+
                     HBox.hgrow="ALWAYS">
                 <children>
-                    <Label fx:id="message" layoutX="0" layoutY="5" prefHeight="137.0" prefWidth="518.0"
-                           style="-fx-font-size: 16px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
-                           wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="21.0">
+                    <Label fx:id="message" layoutX="0" layoutY="5" prefHeight="137.0" prefWidth="518.0" alignment="TOP_LEFT"
+                           style="-fx-font-size: 15px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
+                           wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0"
+                           AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
                         <opaqueInsets>
                             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                         </opaqueInsets>
@@ -65,7 +67,7 @@
                 </children>
             </AnchorPane>
             <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0"
-                      style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
+                      style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;">
                 <children>
                     <BaseButton fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                                 minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButtonAction"

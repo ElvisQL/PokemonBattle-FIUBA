@@ -46,18 +46,19 @@
               layoutX="0" layoutY="600">
             <children>
                 <AnchorPane
-                        style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;"
+                        style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
                         HBox.hgrow="ALWAYS">
                     <children>
                         <TextFlow fx:id="descriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0"
                                   prefWidth="533.0"
-                                  AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0"
-                                  style="-fx-font-size: 16px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
+                                  AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0"
+                                  AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0"
+                                  style="-fx-font-size: 18px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
                         />
                     </children>
                 </AnchorPane>
                 <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0"
-                          style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 5; -fx-border-radius: 5; -fx-background-radius: 10;">
+                          style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;">
                     <children>
                         <BaseButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
                                     minWidth="-Infinity" mnemonicParsing="false" fx:id="backButton"
