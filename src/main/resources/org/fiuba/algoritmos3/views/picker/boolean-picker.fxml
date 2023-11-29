@@ -31,14 +31,6 @@
                                 <Insets/>
                             </VBox.margin>
                             <children>
-                                <BaseButton fx:id="nextButton" alignment="CENTER" cancelButton="true"
-                                            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                            minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onBackClick"
-                                            prefHeight="60.0" prefWidth="138.0" text="No" textAlignment="CENTER">
-                                    <HBox.margin>
-                                        <Insets right="10.0"/>
-                                    </HBox.margin>
-                                </BaseButton>
                                 <BaseButton fx:id="backButton" alignment="CENTER" defaultButton="true"
                                             layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity"
                                             minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
@@ -46,6 +38,14 @@
                                             text="Yes" textAlignment="CENTER">
                                     <HBox.margin>
                                         <Insets left="10.0"/>
+                                    </HBox.margin>
+                                </BaseButton>
+                                <BaseButton fx:id="nextButton" alignment="CENTER" cancelButton="true"
+                                            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                                            minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onBackClick"
+                                            prefHeight="60.0" prefWidth="138.0" text="No" textAlignment="CENTER">
+                                    <HBox.margin>
+                                        <Insets right="10.0"/>
                                     </HBox.margin>
                                 </BaseButton>
                             </children>

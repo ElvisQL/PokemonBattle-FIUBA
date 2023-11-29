@@ -41,6 +41,7 @@
 .skill-container Label {
 	-fx-font-size: 18px;
 	-fx-fill: #D6DDE5;
+	-fx-text-alignment: RIGHT;
 }
 
 #skillDescriptionBox {
@@ -51,4 +52,5 @@
 	-fx-font-size: 18px;
 	-fx-font-family: VT323;
 	-fx-fill: black;
+
 }

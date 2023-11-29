@@ -3,6 +3,8 @@ package org.fiuba.algoritmos3.controller.picker;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -12,6 +14,7 @@ import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SkillPickerController extends PickerController<ConcreteSkill> {
@@ -23,8 +26,9 @@ public class SkillPickerController extends PickerController<ConcreteSkill> {
     private String lastDescription = "";
     @FXML
     private HBox markedItem;
-
     private ConcreteSkill currentSkill;
+
+    @FXML public ImageView pokemon;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -32,6 +36,10 @@ public class SkillPickerController extends PickerController<ConcreteSkill> {
         okButton.setOnMouseClicked(this::handleOkButtonClick);
         backButton.setOnMouseClicked(this::handleBackButtonClick);
         skillDescriptionBox.getChildren().add(new Text("What will we use?"));
+
+        URL imageUrl = Objects.requireNonNull(getResource("images/pokemon/" + gameAPI.currentPlayer().getCurrentPokemon().getName().toLowerCase() + ".png"));
+        Image image = new Image(imageUrl.toExternalForm(), pokemon.getFitWidth(), pokemon.getFitHeight(), true, false);
+        pokemon.setImage(image);
     }
 
     private void handleMouseClicked(MouseEvent e) {
