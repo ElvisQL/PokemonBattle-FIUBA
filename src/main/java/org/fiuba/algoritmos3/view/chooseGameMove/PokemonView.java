@@ -1,5 +1,7 @@
 package org.fiuba.algoritmos3.view.chooseGameMove;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import org.fiuba.algoritmos3.PokemonApp;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -39,10 +42,14 @@ public class PokemonView extends HBox {
 
     private final BooleanProperty flipped = new SimpleBooleanProperty(false);
 
+    public static int instanceCount = 0;
+
     public PokemonView(Pokemon pokemon) {
         FXMLLoader fxmlLoader = new FXMLLoader(PokemonApp.class.getResource("views/chooseGameMove/pokemon-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
+
+
 
         try {
             fxmlLoader.load();
@@ -61,12 +68,35 @@ public class PokemonView extends HBox {
         maxHealthLabel.setText(pokemon.getMaxHealth().toString());
 
         updateProgressBar(pokemon);
+        if(instanceCount > 0 && instanceCount % 3 == 0 && instanceCount % 2 != 0){
+            TranslateTransition translateTransition = new TranslateTransition(Duration.millis(150), pokemonImageView);
+            translateTransition.setByY(60);
+            translateTransition.setByX(50);
+            translateTransition.play();
+        }
+
+        if (instanceCount > 0 && instanceCount % 2 == 0) {
+            FadeTransition fadeTransition = new FadeTransition(Duration.millis(650), pokemonImageView);
+
+            fadeTransition.setFromValue(1.0);
+            fadeTransition.setToValue(0.5);
+
+            fadeTransition.play();
+
+            fadeTransition.setOnFinished(event -> {
+
+                pokemonImageView.setOpacity(1.0);
+            });
+        }
+        instanceCount++;
 
         URL pokemonTypeUrl = PokemonApp.class.getResource("images/pokemon-type/" + pokemon.getType().name().toLowerCase() + ".png");
         pokemonTypeImageView.setImage(new Image(pokemonTypeUrl.toExternalForm()));
 
+
         URL pokemonUrl = PokemonApp.class.getResource("images/pokemon/" + pokemon.getName().toLowerCase() + ".png");
         pokemonImageView.setImage(new Image(pokemonUrl.toExternalForm(), pokemonImageView.getFitWidth(), pokemonImageView.getFitHeight(), true, false));
+
     }
 
     private void updateProgressBar(Pokemon pokemon) {
