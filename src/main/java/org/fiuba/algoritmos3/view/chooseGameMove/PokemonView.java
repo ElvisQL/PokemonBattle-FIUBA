@@ -38,6 +38,9 @@ public class PokemonView extends HBox {
     private ImageView pokemonImageView;
 
     @FXML
+    private HBox statusesContainer;
+
+    @FXML
     private Label deadLabel;
 
     private final BooleanProperty flipped = new SimpleBooleanProperty(false);
@@ -48,8 +51,6 @@ public class PokemonView extends HBox {
         FXMLLoader fxmlLoader = new FXMLLoader(PokemonApp.class.getResource("views/chooseGameMove/pokemon-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-
-
 
         try {
             fxmlLoader.load();
@@ -68,7 +69,7 @@ public class PokemonView extends HBox {
         maxHealthLabel.setText(pokemon.getMaxHealth().toString());
 
         updateProgressBar(pokemon);
-        if(instanceCount > 0 && instanceCount % 3 == 0 && instanceCount % 2 != 0){
+        if (instanceCount > 0 && instanceCount % 3 == 0 && instanceCount % 2 != 0) {
             TranslateTransition translateTransition = new TranslateTransition(Duration.millis(150), pokemonImageView);
             translateTransition.setByY(60);
             translateTransition.setByX(50);
@@ -90,13 +91,27 @@ public class PokemonView extends HBox {
         }
         instanceCount++;
 
+        loadStatuses(pokemon);
+
         URL pokemonTypeUrl = PokemonApp.class.getResource("images/pokemon-type/" + pokemon.getType().name().toLowerCase() + ".png");
         pokemonTypeImageView.setImage(new Image(pokemonTypeUrl.toExternalForm()));
 
-
         URL pokemonUrl = PokemonApp.class.getResource("images/pokemon/" + pokemon.getName().toLowerCase() + ".png");
         pokemonImageView.setImage(new Image(pokemonUrl.toExternalForm(), pokemonImageView.getFitWidth(), pokemonImageView.getFitHeight(), true, false));
+    }
 
+    private void loadStatuses(Pokemon pokemon) {
+        statusesContainer.getChildren().clear();
+        pokemon.getStatuses().forEach((status) -> {
+            ImageView imageView = new ImageView();
+            imageView.setPreserveRatio(true);
+            imageView.setFitHeight(32);
+            imageView.setFitWidth(88);
+            URL statusUrl = PokemonApp.class.getResource("images/pokemon-status/" + status.getName().toLowerCase() + ".png");
+            imageView.setImage(new Image(statusUrl.toExternalForm()));
+
+            statusesContainer.getChildren().add(imageView);
+        });
     }
 
     private void updateProgressBar(Pokemon pokemon) {

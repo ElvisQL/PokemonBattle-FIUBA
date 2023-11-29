@@ -2,8 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <fx:root alignment="CENTER" fillHeight="false" prefHeight="280.0" prefWidth="768.0" type="javafx.scene.layout.HBox"
@@ -18,7 +17,7 @@
         </ImageView>
         <StackPane>
             <children>
-                <VBox fx:id="statsBox" alignment="TOP_RIGHT" prefHeight="80.0" prefWidth="310.0"
+                <VBox fx:id="statsBox" alignment="TOP_CENTER" prefHeight="120.0" prefWidth="356.0"
                       style="-fx-background-color: #FEFEDF; -fx-border-color: #665C71; -fx-border-width: 7; -fx-border-radius: 10; -fx-background-radius: 20;">
                     <children>
                         <AnchorPane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="NEVER">
@@ -34,8 +33,7 @@
                                         <ImageView fx:id="pokemonTypeImageView" fitHeight="24.0" fitWidth="233.0"
                                                    pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image requestedHeight="24" requestedWidth="64"
-                                                       url="@../../images/pokemon-type/water.png"/>
+                                                <Image url="@../../images/pokemon-type/water.png"/>
                                             </image>
                                         </ImageView>
                                     </children>
@@ -59,27 +57,31 @@
                                 </HBox>
                             </children>
                         </AnchorPane>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <HBox alignment="CENTER" prefHeight="42.0" prefWidth="322.0">
                             <children>
-                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                                    <children>
-                                        <Label text="HP:">
-                                            <HBox.margin>
-                                                <Insets right="10.0"/>
-                                            </HBox.margin>
-                                        </Label>
-                                        <ProgressBar fx:id="healthBar" prefHeight="20.0" prefWidth="277.0"
-                                                     progress="0.43"
-                                                     style="-fx-accent: #65ea9f; -fx-text-box-border: transparent;                                      -fx-control-inner-background: transparent; -fx-background-radius: 0;                                      -fx-border-radius: 0; -fx-background-color: transparent;"/>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                        <HBox alignment="TOP_CENTER" prefHeight="16.0" prefWidth="311.0" VBox.vgrow="SOMETIMES">
-                            <children>
+                                <Label text="HP:">
+                                    <HBox.margin>
+                                        <Insets right="10.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <ProgressBar fx:id="healthBar" prefHeight="20.0" prefWidth="213.0" progress="0.43"
+                                             style="-fx-accent: #65ea9f; -fx-text-box-border: transparent;                                      -fx-control-inner-background: transparent; -fx-background-radius: 0;                                      -fx-border-radius: 0; -fx-background-color: transparent;">
+                                    <HBox.margin>
+                                        <Insets right="10.0"/>
+                                    </HBox.margin>
+                                </ProgressBar>
                                 <Label fx:id="healthLabel" text="5000"/>
                                 <Label alignment="TOP_CENTER" text="/"/>
                                 <Label fx:id="maxHealthLabel" text="8000"/>
+                            </children>
+                        </HBox>
+                        <HBox fx:id="statusesContainer" alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="322.0" VBox.vgrow="SOMETIMES">
+                            <children>
+                                <ImageView fitHeight="32.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../images/pokemon-status/asleep.png"/>
+                                    </image>
+                                </ImageView>
                             </children>
                         </HBox>
                     </children>
