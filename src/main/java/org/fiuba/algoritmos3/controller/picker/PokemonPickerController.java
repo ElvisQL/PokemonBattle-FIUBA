@@ -1,9 +1,11 @@
 package org.fiuba.algoritmos3.controller.picker;
 
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +22,7 @@ import org.fiuba.algoritmos3.view.component.BaseButton;
 import org.fiuba.algoritmos3.view.component.PokemonPickerOption;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -56,12 +59,6 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
     private MediaPlayer mediaPlayer;
 
-
-    @FXML
-    private BaseButton okButton;
-    @FXML
-    private BaseButton backButton;
-
     private Pokemon currentPokemon;
 
     @Override
@@ -75,15 +72,20 @@ public class PokemonPickerController extends PickerController<Pokemon> {
     @Override
     protected void updateView() {
         Player currentPlayer = this.gameAPI.currentPlayer();
-        if (currentPlayer != null)
-            currentPokemon = currentPlayer.getCurrentPokemon();
-        else
+        List<Pokemon> enemyPokemons;
+        if (currentPlayer == null) {
             currentPokemon = getOptions().get(0);
+            enemyPokemons = List.of();
+        } else {
+            currentPokemon = currentPlayer.getCurrentPokemon();
+            enemyPokemons = currentPlayer.getOpponent().getPokemons();
+        }
 
         pokemonOptionsParent.getChildren().clear();
         getOptions().forEach((pokemon) -> {
             PokemonPickerOption option = new PokemonPickerOption();
             option.setPokemon(pokemon);
+            option.setEnemy(enemyPokemons.contains(pokemon));
             option.setOnMouseEntered((e) -> updateDetailsPanel(pokemon));
             option.setOnMouseExited((e) -> updateDetailsPanel(currentPokemon));
             option.setOnMouseClicked(this::handleChoosePokemonMouseClick);

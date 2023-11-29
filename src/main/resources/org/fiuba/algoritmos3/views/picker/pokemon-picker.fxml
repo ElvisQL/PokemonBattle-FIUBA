@@ -24,10 +24,7 @@
     <!--    </style>-->
 
     <Pane fx:id="viewPokemon" layoutX="-1.0" prefHeight="567.0" prefWidth="365.0">
-
-
         <children>
-
             <Rectangle fx:id="pokemonPreview" arcHeight="5.0" arcWidth="5.0" fill="#84c5e0" height="545.0" layoutX="25.0" layoutY="14.0" smooth="false" stroke="#454662" strokeType="INSIDE" strokeWidth="5.0" width="269.0" />
             <Rectangle arcWidth="5.0" fill="#3a93e0" height="252.0" layoutX="38.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0" />
             <Rectangle arcWidth="5.0" fill="#3a93e0" height="532.0" layoutX="272.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="17.0" />
@@ -122,19 +119,23 @@
             </Text>
         </children>
     </Pane>
-    <VBox fx:id="pokemonOptionsParent" alignment="CENTER" layoutX="373.0" layoutY="40.0" prefHeight="489.0" prefWidth="388.0" spacing="20.0">
-        <padding>
-            <Insets top="2.0" />
-        </padding>
-        <children>
-            <PokemonPickerOption />
-            <PokemonPickerOption />
-            <PokemonPickerOption />
-            <PokemonPickerOption />
-            <PokemonPickerOption />
-            <PokemonPickerOption />
-        </children>
-    </VBox>
+   <ScrollPane layoutX="361.0" layoutY="30.0" prefHeight="521.0" prefWidth="405.0" stylesheets="@../../styles/backpack.css">
+      <content>
+          <VBox fx:id="pokemonOptionsParent" alignment="CENTER" prefHeight="489.0" prefWidth="388.0" spacing="20.0">
+              <padding>
+                  <Insets top="2.0" />
+              </padding>
+              <children>
+                  <PokemonPickerOption />
+                  <PokemonPickerOption />
+                  <PokemonPickerOption />
+                  <PokemonPickerOption />
+                  <PokemonPickerOption />
+                  <PokemonPickerOption />
+              </children>
+          </VBox>
+      </content>
+   </ScrollPane>
     <HBox alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0" style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
         <children>
             <AnchorPane style="-fx-background-color: #d6dde5; -fx-border-color: #c3a749; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">

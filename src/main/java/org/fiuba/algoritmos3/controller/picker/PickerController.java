@@ -1,8 +1,10 @@
 package org.fiuba.algoritmos3.controller.picker;
 
 import javafx.beans.value.ChangeListener;
+import javafx.fxml.FXML;
 import org.fiuba.algoritmos3.GenericObservable;
 import org.fiuba.algoritmos3.controller.BaseController;
+import org.fiuba.algoritmos3.view.component.BaseButton;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -14,6 +16,11 @@ public abstract class PickerController<T> extends BaseController {
     protected final GenericObservable<Boolean> back = new GenericObservable<>();
 
     protected Predicate<T> filterFunction = (a) -> true;
+
+    @FXML
+    protected BaseButton okButton;
+    @FXML
+    protected BaseButton backButton;
 
     PickerController() {
         super();
@@ -38,6 +45,7 @@ public abstract class PickerController<T> extends BaseController {
 
     public void addBackListener(ChangeListener<Boolean> listener) {
         this.back.addListener(listener);
+        backButton.setDisable(false);
     }
 
     protected void updateView() {

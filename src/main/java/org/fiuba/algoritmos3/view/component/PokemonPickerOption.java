@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import org.fiuba.algoritmos3.PokemonApp;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
@@ -35,9 +36,19 @@ public class PokemonPickerOption extends AnchorPane {
     @FXML
     private ImageView pokemonTypeImage;
 
+    // Colored elements
+    @FXML
+    private Rectangle background;
+    @FXML
+    private Rectangle largeAccent;
+    @FXML
+    private Rectangle smallAccent;
+
     private final SimpleObjectProperty<Pokemon> pokemon = new SimpleObjectProperty<>();
 
     private final BooleanProperty selected = new SimpleBooleanProperty();
+
+    private final BooleanProperty enemy = new SimpleBooleanProperty();
 
     public PokemonPickerOption() {
         super();
@@ -90,6 +101,19 @@ public class PokemonPickerOption extends AnchorPane {
             triangle.getStyleClass().add("triangle-not-selected");
     }
 
+    public boolean isEnemy() {
+        return enemy.get();
+    }
+
+    public BooleanProperty enemyProperty() {
+        return enemy;
+    }
+
+    public void setEnemy(boolean enemy) {
+        this.enemy.set(enemy);
+        updateEnemyStyle();
+    }
+
     private void loadPokemon(Pokemon pokemon) {
         nameText.setText(pokemon.getName());
         levelText.setText(String.valueOf(pokemon.getLevel()));
@@ -104,6 +128,22 @@ public class PokemonPickerOption extends AnchorPane {
         if (typeImageUrl != null) {
             Image typeImage = new Image(typeImageUrl.toExternalForm());
             pokemonTypeImage.setImage(typeImage);
+        }
+    }
+
+    private void updateEnemyStyle() {
+        if (enemy.get()) {
+            background.setFill(Color.web("#de8785"));
+            largeAccent.setFill(Color.web("#ff1f1f"));
+            smallAccent.setFill(Color.web("#ff1f1f"));
+            triangle.setFill(Color.web("#c44b4b"));
+            triangle.setStroke(Color.web("#ff5854"));
+        } else {
+            background.setFill(Color.web("#83c4de"));
+            largeAccent.setFill(Color.DODGERBLUE);
+            smallAccent.setFill(Color.DODGERBLUE);
+            triangle.setFill(Color.web("#4a8ac6"));
+            triangle.setStroke(Color.web("#53a9ff"));
         }
     }
 }
