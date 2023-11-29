@@ -42,7 +42,7 @@ public class PlayerSetupController extends PickerWrapperController {
             gameAPI.start();
 
             // show message
-            changeScene(stage, getResource("views/trainersBattlefield/trainer-view.fxml"));
+            changeScene(stage, getResource("views/trainersBattlefield/message-accept-button-box.fxml"));
         } else {
             BaseController controller = new PlayerSetupController();
             FXMLLoader fxmlLoader = new FXMLLoader(getResource("views/picker-wrapper.fxml"));

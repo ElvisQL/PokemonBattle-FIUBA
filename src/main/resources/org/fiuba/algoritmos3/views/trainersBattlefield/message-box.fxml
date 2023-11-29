@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.fiuba.algoritmos3.view.component.BaseButton?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx" fx:id="rootPane"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.fiuba.algoritmos3.controller.messages.MessageDisplayController"
+            prefHeight="768.0" prefWidth="768.0">
+    <Pane fx:id="customView" prefHeight="600.0" prefWidth="768.0"/>
+    <HBox fx:id="msgBox" alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0"
+          style="-fx-background-color: #2a2e2d; -fx-border-color: #343434; -fx-border-width: 3;">
+        <children>
+            <AnchorPane
+                    style="-fx-background-color: #2f4e62; -fx-border-color: #c3a749; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
+
+                    HBox.hgrow="ALWAYS">
+                <children>
+                    <Label fx:id="message" layoutX="0" layoutY="5" prefHeight="137.0" prefWidth="518.0" alignment="TOP_LEFT"
+                           style="-fx-font-size: 15px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
+                           wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0"
+                           AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                        <opaqueInsets>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        </opaqueInsets>
+                        <cursor>
+                            <Cursor fx:constant="DEFAULT"/>
+                        </cursor>
+                    </Label>
+                </children>
+            </AnchorPane>
+        </children>
+    </HBox>
+
+</AnchorPane>
