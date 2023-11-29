@@ -67,8 +67,10 @@ public class ChooseGameMoveController extends BaseController {
     }
 
     private void updateGameMoveDescription() {
-        if (gameMoveResult == null)
+        if (gameMoveResult == null) {
+            gameMoveDescriptionTextFlow.getChildren().clear();
             return;
+        }
 
         gameMoveDescriptionTextFlow.getChildren().clear();
 

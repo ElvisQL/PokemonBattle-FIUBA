@@ -19,13 +19,13 @@ public abstract class BoostingWeather extends SkillModifier implements Weather {
         }
 
         int oldHealth = otherPokemon.getHealth();
-        msg += state.getAdditionalMsg();
+        msg = state.getAdditionalMsg() + "\n";
         this.wrappee.use(pokemon, otherPokemon,state);
         int currentHealth = otherPokemon.getHealth();
 
         int damageTaken = oldHealth - currentHealth;
         otherPokemon.setHealth((int) (currentHealth - damageTaken * 0.10));
-        msg+=state.getAdditionalMsg();
+        msg = state.getAdditionalMsg();
         state.setAdittionalMsg(msg);
 
     }
