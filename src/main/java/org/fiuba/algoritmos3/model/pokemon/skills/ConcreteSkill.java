@@ -16,7 +16,7 @@ public abstract class ConcreteSkill implements Skill {
 
     public void use(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError {
         if (!pokemon.isDead()) {
-            apply(pokemon, otherPokemon,state);
+            apply(pokemon, otherPokemon, state);
         }
 
     }

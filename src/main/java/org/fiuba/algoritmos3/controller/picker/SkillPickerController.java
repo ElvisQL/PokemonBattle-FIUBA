@@ -12,13 +12,13 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 
-
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SkillPickerController extends PickerController<ConcreteSkill> {
-    @FXML public VBox skillsContainer;
+    @FXML
+    public VBox skillsContainer;
 
     @FXML
     private TextFlow skillDescriptionBox;
@@ -28,7 +28,8 @@ public class SkillPickerController extends PickerController<ConcreteSkill> {
     private HBox markedItem;
     private ConcreteSkill currentSkill;
 
-    @FXML public ImageView pokemon;
+    @FXML
+    public ImageView pokemon;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

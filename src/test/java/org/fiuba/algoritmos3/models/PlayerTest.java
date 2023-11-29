@@ -34,6 +34,7 @@ public class PlayerTest {
 
         assertEquals(pokemons.get(0), player.getCurrentPokemon());
     }
+
     @Test
     void testSetCurrentPokemonInvalidSelection() {
         List<Pokemon> pokemons = Collections.singletonList(mock(Pokemon.class));

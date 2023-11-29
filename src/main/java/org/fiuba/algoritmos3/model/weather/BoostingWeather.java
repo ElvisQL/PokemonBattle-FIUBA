@@ -15,12 +15,12 @@ public abstract class BoostingWeather extends SkillModifier implements Weather {
     public void use(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError {
         String msg = "";
         if (getSkillType() != AttackSkill.class && !boostedPokemonTypes().contains(pokemon.getType())) {
-            this.wrappee.use(pokemon, otherPokemon,state);
+            this.wrappee.use(pokemon, otherPokemon, state);
         }
 
         int oldHealth = otherPokemon.getHealth();
         msg = state.getAdditionalMsg() + "\n";
-        this.wrappee.use(pokemon, otherPokemon,state);
+        this.wrappee.use(pokemon, otherPokemon, state);
         int currentHealth = otherPokemon.getHealth();
 
         int damageTaken = oldHealth - currentHealth;

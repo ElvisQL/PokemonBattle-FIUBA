@@ -1,12 +1,10 @@
 package org.fiuba.algoritmos3.controller.picker;
 
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,7 +19,6 @@ import javafx.util.Duration;
 import org.fiuba.algoritmos3.model.Player;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.status.Status;
-import org.fiuba.algoritmos3.view.component.BaseButton;
 import org.fiuba.algoritmos3.view.component.PokemonPickerOption;
 
 import java.net.URL;

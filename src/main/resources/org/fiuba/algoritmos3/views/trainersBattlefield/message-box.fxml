@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import org.fiuba.algoritmos3.view.component.BaseButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.*?>
 <AnchorPane xmlns="http://javafx.com/javafx" fx:id="rootPane"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.fiuba.algoritmos3.controller.messages.MessageDisplayController"
@@ -21,7 +17,8 @@
 
                     HBox.hgrow="ALWAYS">
                 <children>
-                    <Label fx:id="message" layoutX="0" layoutY="5" prefHeight="137.0" prefWidth="518.0" alignment="TOP_LEFT"
+                    <Label fx:id="message" layoutX="0" layoutY="5" prefHeight="137.0" prefWidth="518.0"
+                           alignment="TOP_LEFT"
                            style="-fx-font-size: 15px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
                            wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0"
                            AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">

@@ -64,7 +64,8 @@ public class GameState {
     public String getAdditionalMsg() {
         return this.adittionalMsg;
     }
-    public void setAdittionalMsg(String msg){
+
+    public void setAdittionalMsg(String msg) {
 
         this.adittionalMsg = msg;
     }

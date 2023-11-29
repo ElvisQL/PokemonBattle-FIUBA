@@ -23,11 +23,11 @@ public class IncreaseDefenseItem extends Item {
     public void use(Pokemon pokemon, GameState gameState) throws InvalidSelectionException {
         if (!canUse(pokemon))
             throw new InvalidSelectionException("Pokemon");
-        
+
         Integer currentDefense = pokemon.getDefencePoints();
         Integer increaseDefense = currentDefense * percentageIncrease / PERCENT;
         pokemon.setDefencePoints(increaseDefense + currentDefense);
-        gameState.setAdittionalMsg(pokemon.getName() + " has increased defense for "+ increaseDefense);
+        gameState.setAdittionalMsg(pokemon.getName() + " has increased defense for " + increaseDefense);
 
     }
 

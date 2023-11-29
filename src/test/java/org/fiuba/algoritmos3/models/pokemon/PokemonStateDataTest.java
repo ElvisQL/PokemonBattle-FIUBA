@@ -1,11 +1,13 @@
 package org.fiuba.algoritmos3.models.pokemon;
 
-import org.fiuba.algoritmos3.model.pokemon.*;
+import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
+import org.fiuba.algoritmos3.model.pokemon.PokemonStateData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class PokemonStateDataTest {
 

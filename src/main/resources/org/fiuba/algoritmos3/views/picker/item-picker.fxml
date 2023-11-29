@@ -33,7 +33,8 @@
                         <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0"
                                     prefHeight="496.0" prefWidth="450.0" stylesheets="@../../styles/backpack.css"
                                     vbarPolicy="NEVER">
-                            <VBox fx:id="itemsContainer" layoutX="13.0" layoutY="14.0" prefHeight="496.0" prefWidth="450.0"
+                            <VBox fx:id="itemsContainer" layoutX="13.0" layoutY="14.0" prefHeight="496.0"
+                                  prefWidth="450.0"
                                   styleClass="vbox-items" stylesheets="@../../styles/backpack.css"/>
                         </ScrollPane>
                     </children>

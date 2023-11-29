@@ -22,7 +22,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class MoveTest {
@@ -41,6 +40,7 @@ public class MoveTest {
 
     @InjectMocks
     private UseItem useItem;
+
     @Test
     void testRun() throws InvalidSelectionException {
         GameState gameState = mock(GameState.class);

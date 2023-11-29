@@ -1,7 +1,6 @@
 package org.fiuba.algoritmos3.model.menu;
 
 import org.fiuba.algoritmos3.model.error.BaseError;
-import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.menu.operation.Operation;
 import org.fiuba.algoritmos3.model.move.GameMoveResult;
 import org.junit.jupiter.api.AfterEach;

@@ -36,7 +36,7 @@ public class UseSkill extends GameMove {
         }
 
         try {
-             skill.use(pokemon, opponentPokemon,gameState);
+            skill.use(pokemon, opponentPokemon, gameState);
         } catch (BaseError e) {
             return new GameMoveResult<String>().Err(e);
         }

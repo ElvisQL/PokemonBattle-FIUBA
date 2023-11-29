@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import org.fiuba.algoritmos3.view.component.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleChoosePokemonMouseClick" prefHeight="768.0" prefWidth="768.0" stylesheets="@../../styles/choosepokemon.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.PokemonPickerController">
-    <Pane prefHeight="200.0" prefWidth="200.0" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            onMouseClicked="#handleChoosePokemonMouseClick" prefHeight="768.0" prefWidth="768.0"
+            stylesheets="@../../styles/choosepokemon.css" xmlns="http://javafx.com/javafx/11.0.14-internal"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.fiuba.algoritmos3.controller.picker.PokemonPickerController">
+    <Pane prefHeight="200.0" prefWidth="200.0"/>
     <Pane prefHeight="600" prefWidth="768" style="-fx-background-color: #206860">
         <!--        <ImageView fitWidth="768" preserveRatio="true" style=" -fx-background-size: cover;">-->
         <!--            <image>-->
@@ -17,7 +21,7 @@
         <!--            </image>-->
         <!--        </ImageView>-->
     </Pane>
-    <Pane prefHeight="521.0" prefWidth="269.0" />
+    <Pane prefHeight="521.0" prefWidth="269.0"/>
 
     <!--    <style>-->
     <!--        -fx-background-color: linear-gradient(to bottom, #2F4E62 0%, #2F4E62 70%, #2F4E62 75%, #FFFFFF 99%);-->
@@ -25,156 +29,195 @@
 
     <Pane fx:id="viewPokemon" layoutX="-1.0" prefHeight="567.0" prefWidth="365.0">
         <children>
-            <Rectangle fx:id="pokemonPreview" arcHeight="5.0" arcWidth="5.0" fill="#84c5e0" height="545.0" layoutX="25.0" layoutY="14.0" smooth="false" stroke="#454662" strokeType="INSIDE" strokeWidth="5.0" width="269.0" />
-            <Rectangle arcWidth="5.0" fill="#3a93e0" height="252.0" layoutX="38.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0" />
-            <Rectangle arcWidth="5.0" fill="#3a93e0" height="532.0" layoutX="272.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="17.0" />
-            <Rectangle arcWidth="5.0" fill="#3a93e0" height="7.0" layoutX="38.0" layoutY="281.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0" />
+            <Rectangle fx:id="pokemonPreview" arcHeight="5.0" arcWidth="5.0" fill="#84c5e0" height="545.0"
+                       layoutX="25.0" layoutY="14.0" smooth="false" stroke="#454662" strokeType="INSIDE"
+                       strokeWidth="5.0" width="269.0"/>
+            <Rectangle arcWidth="5.0" fill="#3a93e0" height="252.0" layoutX="38.0" layoutY="23.0" stroke="BLACK"
+                       strokeType="INSIDE" strokeWidth="0.0" width="246.0"/>
+            <Rectangle arcWidth="5.0" fill="#3a93e0" height="532.0" layoutX="272.0" layoutY="23.0" stroke="BLACK"
+                       strokeType="INSIDE" strokeWidth="0.0" width="17.0"/>
+            <Rectangle arcWidth="5.0" fill="#3a93e0" height="7.0" layoutX="38.0" layoutY="281.0" stroke="BLACK"
+                       strokeType="INSIDE" strokeWidth="0.0" width="246.0"/>
 
-            <Polygon fx:id="selector" fill="#2c4859" layoutX="354.0" layoutY="125.0" points="-65.0, -82.0, -65.0, -22.0, -10.0, -51.0" stroke="#2c4859" strokeType="INSIDE" />
-            <Text fx:id="nameText" layoutX="61.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokemon" wrappingWidth="212.0">
+            <Polygon fx:id="selector" fill="#2c4859" layoutX="354.0" layoutY="125.0"
+                     points="-65.0, -82.0, -65.0, -22.0, -10.0, -51.0" stroke="#2c4859" strokeType="INSIDE"/>
+            <Text fx:id="nameText" layoutX="61.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pokemon"
+                  wrappingWidth="212.0">
                 <font>
-                    <Font name="VT323" size="24.0" />
+                    <Font name="VT323" size="24.0"/>
                 </font>
             </Text>
-            <Text fx:id="levelText" layoutX="94.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level" wrappingWidth="55.0">
+            <Text fx:id="levelText" layoutX="94.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level"
+                  wrappingWidth="55.0">
                 <font>
-                    <Font size="18.0" />
+                    <Font size="18.0"/>
                 </font>
             </Text>
-            <Text fill="#6e6c6c" layoutX="62.0" layoutY="375.0" stroke="#6e6c6c" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack:" wrappingWidth="94.0">
+            <Text fill="#6e6c6c" layoutX="62.0" layoutY="375.0" stroke="#6e6c6c" strokeLineCap="ROUND"
+                  strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack:" wrappingWidth="94.0">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
-            <Text fill="#6e6c6c" layoutX="62.0" layoutY="404.0" stroke="#6e6c6c" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense:" wrappingWidth="94.0">
+            <Text fill="#6e6c6c" layoutX="62.0" layoutY="404.0" stroke="#6e6c6c" strokeLineCap="ROUND"
+                  strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense:" wrappingWidth="94.0">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
-            <Text fill="#6e6c6c" layoutX="62.0" layoutY="435.0" stroke="#6e6c6c" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed:" wrappingWidth="94.0">
+            <Text fill="#6e6c6c" layoutX="62.0" layoutY="435.0" stroke="#6e6c6c" strokeLineCap="ROUND"
+                  strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed:" wrappingWidth="94.0">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
-            <ProgressBar fx:id="viewProgressBar" layoutX="58.0" layoutY="267.0" prefHeight="26.0" prefWidth="204.0" progress="0.0">
+            <ProgressBar fx:id="viewProgressBar" layoutX="58.0" layoutY="267.0" prefHeight="26.0" prefWidth="204.0"
+                         progress="0.0">
                 <style>
                     -fx-control-inner-background: #ABF5AE;
                 </style>
             </ProgressBar>
-            <Text fx:id="attackText" layoutX="195.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0">
+            <Text fx:id="attackText" layoutX="195.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  wrappingWidth="52.0">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
             <Text fill="WHITE" layoutX="60.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lvl:">
                 <font>
-                    <Font size="18.0" />
+                    <Font size="18.0"/>
                 </font>
             </Text>
-            <Text fx:id="defenseText" layoutX="195.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0">
+            <Text fx:id="defenseText" layoutX="195.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  wrappingWidth="52.0">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
-            <Text fx:id="speedText" layoutX="195.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0">
+            <Text fx:id="speedText" layoutX="195.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  wrappingWidth="52.0">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
-            <Text fx:id="healthText" fill="#00ff11" layoutX="130.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vida" textAlignment="RIGHT" wrappingWidth="62.77734375">
+            <Text fx:id="healthText" fill="#00ff11" layoutX="130.0" layoutY="316.0" strokeType="OUTSIDE"
+                  strokeWidth="0.0" text="Vida" textAlignment="RIGHT" wrappingWidth="62.77734375">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
             <Text layoutX="198.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
-            <Text fx:id="maxHealth" fill="RED" layoutX="208.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max">
+            <Text fx:id="maxHealth" fill="RED" layoutX="208.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Max">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
-            <Rectangle arcWidth="5.0" fill="#3a93e0" height="7.0" layoutX="38.0" layoutY="548.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="246.0" />
-            <ImageView fx:id="pokemonImage" fitHeight="142.0" fitWidth="165.0" layoutX="77.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcWidth="5.0" fill="#3a93e0" height="7.0" layoutX="38.0" layoutY="548.0" stroke="BLACK"
+                       strokeType="INSIDE" strokeWidth="0.0" width="246.0"/>
+            <ImageView fx:id="pokemonImage" fitHeight="142.0" fitWidth="165.0" layoutX="77.0" layoutY="43.0"
+                       pickOnBounds="true" preserveRatio="true">
                 <style>
                     -fx-background-color: white;
                 </style>
             </ImageView>
-            <Text fill="WHITE" layoutX="60.0" layoutY="373.0" stroke="#6e6c6c" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack:" wrappingWidth="94.0">
+            <Text fill="WHITE" layoutX="60.0" layoutY="373.0" stroke="#6e6c6c" strokeLineCap="ROUND"
+                  strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Attack:" wrappingWidth="94.0">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
-            <Text fill="WHITE" layoutX="60.0" layoutY="402.0" stroke="#6e6c6c" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense:" wrappingWidth="94.0">
+            <Text fill="WHITE" layoutX="60.0" layoutY="402.0" stroke="#6e6c6c" strokeLineCap="ROUND"
+                  strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Defense:" wrappingWidth="94.0">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
-            <Text fill="WHITE" layoutX="60.0" layoutY="433.0" stroke="#6e6c6c" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed:" wrappingWidth="94.0">
+            <Text fill="WHITE" layoutX="60.0" layoutY="433.0" stroke="#6e6c6c" strokeLineCap="ROUND"
+                  strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed:" wrappingWidth="94.0">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
             <GridPane fx:id="statusGrid" layoutX="49.0" layoutY="488.0">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="99.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0" minWidth="10.0" prefWidth="101.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="99.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0" minWidth="10.0" prefWidth="101.0"/>
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 </rowConstraints>
             </GridPane>
-            <Text fill="WHITE" layoutX="60.0" layoutY="463.0" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
+            <Text fill="WHITE" layoutX="60.0" layoutY="463.0" strokeLineCap="ROUND" strokeLineJoin="BEVEL"
+                  strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="20.0"/>
                 </font>
             </Text>
         </children>
     </Pane>
-    <ScrollPane fx:id="scrollPanePicker" hbarPolicy="NEVER" layoutX="361.0" layoutY="30.0" prefHeight="512.0" prefWidth="390.0" style="-fx-background-color: #206860;" vbarPolicy="NEVER">
+    <ScrollPane fx:id="scrollPanePicker" hbarPolicy="NEVER" layoutX="361.0" layoutY="30.0" prefHeight="512.0"
+                prefWidth="390.0" style="-fx-background-color: #206860;" vbarPolicy="NEVER">
         <content>
-            <VBox fx:id="pokemonOptionsParent" alignment="CENTER" prefHeight="489.0" prefWidth="388.0" spacing="20.0" style="-fx-background-color: #206860;">
+            <VBox fx:id="pokemonOptionsParent" alignment="CENTER" prefHeight="489.0" prefWidth="388.0" spacing="20.0"
+                  style="-fx-background-color: #206860;">
                 <padding>
-                    <Insets top="2.0" />
+                    <Insets top="2.0"/>
                 </padding>
                 <children>
-                    <PokemonPickerOption />
-                    <PokemonPickerOption />
-                    <PokemonPickerOption />
-                    <PokemonPickerOption />
-                    <PokemonPickerOption />
-                    <PokemonPickerOption />
+                    <PokemonPickerOption/>
+                    <PokemonPickerOption/>
+                    <PokemonPickerOption/>
+                    <PokemonPickerOption/>
+                    <PokemonPickerOption/>
+                    <PokemonPickerOption/>
                 </children>
             </VBox>
         </content>
     </ScrollPane>
-    <HBox alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0" style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
+    <HBox alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0"
+          style="-fx-background-color: #2a2e2d; -fx-border-color: #2a2e2d; -fx-border-width: 3;">
         <children>
-            <AnchorPane style="-fx-background-color: #d6dde5; -fx-border-color: #c3a749;-fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
-                <TextFlow fx:id="descriptionBox" layoutX="15.0" layoutY="14.0" prefHeight="145.0" prefWidth="541.0" style="-fx-font-size: 18px;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="14.0" />
+            <AnchorPane
+                    style="-fx-background-color: #d6dde5; -fx-border-color: #c3a749;-fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
+                    HBox.hgrow="ALWAYS">
+                <TextFlow fx:id="descriptionBox" layoutX="15.0" layoutY="14.0" prefHeight="145.0" prefWidth="541.0"
+                          style="-fx-font-size: 18px;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
+                          AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="14.0"/>
             </AnchorPane>
-            <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0" style="-fx-background-color: #5c448d; -fx-border-color: #74707e; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;">
+            <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0"
+                      style="-fx-background-color: #5c448d; -fx-border-color: #74707e; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;">
                 <children>
-                    <BaseButton fx:id="backButton" cancelButton="true" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="52.0" prefWidth="130.0" text="BACK" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <BaseButton fx:id="backButton" cancelButton="true" disable="true" maxHeight="-Infinity"
+                                maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                                onAction="#handleBackButtonAction" prefHeight="52.0" prefWidth="130.0" text="BACK"
+                                GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1"
+                                GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                         <font>
-                            <Font size="15.0" />
+                            <Font size="15.0"/>
                         </font>
                     </BaseButton>
-                    <BaseButton fx:id="okButton" defaultButton="true" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="55.0" prefWidth="171.0" text="SELECT" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                    <BaseButton fx:id="okButton" defaultButton="true" disable="true" maxHeight="-Infinity"
+                                maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
+                                onAction="#handleOkButtonAction" prefHeight="55.0" prefWidth="171.0" text="SELECT"
+                                GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0"
+                                GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                         <font>
-                            <Font size="15.0" />
+                            <Font size="15.0"/>
                         </font>
                     </BaseButton>
                 </children>
                 <columnConstraints>
-                    <ColumnConstraints />
+                    <ColumnConstraints/>
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints />
-                    <RowConstraints />
+                    <RowConstraints/>
+                    <RowConstraints/>
                 </rowConstraints>
             </GridPane>
         </children>

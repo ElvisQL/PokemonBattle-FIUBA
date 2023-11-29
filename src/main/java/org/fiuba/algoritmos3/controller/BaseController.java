@@ -6,13 +6,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.GameAPI;
 import org.fiuba.algoritmos3.PokemonApp;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -31,6 +28,7 @@ public abstract class BaseController implements Initializable {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         return changeScene(stage, url);
     }
+
     protected void loadMusic(String musicFile) {
         Media media = new Media(getResource(musicFile).toExternalForm());
         PokemonApp.playMusic(media);
@@ -65,7 +63,8 @@ public abstract class BaseController implements Initializable {
     public void setPreviousController(BaseController previousController) {
         this.previousController = previousController;
     }
-    protected void stopMusic(){
+
+    protected void stopMusic() {
         PokemonApp.stopmusic();
     }
 }

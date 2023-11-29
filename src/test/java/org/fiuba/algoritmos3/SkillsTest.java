@@ -2,12 +2,16 @@ package org.fiuba.algoritmos3;
 
 import org.fiuba.algoritmos3.model.move.errors.NoRemainingUsesError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
-import org.fiuba.algoritmos3.model.pokemon.skills.*;
+import org.fiuba.algoritmos3.model.pokemon.skills.AttackSkill;
+import org.fiuba.algoritmos3.model.pokemon.skills.BuffSkill;
+import org.fiuba.algoritmos3.model.pokemon.skills.StatType;
+import org.fiuba.algoritmos3.model.pokemon.skills.StatusSkill;
 import org.fiuba.algoritmos3.model.pokemon.status.ParalyzedStatus;
 import org.fiuba.algoritmos3.model.pokemon.status.Status;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class SkillsTest {

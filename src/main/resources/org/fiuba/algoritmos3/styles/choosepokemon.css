@@ -1,9 +1,11 @@
-.description-pokemon-label{
+.description-pokemon-label {
     -fx-fill: black;
 }
-.triangle-selected{
+
+.triangle-selected {
     -fx-fill: #2e6099;
 }
-.triangle-not-selected{
+
+.triangle-not-selected {
     -fx-fill: #4a8ac6
 }

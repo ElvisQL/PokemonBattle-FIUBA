@@ -19,7 +19,7 @@
         <StackPane>
             <children>
                 <VBox fx:id="statsBox" alignment="TOP_RIGHT" prefHeight="80.0" prefWidth="310.0"
-                      style="-fx-background-color: #FEFEDF; -fx-border-color: #665C71; -fx-border-width: 7; -fx-border-radius: 10; -fx-background-radius: 10;">
+                      style="-fx-background-color: #FEFEDF; -fx-border-color: #665C71; -fx-border-width: 7; -fx-border-radius: 10; -fx-background-radius: 20;">
                     <children>
                         <AnchorPane prefHeight="0.0" prefWidth="0.0" VBox.vgrow="NEVER">
                             <children>

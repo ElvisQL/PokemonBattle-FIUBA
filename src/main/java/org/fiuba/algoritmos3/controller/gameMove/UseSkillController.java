@@ -1,10 +1,6 @@
 package org.fiuba.algoritmos3.controller.gameMove;
 
 import javafx.beans.value.ObservableValue;
-import javafx.fxml.FXML;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import org.fiuba.algoritmos3.controller.picker.ItemPickerController;
 import org.fiuba.algoritmos3.controller.picker.PickerController;
 import org.fiuba.algoritmos3.controller.picker.SkillPickerController;
 import org.fiuba.algoritmos3.model.move.UseSkill;
@@ -12,7 +8,6 @@ import org.fiuba.algoritmos3.model.move.builder.UseSkillBuilder;
 import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class UseSkillController extends GameMoveController<UseSkill, UseSkillBuilder> {

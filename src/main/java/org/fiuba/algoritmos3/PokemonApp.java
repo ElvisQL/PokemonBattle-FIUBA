@@ -17,8 +17,6 @@ import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 
 public class PokemonApp extends Application {
@@ -31,7 +29,6 @@ public class PokemonApp extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 
 
     @Override
@@ -70,6 +67,7 @@ public class PokemonApp extends Application {
 
 
     }
+
     public static void playMusic(Media music) {
         stopmusic();
         mediaPlayer = new MediaPlayer(music);
@@ -77,11 +75,13 @@ public class PokemonApp extends Application {
         mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
         mediaPlayer.play();
     }
-    public static void stopmusic(){
+
+    public static void stopmusic() {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
         }
     }
+
     @Override
     public void stop() throws Exception {
         gameAPI.stop();

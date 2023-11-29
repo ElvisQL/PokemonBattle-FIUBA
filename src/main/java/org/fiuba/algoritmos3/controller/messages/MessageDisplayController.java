@@ -6,7 +6,8 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.fiuba.algoritmos3.controller.BaseController;
@@ -17,7 +18,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class MessageDisplayController extends BaseController {
     private static final Duration LETTER_ANIMATION_DURATION = Duration.millis(50);
-    @FXML public HBox customView;
+    @FXML
+    public HBox customView;
     public AnchorPane rootPane;
     private String text;
     @FXML

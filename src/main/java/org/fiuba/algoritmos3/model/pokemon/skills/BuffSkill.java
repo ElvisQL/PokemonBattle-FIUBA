@@ -28,10 +28,9 @@ public class BuffSkill extends ConcreteSkill {
             changeDirection = "decreased";
 
 
-        state.setAdittionalMsg(pokemon.getName() + " has "+ changeDirection + " its " + statToModify.name() + " by " + amount.toString());
+        state.setAdittionalMsg(pokemon.getName() + " has " + changeDirection + " its " + statToModify.name() + " by " + amount);
 
 
-        
     }
 
 }

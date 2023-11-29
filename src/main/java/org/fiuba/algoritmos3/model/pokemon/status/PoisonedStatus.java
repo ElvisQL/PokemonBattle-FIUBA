@@ -13,13 +13,11 @@ public class PoisonedStatus implements ApplicableStatus {
 
         int newHealth = currentHealth - damage;
         pokemon.setHealth(newHealth);
-
     }
 
     @Override
     public String getName() {
         return "Poisoned";
     }
-
 
 }
