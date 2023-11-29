@@ -1,48 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import org.fiuba.algoritmos3.view.component.BaseButton?>
+<?import javafx.scene.shape.*?>
 
-<fx:root alignment="CENTER" fillHeight="false" prefHeight="600" prefWidth="768.0" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-    <Pane prefHeight="600" prefWidth="768">
-        <ImageView fitWidth="768" preserveRatio="true" style=" -fx-background-size: cover;">
+<fx:root alignment="CENTER" fillHeight="false" prefHeight="600" prefWidth="768.0" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+    <Pane prefHeight="613.0" prefWidth="768">
+        <ImageView fitHeight="615.0" fitWidth="768" preserveRatio="true" style=" -fx-background-size: cover;">
             <image>
-                <Image url="@../../images/backgrounds/woods.jpg"/>
+                <Image url="@../../images/backgrounds/woods.jpg" />
             </image>
         </ImageView>
-    </Pane>
-    <HBox layoutX="200" layoutY="34.0" prefHeight="280.0" prefWidth="568">
-
-        <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="69.0">
-            <GridPane fx:id="oppPokeballGrid" prefHeight="35.0" prefWidth="230.0">
-            </GridPane>
-            <Rectangle fx:id="rightBar" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="7.0"
-                       nodeOrientation="RIGHT_TO_LEFT" stroke="#2d2a23" strokeType="INSIDE" strokeWidth="3.0"
-                       width="260.0"/>
-        </VBox>
-        <ImageView fx:id="oppositeTrainer" fitHeight="280.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true"/>
-
-    </HBox>
-    <HBox layoutY="400.0" prefHeight="200.0" prefWidth="768">
-        <ImageView fx:id="activeTrainer" fitWidth="300.0" pickOnBounds="true" preserveRatio="true"
-                   AnchorPane.bottomAnchor="600"/>
-        <VBox layoutX="500" prefHeight="150.0" prefWidth="292.0" AnchorPane.bottomAnchor="600"
-              AnchorPane.leftAnchor="768">
-            <children>
-                <GridPane fx:id="actPokeballGrid" prefHeight="35.0" prefWidth="230.0">
+       <HBox layoutY="407.0" prefHeight="193.0" prefWidth="535.0">
+           <ImageView fx:id="activeTrainer" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="600" />
+           <VBox layoutX="500" prefHeight="193.0" prefWidth="245.0" AnchorPane.bottomAnchor="600" AnchorPane.leftAnchor="768">
+               <children>
+                   <GridPane fx:id="actPokeballGrid" prefHeight="35.0" prefWidth="230.0">
                 </GridPane>
-                <Rectangle fx:id="leftBar" arcHeight="2.0" arcWidth="2.0" fill="#1f93ff00" height="7.0" stroke="#2d2a23"
-                           strokeType="INSIDE" strokeWidth="3.0" width="260.0"/>
-            </children>
-        </VBox>
-    </HBox>
+                   <Rectangle fx:id="leftBar" arcHeight="2.0" arcWidth="2.0" fill="#1f93ff00" height="8.0" stroke="#2d2a23" strokeType="INSIDE" strokeWidth="3.0" width="232.0" />
+               </children>
+           </VBox>
+       </HBox>
+       <HBox layoutX="365.0" layoutY="127.0" prefHeight="280.0" prefWidth="403.0">
+
+           <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="224.0">
+               <GridPane fx:id="oppPokeballGrid" prefHeight="35.0" prefWidth="230.0">
+            </GridPane>
+               <Rectangle fx:id="rightBar" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="8.0" nodeOrientation="RIGHT_TO_LEFT" stroke="#2d2a23" strokeType="INSIDE" strokeWidth="3.0" width="232.0" />
+           </VBox>
+           <ImageView fx:id="oppositeTrainer" fitHeight="280.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true" />
+
+       </HBox>
+    </Pane>
 
 
 
