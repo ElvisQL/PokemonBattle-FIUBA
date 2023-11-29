@@ -5,7 +5,7 @@ public enum JsonPath {
     POKEMON("src/resources/pokemon.json"),
     SKILLS("src/resources/skills.json"),
     ITEMS("src/resources/items.json"),
-    PLAYERS("src/resources/players.json");
+    PLAYERS("data/players.json");
 
     private final String label;
 

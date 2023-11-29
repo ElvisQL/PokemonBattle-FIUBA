@@ -13,8 +13,8 @@ import java.util.List;
 public class GameResultSerializer {
 
     public GameResultSerializer(HashMap<String, Player> players) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String fileName = sdf.format(new Date()) + "-summary.json";
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String fileName = "data/" + date + "-summary.json";
 
         new JsonManager().Writer(
                 fileName,
