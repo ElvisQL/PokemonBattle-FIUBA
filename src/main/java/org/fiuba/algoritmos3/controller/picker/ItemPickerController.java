@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import org.fiuba.algoritmos3.model.item.Item;
-import org.fiuba.algoritmos3.view.BaseButton;
+import org.fiuba.algoritmos3.view.component.BaseButton;
 
 import java.net.URL;
 import java.util.HashMap;

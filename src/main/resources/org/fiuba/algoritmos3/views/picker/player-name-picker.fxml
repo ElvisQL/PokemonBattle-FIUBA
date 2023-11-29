@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<?import org.fiuba.algoritmos3.view.BaseButton?>
+<?import org.fiuba.algoritmos3.view.component.BaseButton?>
 <?import java.net.URL?>
 <AnchorPane fx:id="rootPane" styleClass="main-background" prefHeight="500.0" prefWidth="500.0"
             xmlns="http://javafx.com/javafx/17.0.2-ea"

@@ -1,4 +1,4 @@
-package org.fiuba.algoritmos3.view;
+package org.fiuba.algoritmos3.view.component;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

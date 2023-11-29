@@ -18,8 +18,8 @@ module org.fiuba.algoritmos3 {
     opens org.fiuba.algoritmos3.controller.picker to javafx.fxml;
     exports org.fiuba.algoritmos3.controller.gameMove;
     opens org.fiuba.algoritmos3.controller.gameMove to javafx.fxml;
-    exports org.fiuba.algoritmos3.view;
-    opens org.fiuba.algoritmos3.view to javafx.fxml;
+//    exports org.fiuba.algoritmos3.view;
+//    opens org.fiuba.algoritmos3.view to javafx.fxml;
     exports org.fiuba.algoritmos3.view.chooseGameMove;
     opens org.fiuba.algoritmos3.view.chooseGameMove to javafx.fxml;
     exports org.fiuba.algoritmos3.model.pokemon to com.fasterxml.jackson.databind;
@@ -33,5 +33,7 @@ module org.fiuba.algoritmos3 {
     opens org.fiuba.algoritmos3.model.event to javafx.fxml;
     exports org.fiuba.algoritmos3.model.event.listener;
     opens org.fiuba.algoritmos3.model.event.listener to javafx.fxml;
+    exports org.fiuba.algoritmos3.view.component;
+    opens org.fiuba.algoritmos3.view.component to javafx.fxml;
 
 }

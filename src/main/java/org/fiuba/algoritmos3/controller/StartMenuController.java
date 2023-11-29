@@ -8,15 +8,11 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
-import org.fiuba.algoritmos3.view.BaseButton;
+import org.fiuba.algoritmos3.view.component.BaseButton;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static org.fiuba.algoritmos3.PokemonApp.mediaPlayer;

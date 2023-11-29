@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<?import org.fiuba.algoritmos3.view.BaseButton?>
+<?import org.fiuba.algoritmos3.view.component.BaseButton?>
 <?import java.net.URL?>
 <AnchorPane prefHeight="768.0" prefWidth="7681024.0" styleClass="main-background"
             xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"

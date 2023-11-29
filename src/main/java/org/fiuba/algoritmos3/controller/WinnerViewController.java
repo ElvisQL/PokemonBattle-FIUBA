@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.fiuba.algoritmos3.model.Player;
-import org.fiuba.algoritmos3.view.BaseButton;
+import org.fiuba.algoritmos3.view.component.BaseButton;
 
 import java.io.IOException;
 import java.net.URL;
