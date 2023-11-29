@@ -69,7 +69,7 @@
                <children>
                   <Label fx:id="hpActual" text="5000" />
                   <Label alignment="TOP_CENTER" text="/" />
-                  <Label text="8000" />
+                  <Label fx:id="hpMax" text="8000" />
                </children>
             </HBox>
             </children>

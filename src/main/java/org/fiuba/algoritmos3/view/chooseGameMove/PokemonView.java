@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import org.fiuba.algoritmos3.PokemonApp;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -25,6 +26,9 @@ public class PokemonView extends HBox {
     private Label pokemonLevel;
     @FXML
     private ProgressBar healthBar;
+
+    @FXML private Label hpActual;
+    @FXML private Label hpMax;
     @FXML
     private ImageView pokemonTypeImageView;
     @FXML
@@ -45,6 +49,7 @@ public class PokemonView extends HBox {
         pokemonName.setText(pokemon.getName());
 
         pokemonLevel.setText(pokemon.getLevel().toString());
+        hpMax.setText(pokemon.getMaxHealth().toString());
 
         updateProgressBar(pokemon);
 
@@ -59,7 +64,7 @@ public class PokemonView extends HBox {
         double mitad = (double) pokemon.getMaxHealth() / 2 / pokemon.getMaxHealth();
 
         healthBar.setProgress((double) pokemon.getHealth() / pokemon.getMaxHealth());
-
+        hpActual.setText(pokemon.getHealth().toString());
         if (healthBar.getProgress() < mitad) {
             healthBar.setStyle("-fx-accent: red;");
         } else if (healthBar.getProgress() <= 0){

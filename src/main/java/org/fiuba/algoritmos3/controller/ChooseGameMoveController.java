@@ -35,6 +35,7 @@ public class ChooseGameMoveController extends BaseController {
         opponentPokemonView.setFlipped(true);
         pokemonsSplitPane.getChildren().add(opponentPokemonView);
 
+
         PokemonView currentPokemonView = new PokemonView(gameAPI.currentPlayer().getCurrentPokemon());
         pokemonsSplitPane.getChildren().add(currentPokemonView);
 
