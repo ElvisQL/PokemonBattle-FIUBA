@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.item;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -18,7 +19,7 @@ public class IncreaseAttackItem extends Item {
     }
 
     @Override
-    public String use(Pokemon pokemon) throws InvalidSelectionException {
+    public void use(Pokemon pokemon, GameState gameState) throws InvalidSelectionException {
         if (pokemon.isDead()) {
             throw new InvalidSelectionException("Pokemon");
         }
@@ -26,7 +27,8 @@ public class IncreaseAttackItem extends Item {
         Integer currentAttack = pokemon.getAttackPoints();
         Integer increaseAttack = currentAttack * percentageIncrease / PERCENT;
         pokemon.setAttackPoints(increaseAttack + currentAttack);
-        return pokemon.getName() + " has increased its attack for " + increaseAttack;
+        gameState.setAdittionalMsg(pokemon.getName() + " has increased its attack for " + increaseAttack);
+
     }
 
 }

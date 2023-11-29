@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.pokemon.skills;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.status.Status;
 
@@ -14,8 +15,8 @@ public class StatusSkill extends ConcreteSkill {
     }
 
     @Override
-    public String apply(Pokemon pokemon, Pokemon otherPokemon) {
+    public void apply(Pokemon pokemon, Pokemon otherPokemon, GameState state) {
         otherPokemon.addStatus(status);
-        return (pokemon.getName() + " changed " + otherPokemon.getName() + "'s status to " + status.getName());
+        state.setAdittionalMsg(pokemon.getName() + "changed" + otherPokemon.getName() + "'s status to " + status.getName());
     }
 }

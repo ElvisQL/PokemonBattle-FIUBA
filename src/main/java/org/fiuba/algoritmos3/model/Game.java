@@ -70,6 +70,7 @@ public class Game implements GameAPI {
     @Override
     public <T extends GameMove> GameMoveResult<String> play(T gameMove) {
         GameMoveResult<String> result = gameMove.run(gameState);
+
         roundOverBroker.fireEvent();
 
         return result;

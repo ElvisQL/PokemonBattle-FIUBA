@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.pokemon.skills;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public class BuffSkill extends ConcreteSkill {
@@ -12,21 +13,25 @@ public class BuffSkill extends ConcreteSkill {
         this.amount = modifierValue;
     }
 
-    public String apply(Pokemon pokemon, Pokemon otherPokemon) {
+    public void apply(Pokemon pokemon, Pokemon otherPokemon, GameState state) {
+
         switch (statToModify) {
             case ATTACK -> pokemon.setAttackPoints(pokemon.getAttackPoints() + amount);
             case HEALTH -> pokemon.setHealth(pokemon.getHealth() + amount);
             case DEFENSE -> pokemon.setDefencePoints(pokemon.getDefencePoints() + amount);
             case SPEED -> pokemon.setAttackSpeed(pokemon.getAttackSpeed() + amount);
         }
-
         String changeDirection;
         if (amount >= 0)
             changeDirection = "increased";
         else
             changeDirection = "decreased";
 
-        return (pokemon.getName() + " has " + changeDirection + " it's " + statToModify.name() + " by " + amount.toString());
+
+        state.setAdittionalMsg(pokemon.getName() + " has "+ changeDirection + " its " + statToModify.name() + " by " + amount.toString());
+
+
+        
     }
 
 }

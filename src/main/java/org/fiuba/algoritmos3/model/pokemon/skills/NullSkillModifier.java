@@ -1,12 +1,13 @@
 package org.fiuba.algoritmos3.model.pokemon.skills;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
 public class NullSkillModifier extends SkillModifier {
     @Override
-    public String use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError {
-        return this.wrappee.use(pokemon, otherPokemon);
+    public void use(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError {
+        this.wrappee.use(pokemon, otherPokemon,state);
     }
 
     @Override

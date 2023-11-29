@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.item;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -17,7 +18,7 @@ public abstract class Item {
         this.description = description;
     }
 
-    public abstract String use(Pokemon pokemon) throws BaseError;
+    public abstract void use(Pokemon pokemon , GameState gameState) throws BaseError;
 
     public String getName() {
         return name;

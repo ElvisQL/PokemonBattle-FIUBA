@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.item;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -12,6 +13,6 @@ public abstract class HealingItem extends Item {
     }
 
     @Override
-    public abstract String use(Pokemon pokemon) throws InvalidSelectionException;
+    public abstract void use(Pokemon pokemon, GameState gameState) throws InvalidSelectionException;
 
 }

@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.pokemon.skills;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -13,14 +14,14 @@ public abstract class ConcreteSkill implements Skill {
         this.description = description;
     }
 
-    public String use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError {
+    public void use(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError {
         if (!pokemon.isDead()) {
-            return apply(pokemon, otherPokemon);
+            apply(pokemon, otherPokemon,state);
         }
-        return (pokemon.getName() + "is dead");
+
     }
 
-    public abstract String apply(Pokemon pokemon, Pokemon otherPokemon) throws BaseError;
+    public abstract void apply(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError;
 
     public String getName() {
         return name;

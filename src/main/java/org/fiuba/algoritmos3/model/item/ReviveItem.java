@@ -1,5 +1,6 @@
 package org.fiuba.algoritmos3.model.item;
 
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 
@@ -18,12 +19,13 @@ public class ReviveItem extends Item {
     }
 
     @Override
-    public String use(Pokemon pokemon) throws InvalidSelectionException {
+    public void use(Pokemon pokemon, GameState gameState) throws InvalidSelectionException {
         if (!pokemon.isDead()) {
             throw new InvalidSelectionException("The pokemon has to be weakened");
         }
         pokemon.clearStatuses();
         pokemon.setHealth(pokemon.getMaxHealth() * this.restoredHealth / PERCENT);
-        return pokemon.getName() + " has revived ";
+        gameState.setAdittionalMsg(pokemon.getName() + " has revived ");
+
     }
 }

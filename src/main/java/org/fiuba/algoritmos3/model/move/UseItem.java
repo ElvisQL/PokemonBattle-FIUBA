@@ -26,15 +26,14 @@ public class UseItem extends GameMove {
             return new GameMoveResult<String>().Err(new OwnershipError("The selected item doesn't belong to the current player"));
         }
 
-        String moveResult;
         try {
-            moveResult = chosenItem.use(chosenPokemon);
+            chosenItem.use(chosenPokemon ,gameState);
         } catch (BaseError e) {
             return new GameMoveResult<String>().Err(e);
         }
 
         player.getItems().remove(chosenItem);
 
-        return new GameMoveResult<String>().Ok(chosenPokemon.getName() + " used " + chosenItem.getName() + " item " + " and " + moveResult);
+        return new GameMoveResult<String>().Ok(chosenPokemon.getName() + " used " + chosenItem.getName() + " item and \n" + gameState.getAdditionalMsg());
     }
 }

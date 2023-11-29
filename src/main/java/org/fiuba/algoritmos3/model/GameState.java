@@ -19,6 +19,8 @@ public class GameState {
     private Player currentPlayer;
 
     private Weather weather = new NoneWeather();
+    private String adittionalMsg = "";
+
 
     public void addPlayer(Player player) {
         this.players.add(player);
@@ -57,5 +59,13 @@ public class GameState {
             return opponent.getSurrendered();
         }
         return false;
+    }
+
+    public String getAdditionalMsg() {
+        return this.adittionalMsg;
+    }
+    public void setAdittionalMsg(String msg){
+
+        this.adittionalMsg = msg;
     }
 }
