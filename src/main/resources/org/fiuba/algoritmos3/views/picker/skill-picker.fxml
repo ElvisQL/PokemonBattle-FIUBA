@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
@@ -13,7 +12,7 @@
         <Pane prefHeight="600.0" prefWidth="768.0" styleClass="skill-pane-top">
             <children>
                 <Pane layoutX="74.0" layoutY="58.0" prefHeight="420.0" prefWidth="480.0"
-                      style=" -fx-border-radius: 5;                 -fx-background-radius: 10; -fx-background-color: #5c448d; -fx-border-width: 7px; -fx-border-color: #d6dde5;">
+                      style=" -fx-border-radius: 5; -fx-background-radius: 10; -fx-background-color: #bc9bf6; -fx-border-width: 7px; -fx-border-color: #d6dde5;">
                     <children>
                         <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0" prefHeight="386.0"
                                     prefWidth="450.0" stylesheets="@../../styles/skills.css" vbarPolicy="NEVER">
@@ -32,7 +31,7 @@
               style="-fx-background-color: #2a2e2d; -fx-border-color: #343434; -fx-border-width: 3;">
             <children>
                 <AnchorPane
-                        style="-fx-background-color: #d6dde5; -fx-border-color: #5c448d;-fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
+                        style="-fx-background-color: #d6dde5; -fx-border-color: #bc9bf6;-fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
                         HBox.hgrow="ALWAYS">
                     <children>
                         <TextFlow fx:id="skillDescriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0"

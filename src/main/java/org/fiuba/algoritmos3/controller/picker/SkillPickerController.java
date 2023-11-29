@@ -103,10 +103,12 @@ public class SkillPickerController extends PickerController<ConcreteSkill> {
             HBox skillBox = new HBox(230);
 
             Label nameLabel = new Label("   " + skill.getName().toUpperCase());
+            Label quantityLabel = new Label("x" + skill.getRemainingUses().toString());
 
-            nameLabel.getStyleClass().add("label-skill");
+            nameLabel.getStyleClass().add("label-item");
+            quantityLabel.getStyleClass().add("label-item");
 
-            skillBox.getChildren().addAll(nameLabel);
+            skillBox.getChildren().addAll(nameLabel, quantityLabel);
 
             skillBox.setUserData(skill);
 

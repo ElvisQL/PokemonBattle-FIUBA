@@ -9,8 +9,8 @@ public class StatusSkill extends ConcreteSkill {
     private final Status status;
 
 
-    public StatusSkill(String name, Status status, String description) {
-        super(name, description);
+    public StatusSkill(String name, Status status, String description, Integer remainingUses) {
+        super(name, description, remainingUses);
         this.status = status;
     }
 
