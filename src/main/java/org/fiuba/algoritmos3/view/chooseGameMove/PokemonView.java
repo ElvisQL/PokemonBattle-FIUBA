@@ -59,7 +59,6 @@ public class PokemonView extends HBox {
         double mitad = (double) pokemon.getMaxHealth() / 2 / pokemon.getMaxHealth();
 
         healthBar.setProgress((double) pokemon.getHealth() / pokemon.getMaxHealth());
-        healthBar.setProgress(0.2);
 
         if (healthBar.getProgress() < mitad) {
             healthBar.setStyle("-fx-accent: red;");
