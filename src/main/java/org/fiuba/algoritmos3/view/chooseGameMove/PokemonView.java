@@ -62,7 +62,9 @@ public class PokemonView extends HBox {
 
         if (healthBar.getProgress() < mitad) {
             healthBar.setStyle("-fx-accent: red;");
-        } else {
+        } else if (healthBar.getProgress() <= 0){
+            healthBar.setStyle("-fx-accent: white;");
+        }else {
             healthBar.setStyle("");
         }
     }
