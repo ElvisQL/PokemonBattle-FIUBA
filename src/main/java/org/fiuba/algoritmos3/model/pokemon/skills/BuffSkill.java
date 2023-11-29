@@ -12,7 +12,7 @@ public class BuffSkill extends ConcreteSkill {
         this.amount = modifierValue;
     }
 
-    public void apply(Pokemon pokemon, Pokemon otherPokemon) {
+    public String apply(Pokemon pokemon, Pokemon otherPokemon) {
 
         switch (statToModify) {
             case ATTACK -> {
@@ -28,6 +28,7 @@ public class BuffSkill extends ConcreteSkill {
                 pokemon.setAttackSpeed(pokemon.getAttackSpeed() + amount);
             }
         }
+        return (pokemon.getName() + " has modified his stat " + statToModify.name() + " for " + amount.toString());
     }
 
 }

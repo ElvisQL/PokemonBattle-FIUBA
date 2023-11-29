@@ -16,7 +16,7 @@ public abstract class GameMoveController<T extends GameMove, B extends GameMoveB
         T gameMove = builder.build();
 
         GameMoveResult<String> gameMoveResult= gameAPI.play(gameMove);
-        System.out.println(gameMoveResult);
+
         gameAPI.setMoveMessage(gameMoveResult);
 
         Stage stage = (Stage) rootPane.getScene().getWindow();

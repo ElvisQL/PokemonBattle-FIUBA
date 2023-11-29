@@ -6,10 +6,11 @@ import org.fiuba.algoritmos3.model.pokemon.skills.SkillModifier;
 
 public abstract class UseSkillStatus extends SkillModifier implements Status {
     @Override
-    public void use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError {
+    public String use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError {
         if (canUseSkill(pokemon)) {
-            this.wrappee.use(pokemon, otherPokemon);
+            return this.wrappee.use(pokemon, otherPokemon);
         }
+        return (pokemon.getName() + "hasnt use skill because its " + pokemon.getStatuses().toString());
     }
 
     public abstract boolean canUseSkill(Pokemon pokemon);

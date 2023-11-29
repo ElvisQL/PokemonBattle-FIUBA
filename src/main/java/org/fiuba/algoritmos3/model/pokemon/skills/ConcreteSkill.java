@@ -13,13 +13,14 @@ public abstract class ConcreteSkill implements Skill {
         this.description = description;
     }
 
-    public void use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError {
+    public String use(Pokemon pokemon, Pokemon otherPokemon) throws BaseError {
         if (!pokemon.isDead()) {
-            apply(pokemon, otherPokemon);
+            return apply(pokemon, otherPokemon);
         }
+        return (pokemon.getName() + "is dead");
     }
 
-    public abstract void apply(Pokemon pokemon, Pokemon otherPokemon) throws BaseError;
+    public abstract String apply(Pokemon pokemon, Pokemon otherPokemon) throws BaseError;
 
     public String getName() {
         return name;

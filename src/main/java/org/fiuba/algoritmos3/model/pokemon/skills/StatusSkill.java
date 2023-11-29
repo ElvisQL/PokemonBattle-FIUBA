@@ -14,7 +14,8 @@ public class StatusSkill extends ConcreteSkill {
     }
 
     @Override
-    public void apply(Pokemon pokemon, Pokemon otherPokemon) {
+    public String apply(Pokemon pokemon, Pokemon otherPokemon) {
         otherPokemon.addStatus(status);
+        return (pokemon.getName() + " has changed its status to " + otherPokemon.getName() + " to "+ status.getName());
     }
 }

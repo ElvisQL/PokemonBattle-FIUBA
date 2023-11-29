@@ -34,13 +34,13 @@ public class UseSkill extends GameMove {
         if (weather instanceof SkillModifier modifier) {
             skill = modifier.wrap(skill);
         }
-
+        String msg;
         try {
-            skill.use(pokemon, opponentPokemon);
+             msg = skill.use(pokemon, opponentPokemon);
         } catch (BaseError e) {
             return new GameMoveResult<String>().Err(e);
         }
 
-        return new GameMoveResult<String>().Ok(pokemon.getName() + " used " + chosenSkill.getName());
+        return new GameMoveResult<String>().Ok(pokemon.getName() + " used " + chosenSkill.getName() + "\n" + msg);
     }
 }

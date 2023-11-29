@@ -21,13 +21,15 @@ public class AttackSkill extends ConcreteSkill {
     }
 
     @Override
-    public void apply(Pokemon pokemonAttacker, Pokemon pokemonTarget) throws BaseError {
+    public String apply(Pokemon pokemonAttacker, Pokemon pokemonTarget) throws BaseError {
         if (remainingUses <= 0) {
             throw new NoRemainingUsesError();
         }
         Double damage = damageCalculator.calculateDamage(pokemonAttacker, pokemonTarget);
         remainingUses--;
         pokemonTarget.setHealth(pokemonTarget.getHealth() - damage.intValue());
+
+        return (pokemonAttacker.getName() + " has damaged to " + pokemonTarget.getName() + " for -" + damage.intValue());
     }
 }
 

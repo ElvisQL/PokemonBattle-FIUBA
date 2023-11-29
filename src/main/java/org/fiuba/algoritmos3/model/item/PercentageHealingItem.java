@@ -18,6 +18,6 @@ public class PercentageHealingItem extends HealingItem {
         int currentHealth = pokemon.getHealth();
         int increaseHealth = Math.min(currentHealth + (pokemon.getMaxHealth() * 100 / healing), pokemon.getMaxHealth());
         pokemon.setHealth(increaseHealth);
-        return (pokemon.getName() + "has increased its health for " + increaseHealth);
+        return (pokemon.getName() + " has increased its health for " + increaseHealth);
     }
 }

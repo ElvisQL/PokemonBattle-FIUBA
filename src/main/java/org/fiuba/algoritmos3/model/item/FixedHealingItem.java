@@ -18,7 +18,7 @@ public class FixedHealingItem extends HealingItem {
         int increaseHealth = Math.min(currentHealth + healing, pokemon.getMaxHealth());
         pokemon.setHealth(increaseHealth);
 
-        return (pokemon.getName() + "has fixed its health: " + "+"+ healing);
+        return (pokemon.getName() + " has fixed its health: " + "+"+ healing);
 
 
     }
