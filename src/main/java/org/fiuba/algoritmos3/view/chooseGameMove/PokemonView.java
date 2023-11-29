@@ -46,13 +46,26 @@ public class PokemonView extends HBox {
 
         pokemonLevel.setText(pokemon.getLevel().toString());
 
-        healthBar.setProgress((double) pokemon.getHealth() / pokemon.getMaxHealth());
+        updateProgressBar(pokemon);
 
         URL pokemonTypeUrl = PokemonApp.class.getResource("images/pokemon-type/" + pokemon.getType().name().toLowerCase() + ".png");
         pokemonTypeImageView.setImage(new Image(pokemonTypeUrl.toExternalForm()));
 
         URL pokemonUrl = PokemonApp.class.getResource("images/pokemon/" + pokemon.getName().toLowerCase() + ".png");
         pokemonImageView.setImage(new Image(pokemonUrl.toExternalForm(), pokemonImageView.getFitWidth(), pokemonImageView.getFitHeight(), true, false));
+    }
+
+    private void updateProgressBar(Pokemon pokemon){
+        double mitad = (double) pokemon.getMaxHealth() / 2 / pokemon.getMaxHealth();
+
+        healthBar.setProgress((double) pokemon.getHealth() / pokemon.getMaxHealth());
+        healthBar.setProgress(0.2);
+
+        if (healthBar.getProgress() < mitad) {
+            healthBar.setStyle("-fx-accent: red;");
+        } else {
+            healthBar.setStyle("");
+        }
     }
 
 
