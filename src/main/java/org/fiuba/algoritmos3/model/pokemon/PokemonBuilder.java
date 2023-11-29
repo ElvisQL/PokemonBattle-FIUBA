@@ -96,7 +96,12 @@ public class PokemonBuilder {
         pokemon.history = this.history;
         pokemon.species = this.species;
         pokemon.baseHealth = this.baseHealth;
-        pokemon.maxHealth = this.baseHealth * this.level;
+        Integer maxHealthBuilder = this.baseHealth * this.level;
+        if(maxHealthBuilder > 500){
+            pokemon.maxHealth = 500;
+        }else{
+            pokemon.maxHealth = maxHealthBuilder;
+        }
         pokemon.health = pokemon.maxHealth;
 
         pokemon.attackSpeed = this.attackSpeed;
