@@ -81,6 +81,7 @@ public class Pokemon {
     public void setHealth(Integer health) {
         this.health = Math.min(health, this.getMaxHealth());
         if (this.health <= 0) {
+            this.health = 0;
             this.kill();
         }
     }
