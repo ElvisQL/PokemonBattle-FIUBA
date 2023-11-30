@@ -1,7 +1,6 @@
 package org.fiuba.algoritmos3.model;
 
 import com.github.underscore.U;
-import org.fiuba.algoritmos3.GameAPI;
 import org.fiuba.algoritmos3.model.event.GameEventBroker;
 import org.fiuba.algoritmos3.model.event.RoundOverEvent;
 import org.fiuba.algoritmos3.model.event.listener.StatusListener;
@@ -20,18 +19,16 @@ import java.util.List;
 
 import static org.fiuba.algoritmos3.Constants.*;
 
-
-public class Game implements GameAPI {
+public class GameModel {
     private final int MAX_PLAYERS = 2;
 
     private final List<PokemonSpecies> pokemonSpecies;
     private final HashMap<Integer, Item> sourceItemsHash;
     private final HashMap<Integer, Pokemon> sourcePokemonHash;
     private final GameState gameState = new GameState();
-    private GameMoveResult<String> msg;
     private final GameEventBroker<RoundOverEvent> roundOverBroker = new GameEventBroker<>();
 
-    public Game(HashMap<Integer, Item> itemsHash, HashMap<Integer, Pokemon> pokemonsHash, List<PokemonSpecies> pokemonSpecies) {
+    public GameModel(HashMap<Integer, Item> itemsHash, HashMap<Integer, Pokemon> pokemonsHash, List<PokemonSpecies> pokemonSpecies) {
         this.sourceItemsHash = itemsHash;
         this.sourcePokemonHash = pokemonsHash;
         this.pokemonSpecies = pokemonSpecies;
@@ -41,8 +38,7 @@ public class Game implements GameAPI {
         roundOverBroker.addListener(gameState::swapPlayers);
     }
 
-    @Override
-    public void start() {
+    public void startGame() {
         List<Player> players = gameState.getPlayers();
         if (players.size() >= MAX_PLAYERS) {
             players.get(0).setOpponent(players.get(1));
@@ -66,12 +62,10 @@ public class Game implements GameAPI {
             ));
         gameState.setWeather(weather);
 
-        // Save Initial State of players and info in JSON
         Persistence.savePlayersInfo(gameState);
     }
 
-    @Override
-    public <T extends GameMove> GameMoveResult<String> play(T gameMove) {
+    public <T extends GameMove> GameMoveResult<String> playMove(T gameMove) {
         GameMoveResult<String> result = gameMove.run(gameState);
 
         roundOverBroker.fireEvent();
@@ -79,18 +73,14 @@ public class Game implements GameAPI {
         return result;
     }
 
-    @Override
-    public void stop() {
-        // Save Game Result and Players' State in JSON
+    public void stopGame() {
         Persistence.saveGameResult(gameState);
     }
 
-    @Override
-    public void clearPlayer() {
+    public void clearPlayers() {
         gameState.getPlayers().clear();
     }
 
-    @Override
     public Player createPlayer(String playerName) {
         if (gameState.getPlayers().size() >= MAX_PLAYERS) {
             throw new IllegalArgumentException("The max amount of players is " + MAX_PLAYERS);
@@ -107,23 +97,19 @@ public class Game implements GameAPI {
         return player;
     }
 
-    @Override
-    public Player currentPlayer() {
+    public Player getCurrentPlayer() {
         return gameState.getCurrentPlayer();
     }
 
-    @Override
-    public List<Player> getPlayers() {
+    public List<Player> getPlayersList() {
         return gameState.getPlayers();
     }
 
-    @Override
-    public Player getWinner() {
+    public Player getWinnerPlayer() {
         return gameState.getWinner();
     }
 
-    @Override
-    public Weather getWeather() {
+    public Weather getCurrentWeather() {
         return gameState.getWeather();
     }
 
@@ -152,19 +138,5 @@ public class Game implements GameAPI {
         }
 
         return pokemons;
-    }
-
-
-    public Pokemon randomPokemon() {
-        List<Integer> pokemonIds = new ArrayList<>(sourcePokemonHash.keySet());
-
-        if (!pokemonIds.isEmpty()) {
-            int randomIndex = U.random(pokemonIds.size() - 1);
-
-            Integer randomPokemonId = pokemonIds.get(randomIndex);
-            return sourcePokemonHash.get(randomPokemonId);
-        } else {
-            return null;
-        }
     }
 }

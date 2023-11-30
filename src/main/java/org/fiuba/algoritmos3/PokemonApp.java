@@ -12,7 +12,7 @@ import org.fiuba.algoritmos3.controller.StartMenuController;
 import org.fiuba.algoritmos3.jsonManager.deserializer.ItemDeserializer;
 import org.fiuba.algoritmos3.jsonManager.deserializer.PokemonDeserializer;
 import org.fiuba.algoritmos3.jsonManager.deserializer.PokemonSpeciesDeserializer;
-import org.fiuba.algoritmos3.model.Game;
+import org.fiuba.algoritmos3.model.GameModel;
 import org.fiuba.algoritmos3.model.error.InvalidDataException;
 import org.fiuba.algoritmos3.model.item.Item;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
@@ -47,8 +47,9 @@ public class PokemonApp extends Application {
         } catch (InvalidDataException e) {
             System.exit(1);
         }
+        GameModel gameModel = new GameModel(items,pokemons,pokemonSpecies);
 
-        gameAPI = new Game(items, pokemons, pokemonSpecies);
+        gameAPI = new Game(gameModel);
         super.init();
     }
 
