@@ -1,7 +1,6 @@
 package org.fiuba.algoritmos3.model.pokemon;
 
 
-import com.github.underscore.U;
 import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 import org.fiuba.algoritmos3.model.pokemon.status.DeadStatus;
 import org.fiuba.algoritmos3.model.pokemon.status.Status;
@@ -132,7 +131,7 @@ public class Pokemon {
     }
 
     public boolean isDead() {
-        return U.any(statuses, status -> status instanceof DeadStatus);
+        return this.health <= 0;
     }
 
     // UI -------------------------------------------------------------------------------------------------------------
