@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +30,7 @@ import java.util.ResourceBundle;
 
 public class PokemonPickerController extends PickerController<Pokemon> {
 
+    public ScrollPane pokemonScrollPane;
     @FXML
     private TextFlow descriptionBox;
     @FXML
@@ -94,6 +96,10 @@ public class PokemonPickerController extends PickerController<Pokemon> {
 
             pokemonOptionsParent.getChildren().add(option);
         });
+
+        if (getOptions().isEmpty()){
+            pokemonScrollPane.setVisible(false);
+        }
     }
 
     @FXML
