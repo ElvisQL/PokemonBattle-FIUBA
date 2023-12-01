@@ -7,11 +7,17 @@ import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 public abstract class ConcreteSkill implements Skill {
 
     protected final String name;
+    private Integer remainingUses;
     String description;
 
-    protected ConcreteSkill(String name, String description) {
+    protected ConcreteSkill(String name, String description, Integer remainingUses) {
         this.name = name;
         this.description = description;
+        this.remainingUses = remainingUses;
+    }
+
+    public Integer getRemainingUses() {
+        return remainingUses;
     }
 
     public void use(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError {

@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3;
 
 import org.fiuba.algoritmos3.factories.item.FakeFixedHealingItemFactory;
+import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.error.InvalidSelectionException;
 import org.fiuba.algoritmos3.model.item.*;
@@ -19,6 +20,7 @@ import static org.mockito.Mockito.*;
 public class ItemTest {
 
     Pokemon charizard = mock(Pokemon.class);
+    GameState gameState = Mockito.mock(GameState.class);
 
     @Test
     public void testUse() throws InvalidSelectionException {
@@ -29,7 +31,7 @@ public class ItemTest {
 
         FixedHealingItem healingItem = new FixedHealingItem(1, "Potion", "Restores health", 30);
 
-        healingItem.use(pokemon);
+        healingItem.use(pokemon,gameState);
 
         verify(pokemon).setHealth(80);
     }
@@ -41,7 +43,7 @@ public class ItemTest {
 
         FixedHealingItem healingItem = new FixedHealingItem(1, "Potion", "Restores health", 30);
 
-        assertThrows(InvalidSelectionException.class, () -> healingItem.use(deadPokemon));
+        assertThrows(InvalidSelectionException.class, () -> healingItem.use(deadPokemon,gameState));
 
         verify(deadPokemon, never()).getHealth();
         verify(deadPokemon, never()).getMaxHealth();
@@ -54,7 +56,7 @@ public class ItemTest {
         Pokemon charizard = Mockito.mock(Pokemon.class);
         Integer healthBefore = charizard.getHealth();
         HealingItem heal = new FakeFixedHealingItemFactory().create(1);
-        heal.use(charizard);
+        heal.use(charizard,gameState);
         Integer healthAfter = charizard.getHealth();
         Assertions.assertEquals(healthBefore, healthAfter);
     }
@@ -67,9 +69,9 @@ public class ItemTest {
         Pokemon squirtle = Mockito.mock(Pokemon.class);
         HealingItem heal = new FakeFixedHealingItemFactory().create(1);
 
-        attack.apply(charizard, squirtle);
+        attack.apply(charizard, squirtle,gameState);
         Integer healthBefore = charizard.getHealth();
-        heal.use(charizard);
+        heal.use(charizard,gameState);
         Integer healthAfter = charizard.getHealth();
 
         assertTrue(healthBefore <= healthAfter);
@@ -85,7 +87,7 @@ public class ItemTest {
 
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
             charizard.kill();
-            heal.use(charizard);
+            heal.use(charizard,gameState);
         });
 
         String expectedMessage = "The user chose an invalid Pokemon";
@@ -102,21 +104,22 @@ public class ItemTest {
         Mockito.when(charizard.isDead()).thenReturn(true);
 
         IncreaseAttackItem incAttack = Mockito.mock(IncreaseAttackItem.class);
+        GameState gameState = Mockito.mock(GameState.class);
 
         Mockito.when(incAttack.getId()).thenReturn(0);
         Mockito.when(incAttack.getName()).thenReturn("testAttack");
         Mockito.when(incAttack.getDescription()).thenReturn("Description");
         Mockito.doThrow(new InvalidSelectionException("The user chose an invalid Pokemon"))
-                .when(incAttack).use(charizard);
+                .when(incAttack).use(charizard, gameState);
 
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-            incAttack.use(charizard);
+            incAttack.use(charizard, gameState);
         });
 
         String expectedMessage = "The user chose an invalid Pokemon";
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
-        Mockito.verify(incAttack, Mockito.times(1)).use(charizard);
+        Mockito.verify(incAttack, Mockito.times(1)).use(charizard,gameState);
     }
 
     @Test
@@ -130,9 +133,9 @@ public class ItemTest {
         when(incAttack.getPercentageIncrease()).thenReturn(5);
         when(incAttack.getDescription()).thenReturn("mi super descripcion");
 
-        incAttack.use(charizard);
+        incAttack.use(charizard,gameState);
 
-        verify(incAttack, times(1)).use(charizard);
+        verify(incAttack, times(1)).use(charizard,gameState);
         assertTrue(charizard.getAttackPoints() >= 10);
     }
 
@@ -150,9 +153,9 @@ public class ItemTest {
         when(incDef.getPercentageIncrease()).thenReturn(5);
         when(charizard.getDefencePoints()).thenReturn(10);
 
-        incDef.use(charizard);
+        incDef.use(charizard,gameState);
 
-        verify(incDef, times(1)).use(charizard);
+        verify(incDef, times(1)).use(charizard,gameState);
         assertTrue(charizard.getDefencePoints() > 5);
     }
 
@@ -167,10 +170,10 @@ public class ItemTest {
         when(incDef.getDescription()).thenReturn("mi super descripcion");
         when(incDef.getPercentageIncrease()).thenReturn(15);
 
-        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid Pokemon")).when(incDef).use(charizard);
+        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid Pokemon")).when(incDef).use(charizard,gameState);
 
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-            incDef.use(charizard);
+            incDef.use(charizard,gameState);
         });
 
         String expectedMessage = "The user chose an invalid Pokemon";
@@ -191,10 +194,10 @@ public class ItemTest {
         when(reviveItemMock.getDescription()).thenReturn("mi super descripcion");
         when(reviveItemMock.getRestoredHealth()).thenReturn(100);
 
-        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid The pokemon has to be weakened")).when(reviveItemMock).use(charizard);
+        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid The pokemon has to be weakened")).when(reviveItemMock).use(charizard,gameState);
 
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-            reviveItemMock.use(charizard);
+            reviveItemMock.use(charizard,gameState);
         });
 
         String expectedMessage = "The user chose an invalid The pokemon has to be weakened";
@@ -213,7 +216,7 @@ public class ItemTest {
         when(reviveItemMock.getRestoredHealth()).thenReturn(100);
 
         charizard.kill();
-        reviveItemMock.use(charizard);
+        reviveItemMock.use(charizard,gameState);
         Assertions.assertEquals(charizard.getMaxHealth(), charizard.getHealth());
     }
 
@@ -227,7 +230,7 @@ public class ItemTest {
         when(restore.getId()).thenReturn(3);
         when(restore.getName()).thenReturn("Magic herb");
         when(restore.getDescription()).thenReturn("mi super descripcion");
-        restore.use(charizard);
+        restore.use(charizard,gameState);
         Assertions.assertTrue(charizard.getStatuses().isEmpty());
     }
 
@@ -240,10 +243,10 @@ public class ItemTest {
         when(restore.getId()).thenReturn(3);
         when(restore.getName()).thenReturn("Magic herb");
         when(restore.getDescription()).thenReturn("mi super descripcion");
-        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid The pokemon has to be weakened")).when(restore).use(charizard);
+        Mockito.doThrow(new InvalidSelectionException("The user chose an invalid The pokemon has to be weakened")).when(restore).use(charizard,gameState);
 
         Exception exception = assertThrows(InvalidSelectionException.class, () -> {
-            restore.use(charizard);
+            restore.use(charizard,gameState);
         });
 
         String expectedMessage = "The user chose an invalid The pokemon has to be weakened";

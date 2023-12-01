@@ -95,7 +95,7 @@ public class MoveTest {
 
         assert result.isOk() : "Expected a successful result";
 
-        verify(chosenItem).use(chosenPokemon);
+        verify(chosenItem).use(chosenPokemon,gameState);
 
         assertEquals("Used item", result.getResult());
     }
@@ -104,7 +104,7 @@ public class MoveTest {
     public void testRunUseItemThrowsErrorBaseError() throws BaseError {
         when(gameState.getCurrentPlayer()).thenReturn(player);
         when(player.getItems()).thenReturn(Collections.singletonList(chosenItem));
-        doThrow(new BaseError("Item usage error")).when(chosenItem).use(chosenPokemon);
+        doThrow(new BaseError("Item usage error")).when(chosenItem).use(chosenPokemon,gameState);
 
         GameMoveResult<String> result = useItem.run(gameState);
 

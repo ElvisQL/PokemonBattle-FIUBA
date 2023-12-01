@@ -11,7 +11,7 @@ public class AttackSkill extends ConcreteSkill {
 
 
     public AttackSkill(String name, Integer power, Integer remainingUses, String description) {
-        super(name, description);
+        super(name, description, remainingUses);
         this.remainingUses = remainingUses;
         this.damageCalculator = new DamageCalculator(power);
 

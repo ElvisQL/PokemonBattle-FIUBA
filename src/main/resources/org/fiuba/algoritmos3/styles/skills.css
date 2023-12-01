@@ -11,13 +11,13 @@
 
 .vbox-skills {
     -fx-spacing: 15px;
-    -fx-background-color: #5c448d;
+    -fx-background-color: #BC9BF6;
 }
 
 .skill-container {
     -fx-min-height: 80px;
-    -fx-background-color: #5c448d;
-    -fx-border-color: #5c448d;
+    -fx-background-color: #BC9BF6;
+    -fx-border-color: #BC9BF6;
     -fx-background-radius: 15;
     -fx-border-radius: 10;
     -fx-alignment: center-left;

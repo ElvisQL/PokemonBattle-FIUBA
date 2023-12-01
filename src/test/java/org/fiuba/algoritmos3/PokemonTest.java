@@ -5,6 +5,7 @@ import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
 import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;
 import org.fiuba.algoritmos3.model.pokemon.PokemonType;
 import org.fiuba.algoritmos3.model.pokemon.skills.AttackSkill;
+import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 import org.fiuba.algoritmos3.model.pokemon.status.Status;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,6 +25,9 @@ import static org.mockito.Mockito.when;
 public class PokemonTest {
     @Mock
     private PokemonSpecies species;
+    ConcreteSkill skill1 = mock(ConcreteSkill.class);
+    ConcreteSkill skill2 = mock(ConcreteSkill.class);
+    List<ConcreteSkill> mockSkills = Arrays.asList(skill1, skill2);
 
     Pokemon pikachu = new PokemonBuilder()
             .setID(0)
@@ -31,7 +36,7 @@ public class PokemonTest {
                             "Pikachu",
                             "Pikachu es un Pokémon eléctrico.",
                             PokemonType.valueOf("Electric"),
-                            skills))
+                            mockSkills))
             .setSkills(
                     new ArrayList<>(List.of(
                             new AttackSkill("Impactrueno", 80, 1, "hola"),
@@ -144,6 +149,8 @@ public class PokemonTest {
 
         assertEquals(50, result);
     }
+
+
 
 }
 
