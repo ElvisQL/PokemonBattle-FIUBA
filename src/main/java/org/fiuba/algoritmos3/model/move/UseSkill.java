@@ -7,7 +7,8 @@ import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 import org.fiuba.algoritmos3.model.pokemon.skills.NullSkillModifier;
 import org.fiuba.algoritmos3.model.pokemon.skills.SkillModifier;
 import org.fiuba.algoritmos3.model.pokemon.status.Status;
-import org.fiuba.algoritmos3.model.weather.Weather;
+
+import java.util.List;
 
 public class UseSkill extends GameMove {
     public final static String label = "Use Skill";
@@ -30,9 +31,9 @@ public class UseSkill extends GameMove {
             }
         }
 
-        Weather weather = gameState.getWeather();
-        if (weather instanceof SkillModifier modifier) {
-            skill = modifier.wrap(skill);
+        List<SkillModifier> modifier = gameState.getWeather().getSkillModifiers();
+        for (SkillModifier weatherModifier : modifier) {
+            skill = weatherModifier.wrap(skill);
         }
 
         try {

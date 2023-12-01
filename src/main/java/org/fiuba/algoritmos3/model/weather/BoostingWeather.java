@@ -1,36 +1,23 @@
 package org.fiuba.algoritmos3.model.weather;
 
 import org.fiuba.algoritmos3.model.GameState;
-import org.fiuba.algoritmos3.model.error.BaseError;
-import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.PokemonType;
-import org.fiuba.algoritmos3.model.pokemon.skills.AttackSkill;
+import org.fiuba.algoritmos3.model.pokemon.skills.DamageBoosterModifier;
 import org.fiuba.algoritmos3.model.pokemon.skills.SkillModifier;
 
 import java.util.List;
 
-public abstract class BoostingWeather extends SkillModifier implements Weather {
+public interface BoostingWeather extends Weather {
 
     @Override
-    public void use(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError {
-        String msg = "";
-        if (getSkillType() != AttackSkill.class && !boostedPokemonTypes().contains(pokemon.getType())) {
-            this.wrappee.use(pokemon, otherPokemon, state);
-        }
-
-        int oldHealth = otherPokemon.getHealth();
-        msg = state.getAdditionalMsg() + "\n";
-        this.wrappee.use(pokemon, otherPokemon, state);
-        int currentHealth = otherPokemon.getHealth();
-
-        int damageTaken = oldHealth - currentHealth;
-        otherPokemon.setHealth((int) (currentHealth - damageTaken * 0.10));
-        msg = state.getAdditionalMsg();
-        state.setAdittionalMsg(msg);
-
+    default void applyTo(GameState gameState) {
     }
 
-    protected abstract List<PokemonType> boostedPokemonTypes();
+    @Override
+    default List<SkillModifier> getSkillModifiers() {
+        return List.of(new DamageBoosterModifier(boostedPokemonTypes()));
+    }
 
-    public abstract String getName();
+    List<PokemonType> boostedPokemonTypes();
+
 }

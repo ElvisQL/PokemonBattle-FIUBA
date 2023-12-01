@@ -1,16 +1,11 @@
 package org.fiuba.algoritmos3.model.weather;
 
-import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.pokemon.PokemonType;
 
 import java.util.List;
 
 
-public class RainWeather extends BoostingWeather {
-    @Override
-    protected List<PokemonType> boostedPokemonTypes() {
-        return List.of(PokemonType.Water, PokemonType.Plant);
-    }
+public class RainWeather implements BoostingWeather {
 
     @Override
     public String getName() {
@@ -18,7 +13,8 @@ public class RainWeather extends BoostingWeather {
     }
 
     @Override
-    public void applyTo(GameState gameState) {
-
+    public List<PokemonType> boostedPokemonTypes() {
+        return List.of(PokemonType.Water, PokemonType.Plant);
     }
+
 }

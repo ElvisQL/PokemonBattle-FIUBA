@@ -1,6 +1,9 @@
 package org.fiuba.algoritmos3.model.weather;
 
 import org.fiuba.algoritmos3.model.GameState;
+import org.fiuba.algoritmos3.model.pokemon.skills.SkillModifier;
+
+import java.util.List;
 
 public class NoneWeather implements Weather {
     @Override
