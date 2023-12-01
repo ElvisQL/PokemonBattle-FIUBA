@@ -17,7 +17,7 @@ public class RestoreStatusItem extends Item {
             throw new InvalidSelectionException("Pokemon");
 
         pokemon.clearStatuses();
-        gameState.setAdittionalMsg(pokemon.getName() + " has restored all its states");
+        gameState.setAdditionalMsg(pokemon.getName() + " has restored all its states");
 
     }
 

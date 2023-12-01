@@ -17,7 +17,7 @@ public class FixedHealingItem extends HealingItem {
         int currentHealth = pokemon.getHealth();
         int increaseHealth = Math.min(currentHealth + healing, pokemon.getMaxHealth());
         pokemon.setHealth(increaseHealth);
-        gameState.setAdittionalMsg((pokemon.getName() + " has healed by: " + healing + "HP"));
+        gameState.setAdditionalMsg((pokemon.getName() + " has healed by: " + healing + "HP"));
     }
 
     @Override

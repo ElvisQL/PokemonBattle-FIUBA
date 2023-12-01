@@ -27,7 +27,7 @@ public class IncreaseDefenseItem extends Item {
         Integer currentDefense = pokemon.getDefencePoints();
         Integer increaseDefense = currentDefense * percentageIncrease / PERCENT;
         pokemon.setDefencePoints(increaseDefense + currentDefense);
-        gameState.setAdittionalMsg(pokemon.getName() + " has increased defense for " + increaseDefense);
+        gameState.setAdditionalMsg(pokemon.getName() + " has increased defense for " + increaseDefense);
 
     }
 

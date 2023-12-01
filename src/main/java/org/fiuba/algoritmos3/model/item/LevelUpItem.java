@@ -19,7 +19,7 @@ public class LevelUpItem extends Item {
             throw new InvalidSelectionException("Pokemon");
 
         pokemon.levelUp(this.increment);
-        gameState.setAdittionalMsg(pokemon.getName() + " has leveled up to " + pokemon.getLevel());
+        gameState.setAdditionalMsg(pokemon.getName() + " has leveled up to " + pokemon.getLevel());
     }
 
     @Override

@@ -25,7 +25,7 @@ public class ReviveItem extends Item {
         }
         pokemon.clearStatuses();
         pokemon.setHealth(pokemon.getMaxHealth() * this.restoredHealth / PERCENT);
-        gameState.setAdittionalMsg(pokemon.getName() + " has revived ");
+        gameState.setAdditionalMsg(pokemon.getName() + " has revived ");
 
     }
 

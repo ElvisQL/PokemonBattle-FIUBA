@@ -26,8 +26,8 @@ public class UseSkill extends GameMove {
 
         SkillModifier skill = new NullSkillModifier().wrap(chosenSkill);
         for (Status status : pokemon.getStatuses()) {
-            if (status instanceof SkillModifier modifier) {
-                skill = modifier.wrap(skill);
+            for (SkillModifier statusModifier : status.getSkillModifiers()) {
+                skill = statusModifier.wrap(skill);
             }
         }
 

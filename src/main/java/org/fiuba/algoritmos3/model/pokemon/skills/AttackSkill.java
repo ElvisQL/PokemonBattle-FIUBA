@@ -29,7 +29,7 @@ public class AttackSkill extends ConcreteSkill {
         Double damage = damageCalculator.calculateDamage(pokemonAttacker, pokemonTarget);
         remainingUses--;
         pokemonTarget.setHealth(pokemonTarget.getHealth() - damage.intValue());
-        state.setAdittionalMsg(pokemonAttacker.getName() + " damaged " + pokemonTarget.getName() + " by -" + damage.intValue());
+        state.setAdditionalMsg(pokemonAttacker.getName() + " damaged " + pokemonTarget.getName() + " by -" + damage.intValue());
     }
 }
 

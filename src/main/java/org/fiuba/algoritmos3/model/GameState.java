@@ -19,7 +19,7 @@ public class GameState {
     private Player currentPlayer;
 
     private Weather weather = new NoneWeather();
-    private String adittionalMsg = "";
+    private String additionalMsg = "";
 
 
     public void addPlayer(Player player) {
@@ -62,11 +62,10 @@ public class GameState {
     }
 
     public String getAdditionalMsg() {
-        return this.adittionalMsg;
+        return this.additionalMsg;
     }
 
-    public void setAdittionalMsg(String msg) {
-
-        this.adittionalMsg = msg;
+    public void setAdditionalMsg(String msg) {
+        this.additionalMsg = msg;
     }
 }

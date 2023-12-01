@@ -26,7 +26,7 @@ public class IncreaseAttackItem extends Item {
         Integer currentAttack = pokemon.getAttackPoints();
         Integer increaseAttack = currentAttack * percentageIncrease / PERCENT;
         pokemon.setAttackPoints(increaseAttack + currentAttack);
-        gameState.setAdittionalMsg(pokemon.getName() + " has increased its attack for " + increaseAttack);
+        gameState.setAdditionalMsg(pokemon.getName() + " has increased its attack for " + increaseAttack);
 
     }
 
