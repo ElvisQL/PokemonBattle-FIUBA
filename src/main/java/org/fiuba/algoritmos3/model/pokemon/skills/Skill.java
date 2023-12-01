@@ -9,4 +9,7 @@ public interface Skill {
     void use(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError;
 
     String getName() throws Exception;
+
+    Class<? extends ConcreteSkill> getSkillType();
+
 }

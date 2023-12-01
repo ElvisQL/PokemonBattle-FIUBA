@@ -30,4 +30,9 @@ public abstract class ConcreteSkill implements Skill {
     public String getDescription() {
         return this.description;
     }
+
+    @Override
+    public Class<? extends ConcreteSkill> getSkillType() {
+        return this.getClass();
+    }
 }

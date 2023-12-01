@@ -8,12 +8,8 @@ public abstract class SkillModifier implements Skill {
         return this;
     }
 
-    protected Class<? extends ConcreteSkill> getSkillType() {
-        if (wrappee instanceof SkillModifier) {
-            return ((SkillModifier) wrappee).getSkillType();
-        }
-
-        return (Class<? extends ConcreteSkill>) wrappee.getClass();
+    public Class<? extends ConcreteSkill> getSkillType() {
+        return wrappee.getSkillType();
     }
 
     @Override
