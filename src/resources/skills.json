@@ -547,5 +547,33 @@
     "percentage": 25,
     "attribute": "Attack",
     "category": "Buff"
+  },
+  {
+    "name": "Mystical Fire",
+    "id": 76,
+    "description": "Ninetales releases a mystical fire that lowers the opponent's Special Attack.",
+    "power": 70,
+    "category": "Attack"
+  },
+  {
+    "name": "Aurora Veil",
+    "id": 77,
+    "description": "Ninetales creates a protective veil of light that reduces damage from physical and special moves.",
+    "percentage": 50,
+    "attribute": "Defense",
+    "category": "Buff"
+  },
+  {
+    "name": "Will-O-Wisp",
+    "id": 78,
+    "description": "Ninetales casts a mysterious flame that burns the opponent and may inflict a burn.",
+    "category": "Status"
+  },
+  {
+    "name": "Drought",
+    "id": 79,
+    "description": "Ninetales summons intense sunlight that changes the weather to sunny.",
+    "weather": "Sunny",
+    "category": "Weather"
   }
 ]

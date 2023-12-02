@@ -251,5 +251,17 @@
       22,
       23
     ]
+  },
+  {
+    "name": "Ninetales",
+    "history": "Ninetales is a Fire-type Pokémon known for its mystical powers and majestic appearance.",
+    "type":"Fire",
+    "skills": [
+      76,
+      77,
+      78,
+      79
+    ]
+
   }
 ]
