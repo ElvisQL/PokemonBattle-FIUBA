@@ -15,7 +15,12 @@ public class WeatherSkill  extends ConcreteSkill{
 
     @Override
     public void apply(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError {
+        if(remainingUses <= 0){
+            state.setAdditionalMsg("no remaining uses\n");
+            return;
+        }
         state.setWeather(weather);
         weather.applyTo(state);
+        remainingUses--;
     }
 }

@@ -2,6 +2,7 @@ package org.fiuba.algoritmos3.model.pokemon;
 
 
 import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
+import org.fiuba.algoritmos3.model.pokemon.status.AsleepStatus;
 import org.fiuba.algoritmos3.model.pokemon.status.DeadStatus;
 import org.fiuba.algoritmos3.model.pokemon.status.Status;
 

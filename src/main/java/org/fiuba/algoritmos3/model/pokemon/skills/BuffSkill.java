@@ -7,6 +7,7 @@ public class BuffSkill extends ConcreteSkill {
     private final StatType statToModify;
     private final Integer amount;
 
+
     public BuffSkill(String name, StatType statToModify, Integer modifierValue, String description, Integer remainingUses) {
         super(name, description, remainingUses);
         this.statToModify = statToModify;
@@ -14,6 +15,10 @@ public class BuffSkill extends ConcreteSkill {
     }
 
     public void apply(Pokemon pokemon, Pokemon otherPokemon, GameState state) {
+        if (remainingUses <= 0){
+            state.setAdditionalMsg("no remaining uses\n");
+            return;
+        }
 
         switch (statToModify) {
             case ATTACK -> pokemon.setAttackPoints(pokemon.getAttackPoints() + amount);
@@ -29,6 +34,7 @@ public class BuffSkill extends ConcreteSkill {
 
 
         state.setAdditionalMsg(pokemon.getName() + " has " + changeDirection + " its " + statToModify.name() + " by " + amount);
+        this.remainingUses--;
 
 
     }

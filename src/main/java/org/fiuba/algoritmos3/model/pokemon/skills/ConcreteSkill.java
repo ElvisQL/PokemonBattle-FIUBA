@@ -3,11 +3,12 @@ package org.fiuba.algoritmos3.model.pokemon.skills;
 import org.fiuba.algoritmos3.model.GameState;
 import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
+import org.fiuba.algoritmos3.model.pokemon.status.AsleepStatus;
 
 public abstract class ConcreteSkill implements Skill {
 
     protected final String name;
-    private Integer remainingUses;
+    protected Integer remainingUses;
     String description;
 
     protected ConcreteSkill(String name, String description, Integer remainingUses) {
@@ -21,7 +22,7 @@ public abstract class ConcreteSkill implements Skill {
     }
 
     public void use(Pokemon pokemon, Pokemon otherPokemon, GameState state) throws BaseError {
-        if (!pokemon.isDead()) {
+        if (!pokemon.isDead() /*TODO pokemon.isAsleep?*/) {
             apply(pokemon, otherPokemon, state);
         }
 

@@ -2,6 +2,7 @@ package org.fiuba.algoritmos3.controller.picker;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -116,11 +117,27 @@ public class SkillPickerController extends PickerController<ConcreteSkill> {
             skillBox.setOnMouseExited(this::handleMouseExited);
             skillBox.setOnMouseClicked(this::handleMouseClicked);
 
-            skillBox.getStyleClass().add("skill-container");
+
+            if(skill.getRemainingUses() <= 0){
+
+                skillBox.getStyleClass().add("skill-container-without-uses");
+
+                removeEventHandlers(skillBox);
+            }
+            else {
+                skillBox.getStyleClass().add("skill-container");
+            }
             skillsContainer.getChildren().add(skillBox);
         }
     }
-
+    private void removeEventHandlers(Node node) {
+        node.setOnMouseEntered(null);
+        node.setOnMouseExited(null);
+        node.setOnMouseClicked(null);
+        if (node instanceof Parent) {
+            ((Parent) node).getChildrenUnmodifiable().forEach(this::removeEventHandlers);
+        }
+    }
 
     @FXML
     private void handleBackButtonClick(MouseEvent event) {

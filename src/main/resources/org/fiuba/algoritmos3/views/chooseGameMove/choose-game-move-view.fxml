@@ -41,7 +41,9 @@
                                 <TextFlow fx:id="gameMoveDescriptionTextFlow" layoutX="95.0" layoutY="22.0"
                                           style="-fx-text-fill: #f3f3f3; -fx-font-size: 18px"
                                           AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
-                                          AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0"/>
+                                          AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0"
+                                          
+                                />
                             </children>
                         </AnchorPane>
                         <GridPane alignment="CENTER_RIGHT" prefHeight="162.0" prefWidth="301.0"
