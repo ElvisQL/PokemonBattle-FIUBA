@@ -8,7 +8,6 @@ public class PoisonedStatus implements Status {
     public String getName() {
         return "Poisoned";
     }
-
     @Override
     public void apply(Pokemon pokemon) {
         int currentHealth = pokemon.getHealth();

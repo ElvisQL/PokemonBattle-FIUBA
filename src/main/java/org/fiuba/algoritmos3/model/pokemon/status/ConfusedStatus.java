@@ -11,6 +11,11 @@ public class ConfusedStatus extends CanUseSkillStatus {
     }
 
     @Override
+    public void apply(Pokemon pokemon) {
+        return;
+    }
+
+    @Override
     protected boolean canUseSkill(Pokemon pokemon) {
         turnsConfused--;
 
@@ -27,4 +32,6 @@ public class ConfusedStatus extends CanUseSkillStatus {
         double damage = pokemon.getMaxHealth() * 0.15;
         pokemon.setHealth((int) (currentHealth - damage));
     }
+
+
 }

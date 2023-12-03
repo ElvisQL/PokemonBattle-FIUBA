@@ -567,13 +567,42 @@
     "name": "Will-O-Wisp",
     "id": 78,
     "description": "Ninetales casts a mysterious flame that burns the opponent and may inflict a burn.",
+    "attribute": "Poisoned",
     "category": "Status"
   },
   {
     "name": "Drought",
     "id": 79,
     "description": "Ninetales summons intense sunlight that changes the weather to sunny.",
-    "weather": "Sunny",
+    "attribute": "Sunny",
+    "category": "Weather"
+  },
+  {
+    "name": "Drizzle",
+    "id": 79,
+    "description": "Politoed summons heavy rain that changes the weather to rainy.",
+    "attribute": "Rain",
+    "category": "Weather"
+  },
+  {
+    "name": "Sand Stream",
+    "id": 80,
+    "description": "Tyranitar causes a sandstorm that changes the weather to a sandstorm.",
+    "attribute": "Sandstorm",
+    "category": "Weather"
+  },
+  {
+  "name": "Foggy Aura",
+  "id": 81,
+  "description": " Decidueye generates a mysterious fog that enshrouds the battlefield.",
+  "attribute": "Fog",
+  "category": "Weather"
+  },
+  {
+    "name": "Cloud Nine",
+    "id": 82,
+    "description": "Golduck negates the effects of weather on the battlefield, canceling any ongoing weather conditions.",
+    "attribute": "None",
     "category": "Weather"
   }
 ]

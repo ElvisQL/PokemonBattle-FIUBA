@@ -24,6 +24,7 @@ public class AttackSkill extends ConcreteSkill {
     @Override
     public void apply(Pokemon pokemonAttacker, Pokemon pokemonTarget, GameState state) throws BaseError {
         if (remainingUses <= 0) {
+            state.setAdditionalMsg("no remaining uses\n");
             throw new NoRemainingUsesError();
         }
         Double damage = damageCalculator.calculateDamage(pokemonAttacker, pokemonTarget);

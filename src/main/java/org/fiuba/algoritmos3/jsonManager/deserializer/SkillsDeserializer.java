@@ -7,6 +7,7 @@ import org.fiuba.algoritmos3.jsonManager.JsonPath;
 import org.fiuba.algoritmos3.model.error.InvalidDataException;
 import org.fiuba.algoritmos3.model.pokemon.skills.*;
 import org.fiuba.algoritmos3.model.pokemon.status.*;
+import org.fiuba.algoritmos3.model.weather.*;
 
 import java.util.HashMap;
 
@@ -50,9 +51,22 @@ public class SkillsDeserializer {
             case "Buff" ->
                     new BuffSkill(skillName, StatType.valueOf(skill.get("attribute").asText().toUpperCase()), skill.get("percentage").asInt(), description, U.random(1, MAX_SKILL_USAGE));
             case "Status" -> new StatusSkill(skillName, getStatus(skill.get("attribute").asText()), description, U.random(1, MAX_SKILL_USAGE));
+            case "Weather" -> new WeatherSkill(skillName,createWeather(skill.get("attribute").asText()),description,U.random(1,MAX_SKILL_USAGE));
             default -> throw new InvalidDataException("skills.json");
         };
 
+    }
+    private Weather createWeather(String weather){
+        return switch (weather){
+            case "Sunny" -> new SunnyWeather();
+            case "Fog" -> new FogWeather();
+            case "Hurricane" -> new HurricaneWeather();
+            case "Rain" -> new RainWeather();
+            case "Sandstorm" -> new SandstormWeather();
+            case "Thunderstorm" -> new ThunderstormWeather();
+            case "None" -> new NoneWeather();
+            default -> throw new IllegalStateException("Unexpected value: " + weather);
+        };
     }
 
     private HashMap<Integer, ConcreteSkill> use(JsonNode jsonNode) throws InvalidDataException {

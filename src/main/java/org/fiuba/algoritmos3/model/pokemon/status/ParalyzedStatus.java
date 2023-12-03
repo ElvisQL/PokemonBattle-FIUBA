@@ -9,6 +9,10 @@ public class ParalyzedStatus extends CanUseSkillStatus {
         return "Paralyzed";
     }
 
+    @Override
+    public void apply(Pokemon pokemon) {
+        return;
+    }
 
     @Override
     protected boolean canUseSkill(Pokemon pokemon) {

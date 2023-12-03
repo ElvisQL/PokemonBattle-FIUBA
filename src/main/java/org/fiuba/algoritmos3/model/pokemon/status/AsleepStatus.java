@@ -11,10 +11,17 @@ public class AsleepStatus extends CanUseSkillStatus {
     }
 
     @Override
-    protected boolean canUseSkill(Pokemon pokemon) {
+    public void apply(Pokemon pokemon) {
+        return;
+    }
+
+    @Override
+    public boolean canUseSkill(Pokemon pokemon) {
         elapsedRounds++;
         double maxProbability = 0.25 + (elapsedRounds - 1) * 0.25;
         double probability = Math.min(maxProbability, 1.0);
         return Math.random() <= probability;
     }
+
+
 }

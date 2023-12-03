@@ -8,7 +8,6 @@ import java.util.List;
 
 public abstract class CanUseSkillStatus implements Status {
 
-
     @Override
     public final List<SkillModifier> getSkillModifiers() {
         return List.of(
