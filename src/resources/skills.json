@@ -579,30 +579,46 @@
   },
   {
     "name": "Drizzle",
-    "id": 79,
+    "id": 80,
     "description": "Politoed summons heavy rain that changes the weather to rainy.",
     "attribute": "Rain",
     "category": "Weather"
   },
   {
     "name": "Sand Stream",
-    "id": 80,
+    "id": 81,
     "description": "Tyranitar causes a sandstorm that changes the weather to a sandstorm.",
     "attribute": "Sandstorm",
     "category": "Weather"
   },
   {
   "name": "Foggy Aura",
-  "id": 81,
+  "id": 82,
   "description": " Decidueye generates a mysterious fog that enshrouds the battlefield.",
   "attribute": "Fog",
   "category": "Weather"
   },
   {
     "name": "Cloud Nine",
-    "id": 82,
+    "id": 83,
     "description": "Golduck negates the effects of weather on the battlefield, canceling any ongoing weather conditions.",
     "attribute": "None",
     "category": "Weather"
+  },
+  {
+    "name": "Hurricane weather",
+    "id": 84,
+    "description": "Dragonite summons powerful winds and rain, causing a hurricane on the battlefield.",
+    "attribute": "Hurricane",
+    "category": "Weather"
+  },
+  {
+    "name": "Volt Tempest",
+    "id": 85,
+    "description": "Ampharos conjures a powerful thunderstorm with electrifying effects.",
+    "attribute": "Thunderstorm",
+    "category": "Weather"
   }
+
+
 ]
