@@ -143,9 +143,9 @@
          </Label>
           <ScrollPane fx:id="pokemonScrollPane" hbarPolicy="NEVER" prefHeight="512.0" prefWidth="372.0" style="-fx-background-color: #206860;" vbarPolicy="NEVER">
               <content>
-                  <VBox fx:id="pokemonOptionsParent" alignment="CENTER" prefHeight="489.0" prefWidth="388.0" spacing="20.0" style="-fx-background-color: #206860;">
+                  <VBox fx:id="pokemonOptionsParent" alignment="CENTER" minHeight="510.0" prefWidth="388.0" spacing="20.0" style="-fx-background-color: #206860;">
                       <padding>
-                          <Insets top="2.0" />
+                          <Insets top="2.0"/>
                       </padding>
                       <children>
                           <PokemonPickerOption />
