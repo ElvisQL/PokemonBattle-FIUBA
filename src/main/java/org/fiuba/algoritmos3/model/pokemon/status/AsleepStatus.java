@@ -23,6 +23,7 @@ public class AsleepStatus extends CanUseSkillStatus {
         boolean result = Math.random() <= probability;
         if (result){
             pokemon.removeStatus(this);
+            elapsedRounds = 0;
         }
         return result;
 

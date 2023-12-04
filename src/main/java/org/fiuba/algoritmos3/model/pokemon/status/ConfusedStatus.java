@@ -19,6 +19,7 @@ public class ConfusedStatus extends CanUseSkillStatus {
     protected boolean canUseSkill(Pokemon pokemon) {
         if(turnsConfused <=0){
             pokemon.removeStatus(this);
+            turnsConfused = 3;
             return false;
         }
         turnsConfused--;
