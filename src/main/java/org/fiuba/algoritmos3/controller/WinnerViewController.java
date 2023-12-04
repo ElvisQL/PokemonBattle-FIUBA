@@ -23,6 +23,7 @@ public class WinnerViewController extends BaseController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadMusic("audio/mainmusic.wav");
         setButtonAction();
     }
 
