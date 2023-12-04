@@ -618,7 +618,13 @@
     "description": "Ampharos conjures a powerful thunderstorm with electrifying effects.",
     "attribute": "Thunderstorm",
     "category": "Weather"
+  },
+  {
+    "name": "Confusion",
+    "id": 86,
+    "description": "A hard blow that leaves anyone confused.",
+    "attribute": "Confused",
+    "category": "Status"
   }
-
 
 ]

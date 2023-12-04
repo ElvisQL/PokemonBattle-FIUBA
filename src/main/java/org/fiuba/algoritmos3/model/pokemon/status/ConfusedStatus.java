@@ -17,6 +17,10 @@ public class ConfusedStatus extends CanUseSkillStatus {
 
     @Override
     protected boolean canUseSkill(Pokemon pokemon) {
+        if(turnsConfused <=0){
+            pokemon.removeStatus(this);
+            return false;
+        }
         turnsConfused--;
 
         if (Math.random() <= 1.0 / 3.0) {
