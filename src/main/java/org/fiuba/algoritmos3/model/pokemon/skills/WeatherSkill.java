@@ -21,6 +21,7 @@ public class WeatherSkill  extends ConcreteSkill{
         }
         state.setWeather(weather);
         weather.applyTo(state);
+        state.setAdditionalMsg(pokemon.getName() + " changed weather to " + weather.getName());
         remainingUses--;
     }
 }

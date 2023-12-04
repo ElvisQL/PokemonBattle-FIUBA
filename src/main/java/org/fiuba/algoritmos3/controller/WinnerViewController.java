@@ -27,7 +27,7 @@ public class WinnerViewController extends BaseController {
     }
 
     private void setButtonAction() {
-        gameAPI.clearPlayer();
+
         newGameButton.setOnAction(event -> {
             changeView("views/start-menu-view.fxml");
         });

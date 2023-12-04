@@ -25,6 +25,7 @@ public class StartMenuController extends BaseController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        gameAPI.clearPlayer();
         loadMusic("audio/mainmusic.wav");
         updateMuteButtonImages();
     }
