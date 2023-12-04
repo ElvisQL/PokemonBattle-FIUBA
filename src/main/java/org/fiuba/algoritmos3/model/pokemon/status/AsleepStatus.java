@@ -20,7 +20,12 @@ public class AsleepStatus extends CanUseSkillStatus {
         elapsedRounds++;
         double maxProbability = 0.25 + (elapsedRounds - 1) * 0.25;
         double probability = Math.min(maxProbability, 1.0);
-        return Math.random() <= probability;
+        boolean result = Math.random() <= probability;
+        if (result){
+            pokemon.removeStatus(this);
+        }
+        return result;
+
     }
 
 

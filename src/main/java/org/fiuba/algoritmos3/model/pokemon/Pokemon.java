@@ -116,7 +116,9 @@ public class Pokemon {
         return description.toString().trim();
     }
 
-
+    public void removeStatus(Status status){
+        statuses.remove(status);
+    }
     public void clearStatuses() {
         this.statuses.clear();
     }
