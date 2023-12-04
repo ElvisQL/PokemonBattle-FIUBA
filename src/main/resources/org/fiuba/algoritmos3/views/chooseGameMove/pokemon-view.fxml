@@ -90,7 +90,7 @@
                     </padding>
                 </VBox>
                 <Label fx:id="deadLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="335.0"
-                       text="DEAD" textAlignment="CENTER" textFill="RED" visible="false">
+                       text="FAINTED" textAlignment="CENTER" textFill="RED" visible="false">
                     <font>
                         <Font size="36.0"/>
                     </font>
