@@ -97,7 +97,7 @@ public class PokemonPickerController extends PickerController<Pokemon> {
             pokemonOptionsParent.getChildren().add(option);
         });
 
-        if (getOptions().isEmpty()){
+        if (getOptions().isEmpty()) {
             pokemonScrollPane.setVisible(false);
         }
     }
@@ -163,23 +163,18 @@ public class PokemonPickerController extends PickerController<Pokemon> {
         viewProgressBar.setProgress(healthPercentage);
         int row = 0;
         for (Status status : pokemon.getStatuses()) {
-            if (pokemon.isDead()) {
-                Label normalLabel = new Label("Dead");
-                statusGrid.add(normalLabel, 0, row);
-            } else {
-                String statusImagePath = "images/pokemon-status/" + status.getName().toLowerCase() + ".png";
-                URL statusImageUrl = Objects.requireNonNull(getResource(statusImagePath));
+            String statusImagePath = "images/pokemon-status/" + status.getName().toLowerCase() + ".png";
+            URL statusImageUrl = Objects.requireNonNull(getResource(statusImagePath));
 
-                if (statusImageUrl != null) {
-                    Image statusImage = new Image(statusImageUrl.toExternalForm());
-                    ImageView statusImageView = new ImageView(statusImage);
+            if (statusImageUrl != null) {
+                Image statusImage = new Image(statusImageUrl.toExternalForm());
+                ImageView statusImageView = new ImageView(statusImage);
 
-                    statusImageView.setFitWidth(90);
-                    statusImageView.setFitHeight(30);
+                statusImageView.setFitWidth(90);
+                statusImageView.setFitHeight(30);
 
-                    statusGrid.add(statusImageView, 0, row);
-                    row++;
-                }
+                statusGrid.add(statusImageView, 0, row);
+                row++;
             }
 
         }

@@ -133,28 +133,16 @@ public class PokemonPickerOption extends AnchorPane {
         nameText.setText(pokemon.getName());
         levelText.setText(String.valueOf(pokemon.getLevel()));
         lifeText.setText(pokemon.getHealth() + "/" + pokemon.getMaxHealth());
+        healthBar.setProgress((double) pokemon.getHealth() / pokemon.getMaxHealth());
 
-        if (pokemon.isDead()) {
-            setDisable(true);
-            triangle.setFill(Color.GRAY);
-            triangle.setStroke(Color.GRAY);
-            nameText.setFill(Color.GRAY);
-            levelText.setFill(Color.GRAY);
-            lifeText.setFill(Color.GRAY);
-            healthBar.setProgress(0.0);
-            pokemonTypeImage.setImage(null);
-        } else {
-            setDisable(false);
-            healthBar.setProgress((double) pokemon.getHealth() / pokemon.getMaxHealth());
+        String typeImagePath = "images/pokemon-type/" + pokemon.getType().toString().toLowerCase() + ".png";
+        URL typeImageUrl = PokemonApp.class.getResource(typeImagePath);
 
-            String typeImagePath = "images/pokemon-type/" + pokemon.getType().toString().toLowerCase() + ".png";
-            URL typeImageUrl = PokemonApp.class.getResource(typeImagePath);
-
-            if (typeImageUrl != null) {
-                Image typeImage = new Image(typeImageUrl.toExternalForm());
-                pokemonTypeImage.setImage(typeImage);
-            }
+        if (typeImageUrl != null) {
+            Image typeImage = new Image(typeImageUrl.toExternalForm());
+            pokemonTypeImage.setImage(typeImage);
         }
+
     }
 
     private void updateCardStyle() {
