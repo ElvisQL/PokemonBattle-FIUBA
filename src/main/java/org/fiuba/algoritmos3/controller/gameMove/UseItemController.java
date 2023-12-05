@@ -40,7 +40,9 @@ public class UseItemController extends GameMoveController<UseItem, UseItemBuilde
                         gameAPI.currentPlayer().getPokemons().stream(),
                         gameAPI.currentPlayer().getOpponent().getPokemons().stream()
                 )
-                .filter((pokemon) -> selectedItem.canUse(pokemon))
+                .filter((pokemon) -> selectedItem.canUse(pokemon) &&
+                        (isReviveItem(selectedItem) ? gameAPI.currentPlayer().getPokemons().contains(pokemon) : true) &&
+                        (pokemon.isDead() || !pokemon.isDead()))
                 .toList();
 
         PickerController<Pokemon> controller = loadPicker(PokemonPickerController.class, pokemons);
@@ -51,6 +53,10 @@ public class UseItemController extends GameMoveController<UseItem, UseItemBuilde
     private void onPokemonPicked(ObservableValue<?> _obs, Pokemon oldPokemon, Pokemon newPokemon) {
         builder.setTargetPokemon(newPokemon);
         executeGameMove();
+    }
+
+    private boolean isReviveItem(Item item) {
+        return item.getName().equals(item.getName());
     }
 
 }
