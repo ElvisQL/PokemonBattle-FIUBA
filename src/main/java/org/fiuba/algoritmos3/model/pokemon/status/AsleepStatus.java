@@ -15,6 +15,8 @@ public class AsleepStatus extends CanUseSkillStatus {
         return;
     }
 
+    public Integer getElapsedRounds(){ return this.elapsedRounds;}
+
     @Override
     public boolean canUseSkill(Pokemon pokemon) {
         elapsedRounds++;

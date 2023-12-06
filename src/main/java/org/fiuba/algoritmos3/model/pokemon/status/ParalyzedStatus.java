@@ -15,7 +15,7 @@ public class ParalyzedStatus extends CanUseSkillStatus {
     }
 
     @Override
-    protected boolean canUseSkill(Pokemon pokemon) {
+    public boolean canUseSkill(Pokemon pokemon) {
         return Math.random() <= 0.5;
     }
 }
