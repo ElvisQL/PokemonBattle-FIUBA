@@ -1,72 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.ImageView?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.TextFlow?>
-<?import org.fiuba.algoritmos3.view.component.BaseButton?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
-      prefWidth="768.0" stylesheets="@../../styles/skills.css" xmlns="http://javafx.com/javafx/17.0.2-ea"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.SkillPickerController">
+<?import javafx.scene.text.*?>
+<?import org.fiuba.algoritmos3.view.component.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="768.0" stylesheets="@../../styles/skills.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fiuba.algoritmos3.controller.picker.SkillPickerController">
     <children>
         <Pane prefHeight="600.0" prefWidth="768.0" styleClass="skill-pane-top">
             <children>
-                <Pane layoutX="74.0" layoutY="58.0" prefHeight="420.0" prefWidth="480.0"
-                      style=" -fx-border-radius: 5; -fx-background-radius: 10; -fx-background-color: #bc9bf6; -fx-border-width: 7px; -fx-border-color: #d6dde5;">
+                <Pane layoutX="74.0" layoutY="119.0" prefHeight="420.0" prefWidth="611.0" style=" -fx-border-radius: 5; -fx-background-radius: 10; -fx-background-color: #bc9bf6; -fx-border-width: 7px; -fx-border-color: #d6dde5;">
                     <children>
-                        <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0" prefHeight="386.0"
-                                    prefWidth="450.0" stylesheets="@../../styles/skills.css" vbarPolicy="NEVER">
-                            <VBox fx:id="skillsContainer" layoutX="13.0" layoutY="14.0" prefHeight="384.0"
-                                  prefWidth="450.0" styleClass="vbox-skills" stylesheets="@../../styles/skills.css"/>
+                        <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="15.0" prefHeight="386.0" prefWidth="582.0" stylesheets="@../../styles/skills.css" vbarPolicy="NEVER">
+                            <VBox fx:id="skillsContainer" layoutX="13.0" layoutY="14.0" prefHeight="384.0" prefWidth="582.0" styleClass="vbox-skills" stylesheets="@../../styles/skills.css" />
                         </ScrollPane>
                     </children>
                 </Pane>
-                <ImageView fx:id="pokemon" fitHeight="267.0" fitWidth="343.0" layoutX="396.0" layoutY="292.0"
-                           pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="pokemon" fitHeight="70.0" fitWidth="78.0" layoutX="74.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                 </ImageView>
+            <Label fx:id="pokeLabel" contentDisplay="TOP" layoutX="152.0" layoutY="57.0" prefHeight="62.0" prefWidth="528.0" text="GYARADOS" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
 
-        <HBox alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0"
-              style="-fx-background-color: #2a2e2d; -fx-border-color: #343434; -fx-border-width: 3;">
+        <HBox alignment="CENTER" layoutX="0" layoutY="600" prefHeight="168.0" prefWidth="768.0" style="-fx-background-color: #2a2e2d; -fx-border-color: #343434; -fx-border-width: 3;">
             <children>
-                <AnchorPane
-                        style="-fx-background-color: #d6dde5; -fx-border-color: #bc9bf6;-fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;"
-                        HBox.hgrow="ALWAYS">
+                <AnchorPane style="-fx-background-color: #d6dde5; -fx-border-color: #bc9bf6;-fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;" HBox.hgrow="ALWAYS">
                     <children>
-                        <TextFlow fx:id="skillDescriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0"
-                                  prefWidth="533.0"
-                                  style="-fx-font-size: 18px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;"
-                                  AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
-                                  AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0"/>
+                        <TextFlow fx:id="skillDescriptionBox" layoutX="95.0" layoutY="22.0" prefHeight="145.0" prefWidth="533.0" style="-fx-font-size: 18px; -fx-background-color: transparent; -fx-text-fill: #f3f3f3;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
                     </children>
                 </AnchorPane>
-                <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0"
-                          style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;">
+                <GridPane alignment="CENTER_RIGHT" prefHeight="145.0" prefWidth="252.0" style="-fx-background-color: #a1a1a1; -fx-border-color: #74707e; -fx-border-width: 10; -fx-border-radius: 5; -fx-background-radius: 10;">
                     <children>
-                        <BaseButton fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                    minWidth="-Infinity" mnemonicParsing="false" prefHeight="52.0" prefWidth="130.0"
-                                    text="BACK" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                    GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <BaseButton fx:id="backButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="52.0" prefWidth="130.0" text="BACK" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                             <font>
-                                <Font size="15.0"/>
+                                <Font size="15.0" />
                             </font>
                         </BaseButton>
-                        <BaseButton fx:id="okButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                    minWidth="-Infinity" mnemonicParsing="false" prefHeight="55.0" prefWidth="171.0"
-                                    text="SELECT" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
-                                    GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <BaseButton fx:id="okButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="55.0" prefWidth="171.0" text="SELECT" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                             <font>
-                                <Font size="15.0"/>
+                                <Font size="15.0" />
                             </font>
                         </BaseButton>
                     </children>
                     <columnConstraints>
-                        <ColumnConstraints/>
+                        <ColumnConstraints />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints/>
-                        <RowConstraints/>
+                        <RowConstraints />
+                        <RowConstraints />
                     </rowConstraints>
                 </GridPane>
             </children>

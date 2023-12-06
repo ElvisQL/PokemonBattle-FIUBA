@@ -9,9 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
+import org.fiuba.algoritmos3.model.pokemon.skills.*;
+import org.fiuba.algoritmos3.view.component.SkillTypeIcon;
 
 import java.net.URL;
 import java.util.Objects;
@@ -28,6 +31,7 @@ public class SkillPickerController extends PickerController<ConcreteSkill> {
     @FXML
     private HBox markedItem;
     private ConcreteSkill currentSkill;
+    @FXML private Label pokeLabel;
 
     @FXML
     public ImageView pokemon;
@@ -39,6 +43,8 @@ public class SkillPickerController extends PickerController<ConcreteSkill> {
         backButton.setOnMouseClicked(this::handleBackButtonClick);
         skillDescriptionBox.getChildren().add(new Text("What will we use?"));
 
+        pokeLabel.setText(gameAPI.currentPlayer().getCurrentPokemon().getName().toUpperCase()+"'s skills");
+        pokeLabel.setTextFill(Color.WHITE);
         URL imageUrl = Objects.requireNonNull(getResource("images/pokemon/" + gameAPI.currentPlayer().getCurrentPokemon().getName().toLowerCase() + ".png"));
         Image image = new Image(imageUrl.toExternalForm(), pokemon.getFitWidth(), pokemon.getFitHeight(), true, false);
         pokemon.setImage(image);
@@ -101,18 +107,38 @@ public class SkillPickerController extends PickerController<ConcreteSkill> {
 
     protected void updateView() {
         for (ConcreteSkill skill : getOptions()) {
-            HBox skillBox = new HBox(230);
+            HBox skillBox = new HBox();
 
+            // skill name label
             Label nameLabel = new Label("   " + skill.getName().toUpperCase());
-            Label quantityLabel = new Label("x" + skill.getRemainingUses().toString());
-
+            nameLabel.setPrefWidth(360);
             nameLabel.getStyleClass().add("label-item");
+
+            // remaining uses label
+            Label quantityLabel = new Label("x" + skill.getRemainingUses().toString());
+            quantityLabel.setPrefWidth(50);
             quantityLabel.getStyleClass().add("label-item");
 
-            skillBox.getChildren().addAll(nameLabel, quantityLabel);
 
+            // TYPE ICON
+            String type;
+
+            if (AttackSkill.class.isInstance(skill)) {
+                type = "Attack";
+            } else if (BuffSkill.class.isInstance(skill)) {
+                type = "Buff";
+            } else if (StatusSkill.class.isInstance(skill)) {
+                type = "Status";
+            } else if (WeatherSkill.class.isInstance(skill)) {
+                type = "Weather";
+            } else {
+                type ="Unknown";
+            }
+
+            SkillTypeIcon skillType = new SkillTypeIcon(type);
+
+            skillBox.getChildren().addAll(nameLabel, quantityLabel, skillType);
             skillBox.setUserData(skill);
-
             skillBox.setOnMouseEntered(this::handleMouseEntered);
             skillBox.setOnMouseExited(this::handleMouseExited);
             skillBox.setOnMouseClicked(this::handleMouseClicked);

@@ -105,7 +105,8 @@ public class ItemPickerController extends PickerController<Item> {
             if (item != null) {
                 Label nameLabel = new Label("   " + item.getName().toUpperCase());
                 Label quantityLabel = new Label("x" + itemCountMap.get(item.getId()).toString());
-
+                nameLabel.setPrefWidth(150);
+                quantityLabel.setPrefWidth(50);
                 nameLabel.getStyleClass().add("label-item");
                 quantityLabel.getStyleClass().add("label-item");
 
