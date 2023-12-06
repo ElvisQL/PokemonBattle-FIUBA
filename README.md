@@ -38,17 +38,7 @@ _Clonando el repositorio_
 
 ## Ejecución del juego
 
-#### Desde tu IDE 
-
-  Corriendo el archivo PokemonApp.class que encontrarás en el siguiente path: `src/main/java/org/fiuba/algoritmos3/PokemonApp.java `
-
-
-#### Desde la terminal con JAR
-
-1. Debes tener instalado [Java Runtime Environment](https://www.oracle.com/java/technologies/downloads/) en tu sistema (Si no lo tenes, click en el enlace)
-2. Descargar el archivo JAR [Pokemon.jar]() en este repositorio
-3. Abre una terminal y ejecuta el programa utilizando el siguiente comando:
-``java -jar Pokemon.jar``
+  Corriendo el archivo PokemonApp.class que encontrarás en el siguiente path: `src/main/java/org/fiuba/algoritmos3/PokemonApp.java ` con la configuración provista. 
 
 
 ## Instrucciones de juego
