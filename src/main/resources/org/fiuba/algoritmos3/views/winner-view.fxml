@@ -16,7 +16,7 @@
             <children>
                 <VBox alignment="CENTER">
                     <children>
-                        <Label fx:id="winnerName" text="Player X wins">
+                        <Label fx:id="winnerName" text="Player X WINS">
                             <font>
                                 <Font name="VT323 Regular" size="48.0"/>
                             </font>

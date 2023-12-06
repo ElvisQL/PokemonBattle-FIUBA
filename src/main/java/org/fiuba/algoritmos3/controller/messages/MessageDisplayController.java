@@ -43,7 +43,6 @@ public abstract class MessageDisplayController extends BaseController {
         animateMessage(text);
     }
 
-    // TODO message view?
     private void animateMessage(String str) {
         AtomicInteger i = new AtomicInteger();
         Timeline timeline = new Timeline();

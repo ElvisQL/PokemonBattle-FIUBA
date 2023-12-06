@@ -4,10 +4,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
-<fx:root alignment="CENTER" fillHeight="false" prefHeight="600" prefWidth="768.0" type="javafx.scene.layout.HBox"
-         xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
-    <Pane prefHeight="613.0" prefWidth="768">
-        <ImageView fitHeight="615.0" fitWidth="768" preserveRatio="true" style=" -fx-background-size: cover;">
+<?import javafx.scene.text.Font?>
+<?import org.fiuba.algoritmos3.view.component.BaseButton?>
+
+<fx:root alignment="CENTER" fillHeight="false" prefHeight="600" prefWidth="768.0" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <Pane prefHeight="600" prefWidth="768">
+        <ImageView fitWidth="768" preserveRatio="true" style=" -fx-background-size: cover;">
             <image>
                 <Image url="@../../images/backgrounds/woods.jpg"/>
             </image>

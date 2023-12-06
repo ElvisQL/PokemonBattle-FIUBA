@@ -136,9 +136,9 @@
     </Pane>
    <StackPane layoutX="361.0" layoutY="30.0" prefHeight="512.0" prefWidth="385.0">
       <children>
-         <Label prefHeight="136.0" prefWidth="409.0" text="No hay pokemones disponibles" textAlignment="CENTER" wrapText="true">
+         <Label prefHeight="136.0" prefWidth="409.0" text="No Pokemon will be affected by this. Go back and choose another option." textAlignment="CENTER" wrapText="true">
             <font>
-               <Font size="36.0" />
+               <Font size="24.0" />
             </font>
          </Label>
           <ScrollPane fx:id="pokemonScrollPane" hbarPolicy="NEVER" prefHeight="512.0" prefWidth="372.0" style="-fx-background-color: #206860;" vbarPolicy="NEVER">

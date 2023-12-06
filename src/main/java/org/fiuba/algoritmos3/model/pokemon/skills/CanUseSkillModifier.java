@@ -19,7 +19,7 @@ public class CanUseSkillModifier extends SkillModifier {
         if (canUseSkill.test(pokemon)) {
             this.wrappee.use(pokemon, otherPokemon, state);
         } else {
-            state.setAdditionalMsg(pokemon.getName() + " couldn't use the skill because of it's statuses");
+            state.setAdditionalMsg(pokemon.getName() + " couldn't use the skill because of its statuses");
         }
     }
 

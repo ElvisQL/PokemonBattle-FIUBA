@@ -61,8 +61,10 @@ public class TrainerView extends HBox {
 
     private void fillGrid(GridPane grid) {
         grid.setHgap(10);
-        for (int col = 0; col < 6; col++) { // TODO analizar cada pokemon
-            Image image = new Image("org/fiuba/algoritmos3/images/pokeball-type/standard.png"); // TODO cambiar por pokeball view factory
+        for (int col = 0; col < 6; col++) {
+            Image image = new Image("org/fiuba/algoritmos3/images/pokeball-type/standard.png");
+            // TODO cambiar por pokeball view factory cuando se analice estado de los pokemons
+            // necesario solo si se usa en otro lado esta ventana
 
             ImageView imageView = new ImageView(image);
             imageView.setPreserveRatio(true);

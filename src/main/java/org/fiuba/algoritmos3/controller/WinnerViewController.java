@@ -41,7 +41,7 @@ public class WinnerViewController extends BaseController {
     }
 
     public void setWinner(Player winner) {
-        winnerName.setText(winner.getName() + " wins");
+        winnerName.setText(winner.getName() + " WINS");
     }
 
     private void changeView(String viewName) {
