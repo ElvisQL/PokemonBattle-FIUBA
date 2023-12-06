@@ -5,7 +5,7 @@ import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.status.AsleepStatus;
 
-public abstract class ConcreteSkill implements Skill {
+public abstract class ConcreteSkill implements Skill, Cloneable {
 
     protected final String name;
     protected Integer remainingUses;
@@ -41,5 +41,21 @@ public abstract class ConcreteSkill implements Skill {
     @Override
     public Class<? extends ConcreteSkill> getSkillType() {
         return this.getClass();
+    }
+
+    public void setRemainingUses(Integer uses){
+        this.remainingUses = uses;
+    }
+
+    @Override
+    public ConcreteSkill clone() {
+        try {
+            ConcreteSkill clone = (ConcreteSkill) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            clone.remainingUses = Integer.valueOf(this.remainingUses);
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

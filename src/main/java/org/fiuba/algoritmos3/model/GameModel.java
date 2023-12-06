@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3.model;
 
 import com.github.underscore.U;
+import org.fiuba.algoritmos3.model.error.BaseError;
 import org.fiuba.algoritmos3.model.event.GameEventBroker;
 import org.fiuba.algoritmos3.model.event.RoundOverEvent;
 import org.fiuba.algoritmos3.model.event.listener.StatusListener;
@@ -11,11 +12,11 @@ import org.fiuba.algoritmos3.model.move.GameMoveResult;
 import org.fiuba.algoritmos3.model.pokemon.Pokemon;
 import org.fiuba.algoritmos3.model.pokemon.PokemonBuilder;
 import org.fiuba.algoritmos3.model.pokemon.PokemonSpecies;
+import org.fiuba.algoritmos3.model.pokemon.skills.ConcreteSkill;
 import org.fiuba.algoritmos3.model.weather.*;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.fiuba.algoritmos3.Constants.*;
 
@@ -120,23 +121,34 @@ public class GameModel {
     private ArrayList<Pokemon> generatePokemonRoster() {
         ArrayList<Pokemon> pokemons = new ArrayList<>();
 
-        List<PokemonSpecies> differentSpecies = U.sample(pokemonSpecies, POKEMON_ROSTER_SIZE).stream().toList();
         for (int i = 0; i < POKEMON_ROSTER_SIZE; i++) {
-            PokemonSpecies species = differentSpecies.get(i);
+            Integer id = U.random(0,AVAILABLE_POKEMONS);
+
             pokemons.add(
-                    new PokemonBuilder()
-                            .setID(i)
-                            .setSpecies(species)
-                            .setAttackPoints(U.random(20, 100))
-                            .setAttackSpeed(U.random(20, 100))
-                            .setBaseHealth(U.random(20, 100))
-                            .setDefencePoints(U.random(20, 100))
-                            .setLevel(U.random(1, 100))
-                            .setSkills(species.getSkills())
+                    new PokemonBuilder().
+                            setID(sourcePokemonHash.get(id).getID())
+                            .setSpecies(sourcePokemonHash.get(id).getSpecies())
+                            .setRandomAttributes()
+                            .setSkills(getClonedSkills(sourcePokemonHash.get(id).getSkills()))
                             .build()
             );
         }
 
         return pokemons;
+    }
+
+    private ArrayList<ConcreteSkill> getClonedSkills(List<ConcreteSkill> skills) {
+        ArrayList<ConcreteSkill> clonedSkills = new ArrayList<ConcreteSkill>();
+
+        for (int i=0; i<skills.size(); i++){
+            ConcreteSkill temp = skills.get(i).clone();
+            temp.setRemainingUses(U.random(1, MAX_SKILL_USAGE));
+            clonedSkills.add(
+                    temp
+            );
+        }
+
+        return clonedSkills;
+
     }
 }

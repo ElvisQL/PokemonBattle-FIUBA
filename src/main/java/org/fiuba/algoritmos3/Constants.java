@@ -1,6 +1,7 @@
 package org.fiuba.algoritmos3;
 
 public class Constants {
+    public static final Integer AVAILABLE_POKEMONS = 21;
     public static final Integer POKEMON_ROSTER_SIZE = 6;
     public static final Integer INITIAL_HEALTH = 100;
     public static final Integer SKILLS_LIMIT = 4;
@@ -9,7 +10,6 @@ public class Constants {
     public static final Integer MAX_NAME_LEN = 50;
     public static final Integer MAX_SKILL_USAGE = 10;
     public static final Double CRITICAL_CHANCE = 0.1;
-
     public static final Double SAME_TYPE = 1.5;
     public static final Double NOT_SAME_TYPE = 1.0;
 

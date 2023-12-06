@@ -315,7 +315,7 @@
       66,
       67
     ],
-    "ID": 20,
+    "ID": 18,
     "level": 87,
     "baseMaxHealth": 77,
     "baseAttack": 43,
@@ -332,7 +332,7 @@
       70,
       71
     ],
-    "ID": 21,
+    "ID": 19,
     "level": 4,
     "baseMaxHealth": 80,
     "baseAttack": 13,
@@ -349,7 +349,7 @@
       3,
       4
     ],
-    "ID": 151,
+    "ID": 20,
     "level": 30,
     "baseMaxHealth": 100,
     "baseAttack": 50,
@@ -383,7 +383,7 @@
       22,
       23
     ],
-    "ID": 37,
+    "ID": 21,
     "level": 16,
     "baseMaxHealth": 38,
     "baseAttack": 41,
