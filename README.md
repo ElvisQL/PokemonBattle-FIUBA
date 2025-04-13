@@ -1,5 +1,6 @@
+
 # Pokemon
-Bienvenido a la Batalla Pokemon
+Bienvenido a la Batalla Pokemon, trabajo practico realizado en la materia Paradigmas de Programacion de la facultad de Ingenieria de la Universidad de Buenos aires
 
 ## Descripción del juego
 La batalla pokémon es un juego en el que dos jugadores seleccionan sus Pokémon, con habilidades. Además, cuentan con una veridad de items que pueden utilizar cada jugador en su turno. El sistema climático agrega un toque adicional de estrategia, ya que puede beneficiar o afectar a los Pokémon de diferentes maneras.
